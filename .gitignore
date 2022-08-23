@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/LemadCorp/.vs
+/LemadCorp/LemadDb/obj
+/LemadCorp/LemadWeb/obj
+/LemadCorp/LemadWeb/Properties
