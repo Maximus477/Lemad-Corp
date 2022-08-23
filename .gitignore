@@ -6,4 +6,5 @@
 /LemadCorp/.vs
 /LemadCorp/LemadDb/obj
 /LemadCorp/LemadWeb/obj
-/LemadCorp/LemadWeb/Properties
+/LemadCorp/LemadWeb/bin/Debug/net5.0
+/LemadCorp/LemadDb/bin/Debug/net5.0
