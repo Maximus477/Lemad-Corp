@@ -14,6 +14,8 @@ namespace LemadDb.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Seed();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
