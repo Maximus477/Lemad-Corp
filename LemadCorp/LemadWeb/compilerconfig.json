@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "wwwroot/sass/color.css",
+    "inputFile": "wwwroot/sass/color.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/link.css",
+    "inputFile": "wwwroot/sass/link.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/layout.css",
+    "inputFile": "wwwroot/sass/layout.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/general.css",
+    "inputFile": "wwwroot/sass/general.scss"
+  }
+]

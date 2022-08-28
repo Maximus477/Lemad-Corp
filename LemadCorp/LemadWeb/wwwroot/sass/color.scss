@@ -1,21 +1,27 @@
-﻿html[data-theme="light"]{
-    --color-text: ...;
-    --color-background-pri: ...;
-    --color-background-sec: ...;
-    --color-button-pri: ...;
-    --color-button-sec: ...;
-    --color-button-text: ...;
-    --color-border: ...;
-    --color-border-alt: ...;
+﻿html[data-theme="light"] {
+    //Text
+    --color-text: rgb(0, 0, 0);
+    // Background
+    --color-background-pri: rgb(255, 255, 255);
+    --color-background-sec: rgb(240, 240, 240);
+    //Button
+    --color-button-pri: rgb(225, 6, 0);
+    --color-button-sec: rgb(175, 6, 0);
+    --color-button-text: rgb(0, 0, 0);
+    //Border
+    --color-border: rgb(200, 12, 6);
 }
 
 html[data-theme="dark"] {
-    --color-text: ...;
-    --color-background-pri: ...;
-    --color-background-sec: ...;
-    --color-button-pri: ...;
-    --color-button-sec: ...;
-    --color-button-text: ...;
-    --color-border: ...;
-    --color-border-alt: ...;
+    //Text
+    --color-text: rgb(255, 255, 255);
+    //Background
+    --color-background-pri: rgb(0, 0, 0);
+    --color-background-sec: rgb(15, 15, 15);
+    //Button
+    --color-button-pri: rgb(160, 6, 0);
+    --color-button-sec: rgb(180, 6, 0);
+    --color-button-text: rgb(0, 0, 0);
+    //Border
+    --color-border: rgb(135, 12, 6);
 }

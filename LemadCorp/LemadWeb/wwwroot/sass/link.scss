@@ -1,1 +1,23 @@
-﻿
+﻿@import "color.css";
+
+// No effect, text color
+.basic-link{
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+    .basic-link:hover {
+        color: var(--color-text);
+        text-decoration: none;
+    }
+
+// No effect, text color, button color when hover
+.colored-link{
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+    .colored-link:hover{
+        color: var(--color-button-pri);
+        text-decoration: none;
+    }

@@ -1,0 +1,1 @@
+﻿@import"color.css";.basic-link{color:var(--color-text);text-decoration:none;}.basic-link:hover{color:var(--color-text);text-decoration:none;}.colored-link{color:var(--color-text);text-decoration:none;}.colored-link:hover{color:var(--color-button-pri);text-decoration:none;}

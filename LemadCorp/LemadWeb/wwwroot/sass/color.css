@@ -1,0 +1,19 @@
+﻿html[data-theme=light] {
+  --color-text: rgb(0, 0, 0);
+  --color-background-pri: rgb(255, 255, 255);
+  --color-background-sec: rgb(240, 240, 240);
+  --color-button-pri: rgb(225, 6, 0);
+  --color-button-sec: rgb(175, 6, 0);
+  --color-button-text: rgb(0, 0, 0);
+  --color-border: rgb(200, 12, 6);
+}
+
+html[data-theme=dark] {
+  --color-text: rgb(255, 255, 255);
+  --color-background-pri: rgb(0, 0, 0);
+  --color-background-sec: rgb(15, 15, 15);
+  --color-button-pri: rgb(160, 6, 0);
+  --color-button-sec: rgb(180, 6, 0);
+  --color-button-text: rgb(0, 0, 0);
+  --color-border: rgb(135, 12, 6);
+}
