@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,19 @@ namespace LemadDb.Data
         public static void Seed(this ModelBuilder builder)
         {
             #region Roles
+            List<IdentityRole> roles = new List<IdentityRole>()
+            {
+                new IdentityRole {
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
+                },
+                new IdentityRole {
+                    Name = "Buyer",
+                    NormalizedName = "BUYER"
+                }
+            };
 
+            builder.Entity<IdentityRole>().HasData(roles);
             #endregion
 
             #region User
