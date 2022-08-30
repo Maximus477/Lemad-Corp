@@ -14,5 +14,9 @@
   {
     "outputFile": "wwwroot/sass/general.css",
     "inputFile": "wwwroot/sass/general.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/home.css",
+    "inputFile": "wwwroot/sass/home.scss"
   }
 ]

@@ -1,1 +1,8 @@
-﻿
+﻿@import "color.css";
+::selection {
+  background-color: var(--color-button-pri);
+}
+
+.form-control:focus {
+  box-shadow: 0 0 10px var(--color-border);
+}

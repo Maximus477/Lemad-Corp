@@ -10,18 +10,20 @@
     --color-button-text: rgb(0, 0, 0);
     //Border
     --color-border: rgb(200, 12, 6);
+    --color-border-alt: rgb(222, 226, 230);
 }
 
 html[data-theme="dark"] {
     //Text
     --color-text: rgb(255, 255, 255);
     //Background
-    --color-background-pri: rgb(0, 0, 0);
-    --color-background-sec: rgb(15, 15, 15);
+    --color-background-pri: rgb(30, 30, 30);
+    --color-background-sec: rgb(35, 35, 35);
     //Button
     --color-button-pri: rgb(160, 6, 0);
     --color-button-sec: rgb(180, 6, 0);
     --color-button-text: rgb(0, 0, 0);
     //Border
     --color-border: rgb(135, 12, 6);
+    --color-border-alt: rgb(25, 25, 25);
 }
