@@ -72,32 +72,20 @@
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
+    @*
+        <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - WebPages - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>*@
+        </footer>
+    *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@*    <script src="https://d3js.org/d3.v7.min.js"></script> *@
     <script type="text/javascript" src="~/js/theme-switch.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script type="text/javascript">
-        function dropDown() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementById("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
+        
     </script>
 </body>
 </html>

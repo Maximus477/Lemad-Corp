@@ -5,7 +5,12 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LemadDb", "LemadDb\LemadDb.csproj", "{964BE7EC-D273-4A46-9902-920B9611FA62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemadWeb", "LemadWeb\LemadWeb.csproj", "{E5EB93F6-350A-4247-9E5B-FDE74287963A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LemadWeb", "LemadWeb\LemadWeb.csproj", "{E5EB93F6-350A-4247-9E5B-FDE74287963A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rapport d'Analyse", "Rapport d'Analyse", "{5236ABEF-C9FC-4401-B3DC-1C8FB9909085}"
+	ProjectSection(SolutionItems) = preProject
+		Besoins.txt = Besoins.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
