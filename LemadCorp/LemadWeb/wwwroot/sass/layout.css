@@ -39,6 +39,15 @@ body {
   background-color: var(--color-background-pri);
 }
 
+.div-theme {
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.div-theme button {
+  margin-right: 10px;
+}
+
 /* 
     Button Dark Mode 
     Source : https://web.dev/building-a-theme-switch-component/
