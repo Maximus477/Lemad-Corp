@@ -39,49 +39,6 @@ body {
   background-color: var(--color-background-pri);
 }
 
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {
-  background-color: #ddd;
-}
-
-.show {
-  display: block;
-}
-
 /* 
     Button Dark Mode 
     Source : https://web.dev/building-a-theme-switch-component/
@@ -100,7 +57,7 @@ body {
 
 .sun-and-moon > .sun-beams {
   stroke: var(--icon-fill);
-  stroke-width: 2px;
+  stroke-width: 1px;
 }
 
 .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
@@ -122,7 +79,7 @@ body {
 @supports (cx: 1) {
   [data-theme=dark] .sun-and-moon > .moon > circle {
     transform: translate(0);
-    cx: 17;
+    cx: 8;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -160,7 +117,7 @@ body {
   }
 }
 .theme-toggle {
-  --size: 2rem;
+  --size: 1rem;
   --icon-fill: hsl(210 10% 30%);
   --icon-fill-hover: hsl(210 10% 15%);
   background: none;
@@ -189,6 +146,6 @@ body {
 
 @media (hover: none) {
   .theme-toggle {
-    --size: 48px ;
+    --size: 24px //48px ;
   }
 }
