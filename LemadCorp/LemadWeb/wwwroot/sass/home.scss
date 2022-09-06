@@ -5,3 +5,88 @@
 .basic-text{
     color: var(--color-text);
 }
+
+.ferrari {
+    background-image: url('../img/teamlogos/FerrariPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.mercedes {
+    background-image: url('../img/teamlogos/MercedesPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.redbull {
+    background-image: url('../img/teamlogos/RedBullPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.alpine {
+    background-image: url('../img/teamlogos/AlpinePng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.mclaren {
+    background-image: url('../img/teamlogos/MclarenPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.alphatauri {
+    background-image: url('../img/teamlogos/AlphaTauriPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.astonmartin {
+    background-image: url('../img/teamlogos/AstonMartinPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.alfaromeo {
+    background-image: url('../img/teamlogos/AlfaRomeoPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px
+}
+
+.williams {
+    background-image: url('../img/teamlogos/WilliamsPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px;
+}
+
+.haas {
+    background-image: url('../img/teamlogos/HaasPng.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 125px;
+}
+
+.team-logo-row {
+    display: flex;
+    height: 15vh !important;
+}

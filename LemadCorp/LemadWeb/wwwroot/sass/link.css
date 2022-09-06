@@ -2,6 +2,7 @@
 .basic-link {
   color: var(--color-header-text);
   text-decoration: none;
+  font-size: 25px;
 }
 
 .basic-link:hover {
