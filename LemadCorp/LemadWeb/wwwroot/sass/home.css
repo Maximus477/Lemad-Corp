@@ -87,3 +87,35 @@
   display: flex;
   height: 15vh !important;
 }
+
+.spaimage {
+  background-image: url("../img/f1pictures/SpaWet.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+}
+
+.text-margins {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.line {
+  /*color: var(--color-line);*/
+}
+
+.display-flex {
+  display: flex;
+}
+
+.square-height {
+  height: 500px;
+  width: 50vw;
+  background-color: aqua;
+}
+
+.square-height2 {
+  height: 500px;
+  width: 50vw;
+  background-color: darkmagenta;
+}

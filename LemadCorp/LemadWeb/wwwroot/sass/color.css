@@ -8,6 +8,7 @@
   --color-button-text: rgb(0, 0, 0);
   --color-border: rgb(200, 12, 6);
   --color-border-alt: rgb(222, 226, 230);
+  --color-line: rgb(225, 6, 0);
 }
 
 html[data-theme=dark] {
@@ -19,4 +20,5 @@ html[data-theme=dark] {
   --color-button-text: rgb(0, 0, 0);
   --color-border: rgb(135, 12, 6);
   --color-border-alt: rgb(25, 25, 25);
+  --color-line: rgb(225, 6, 0);
 }
