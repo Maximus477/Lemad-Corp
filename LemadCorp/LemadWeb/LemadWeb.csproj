@@ -36,4 +36,9 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\engineers\" />
+    <Folder Include="wwwroot\img\teamprincipals\" />
+  </ItemGroup>
+
 </Project>
