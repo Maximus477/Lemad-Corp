@@ -1,6 +1,18 @@
 ﻿@import "https://unpkg.com/open-props/easings.min.css";
 @import "color.css";
 @import "link.css";
+.search-navbar {
+  width: 50%;
+}
+
+.search-form {
+  width: 100%;
+}
+
+.searchbar {
+  width: 70%;
+}
+
 .nav-header {
   border-bottom: 1px solid var(--color-border-alt) !important;
 }
@@ -11,11 +23,14 @@ header {
 
 .item-right {
   margin-left: auto;
+  width: 20%;
 }
 
 .item-right li {
   align-self: center;
   vertical-align: middle;
+  left: auto !important;
+  right: 0px;
 }
 
 .item-right li i {
@@ -23,18 +38,53 @@ header {
 }
 
 .item-left {
-  margin-right: auto;
+  margin-right: 10px;
+  width: 80%;
 }
 
+.container-header {
+  margin-left: 30px;
+  margin-right: 0px;
+}
+
+.nav-header {
+  width: 100%;
+}
+
+@media (min-width: 250px) {
+  .logo {
+    width: 100px;
+    height: 75px;
+  }
+}
+@media (min-width: 576px) {
+  .logo {
+    width: 100px;
+    height: 75px;
+  }
+}
+@media (min-width: 768px) {
+  .logo {
+    width: 125px;
+    height: 100px;
+  }
+}
+@media (min-width: 992px) {
+  .logo {
+    width: 175px;
+    height: 125px;
+  }
+}
+@media (min-width: 1200px) {
+  .logo {
+    width: 200px;
+    height: 150px;
+  }
+}
 .logo {
   background-image: url("../img/madridlogogoodcolor.png");
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 10px;
-  height: 110px;
-  width: 131px;
-  /*height: 15vh;
-  width: 15vw;*/
 }
 
 body {
@@ -68,7 +118,7 @@ body {
 
 .sun-and-moon > .sun-beams {
   stroke: var(--icon-fill);
-  stroke-width: 1px;
+  stroke-width: 2px;
 }
 
 .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
@@ -90,7 +140,7 @@ body {
 @supports (cx: 1) {
   [data-theme=dark] .sun-and-moon > .moon > circle {
     transform: translate(0);
-    cx: 8;
+    cx: 17;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -128,7 +178,7 @@ body {
   }
 }
 .theme-toggle {
-  --size: 1rem;
+  --size: 2rem;
   --icon-fill: hsl(210 10% 30%);
   --icon-fill-hover: hsl(210 10% 15%);
   background: none;
@@ -157,6 +207,6 @@ body {
 
 @media (hover: none) {
   .theme-toggle {
-    --size: 24px //48px ;
+    --size: 48px //48px / 24px ;
   }
 }
