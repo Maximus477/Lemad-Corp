@@ -2,6 +2,21 @@
 @import "color.css";
 @import "link.css";
 
+
+// Searchbar
+.search-navbar {
+    width: 50%;
+}
+
+.search-form {
+    width: 100%;
+}
+
+.searchbar{
+    width:70%;
+}
+
+
 // Header
 .nav-header {
     border-bottom: 1px solid var(--color-border-alt) !important;
@@ -13,11 +28,14 @@ header{
 
 .item-right{
     margin-left: auto;
+    width:20%;
 }
 
     .item-right li{
         align-self: center;
         vertical-align: middle;
+        left: auto !important;
+        right: 0px;
     }
 
     .item-right li i{
@@ -25,19 +43,61 @@ header{
     }
 
 .item-left{
-    margin-right: auto;
+    margin-right: 10px;
+    width: 80%;
 }
 
+.container-header{
+    margin-left: 30px;
+    margin-right:0px;
+}
+
+.nav-header{
+    width: 100%;
+}
+
+@media (min-width: 250px) {
+    .logo {
+        width: 100px;
+        height:75px;
+    }
+}
+
+@media (min-width: 576px) {
+    .logo {
+        width: 100px;
+        height: 75px;
+    }
+}
+
+@media (min-width: 768px) {
+    .logo {
+        width: 125px;
+        height: 100px;
+    }
+}
+
+@media (min-width: 992px) {
+    .logo {
+        width: 175px;
+        height: 125px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .logo {
+        width: 200px;
+        height: 150px;
+    }
+}
 
 // Logo
 .logo{
     background-image: url('../img/madridlogogoodcolor.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
-    height: 110px;
-    width: 131px;
+    background-size:cover;
 }
+
 
 
 // Body
@@ -74,7 +134,7 @@ body{
 
 .sun-and-moon > .sun-beams {
     stroke: var(--icon-fill);
-    stroke-width: 1px //2px
+    stroke-width: 2px //2px / 1px
 }
 
 .theme-toggle:is(:hover,:focus-visible) .sun-and-moon > .sun-beams {
@@ -96,7 +156,7 @@ body{
 @supports (cx: 1) {
     [data-theme=dark] .sun-and-moon > .moon > circle {
         transform: translate(0);
-        cx: 8 // 17
+        cx: 17 // 17 / 8
     }
 }
 
@@ -137,7 +197,7 @@ body{
 }
 
 .theme-toggle {
-    --size: 1rem; //2rem
+    --size: 2rem; //2rem / 1rem
     --icon-fill: hsl(210 10% 30%);
     --icon-fill-hover: hsl(210 10% 15%);
     background: none;
@@ -166,6 +226,6 @@ body{
 
 @media (hover: none) {
     .theme-toggle {
-        --size: 24px //48px
+        --size: 48px //48px / 24px
     }
 }
