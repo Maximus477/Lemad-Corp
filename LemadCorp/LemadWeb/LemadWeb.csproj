@@ -39,6 +39,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\img\engineers\" />
     <Folder Include="wwwroot\img\teamprincipals\" />
+    <Folder Include="wwwroot\Fonts\" />
   </ItemGroup>
 
 </Project>
