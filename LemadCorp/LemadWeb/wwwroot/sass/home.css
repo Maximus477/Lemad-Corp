@@ -3,6 +3,12 @@
   color: var(--color-text);
 }
 
+.slogan-text {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 50px;
+}
+
 .ferrari {
   background-image: url("../img/teamlogos/FerrariPng.png");
   background-repeat: no-repeat;
@@ -108,14 +114,26 @@
   display: flex;
 }
 
-.square-height {
+.square-white {
   height: 500px;
   width: 50vw;
-  background-color: aqua;
+  background-color: #EEEEE9;
 }
 
-.square-height2 {
+.square-gray {
   height: 500px;
   width: 50vw;
-  background-color: darkmagenta;
+  background-color: #A89A8A;
+}
+
+.square-gold {
+  height: 500px;
+  width: 50vw;
+  background-color: #FFC170;
+}
+
+.square-green {
+  height: 500px;
+  width: 50vw;
+  background-color: #99C2A5;
 }
