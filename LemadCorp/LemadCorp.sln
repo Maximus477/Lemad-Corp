@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rapport d'Analyse", "Rapport d'Analyse", "{5236ABEF-C9FC-4401-B3DC-1C8FB9909085}"
 	ProjectSection(SolutionItems) = preProject
 		Besoins.txt = Besoins.txt
+		TP01_-_Commerce_electronique.pdf = TP01_-_Commerce_electronique.pdf
 	EndProjectSection
 EndProject
 Global
