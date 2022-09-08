@@ -7,9 +7,11 @@
 }
 
 .slogan-text {
-    margin-left:20px;
     margin-top:20px;
     font-size:50px;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .ferrari {
@@ -104,9 +106,16 @@
     height: 150px;
 }
 
+.circuitimage {
+    background-image: url('../img/f1pictures/CircuitImage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 50vw;
+}
+
 .text-margins {
-    margin-top:40px;
-    margin-bottom:40px;
+    margin-top:140px;
 }
 
 .line {
