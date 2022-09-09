@@ -1,5 +1,16 @@
 ﻿@import "color.css";
 
+// No effect, white color
+.total-white-link{
+    color:white;
+    text-decoration: none;
+}
+
+    .total-white-link:hover{
+        color:white;
+        text-decoration: none;
+    }
+
 // No effect, text color
 .basic-link{
     color: var(--color-header-text);
