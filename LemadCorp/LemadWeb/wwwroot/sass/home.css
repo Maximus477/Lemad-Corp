@@ -102,11 +102,10 @@
 }
 
 .circuitimage {
-  background-image: url("../img/f1pictures/CircuitImage.jpg");
+  background-image: url("../img/f1pictures/Circuit_Image.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 500px;
-  width: 50vw;
+  width: 100%;
 }
 
 .line {
