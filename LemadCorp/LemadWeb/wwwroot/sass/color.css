@@ -3,6 +3,7 @@
   --color-text: rgb(0, 0, 0);
   --color-background-pri: rgb(255, 255, 255);
   --color-background-sec: rgb(225, 6, 0);
+  --color-background-ter: rgb(245, 245, 245);
   --color-button-pri: rgb(225, 6, 0);
   --color-button-sec: rgb(175, 6, 0);
   --color-button-text: rgb(0, 0, 0);
@@ -15,6 +16,7 @@ html[data-theme=dark] {
   --color-text: rgb(255, 255, 255);
   --color-background-pri: rgb(30, 30, 30);
   --color-background-sec: rgb(225, 6, 0);
+  --color-background-ter: rgb(40, 40, 40);
   --color-button-pri: rgb(160, 6, 0);
   --color-button-sec: rgb(180, 6, 0);
   --color-button-text: rgb(0, 0, 0);

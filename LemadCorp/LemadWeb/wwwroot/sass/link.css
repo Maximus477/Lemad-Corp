@@ -1,4 +1,14 @@
 ﻿@import "color.css";
+.total-white-link {
+  color: white;
+  text-decoration: none;
+}
+
+.total-white-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
 .basic-link {
   color: var(--color-header-text);
   text-decoration: none;

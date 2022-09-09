@@ -1,6 +1,7 @@
 ﻿@import"https://unpkg.com/open-props/easings.min.css";
 @import "color.css";
 @import "link.css";
+@import "button.css";
 
 
 // Searchbar
@@ -13,11 +14,22 @@
 }
 
 .searchbar{
-    width:70%;
+    height: 30px;
+    //width:70%;
+    border: 1px solid var(--color-border);
+    border-radius:10px;
 }
 
 
 // Header
+.main-navbar{
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+
+    margin-bottom:5px;
+}
+
 .nav-header {
     border-bottom: 1px solid var(--color-border-alt) !important;
 }
@@ -86,8 +98,8 @@ header{
 
 @media (min-width: 1200px) {
     .logo {
-        width: 200px;
-        height: 150px;
+        width: 175px;
+        height: 125px;
     }
 }
 
@@ -119,6 +131,11 @@ body{
     Button Dark Mode 
     Source : https://web.dev/building-a-theme-switch-component/
 */
+
+.theme-toggle,
+.sun-and-moon{
+    color: white;
+}
 
 .sun-and-moon > :is(.moon,.sun,.sun-beams) {
     transform-origin: center center
@@ -198,8 +215,8 @@ body{
 
 .theme-toggle {
     --size: 2rem; //2rem / 1rem
-    --icon-fill: hsl(210 10% 30%);
-    --icon-fill-hover: hsl(210 10% 15%);
+    --icon-fill: rgb(255,255,255);
+    --icon-fill-hover: rgb(245,245,245);
     background: none;
     border: none;
     padding: 0;
@@ -220,8 +237,8 @@ body{
 }
 
 [data-theme=dark] .theme-toggle {
-    --icon-fill: hsl(210 10% 70%);
-    --icon-fill-hover: hsl(210 15% 90%)
+    --icon-fill: rgb(255,255,255);
+    --icon-fill-hover: rgb(245,245,245);
 }
 
 @media (hover: none) {
