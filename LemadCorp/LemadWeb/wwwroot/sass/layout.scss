@@ -132,6 +132,11 @@ body{
     Source : https://web.dev/building-a-theme-switch-component/
 */
 
+.theme-toggle,
+.sun-and-moon{
+    color: white;
+}
+
 .sun-and-moon > :is(.moon,.sun,.sun-beams) {
     transform-origin: center center
 }
@@ -210,8 +215,8 @@ body{
 
 .theme-toggle {
     --size: 2rem; //2rem / 1rem
-    --icon-fill: hsl(210 10% 30%);
-    --icon-fill-hover: hsl(210 10% 15%);
+    --icon-fill: rgb(255,255,255);
+    --icon-fill-hover: rgb(245,245,245);
     background: none;
     border: none;
     padding: 0;
@@ -232,8 +237,8 @@ body{
 }
 
 [data-theme=dark] .theme-toggle {
-    --icon-fill: hsl(210 10% 70%);
-    --icon-fill-hover: hsl(210 15% 90%)
+    --icon-fill: rgb(255,255,255);
+    --icon-fill-hover: rgb(245,245,245);
 }
 
 @media (hover: none) {
