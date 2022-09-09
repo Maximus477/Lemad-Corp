@@ -1,14 +1,12 @@
 ﻿@import "color.css";
-.basic-text {
+.basic-text-center {
   color: var(--color-text);
+  text-align: center;
 }
 
-.slogan-text {
-  margin-top: 20px;
-  font-size: 50px;
-  text-align: center;
-  margin-left: 20px;
-  margin-right: 20px;
+.center-text {
+  padding-top: 50%;
+  padding-bottom: 50%;
 }
 
 .ferrari {
@@ -111,10 +109,6 @@
   width: 50vw;
 }
 
-.text-margins {
-  margin-top: 140px;
-}
-
 .line {
   /*color: var(--color-line);*/
 }
@@ -124,25 +118,33 @@
 }
 
 .square-white {
-  height: 500px;
-  width: 50vw;
+  padding: 5%;
+  aspect-ratio: 1/1;
+  position: relative;
+  /* If you want text inside of it */
   background-color: #EEEEE9;
 }
 
 .square-gray {
-  height: 500px;
-  width: 50vw;
+  padding: 5%;
+  aspect-ratio: 1/1;
+  position: relative;
+  /* If you want text inside of it */
   background-color: #A89A8A;
 }
 
 .square-gold {
-  height: 500px;
-  width: 50vw;
+  padding: 5%;
+  aspect-ratio: 1/1;
+  position: relative;
+  /* If you want text inside of it */
   background-color: #FFC170;
 }
 
 .square-green {
-  height: 500px;
-  width: 50vw;
+  padding: 5%;
+  aspect-ratio: 1/1;
+  position: relative;
+  /* If you want text inside of it */
   background-color: #99C2A5;
 }
