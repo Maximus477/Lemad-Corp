@@ -17,3 +17,7 @@
 h1, h2, h4 {
   font-family: "abigail";
 }
+
+a:link, a:visited, a:hover {
+  color: black;
+}

@@ -141,6 +141,8 @@
 }
 
 .effect {
+    font-size:larger;
+    font-weight:bold;
     text-align: center;
     display: inline-block;
     position: relative;
@@ -148,10 +150,10 @@
     color: black;
     text-transform: capitalize;
     background-color:red;
-    padding: 20px 0px;
-    width: 150px;
-    border-radius: black;
+    padding: 5%;
+    width: 100%;
     overflow: hidden;
+    border-radius:25px;
 }
 
 /* effect-3 styles */
@@ -160,6 +162,7 @@
 
     &:before {
         content: "\f5e4";
+        color:black;
         font-family: FontAwesome;
         position: absolute;
         display: flex;
@@ -176,7 +179,7 @@
     }
 
     &:hover {
-        text-indent: -9999999px;
+        text-indent: 50%;
 
         &:before {
             top: 0;
