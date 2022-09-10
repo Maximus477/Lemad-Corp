@@ -15,131 +15,85 @@
 </head>
 <body>
     <header>
-        <div class="fixed-top">
-            <nav class="navbar navbar-expand-lg main-navbar navbar1">
-                <a class="logo total-white-link" asp-area="" asp-controller="Home" asp-action="Index"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg main-navbar navbar1">
+            <a class="logo total-white-link" asp-area="" asp-controller="Home" asp-action="Index"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="ml-auto">
+                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite" draggable="false">
+                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                            <circle cx="24" cy="10" r="6" fill="black" />
+                        </mask>
+                        <g class="sun-beams" stroke="currentColor">
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    </svg>
                 </button>
-                <div class="ml-auto">
-                    <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite" draggable="false">
-                        <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                            <mask class="moon" id="moon-mask">
-                                <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                                <circle cx="24" cy="10" r="6" fill="black" />
-                            </mask>
-                            <g class="sun-beams" stroke="currentColor">
-                                <line x1="12" y1="1" x2="12" y2="3" />
-                                <line x1="12" y1="21" x2="12" y2="23" />
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                                <line x1="1" y1="12" x2="3" y2="12" />
-                                <line x1="21" y1="12" x2="23" y2="12" />
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                            </g>
-                            <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                        </svg>
-                    </button>
-                </div>
-                @if (!User.Identity.IsAuthenticated)
-                {
-                    <a class="nav-link total-white-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                }
-            </nav>
-            <nav class="navbar navbar-expand-lg main-navbar navbar2">
-                <ul class="navbar-nav">
-                    <li class="nav-item navbar-item">
-                        <a class="total-white-link" asp-area="" asp-controller="" asp-action="">Products</a>
-                    </li>
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a class="nav-link total-white-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+            }
+        </nav>
+        <nav class="navbar navbar-expand-lg main-navbar navbar2">
+            <ul class="navbar-nav">
+                <li class="nav-item navbar-item">
+                    <a class="total-white-link" asp-area="" asp-controller="" asp-action="">Products</a>
+                </li>
 
-                </ul>
-                <ul class="search-navbar navbar-nav mr-auto ml-auto container">
-                    <li class="nav-item navbar-item row" style="width:100%">
-                        <form class="form-inline search-form col-sm-10 col-md-10 col-lg-10 col-xl-10 row">
-                            <input class="searchbar col-sm-10 col-md-10 col-lg-10 col-xl-10" type="search" placeholder="Search a product..." aria-label="Search" />
-                            <button class="button-header col-sm-1 col-md-1 col-lg-1 col-xl-1 padding-" type="submit">
-                                <i class="fa fa-search fa-align-center" style="display: block"></i>
-                            </button>
-                        </form>
-                        <a class="button-header-alt col-sm-2 col-md-2 col-lg-2 col-xl-2" asp-area="" asp-controller="" asp-action="">
-                            <i class="fa fa-shopping-cart fa-align-center"></i>
-                            <span>Cart</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+            </ul>
+            <ul class="search-navbar navbar-nav mr-auto ml-auto container">
+                <li class="nav-item navbar-item row" style="width:100%">
+                    <form class="form-inline search-form col-sm-10 col-md-10 col-lg-10 col-xl-10 row">
+                        <input class="searchbar col-sm-10 col-md-10 col-lg-10 col-xl-10" type="search" placeholder="Search a product..." aria-label="Search" />
+                        <button class="button-header col-sm-1 col-md-1 col-lg-1 col-xl-1 padding-" type="submit">
+                            <i class="fa fa-search fa-align-center" style="display: block"></i>
+                        </button>
+                    </form>
+                    <a class="button-header-alt col-sm-2 col-md-2 col-lg-2 col-xl-2" asp-area="" asp-controller="" asp-action="">
+                        <i class="fa fa-shopping-cart fa-align-center"></i>
+                        <span>Cart</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    @*<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm sticky-top box-shadow nav-header">
-    <div class="container">
-    <a class="logo basic-link" asp-area="" asp-controller="Home" asp-action="Index"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-    <ul class="navbar-nav flex-grow-1 item-left">
-    <li class="nav-item">
-    <a class="basic-link" asp-area="" asp-controller="" asp-action="">Products</a>
-    </li>
-    </ul>
-    <ul class="navbar-nav item-right">
-    <li class="div-theme">
-    <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite" draggable="false">
-    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-    <mask class="moon" id="moon-mask">
-    <rect x="0" y="0" width="100%" height="100%" fill="white" />
-    <circle cx="24" cy="10" r="6" fill="black" />
-    </mask>
-    <g class="sun-beams" stroke="currentColor">
-    <line x1="12" y1="1" x2="12" y2="3" />
-    <line x1="12" y1="21" x2="12" y2="23" />
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-    <line x1="1" y1="12" x2="3" y2="12" />
-    <line x1="21" y1="12" x2="23" y2="12" />
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-    </g>
-    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-    </svg>
-    </button>
-    </li>
-    @if (!User.Identity.IsAuthenticated) {
-    <li class="nav-item">
-    <a class="nav-link basic-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-    </li>
-    }
-    else {
-
-    }
-    </ul>
-    </div>
-    </div>
-    </nav>
-    </header>*@
+    
     <div class="container-fluid">
         @RenderBody()
     </div>
 
-    @*
-    <footer class="border-top footer text-muted">
-    <div class="container">
-    &copy; 2022 - WebPages - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-    </footer>
-    *@
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @*    <script src="https://d3js.org/d3.v7.min.js"></script> *@
     <script type="text/javascript" src="~/js/theme-switch.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script type="text/javascript">
+        window.onscroll = function() {scrolling()};
 
+        var header = document.getElementById('navbar2');
+
+        var sticky = header.offsetTop;
+
+        function scrolling() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add('sticky');
+            }
+            else {
+                header.classList.remove('sticky');
+            }
+        }
     </script>
 </body>
 </html>
