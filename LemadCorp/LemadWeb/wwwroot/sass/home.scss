@@ -92,6 +92,43 @@
     width: 125px;
 }
 
+.product-row {
+    height:90%;
+    padding-top:10vh;
+}
+
+.alonso {
+    background-image: url('../img/driversfull/AlonsoFull.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+    width: 100%;
+}
+
+.verstappen {
+    background-image: url('../img/driversfull/VerstappenFull.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+    width: 100%;
+}
+
+.binotto {
+    background-image: url('../img/teamprincipals/2020.Ferrari.Mattias.Binotto.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+    width: 100%;
+}
+
+.steiner {
+    background-image: url('../img/teamprincipals/2021.Haas.Guenther.Steiner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+    width: 100%;
+}
+
 .team-logo-row {
     display: flex;
     height: 15vh !important;
@@ -111,9 +148,24 @@
     width: 100%
 }
 
+.name-product {
+    font-size:2vw;
+    padding-top:2vh;
+}
+
+.price-product {
+    font-size: 2vw;
+    padding-top: 2vh;
+}
+
 .line {
     /*color: var(--color-line);*/
 }
+
+.item-box {
+    background-color: white;
+}
+
 
 .display-flex {
     display:flex;
