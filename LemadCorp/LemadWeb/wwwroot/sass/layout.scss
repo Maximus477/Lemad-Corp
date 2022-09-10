@@ -1,7 +1,7 @@
 ﻿@import"https://unpkg.com/open-props/easings.min.css";
-@import "color.css";
 @import "link.css";
 @import "button.css";
+@import "color.css";
 
 
 // Searchbar
@@ -28,6 +28,19 @@
     padding-right:20px;
 
     margin-bottom:5px;
+}
+
+.navbar1{
+    background-color: var(--color-background-sec);
+    padding-bottom:0px;
+    padding-top:0px;
+    margin-bottom:0px;
+    margin-top: 0px;
+    height:110px;
+}
+
+.navbar2 {
+    background-color: var(--color-background-qua);
 }
 
 .nav-header {
@@ -73,6 +86,9 @@ header{
         width: 100px;
         height:75px;
     }
+
+    .navbar1{
+    }
 }
 
 @media (min-width: 576px) {
@@ -80,26 +96,38 @@ header{
         width: 100px;
         height: 75px;
     }
+
+    .navbar1 {
+    }
 }
 
 @media (min-width: 768px) {
     .logo {
-        width: 125px;
-        height: 100px;
+        width: 100px;
+        height: 75px;
+    }
+
+    .navbar1{
     }
 }
 
 @media (min-width: 992px) {
     .logo {
-        width: 175px;
-        height: 125px;
+        width: 100px;
+        height: 75px;
+    }
+
+    .navbar1{
     }
 }
 
 @media (min-width: 1200px) {
     .logo {
-        width: 175px;
-        height: 125px;
+        width: 100px;
+        height: 75px;
+    }
+
+    .navbar1{
     }
 }
 
