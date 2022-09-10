@@ -14,7 +14,8 @@
   color: white;
 }
 
-.button-header-alt {
+.button-header-alt,
+.button-header-alt:visited {
   border: 1px solid var(--color-border);
   background-color: var(--color-button-sec);
   color: white;
@@ -25,7 +26,8 @@
   text-decoration: none;
 }
 
-.button-header-alt:hover {
+.button-header-alt:hover,
+.button-header-alt:hover:visited {
   background-color: white;
   color: var(--color-button-sec);
   text-decoration: none;

@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg main-navbar navbar1">
+        <nav id="navbar1" class="navbar navbar-expand-lg main-navbar navbar1">
             <a class="logo total-white-link" asp-area="" asp-controller="Home" asp-action="Index"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -47,12 +47,11 @@
                 <a class="nav-link total-white-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
             }
         </nav>
-        <nav class="navbar navbar-expand-lg main-navbar navbar2">
+        <nav id="navbar2" class="navbar navbar-expand-lg main-navbar navbar2">
             <ul class="navbar-nav">
                 <li class="nav-item navbar-item">
                     <a class="total-white-link" asp-area="" asp-controller="" asp-action="">Products</a>
                 </li>
-
             </ul>
             <ul class="search-navbar navbar-nav mr-auto ml-auto container">
                 <li class="nav-item navbar-item row" style="width:100%">
@@ -71,7 +70,7 @@
         </nav>
     </header>
     
-    <div class="container-fluid">
+    <div id="content" class="container-fluid">
         @RenderBody()
     </div>
 
@@ -83,15 +82,18 @@
         window.onscroll = function() {scrolling()};
 
         var header = document.getElementById('navbar2');
+        var content = document.getElementById('content');
 
         var sticky = header.offsetTop;
 
         function scrolling() {
             if (window.pageYOffset > sticky) {
-                header.classList.add('sticky');
+                header.classList.add('fixed-top');
+                content.classList.add('container-padding');
             }
             else {
-                header.classList.remove('sticky');
+                header.classList.remove('fixed-top');
+                content.classList.remove('container-padding');
             }
         }
     </script>
