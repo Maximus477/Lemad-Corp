@@ -11,6 +11,11 @@
         text-decoration: none;
     }
 
+    .total-white-link:visited {
+        color: white;
+        text-decoration: none;
+    }
+
 // No effect, text color
 .basic-link{
     color: var(--color-header-text);
@@ -23,6 +28,11 @@
         text-decoration: none;
     }
 
+    .basic-link:visited {
+        color: var(--color-header-text);
+        text-decoration: none;
+    }
+
 // No effect, text color, button color when hover
 .colored-link{
     color: var(--color-header-text);
@@ -30,6 +40,11 @@
 }
 
     .colored-link:hover{
+        color: var(--color-button-pri);
+        text-decoration: none;
+    }
+
+    .basic-link:visited {
         color: var(--color-button-pri);
         text-decoration: none;
     }
