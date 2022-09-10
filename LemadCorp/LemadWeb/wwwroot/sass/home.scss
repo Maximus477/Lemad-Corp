@@ -1,15 +1,8 @@
 ﻿@import "color.css";
 
-
-
 .basic-text-center {
     color: var(--color-text);
     text-align: center;
-}
-
-.center-text {
-    padding-top: 50%;
-    padding-bottom: 50%;
 }
 
 .ferrari {
@@ -197,4 +190,53 @@
     aspect-ratio: 1 / 1;
     position: relative; /* If you want text inside of it */
     background-color: #99C2A5
+}
+
+.effect {
+    font-size:larger;
+    font-weight:bold;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    background-color:red;
+    padding: 5%;
+    width: 100%;
+    overflow: hidden;
+    border-radius:25px;
+}
+
+/* effect-3 styles */
+.effect.effect-3 {
+    transition: all 0.2s linear 0s;
+
+    &:before {
+        content: "\f5e4";
+        color:black;
+        font-family: FontAwesome;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0%;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 30px;
+        transition: all 0.2s linear 0s;
+    }
+
+    &:hover {
+        text-indent: 50%;
+
+        &:before {
+            top: 0;
+            left: 0;
+            text-indent: 0;
+        }
+    }
 }
