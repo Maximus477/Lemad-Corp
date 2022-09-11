@@ -4,7 +4,7 @@
   text-align: center;
 }
 
-.ferrari {
+.ferrari2 {
   background-image: url("../img/teamlogos/FerrariPng.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,7 +20,7 @@
   width: 125px;
 }
 
-.redbull {
+.redbull2 {
   background-image: url("../img/teamlogos/RedBullPng.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -121,6 +121,22 @@
   width: 100%;
 }
 
+.ferrari {
+  background-image: url("../img/teamlogos/FerrariPng.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50%;
+  width: 100%;
+}
+
+.redbull {
+  background-image: url("../img/teamlogos/RedBullPng.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50%;
+  width: 100%;
+}
+
 .team-logo-row {
   display: flex;
   height: 15vh !important;
@@ -141,13 +157,13 @@
 }
 
 .name-product {
-  font-size: 2vw;
+  font-size: 1.8vw;
   padding-top: 2vh;
 }
 
 .price-product {
-  font-size: 2vw;
-  padding-top: 2vh;
+  font-size: 1.8vw;
+  padding-top: 0.5vh;
 }
 
 .line {
@@ -156,6 +172,11 @@
 
 .item-box {
   background-color: white;
+  padding-top: 2vh;
+}
+
+.red-border {
+  border-color: var(--color-background-sec);
 }
 
 .display-flex {
