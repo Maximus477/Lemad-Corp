@@ -1,0 +1,32 @@
+﻿@import "color.css";
+
+.creators-row {
+    background-color: #FFC170;
+    height: 80vh;
+}
+
+.creator {
+    background-color: #FFC170;
+    padding-top: 2vh;
+    border-color: var(--color-background-sec);
+    height: 80vh;
+}
+
+.creator-box-outline {
+    height: 100%;
+    background-color: white;
+}
+
+
+.karl {
+    height: 50%;
+    background-color:aqua
+}
+
+/*.creator-box {
+    padding-top: 5px;
+    height: 60vh;
+    width: 95%;
+    background-color: white;
+    border: 3px solid var(--color-background-sec);
+}*/
