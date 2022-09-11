@@ -28,3 +28,19 @@
     background-color: white;
     border: 3px solid var(--color-background-sec);
 }*/
+.location {
+  height: 200px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: var(--color-button-sec);
+  padding-right: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.location div {
+  padding-top: 5%;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
