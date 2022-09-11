@@ -1,5 +1,11 @@
 ﻿@import "color.css";
 
+.title {
+    text-align:center;
+    padding-top:5vh;
+    padding-bottom:5vh;
+}
+
 .creators-row {
     background-color: #FFC170;
     height: 80vh;
@@ -13,15 +19,54 @@
 }
 
 .creator-box-outline {
-    height: 100%;
+    height: 95%;
     background-color: white;
 }
 
 
 .karl {
-    height: 50%;
-    background-color:aqua
+    background-image: url('../img/creators/karl.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    height: 285px;
+    width: 285px;
 }
+
+.maxime {
+    background-image: url('../img/creators/maxime.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    height: 285px;
+    width: 285px;
+}
+
+.louis {
+    background-image: url('../img/creators/louis.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    height: 285px;
+    width: 285px;
+}
+
+.creator-name {
+    padding-top:2vh;
+    text-align:center;
+}
+
+.creator-description {
+    padding-top: 1vh;
+    text-align: center;
+}
+
+//display: flex;
+//height: 150px;
+//align-items: center;
 
 /*.creator-box {
     padding-top: 5px;
