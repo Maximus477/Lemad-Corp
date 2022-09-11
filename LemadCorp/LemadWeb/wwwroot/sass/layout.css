@@ -110,6 +110,10 @@ header {
     height: 50px;
   }
 }
+footer {
+  background-color: var(--color-background-qua);
+}
+
 .logo {
   background-image: url("../img/madridlogogoodcolor.png");
   background-repeat: no-repeat;
