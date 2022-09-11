@@ -22,5 +22,9 @@
   {
     "outputFile": "wwwroot/sass/button.css",
     "inputFile": "wwwroot/sass/button.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/about.css",
+    "inputFile": "wwwroot/sass/about.scss"
   }
 ]
