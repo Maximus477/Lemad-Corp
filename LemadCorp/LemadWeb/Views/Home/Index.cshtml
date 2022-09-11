@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="~/sass/home.css" />
 }
 
+@model LemadWeb.Models.ContactClientForm
+
 <div class="row">
     <div class="square-white basic-text col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
         <h1 class="basic-text-center" style="padding-top:10%">Fast teams, fast cars. <br> Your winning team start here.</h1>
@@ -137,13 +139,46 @@
         </div>
     </div>
 </div>
-<div class="text-center">
-    @*<h1 class="display-4 basic-text">Welcome</h1>*@
-    <h1 class="basic-text text-margin">Need a team?<br> We've got you all covered.</h1>
-    <hr class="line" />
-    <div class="text-margins">
-        <h2 class="basic-text">Sign up right now to get started.</h2>
-        <h2 class="basic-text">The best teams and over 500 000 others have done the same.</h2>
+<div class="row">
+    <div class="square-gold col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <h1 style="text-align:center">Interested? Talk to an agent!</h1>
+        <h4 style="text-align:center">Complete de form below and we'll reach out to you in no time</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="ContactClientTemp">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Message" class="control-label"></label>
+                        <textarea asp-for="Message" class="form-control"></textarea>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input @*type="submit" *@value="Submit!" class="btn btn-primary" />
+                    </div>
+                </form>
+
+                @section Scripts {
+                @{
+                    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+                }
+            </div>
+        </div>
     </div>
+    <div class="square-white col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+    </div>
+</div>
+<div class="text-center">
     <div class="spaimage"></div>
 </div>
