@@ -20,6 +20,8 @@
 .creator-box-outline {
   height: 95%;
   background-color: white;
+  display: flex;
+  align-items: center;
 }
 
 .karl {
@@ -28,6 +30,7 @@
   background-size: cover;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2vh;
   height: 285px;
   width: 285px;
 }
@@ -38,6 +41,7 @@
   background-size: cover;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2vh;
   height: 285px;
   width: 285px;
 }
@@ -48,6 +52,7 @@
   background-size: cover;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2vh;
   height: 285px;
   width: 285px;
 }
@@ -60,15 +65,19 @@
 .creator-description {
   padding-top: 1vh;
   text-align: center;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
-/*.creator-box {
-    padding-top: 5px;
-    height: 60vh;
-    width: 95%;
-    background-color: white;
-    border: 3px solid var(--color-background-sec);
-}*/
+.creator-box {
+  height: 97%;
+  width: 97%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--color-background-sec);
+}
+
 .location {
   height: 200px;
   vertical-align: middle;
