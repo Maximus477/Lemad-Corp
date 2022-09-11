@@ -140,7 +140,14 @@
 
 .team-logo-row {
     display: flex;
-    height: 15vh !important;
+    height: 25vh !important;
+}
+
+.team-logos {
+    background-image: url('../img/teamlogos/teamlogos.jpg');
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 
 .spaimage {
@@ -214,19 +221,19 @@
 }
 
 .effect {
-    font-size:larger;
-    font-weight:bold;
+    font-size: larger;
+    font-weight: bold;
     text-align: center;
     display: inline-block;
     position: relative;
     text-decoration: none;
     color: black;
     text-transform: capitalize;
-    background-color:red;
+    background-color: var(--color-background-sec);
     padding: 5%;
     width: 100%;
     overflow: hidden;
-    border-radius:25px;
+    border-radius: 25px;
 }
 
 /* effect-3 styles */

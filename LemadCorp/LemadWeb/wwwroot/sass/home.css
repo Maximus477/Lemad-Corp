@@ -139,7 +139,14 @@
 
 .team-logo-row {
   display: flex;
-  height: 15vh !important;
+  height: 25vh !important;
+}
+
+.team-logos {
+  background-image: url("../img/teamlogos/teamlogos.jpg");
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
 
 .spaimage {
@@ -224,7 +231,7 @@
   text-decoration: none;
   color: black;
   text-transform: capitalize;
-  background-color: red;
+  background-color: var(--color-background-sec);
   padding: 5%;
   width: 100%;
   overflow: hidden;
