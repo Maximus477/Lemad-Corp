@@ -163,6 +163,13 @@
   width: 100%;
 }
 
+.hamilton-team {
+  background-image: url("../img/f1pictures/HamiltonTeam.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
 .name-product {
   font-size: 1.8vw;
   padding-top: 2vh;
