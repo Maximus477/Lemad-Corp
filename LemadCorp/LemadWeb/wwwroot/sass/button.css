@@ -5,8 +5,6 @@
   background-color: white;
   color: var(--color-button-sec);
   height: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .button-header:hover {
