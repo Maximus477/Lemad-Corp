@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using LemadWeb.ViewModel.Account;
+using LemadWeb.ViewModels.Account;
 
 namespace LemadWeb.Controllers
 {
