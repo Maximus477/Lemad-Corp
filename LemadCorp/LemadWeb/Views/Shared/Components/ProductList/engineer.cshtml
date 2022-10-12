@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Engineers>
 
-@if (!Model.Any()) {
+@if (!ViewBag.Verification) {
     <p>No engineers availables!</p>
 }
 else {

@@ -32,18 +32,19 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List">Pilots</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List">Engineers</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List">Mechanics</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List">Principals</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List">Power units</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="@null">Pilots</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="@null">Engineers</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="@null">Mechanics</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="@null">Principals</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="@null">Power units</a>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                            <form class="form-inline search-form row">
-                                <input class="searchbar col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" type="search" placeholder="Search a product..." aria-label="Search" />
-                                <button class="button-header col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" type="submit">
+                            <form asp-controller="Product" asp-action="List" method="get" class="form-inline search-form row">
+                                <input class="searchbar col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" type="search" 
+                                placeholder="Search a product..." aria-label="Search" name="searchString" value="@ViewData["CurrentFilter"]" />
+                                <button class="button-header col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" type="submit" value="">
                                     <i class="fa fa-search fa-align-center"></i>
                                 </button>
                                 <a class="button-header-alt col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" asp-area="" asp-controller="" asp-action="">

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Pilots>
 
-@if (!Model.Any()) {
+@if (!ViewBag.Verification) {
     <p>No pilots availables!</p>
 }
 else {

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<PowerUnits>
 
-@if (!Model.Any()) {
+@if (!ViewBag.Verification) {
     <p>No Power units availables!</p>
 }
 else {

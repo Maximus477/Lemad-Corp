@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Mechanics>
 
-@if (!Model.Any()) {
+@if (!ViewBag.Verification) {
     <p>No mechanics avaiables!</p>
 }
 else {

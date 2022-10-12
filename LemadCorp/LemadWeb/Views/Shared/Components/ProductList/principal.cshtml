@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Principals>
 
-@if (!Model.Any()) {
+@if (!ViewBag.Verification) {
     <p>No principals availables!</p>
 }
 else {
