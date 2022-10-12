@@ -8,6 +8,9 @@
 
 .search-form {
   width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .searchbar {
@@ -16,34 +19,60 @@
   border-radius: 10px;
 }
 
-.main-navbar {
-  padding-bottom: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 5px;
+.logo {
+  background-image: url("../img/goodlogo2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  aspect-ratio: 1/0.5;
+  width: 100%;
+  padding: 0;
 }
 
-.navbar1 {
+header, .navbar {
   background-color: var(--color-background-sec);
-  padding-bottom: 0px;
-  padding-top: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  height: 60px;
 }
 
-.navbar2 {
-  background-color: var(--color-background-qua);
-  margin-bottom: 0px;
-  padding-bottom: 8px;
+.navbar {
+  padding: 0;
 }
 
-.nav-header {
-  border-bottom: 1px solid var(--color-border-alt) !important;
+.navbar-nav {
+  margin-left: 5%;
+}
+
+.nav-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 30px;
+}
+
+.navbar-toggler-icon {
+  color: var(--color-header-text);
+}
+
+.container {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 1%;
+  padding-top: 1%;
 }
 
 .container-padding {
   padding-top: 46px;
+}
+
+.color-toggler {
+  display: flex;
+}
+
+.btn-login p {
+  padding-left: 7px;
+  padding-right: 7px;
+  top: 50%;
+}
+
+.nav-header {
+  border-bottom: 1px solid var(--color-border-alt) !important;
 }
 
 header {
@@ -80,44 +109,8 @@ header {
   width: 100%;
 }
 
-@media (min-width: 250px) {
-  .logo {
-    width: 100px;
-    height: 75px;
-  }
-}
-@media (min-width: 576px) {
-  .logo {
-    width: 100px;
-    height: 75px;
-  }
-}
-@media (min-width: 768px) {
-  .logo {
-    width: 100px;
-    height: 75px;
-  }
-}
-@media (min-width: 992px) {
-  .logo {
-    width: 100px;
-    height: 75px;
-  }
-}
-@media (min-width: 1200px) {
-  .logo {
-    width: 75px;
-    height: 50px;
-  }
-}
 footer {
   background-color: var(--color-background-qua);
-}
-
-.logo {
-  background-image: url("../img/madridlogogoodcolor.png");
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 body {

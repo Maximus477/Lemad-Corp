@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rapport d'Analyse", "Rappor
 	ProjectSection(SolutionItems) = preProject
 		Besoins.txt = Besoins.txt
 		TP01_-_Commerce_electronique.pdf = TP01_-_Commerce_electronique.pdf
+		TP02_-_Commerce_electronique.pdf = TP02_-_Commerce_electronique.pdf
 	EndProjectSection
 EndProject
 Global

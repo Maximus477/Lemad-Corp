@@ -11,46 +11,73 @@
 
 .search-form {
     width: 100%;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .searchbar{
     height: 30px;
-    //width:70%;
     border: 1px solid var(--color-border);
     border-radius:10px;
 }
 
+// Logo
+.logo {
+    background-image: url('../img/goodlogo2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 1/.5;
+    width: 100%;
+    padding: 0;
+}
 
 // Header
-.main-navbar{
+header, .navbar{
+    background-color:var(--color-background-sec);
+}
+
+.navbar{
+    padding:0;
+}
+
+.navbar-nav{
+    margin-left:5%;
+}
+
+.nav-item {
+    padding-top:5px;
     padding-bottom:5px;
-    padding-left:20px;
-    padding-right:20px;
-
-    margin-bottom:5px;
+    padding-right: 30px;
 }
 
-.navbar1{
-    background-color: var(--color-background-sec);
-    padding-bottom:0px;
-    padding-top:0px;
-    margin-bottom:0px;
-    margin-top: 0px;
-    height:60px;
+.navbar-toggler-icon {
+    color: var(--color-header-text);
 }
 
-.navbar2 {
-    background-color: var(--color-background-qua);
-    margin-bottom: 0px;
-    padding-bottom: 8px;
+.container {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+.container-padding {
+    padding-top: 46px;
+}
+
+.color-toggler{
+    display: flex;
+}
+
+.btn-login p{
+    padding-left: 7px;
+    padding-right: 7px;
+    top: 50%;
 }
 
 .nav-header {
     border-bottom: 1px solid var(--color-border-alt) !important;
-}
-
-.container-padding{
-    padding-top:46px;
 }
 
 header{
@@ -87,69 +114,10 @@ header{
     width: 100%;
 }
 
-@media (min-width: 250px) {
-    .logo {
-        width: 100px;
-        height:75px;
-    }
-
-    .navbar1{
-    }
-}
-
-@media (min-width: 576px) {
-    .logo {
-        width: 100px;
-        height: 75px;
-    }
-
-    .navbar1 {
-    }
-}
-
-@media (min-width: 768px) {
-    .logo {
-        width: 100px;
-        height: 75px;
-    }
-
-    .navbar1{
-    }
-}
-
-@media (min-width: 992px) {
-    .logo {
-        width: 100px;
-        height: 75px;
-    }
-
-    .navbar1{
-    }
-}
-
-@media (min-width: 1200px) {
-    .logo {
-        width: 75px;
-        height: 50px;
-    }
-
-    .navbar1{
-    }
-}
-
 // Footer
 footer{
     background-color:var(--color-background-qua);
 }
-
-// Logo
-.logo{
-    background-image: url('../img/madridlogogoodcolor.png');
-    background-repeat: no-repeat;
-    background-size:cover;
-}
-
-
 
 // Body
 body{

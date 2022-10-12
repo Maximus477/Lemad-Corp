@@ -1,6 +1,7 @@
 using LemadDb.Data;
 using LemadDb.Domain.User;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using JavaScriptEngineSwitcher.V8;
+using React.AspNet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +37,11 @@ namespace LemadWeb
             services.AddFluentValidation(x => {
                 x.RegisterValidatorsFromAssemblyContaining<Startup>();
             });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+
+            //services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName).AddV8();
 
             services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()
@@ -61,6 +69,11 @@ namespace LemadWeb
             }
 
             app.UseStaticFiles();
+
+            app.UseReact(config =>
+            {
+
+            });
 
             app.UseRouting();
 
