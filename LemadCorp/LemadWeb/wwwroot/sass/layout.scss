@@ -63,7 +63,13 @@ header, .navbar{
 }
 
 .container-padding {
-    padding-top: 46px;
+    padding-top: 4%;
+}
+
+@media (max-width: 575px){
+    .container-padding{
+        padding-top: 10%;
+    }
 }
 
 .color-toggler{

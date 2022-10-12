@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Principals>
+
+@if (!Model.Any()) {
+    <p>No principals availables!</p>
+}
+else {
+    @foreach (Principals item in Model)
+    {
+        <li class="list-group-item">
+            @item.FirstName @item.LastName
+        </li>
+    }
+}

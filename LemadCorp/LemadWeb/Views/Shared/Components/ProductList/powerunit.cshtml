@@ -1,0 +1,13 @@
+﻿@model IEnumerable<PowerUnits>
+
+@if (!Model.Any()) {
+    <p>No Power units availables!</p>
+}
+else {
+    @foreach (PowerUnits item in Model)
+    {
+        <li class="list-group-item">
+            @item.Name
+        </li>
+    }
+}

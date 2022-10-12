@@ -42,8 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewComponents\" />
-    <Folder Include="Views\Shared\Components\" />
     <Folder Include="wwwroot\img\engineers\" />
     <Folder Include="wwwroot\Fonts\" />
   </ItemGroup>

@@ -26,5 +26,9 @@
   {
     "outputFile": "wwwroot/sass/about.css",
     "inputFile": "wwwroot/sass/about.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/catalogue.css",
+    "inputFile": "wwwroot/sass/catalogue.scss"
   }
 ]

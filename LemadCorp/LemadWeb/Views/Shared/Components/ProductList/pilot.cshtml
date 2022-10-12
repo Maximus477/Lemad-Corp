@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Pilots>
+
+@if (!Model.Any()) {
+    <p>No pilots availables!</p>
+}
+else {
+    @foreach (Pilots item in Model)
+    {
+        <li class="list-group-item">
+            @item.FirstName @item.LastName
+        </li>
+    }
+}

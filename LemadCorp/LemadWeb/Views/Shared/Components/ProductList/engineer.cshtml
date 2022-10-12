@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Engineers>
+
+@if (!Model.Any()) {
+    <p>No engineers availables!</p>
+}
+else {
+    @foreach (Engineers item in Model)
+    {
+        <li class="list-group-item">
+            @item.FirstName @item.LastName
+        </li>
+    }
+}

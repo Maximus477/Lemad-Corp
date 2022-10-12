@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Product List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/sass/catalogue.css" />
+}
+<div class="container-padding">
+    <h4>Catalogue</h4>
+    <h5>Pilots</h5>
+    <vc:product-list product="PILOT"></vc:product-list>
+
+    <h5>Engineers</h5>
+    <vc:product-list product="ENGINEER"></vc:product-list>
+    
+    <h5>Mechanics</h5>
+    <vc:product-list product="MECHANIC"></vc:product-list>
+    
+    <h5>Principals</h5>
+    <vc:product-list product="PRINCIPAL"></vc:product-list>
+    
+    <h5>Power Units</h5>
+    <vc:product-list product="POWERUNIT"></vc:product-list>
+</div>
