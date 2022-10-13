@@ -22,11 +22,11 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div id="lst-pilot">
-                    <vc:product-list product="PILOT" search="false"></vc:product-list>
+                    <vc:product-list product="DRIVER" search="@ViewData["CurrentFilter"]" spilot="false"></vc:product-list>
                 </div>
                 <div id="pilot-async">
-                    <a id="pilot-previous" onclick="changePilot(@ViewData["CurrentFilter"].ToString(), @ViewData["PilotCount"] - 1)">Previous</a>
-                        <a id="pilot-next" onclick="changePilot(@ViewData["CurrentFilter"].ToString(), @ViewData["PilotCount"] + 1)">Next</a>
+                    <a id="pilot-previous" onclick="changePilot(@ViewData["PilotCount"], 0, @ViewData["CurrentFilter"])">Previous</a>
+                    <a id="pilot-next" onclick="changePilot(@ViewData["PilotCount"], 1, @ViewData["CurrentFilter"])">Next</a>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div id="lst-engineer">
-                    <vc:product-list product="ENGINEER" search="false"></vc:product-list>
+                    <vc:product-list product="TECHNICALCHIEF" search="@ViewData["CurrentFilter"]" sengineer="false"></vc:product-list>
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div id="lst-mechanic">
-                    <vc:product-list product="MECHANIC" search="false"></vc:product-list>
+                    <vc:product-list product="RACEENGINEER" search="@ViewData["CurrentFilter"]" smechanic="false"></vc:product-list>
                 </div>
             </div>
 
@@ -62,7 +62,7 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div id="lst-principal">
-                    <vc:product-list product="PRINCIPAL" search="false"></vc:product-list>
+                    <vc:product-list product="PRINCIPAL" search="@ViewData["CurrentFilter"]" sprincipal="false"></vc:product-list>
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div id="lst-powerunit">
-                    <vc:product-list product="POWERUNIT" search="false"></vc:product-list>
+                        <vc:product-list product="POWERUNIT" search="@ViewData["CurrentFilter"]" spowerunit="false"></vc:product-list>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
         var principal = document.getElementById("principal-icon");
         var powerunit = document.getElementById("powerunit-icon");
 
-        function showPilot(search) {
+        function showPilot(search, count) {
             if (pilot.classList.contains('fa-arrow-up')) {
                 pilot.classList.add('fa-arrow-down');
                 pilot.classList.remove('fa-arrow-up');
@@ -107,6 +107,7 @@
                 url: '@Url.Action("reloadPilot", "Product")',
                 data: {
                 show: verification,
+                pageNumber: count,
                 nsearch: search
                     },
                     success: function (data) {
@@ -211,19 +212,36 @@
             })
         }
 
-        function changePilot(search = "", count) {
+        function changePilot(count, action, search = "") {
             $('#lst-pilot').html("");
-            $.ajax({
-                url: '@Url.Action("reloadPilot", "Product")',
-                data: {
-                    show: verification,
-                    nsearch: search,
-                    pageNumber: count
-                },
-                success: function (data) {
-                    $('#lst-pilot').html(data);
-                }
-            })
+            if (action == 0) {
+                count -= 1;
+                $.ajax({
+                    url: '@Url.Action("reloadPilot", "Product")',
+                    data: {
+                        show: verification,
+                        pageNumber: count,
+                        nsearch: search
+                    },
+                    success: function (data) {
+                        $('#lst-pilot').html(data);
+                    }
+                })
+            }
+            else {
+                count += 1;
+                $.ajax({
+                    url: '@Url.Action("reloadPilot", "Product")',
+                    data: {
+                        show: verification,
+                        pageNumber: count,
+                        nsearch: search
+                    },
+                    success: function (data) {
+                        $('#lst-pilot').html(data);
+                    }
+                })
+            }
         }
     </script>
 }

@@ -25,40 +25,40 @@ namespace LemadWeb.ViewComponents
             int? pageNumber = 1)
         {
             int pageSize = 5;
-            if (product == "PILOT") {
+            if (product == "DRIVER") {
                 ViewData["show"] = spilot;
                 if (spilot == "false")
-                    return View("pilot", PaginatedList<Pilots>.CreateAsync(new List<Pilots>(), pageNumber ?? 1, pageSize));
+                    return View("driver", PaginatedList<Drivers>.CreateAsync(new List<Drivers>(), pageNumber ?? 1, pageSize));
                 
                 var item = await _context.pilots.ToListAsync();
                 if (!string.IsNullOrEmpty(search))
                     item = item.Where(c => c.FirstName.Contains(search) || c.LastName.Contains(search)).ToList();
                 ViewBag.Verification = (item.Count() > 0) ? true : false;
-                return View("pilot", PaginatedList<Pilots>.CreateAsync(item, pageNumber ?? 1, pageSize));
+                return View("driver", PaginatedList<Drivers>.CreateAsync(item, pageNumber ?? 1, pageSize));
             }
             
-            else if (product == "ENGINEER") {
+            else if (product == "TECHNICALCHIEF") {
                 ViewData["show"] = sengineer;
                 if (sengineer == "false")
-                    return View("engineer", new List<Engineers>());
+                    return View("technicalchief", new List<TechnicalChiefs>());
 
                 var item = await _context.engineers.ToListAsync();
                 if (!string.IsNullOrEmpty(search))
                     item = item.Where(c => c.FirstName.Contains(search) || c.LastName.Contains(search)).ToList();
                 ViewBag.Verification = (item.Count() > 0) ? true : false;
-                return View("engineer", item);
+                return View("technicalchief", item);
             }
 
-            else if (product == "MECHANIC") {
+            else if (product == "RACEENGINEER") {
                 ViewData["show"] = smechanic;
                 if (smechanic == "false")
-                    return View("mechanic", new List<Mechanics>());
+                    return View("raceengineer", new List<RaceEngineers>());
 
                 var item = await _context.mechanics.ToListAsync();
                 if (!string.IsNullOrEmpty(search))
                     item = item.Where(c => c.FirstName.Contains(search) || c.LastName.Contains(search)).ToList();
                 ViewBag.Verification = (item.Count() > 0) ? true : false;
-                return View("mechanic", item);
+                return View("raceengineer", item);
             }
 
             else if (product == "PRINCIPAL") {

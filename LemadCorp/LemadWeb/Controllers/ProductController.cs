@@ -39,21 +39,21 @@ namespace LemadWeb.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult reloadPilot(string show, string nsearch = "")
+        public IActionResult reloadPilot(string show, int pageNumber, string nsearch = "")
         {
-            return ViewComponent("ProductList", new { product = "PILOT", search = nsearch, spilot = show });
+            return ViewComponent("ProductList", new { product = "DRIVER", search = nsearch, spilot = show, pageNumber = pageNumber });
         }
 
         [AllowAnonymous]
         public IActionResult reloadEngineer(string show, string nsearch = "")
         {
-            return ViewComponent("ProductList", new { product = "ENGINEER", search = nsearch, sengineer = show });
+            return ViewComponent("ProductList", new { product = "TECHNICALCHIEF", search = nsearch, sengineer = show });
         }
 
         [AllowAnonymous]
         public IActionResult reloadMechanic(string show, string nsearch = "")
         {
-            return ViewComponent("ProductList", new { product = "MECHANIC", search = nsearch, smechanic = show });
+            return ViewComponent("ProductList", new { product = "RACEENGINEER", search = nsearch, smechanic = show });
         }
 
         [AllowAnonymous]
