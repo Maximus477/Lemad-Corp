@@ -34,9 +34,11 @@ namespace LemadWeb
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddFluentValidation(x => {
+            /*services.AddFluentValidation(x => {
                 x.RegisterValidatorsFromAssemblyContaining<Startup>();
-            });
+            });*/
+
+            services.AddFluentValidationAutoValidation();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();

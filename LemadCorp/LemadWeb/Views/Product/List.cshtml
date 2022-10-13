@@ -3,23 +3,227 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 @section Styles {
     <link rel="stylesheet" href="~/sass/catalogue.css" />
 }
-<div class="container-padding">
-    <h4>Catalogue</h4>
-    <h5>Pilots</h5>
-        <vc:product-list product="PILOT" search="@ViewData["CurrentFilter"]"></vc:product-list>
 
-    <h5>Engineers</h5>
-        <vc:product-list product="ENGINEER" search="@ViewData["CurrentFilter"]"></vc:product-list>
-    
-    <h5>Mechanics</h5>
-    <vc:product-list product="MECHANIC" search="@ViewData["CurrentFilter"]"></vc:product-list>
-    
-    <h5>Principals</h5>
-        <vc:product-list product="PRINCIPAL" search="@ViewData["CurrentFilter"]"></vc:product-list>
-    
-    <h5>Power Units</h5>
-        <vc:product-list product="POWERUNIT" search="@ViewData["CurrentFilter"]"></vc:product-list>
+<div class="container-padding">
+        <h2>Catalogue</h2>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-lg-2 col-xl-2">
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="catalog-title total-white-link">
+                    Pilots
+                    <i id="pilot-icon" class="catalog-icon fa fa-sm fa-arrow-up" onclick="showPilot(@ViewData["CurrentFilter"].ToString())"></i>
+                </h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div id="lst-pilot">
+                    <vc:product-list product="PILOT" search="false"></vc:product-list>
+                </div>
+                <div id="pilot-async">
+                    <a id="pilot-previous" onclick="changePilot(@ViewData["CurrentFilter"].ToString(), @ViewData["PilotCount"] - 1)">Previous</a>
+                        <a id="pilot-next" onclick="changePilot(@ViewData["CurrentFilter"].ToString(), @ViewData["PilotCount"] + 1)">Next</a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="catalog-title total-white-link">
+                    Engineers
+                    <i id="engineer-icon" class="catalog-icon fa fa-sm fa-arrow-up" onclick="showEngineer(@ViewData["CurrentFilter"].ToString())"></i>
+                </h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div id="lst-engineer">
+                    <vc:product-list product="ENGINEER" search="false"></vc:product-list>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="catalog-title total-white-link">
+                    Mechanics
+                    <i id="mechanic-icon" class="catalog-icon fa fa-sm fa-arrow-up" onclick="showMechanic(@ViewData["CurrentFilter"].ToString())"></i>
+                </h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div id="lst-mechanic">
+                    <vc:product-list product="MECHANIC" search="false"></vc:product-list>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="catalog-title total-white-link">
+                    Principals
+                    <i id="principal-icon" class="catalog-icon fa fa-sm fa-arrow-up" onclick="showPrincipal(@ViewData["CurrentFilter"].ToString())"></i>
+                </h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div id="lst-principal">
+                    <vc:product-list product="PRINCIPAL" search="false"></vc:product-list>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h5 class="catalog-title total-white-link">
+                    Power Units
+                    <i id="powerunit-icon" class="catalog-icon fa fa-sm fa-arrow-up" onclick="showPowerUnit(@ViewData["CurrentFilter"].ToString())"></i>
+               </h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div id="lst-powerunit">
+                    <vc:product-list product="POWERUNIT" search="false"></vc:product-list>
+                </div>
+            </div>
+        </div>
+    </div>    
 </div>
+
+@section Scripts {
+    <script>
+        var verification;
+        var pilot = document.getElementById("pilot-icon");
+        var engineer = document.getElementById("engineer-icon");
+        var mechanic = document.getElementById("mechanic-icon");
+        var principal = document.getElementById("principal-icon");
+        var powerunit = document.getElementById("powerunit-icon");
+
+        function showPilot(search) {
+            if (pilot.classList.contains('fa-arrow-up')) {
+                pilot.classList.add('fa-arrow-down');
+                pilot.classList.remove('fa-arrow-up');
+                verification = "true";
+            }
+            else {
+                pilot.classList.remove('fa-arrow-down');
+                pilot.classList.add('fa-arrow-up');
+                verification = "false";
+                $('#lst-pilot').html("");
+            }
+
+            $.ajax({
+                url: '@Url.Action("reloadPilot", "Product")',
+                data: {
+                show: verification,
+                nsearch: search
+                    },
+                    success: function (data) {
+                        $('#lst-pilot').html(data);
+                    }
+            })
+        }
+        function showEngineer(search) {
+            if (engineer.classList.contains('fa-arrow-up')) {
+                engineer.classList.add('fa-arrow-down');
+                engineer.classList.remove('fa-arrow-up');
+                verification = "true";
+            }
+            else {
+                engineer.classList.remove('fa-arrow-down');
+                engineer.classList.add('fa-arrow-up');
+                verification = "false";
+                $('#lst-engineer').html("");
+            }
+
+            $.ajax({
+                url: '@Url.Action("reloadEngineer", "Product")',
+                data: {
+                    show: verification,
+                    nsearch: search
+                },
+                success: function (data) {
+                    $('#lst-engineer').html(data);
+                }
+            })
+        }
+        function showMechanic(search) {
+            if (mechanic.classList.contains('fa-arrow-up')) {
+                mechanic.classList.add('fa-arrow-down');
+                mechanic.classList.remove('fa-arrow-up');
+                verification = "true";
+            }
+            else {
+                mechanic.classList.remove('fa-arrow-down');
+                mechanic.classList.add('fa-arrow-up');
+                verification = "false";
+                $('#lst-mechanic').html("");
+            }
+
+            $.ajax({
+                url: '@Url.Action("reloadMechanic", "Product")',
+                data: {
+                    show: verification,
+                    nsearch: search
+                },
+                success: function (data) {
+                    $('#lst-mechanic').html(data);
+                }
+            })
+        }
+        function showPrincipal(search) {
+            if (principal.classList.contains('fa-arrow-up')) {
+                principal.classList.add('fa-arrow-down');
+                principal.classList.remove('fa-arrow-up');
+                verification = "true";
+            }
+            else {
+                principal.classList.remove('fa-arrow-down');
+                principal.classList.add('fa-arrow-up');
+                verification = "false";
+                $('#lst-principal').html("");
+            }
+
+            $.ajax({
+                url: '@Url.Action("reloadPrincipal", "Product")',
+                data: {
+                    show: verification,
+                    nsearch: search
+                },
+                success: function (data) {
+                    $('#lst-principal').html(data);
+                }
+            })
+        }
+        function showPowerUnit(search) {
+            if (powerunit.classList.contains('fa-arrow-up')) {
+                powerunit.classList.add('fa-arrow-down');
+                powerunit.classList.remove('fa-arrow-up');
+                verification = "true";
+            }
+            else {
+                powerunit.classList.remove('fa-arrow-down');
+                powerunit.classList.add('fa-arrow-up');
+                verification = "false";
+                $('#lst-powerunit').html("");
+            }
+
+            $.ajax({
+                url: '@Url.Action("reloadPowerUnit", "Product")',
+                data: {
+                    show: verification,
+                    nsearch: search
+                },
+                success: function (data) {
+                    $('#lst-powerunit').html(data);
+                }
+            })
+        }
+
+        function changePilot(search = "", count) {
+            $('#lst-pilot').html("");
+            $.ajax({
+                url: '@Url.Action("reloadPilot", "Product")',
+                data: {
+                    show: verification,
+                    nsearch: search,
+                    pageNumber: count
+                },
+                success: function (data) {
+                    $('#lst-pilot').html(data);
+                }
+            })
+        }
+    </script>
+}

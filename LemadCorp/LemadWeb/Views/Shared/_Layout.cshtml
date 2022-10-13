@@ -42,9 +42,9 @@
                         </li>
                         <li class="nav-item col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
                             <form asp-controller="Product" asp-action="List" method="get" class="form-inline search-form row">
-                                <input class="searchbar col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" type="search" 
+                                <input class="searchbar col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" type="search" 
                                 placeholder="Search a product..." aria-label="Search" name="searchString" value="@ViewData["CurrentFilter"]" />
-                                <button class="button-header col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" type="submit" value="">
+                                <button class="button-header col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2" type="submit" value="">
                                     <i class="fa fa-search fa-align-center"></i>
                                 </button>
                                 <a class="button-header-alt col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" asp-area="" asp-controller="" asp-action="">
@@ -123,29 +123,10 @@
             </div>
         </div>
     </footer>
-
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="~/js/theme-switch.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script type="text/javascript">
-        //window.onscroll = function() {scrolling()};
-
-        //var header = document.getElementById('navbar2');
-        //var content = document.getElementById('content');
-
-        //var sticky = header.offsetTop;
-
-        //function scrolling() {
-        //    if (window.pageYOffset > sticky) {
-        //        header.classList.add('fixed-top');
-        //        content.classList.add('container-padding');
-        //    }
-        //    else {
-        //        header.classList.remove('fixed-top');
-        //        content.classList.remove('container-padding');
-        //    }
-        //}
-    </script>
 </body>
 </html>

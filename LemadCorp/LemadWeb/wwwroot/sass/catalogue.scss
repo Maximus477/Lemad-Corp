@@ -1,1 +1,21 @@
-﻿
+﻿@import "color.css";
+
+h2{
+    text-align: center;
+}
+
+.catalog-title{
+    background-color: var(--color-background-sec);
+    padding-top:1%;
+    padding-bottom:1%;
+}
+
+.catalog-icon{
+    margin-left:92%;
+}
+
+@media(max-width: 750px){
+    .catalog-icon{
+        margin-left:75%;
+    }
+}

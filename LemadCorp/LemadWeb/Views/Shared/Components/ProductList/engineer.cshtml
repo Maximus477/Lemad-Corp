@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<Engineers>
 
-@if (!ViewBag.Verification) {
-    <p>No engineers availables!</p>
-}
-else {
-    @foreach (Engineers item in Model)
-    {
-        <li class="list-group-item">
-            @item.FirstName @item.LastName
-        </li>
+@if (ViewData["show"].ToString() == "true")
+{
+    @if (!ViewBag.Verification) {
+        <p>No engineers availables!</p>
+    }
+    else {
+        @foreach (Engineers item in Model) {
+            <li class="list-group-item">
+                @item.FirstName @item.LastName
+            </li>
+        }
     }
 }

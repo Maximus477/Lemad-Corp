@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<PowerUnits>
 
-@if (!ViewBag.Verification) {
-    <p>No Power units availables!</p>
-}
-else {
-    @foreach (PowerUnits item in Model)
-    {
-        <li class="list-group-item">
-            @item.Name
-        </li>
+@if (ViewData["show"].ToString() == "true") 
+{
+    @if (!ViewBag.Verification) {
+        <p>No Power units availables!</p>
+    }
+    else {
+        @foreach (PowerUnits item in Model) {
+            <li class="list-group-item">
+                @item.Name
+            </li>
+        }
     }
 }
