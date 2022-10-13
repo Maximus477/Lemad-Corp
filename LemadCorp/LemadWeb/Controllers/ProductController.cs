@@ -23,8 +23,10 @@ namespace LemadWeb.Controllers
         public ProductController(ApplicationDbContext context) { _context = context; }
 
         [AllowAnonymous]
-        public IActionResult List()
+        public IActionResult List(string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
+
             return View();
         }
     }
