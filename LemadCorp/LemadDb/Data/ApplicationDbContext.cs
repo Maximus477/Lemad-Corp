@@ -9,11 +9,11 @@ namespace LemadDb.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Pilots> pilots { get; set; }
+        public DbSet<Drivers> pilots { get; set; }
         public DbSet<Principals> principals { get; set; }
         public DbSet<PowerUnits> powerUnits { get; set; }
-        public DbSet<Engineers> engineers { get; set; }
-        public DbSet<Mechanics> mechanics { get; set; }
+        public DbSet<TechnicalChiefs> engineers { get; set; }
+        public DbSet<RaceEngineers> mechanics { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }

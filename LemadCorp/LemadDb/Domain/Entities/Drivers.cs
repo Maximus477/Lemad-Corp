@@ -9,7 +9,7 @@ using static LemadDb.Data.Status;
 
 namespace LemadDb.Domain.Entities
 {
-    public class Pilots
+    public class Drivers
     {
         [Required]
         public int Id { get; set; }
@@ -31,7 +31,7 @@ namespace LemadDb.Domain.Entities
         public ProductStatus Status { get; set; }
     }
 
-    public class PilotValidator : AbstractValidator<Pilots>
+    public class PilotValidator : AbstractValidator<Drivers>
     {
         public PilotValidator()
         {

@@ -7,13 +7,13 @@ namespace LemadWeb.ViewModels.Product
     public class ListProductVM
     {
         [Required]
-        public List<Pilots> Pilots { get; set; }
+        public List<Drivers> Pilots { get; set; }
 
         [Required]
-        public List<Engineers> Engineers { get; set; }
+        public List<TechnicalChiefs> Engineers { get; set; }
 
         [Required]
-        public List<Mechanics> Mechanics { get; set; }
+        public List<RaceEngineers> Mechanics { get; set; }
 
         [Required]
         public List<Principals> Principals { get; set; }

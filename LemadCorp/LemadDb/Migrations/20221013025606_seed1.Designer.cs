@@ -4,14 +4,16 @@ using LemadDb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LemadDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221013025606_seed1")]
+    partial class seed1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -256,32 +258,70 @@ namespace LemadDb.Migrations
                         {
                             Id = 1,
                             Discount = (byte)0,
-                            Name = "Red Bull Powertrains",
-                            Price = 50000000m,
+                            Price = 3000000m,
                             Status = 0
                         },
                         new
                         {
                             Id = 2,
                             Discount = (byte)0,
-                            Name = "Ferrari engines",
-                            Price = 40000000m,
+                            Price = 1000000m,
                             Status = 0
                         },
                         new
                         {
                             Id = 3,
                             Discount = (byte)0,
-                            Name = "Mercedes engines",
-                            Price = 35000000m,
+                            Price = 1000000m,
                             Status = 0
                         },
                         new
                         {
                             Id = 4,
                             Discount = (byte)0,
-                            Name = "Renault engines",
-                            Price = 30000000m,
+                            Price = 1000000m,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Discount = (byte)0,
+                            Price = 1000000m,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Discount = (byte)0,
+                            Price = 2000000m,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Discount = (byte)0,
+                            Price = 9100000m,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Discount = (byte)0,
+                            Price = 10000000m,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Discount = (byte)0,
+                            Price = 1000000m,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Discount = (byte)0,
+                            Price = 1000000m,
                             Status = 0
                         });
                 });
@@ -807,30 +847,30 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "929072db-8545-45d8-9262-03eb600d7af6",
+                            Id = "b0366c36-ca20-44ba-8395-2bcdffcb4bce",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dec295b8-c623-407c-b471-5a1532956c2c",
+                            ConcurrencyStamp = "d703c129-8001-4e3b-b37f-76a5f5b357ed",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEMY46YKCiwhnNoEU9/eQzlgfkaa9U8D+9P+nFyvM7NcsNZYi3oST3UYOaOghhAKNGw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMDj9pOl+gOuT0TC1qReEDOgQvp6/Ph1KilBgr/vzaji81KJ3x8+I0whfwzPkEzn7Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4efaffbf-caa8-40d3-a70a-36b83bd8e265",
+                            SecurityStamp = "39ee7466-53f2-4244-bd0b-97250a3b7484",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "a8f5d026-9c1e-4e4b-8b3c-38527ca0cb93",
+                            Id = "5fb57389-069e-4d0e-a777-77569ccf10ca",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "87400d4b-69d6-4013-adcf-73c215421fa7",
+                            ConcurrencyStamp = "f043a50d-86d6-4fec-b21d-a5bf0f057527",
                             Email = "hugolapointe@cegepsth.qc.ca",
                             EmailConfirmed = false,
                             EntrepriseName = "Cégep Saint-Hyacinthe",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEAOeWQlA0imWE6RMY67EsbqTMw3h5ItrrhVGKGGrVlcgteM2LYf4x4xmYNSbkCVV1w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELWjlGrg8cNtE2uwHydoeqU+0s2S8MOfEBOBOpDZp0aPewv2tHRjDXq7Gslb4Jg0zg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4cb48ee7-f8e8-4a40-a041-6118392f0cdf",
+                            SecurityStamp = "275b7875-7418-4563-a8ff-c7d3cd9a249a",
                             TwoFactorEnabled = false
                         });
                 });
@@ -864,22 +904,22 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dafe99cc-bbaa-4626-83bf-6cd2c457e34a",
-                            ConcurrencyStamp = "bd8ae457-9e62-418b-b2c7-148841565bad",
+                            Id = "5f298e95-36f3-4d5e-a420-2c5649b09c57",
+                            ConcurrencyStamp = "469b0b6b-9780-48cd-82c7-82537e19cf3e",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "247b9ec3-0857-4e1c-8eb9-d47d90671a68",
-                            ConcurrencyStamp = "ab6dc999-6ddf-44ce-a72d-227817c4ee8c",
+                            Id = "fff8ee2a-d0a6-4ff7-be71-ce33ecb7e265",
+                            ConcurrencyStamp = "3e974823-7aff-4fa9-931e-e15097651fc3",
                             Name = "Seller",
                             NormalizedName = "SELLER"
                         },
                         new
                         {
-                            Id = "5cef8371-bb9a-4e93-b0c5-4cd2bb322231",
-                            ConcurrencyStamp = "9a02d26c-c189-49e4-9824-e84d1fa9c3e3",
+                            Id = "9b16a3ee-1455-417d-9a9d-5f071ba9d811",
+                            ConcurrencyStamp = "beed2d42-4175-4e86-a230-1006b1b349b4",
                             Name = "Buyer",
                             NormalizedName = "BUYER"
                         });

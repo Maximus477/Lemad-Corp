@@ -9,7 +9,7 @@ using static LemadDb.Data.Status;
 
 namespace LemadDb.Domain.Entities
 {
-    public class Mechanics
+    public class TechnicalChiefs
     {
         [Required]
         public int Id { get; set; }
@@ -29,12 +29,11 @@ namespace LemadDb.Domain.Entities
 
         [Required]
         public ProductStatus Status { get; set; }
-
     }
 
-    public class MechanicValidator : AbstractValidator<Mechanics>
+    public class EngineerValidator : AbstractValidator<TechnicalChiefs>
     {
-        public MechanicValidator()
+        public EngineerValidator()
         {
             RuleFor(e => e.FirstName)
                 .NotEmpty()
