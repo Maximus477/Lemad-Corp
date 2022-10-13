@@ -105,7 +105,7 @@ namespace LemadDb.Data
                 new PowerUnits { Id = 4, Discount = 0, Name = "Renault engines", Price = 30000000, Status = Status.ProductStatus.AVAILABLE },
             };
 
-            builder.Entity<PowerUnits>().HasData(principals);
+            builder.Entity<PowerUnits>().HasData(powerUnits);
             #endregion
 
             #region TechnicalChiefs
