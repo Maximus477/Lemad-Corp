@@ -1,26 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FluentValidation;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
 using static LemadDb.Data.Status;
 
-namespace LemadDb.Domain.Entities
+namespace LemadWeb.ViewModels.Product
 {
-    public class TechnicalChiefs
+    public class PowerUnitViewModel
     {
-        [Required]
-        public int Id { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        #region Stats
-
-        #endregion
+        public string Name { get; set; }
 
         [DataType(dataType: DataType.Currency)]
         public decimal Price { get; set; }
@@ -31,17 +17,13 @@ namespace LemadDb.Domain.Entities
         public ProductStatus Status { get; set; }
     }
 
-    public class TechnicalChiefValidator : AbstractValidator<TechnicalChiefs>
+    public class PowerUnitValidator : AbstractValidator<PowerUnitViewModel>
     {
-        public TechnicalChiefValidator()
+        public PowerUnitValidator()
         {
-            RuleFor(e => e.FirstName)
+            RuleFor(e => e.Name)
                 .NotEmpty()
-                .WithMessage("The firstname cannot be empty!");
-
-            RuleFor(e => e.LastName)
-                .NotEmpty()
-                .WithMessage("The lastname cannot be empty!");
+                .WithMessage("The name cannot be empty!");
 
             RuleFor(e => e.Price)
                 .NotEmpty().WithMessage("The price cannot be empty!")

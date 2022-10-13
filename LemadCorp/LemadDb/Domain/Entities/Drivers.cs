@@ -31,9 +31,9 @@ namespace LemadDb.Domain.Entities
         public ProductStatus Status { get; set; }
     }
 
-    public class PilotValidator : AbstractValidator<Drivers>
+    public class DriverValidator : AbstractValidator<Drivers>
     {
-        public PilotValidator()
+        public DriverValidator()
         {
             RuleFor(e => e.FirstName)
                 .NotEmpty()

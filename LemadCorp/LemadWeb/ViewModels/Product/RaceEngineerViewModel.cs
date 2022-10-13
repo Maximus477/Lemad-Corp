@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FluentValidation;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
 using static LemadDb.Data.Status;
 
-namespace LemadDb.Domain.Entities
+namespace LemadWeb.ViewModels.Product
 {
-    public class TechnicalChiefs
+    public class RaceEngineerViewModel
     {
-        [Required]
-        public int Id { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        #region Stats
-
-        #endregion
 
         [DataType(dataType: DataType.Currency)]
         public decimal Price { get; set; }
@@ -31,9 +19,9 @@ namespace LemadDb.Domain.Entities
         public ProductStatus Status { get; set; }
     }
 
-    public class TechnicalChiefValidator : AbstractValidator<TechnicalChiefs>
+    public class RaceEngineerValidator : AbstractValidator<RaceEngineerViewModel>
     {
-        public TechnicalChiefValidator()
+        public RaceEngineerValidator()
         {
             RuleFor(e => e.FirstName)
                 .NotEmpty()

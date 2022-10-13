@@ -32,9 +32,9 @@ namespace LemadDb.Domain.Entities
 
     }
 
-    public class MechanicValidator : AbstractValidator<RaceEngineers>
+    public class RaceEngineerValidator : AbstractValidator<RaceEngineers>
     {
-        public MechanicValidator()
+        public RaceEngineerValidator()
         {
             RuleFor(e => e.FirstName)
                 .NotEmpty()
