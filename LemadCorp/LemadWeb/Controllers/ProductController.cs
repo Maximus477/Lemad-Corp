@@ -10,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using LemadDb.Data;
-using LemadWeb.ViewModels.Product;
 using LemadDb.Domain.Entities;
 
 namespace LemadWeb.Controllers
