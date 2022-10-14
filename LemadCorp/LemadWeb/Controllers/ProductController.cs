@@ -67,7 +67,102 @@ namespace LemadWeb.Controllers
             }
             catch
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var model = await _context.Products.FindAsync(id);
+                if (model == null)
+                {
+                    return NotFound();
+                }
+                //ProductViewModel viewModel = new ProductViewModel()
+                //{
+                //    Name = model.Name,
+                //    Price = model.Price,
+                //    Discount = model.Discount,
+                //    Status = model.Status,
+                //    ProductCategory = model.ProductCategory
+                //};
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,ProductCategory,Status,Photo")] Product model)
+        {
+            try
+            {
+                if (id != model.Id)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        _context.Update(model);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!ProductExists(model.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                    return RedirectToAction("List");
+                }
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var model = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+                if (model == null)
+                {
+                    return NotFound();
+                }
+
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("List");
             }
         }
         #endregion
@@ -76,6 +171,11 @@ namespace LemadWeb.Controllers
         public IActionResult reload(int pageNumber, string search = "")
         {
             return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber });
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.Id == id);
         }
     }
 }

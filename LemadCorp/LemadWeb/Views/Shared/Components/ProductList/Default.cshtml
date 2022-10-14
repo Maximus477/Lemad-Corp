@@ -17,20 +17,20 @@ else
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="text-product">
                         <h4>
-                            <a class="real-basic-link" asp-controller="Product" asp-action="Detail">@item.Name</a>
+                            <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
                         </h4>
                         <h5>
                             @if (item.Status == Status.ProductStatus.AVAILABLE)
                             {
-                                <a class="real-basic-link" asp-controller="Product" asp-action="Detail">@item.Price.ToString("C")</a>
+                                <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Price.ToString("C")</a>
                             }
                             else if (item.Status == Status.ProductStatus.PROMOTION)
                             {
-                                <a class="real-basic-link" asp-controller="Product" asp-action="Detail">@((item.Price - (item.Price - item.Discount)).ToString("C"))</a>
+                                <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@((item.Price - (item.Price - item.Discount)).ToString("C"))</a>
                             }
                             else if (item.Status == Status.ProductStatus.UNAVAILABLE)
                             {
-                                <a class="real-basic-link" asp-controller="Product" asp-action="Detail">Unavailable right now!</a>
+                                <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">Unavailable right now!</a>
                             }                        
                         </h5>
                         <div>
