@@ -42,7 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Product\" />
     <Folder Include="wwwroot\img\engineers\" />
     <Folder Include="wwwroot\Fonts\" />
   </ItemGroup>

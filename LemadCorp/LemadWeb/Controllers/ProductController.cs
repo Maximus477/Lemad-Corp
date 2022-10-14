@@ -39,199 +39,138 @@ namespace LemadWeb.Controllers
             return View();
         }
 
-        //#region Driver
-        //[AllowAnonymous]
-        //public IActionResult CreateDriver()
-        //{
-        //    return View();
-        //}
-        //
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public async Task<IActionResult> CreateDriver(DriverViewModel model)
-        //{
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            return View();
-        //        }
-        //
-        //        Drivers driver = new Drivers()
-        //        {
-        //            FirstName = model.FirstName,
-        //            LastName = model.LastName,
-        //            Price = model.Price,
-        //            Discount = model.Discount,
-        //            Status = model.Status,
-        //        };
-        //
-        //        _context.Add(driver);
-        //        await _context.SaveChangesAsync();
-        //
-        //        return RedirectToAction("List");
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //}
-        //#endregion
-        //
-        //#region Principal
-        //[AllowAnonymous]
-        //public IActionResult CreatePrincipal()
-        //{
-        //    return View();
-        //}
-        //
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public async Task<IActionResult> CreatePrincipal(PrincipalViewModel model)
-        //{
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            return View();
-        //        }
-        //
-        //        Principals principal = new Principals()
-        //        {
-        //            FirstName = model.FirstName,
-        //            LastName = model.LastName,
-        //            Price = model.Price,
-        //            Discount = model.Discount,
-        //            Status = model.Status,
-        //        };
-        //
-        //        _context.Add(principal);
-        //        await _context.SaveChangesAsync();
-        //
-        //        return RedirectToAction("List");
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //}
-        //#endregion
-        //
-        //#region TechnicalChief
-        //[AllowAnonymous]
-        //public IActionResult CreateTechnicalChief()
-        //{
-        //    return View();
-        //}
-        //
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public async Task<IActionResult> CreateTechnicalChief(TechnicalChiefViewModel model)
-        //{
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            return View();
-        //        }
-        //
-        //        TechnicalChiefs technicalChief = new TechnicalChiefs()
-        //        {
-        //            FirstName = model.FirstName,
-        //            LastName = model.LastName,
-        //            Price = model.Price,
-        //            Discount = model.Discount,
-        //            Status = model.Status,
-        //        };
-        //        
-        //        _context.Add(technicalChief);
-        //        await _context.SaveChangesAsync();
-        //
-        //        return RedirectToAction("List");
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //}
-        //#endregion
-        //
-        //#region RaceEngineer
-        //[AllowAnonymous]
-        //public IActionResult CreateRaceEngineer()
-        //{
-        //    return View();
-        //}
-        //
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public async Task<IActionResult> CreateRaceEngineer(RaceEngineerViewModel model)
-        //{
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            return View();
-        //        }
-        //
-        //        RaceEngineers raceEngineer = new RaceEngineers()
-        //        {
-        //            FirstName = model.FirstName,
-        //            LastName = model.LastName,
-        //            Price = model.Price,
-        //            Discount = model.Discount,
-        //            Status = model.Status,
-        //        };
-        //
-        //        _context.Add(raceEngineer);
-        //        await _context.SaveChangesAsync();
-        //
-        //        return RedirectToAction("List");
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //}
-        //#endregion
-        //
-        //#region PowerUnit
-        //[AllowAnonymous]
-        //public IActionResult CreatePowerUnit()
-        //{
-        //    return View();
-        //}
-        //
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public async Task<IActionResult> CreatePowerUnit(PowerUnitViewModel model)
-        //{
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            return View();
-        //        }
-        //
-        //        PowerUnits powerUnit = new PowerUnits()
-        //        {
-        //            Name = model.Name,
-        //            Price = model.Price,
-        //            Discount = model.Discount,
-        //            Status = model.Status,
-        //        };
-        //
-        //        _context.Add(powerUnit);
-        //        await _context.SaveChangesAsync();
-        //
-        //        return RedirectToAction("List");
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //}
-        //#endregion
+        #region Product
+        [AllowAnonymous]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Create(ProductViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+
+                Product product = new Product()
+                {
+                    Name = model.Name,
+                    Price = model.Price,
+                    Discount = model.Discount,
+                    Status = model.Status,
+                    ProductCategory = model.ProductCategory
+                };
+
+                _context.Add(product);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var model = await _context.Products.FindAsync(id);
+                if (model == null)
+                {
+                    return NotFound();
+                }
+                //ProductViewModel viewModel = new ProductViewModel()
+                //{
+                //    Name = model.Name,
+                //    Price = model.Price,
+                //    Discount = model.Discount,
+                //    Status = model.Status,
+                //    ProductCategory = model.ProductCategory
+                //};
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,ProductCategory,Status,Photo")] Product model)
+        {
+            try
+            {
+                if (id != model.Id)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        _context.Update(model);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!ProductExists(model.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                    return RedirectToAction("List");
+                }
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var model = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+                if (model == null)
+                {
+                    return NotFound();
+                }
+
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
 
         [AllowAnonymous]
         public IActionResult reload(int pageNumber, string search = "")
@@ -242,8 +181,10 @@ namespace LemadWeb.Controllers
         private void verifierImage()
         {
             using (SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=LemadDb;Trusted_Connection=True;MultipleActiveResultSets=true"))
+            try
             {
                 foreach (Product item in _context.Products.ToList())
+                if (id == null)
                 {
                     if (item.Path != null && item.Photo == null)
                     {
@@ -258,6 +199,38 @@ namespace LemadWeb.Controllers
                         }
                     }
                 }
+                    return NotFound();
+                }
+
+                var product = await _context.Products
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                return View(product);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Delete(int Id)
+        {
+            try
+            {
+                var product = await _context.Products.FindAsync(Id);
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                return RedirectToAction("List");
             }
         }
 

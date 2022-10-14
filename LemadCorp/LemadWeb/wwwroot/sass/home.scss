@@ -172,13 +172,127 @@
 }
 
 .name-product {
-    font-size:1.8vw;
+    font-size:150%;
     padding-top:2vh;
 }
 
 .price-product {
-    font-size: 1.8vw;
+    font-size: 130%;
     padding-top: 0.5vh;
+}
+
+.product {
+    background-color: #FFC170;
+    padding-top: 3vh;
+    border-color: var(--color-background-sec);
+    height: 70vh;
+    padding-right: 2px !important;
+    padding-left: 2px !important;
+}
+
+.product-white {
+    background-color: #EEEEE9;
+    padding-top: 3vh;
+    border-color: var(--color-background-sec);
+    height: 70vh;
+    padding-right: 2px !important;
+    padding-left: 2px !important;
+}
+
+.product-box-outline {
+    height: 95%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+
+.fernando {
+    background-image: url('../img/products/drivers/FernandoAlonso.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    height: 60%;
+    width: 90%;
+}
+
+.max {
+    background-image: url('../img/products/drivers/MaxVerstappen.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    height: 60%;
+    width: 90%;
+}
+
+.mattia {
+    background-image: url('../img/products/principals/MattiaBinotto.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    height: 60%;
+    width: 90%;
+}
+
+.guenther {
+    background-image: url('../img/products/principals/GuentherSteiner.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    height: 60%;
+    width: 90%;
+}
+
+.redbullpowertrains {
+    background-image: url('../img/products/powerunits/RedBullPowertrains.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    height: 60%;
+    width: 90%;
+}
+
+.ferrariengines {
+    background-image: url('../img/products/powerunits/FerrariEngines.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    height: 60%;
+    width: 90%;
+}
+
+.product-name {
+    padding-top: 1.5vh;
+    text-align: center;
+}
+
+.product-description {
+    padding-top: 0.2vh;
+    text-align: center;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+
+.product-box {
+    height: 97%;
+    width: 97%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--color-background-sec);
 }
 
 .line {
