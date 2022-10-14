@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.AccessControl;
 using System.Linq;
 using System.Threading.Tasks;
 using LemadDb.Data;
@@ -18,6 +19,8 @@ using Microsoft.AspNetCore.Http;
 using System.Runtime.Serialization.Formatters.Binary;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using LemadWeb.ViewModels.Product;
+using System.Net.WebSockets;
+
 
 namespace LemadWeb.Controllers
 {
@@ -66,6 +69,19 @@ namespace LemadWeb.Controllers
                     ProductCategory = model.ProductCategory
                 };
 
+                if (Request.Form.Count > 0)
+                {
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    if (file != null)
+                    {
+                        using (var dataStream = new MemoryStream())
+                        {
+                            await file.CopyToAsync(dataStream);
+                            product.Photo = dataStream.ToArray();
+                        }
+                    }
+                }
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
 
@@ -110,7 +126,7 @@ namespace LemadWeb.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,ProductCategory,Status,Photo")] Product model)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,ProductCategory,Status,Path,Photo")] Product model)
         {
             try
             {
@@ -123,6 +139,18 @@ namespace LemadWeb.Controllers
                 {
                     try
                     {
+                        if (Request.Form.Count > 0)
+                        {
+                            IFormFile file = Request.Form.Files.FirstOrDefault();
+                            if (file != null)
+                            {
+                                using (var dataStream = new MemoryStream())
+                                {
+                                    await file.CopyToAsync(dataStream);
+                                    model.Photo = dataStream.ToArray();
+                                }
+                            }
+                        }
                         _context.Update(model);
                         await _context.SaveChangesAsync();
                     }
@@ -209,7 +237,7 @@ namespace LemadWeb.Controllers
                 {
                     if (item.Path != null && item.Photo == null)
                     {
-                        string sqlQuery = @$"UPDATE Products SET Products.Photo = (SELECT BulkColumn FROM OPENROWSET(BULK N'{item.Path}', SINGLE_BLOB) AS x) WHERE Products.Id = {item.Id}";
+                        string sqlQuery = @$"UPDATE Products SET Products.Photo = (SELECT BulkColumn FROM OPENROWSET(BULK N'{new FileInfo(item.Path).FullName}', SINGLE_BLOB) AS x) WHERE Products.Id = {item.Id}";
                         using (SqlCommand command = connection.CreateCommand())
                         {
                             command.CommandText = sqlQuery;

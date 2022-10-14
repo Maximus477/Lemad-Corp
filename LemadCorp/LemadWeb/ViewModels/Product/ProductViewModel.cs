@@ -17,7 +17,7 @@ namespace LemadWeb.ViewModels.Product
 
         public ProductStatus Status { get; set; }
 
-        //public byte[] Photo { get; set; }
+        public byte[] Photo { get; set; }
     }
 
     public class ProductValidator : AbstractValidator<ProductViewModel>
