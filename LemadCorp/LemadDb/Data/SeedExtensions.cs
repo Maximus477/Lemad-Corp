@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,103 +54,588 @@ namespace LemadDb.Data
             builder.Entity<ApplicationUser>().HasData(users);
             #endregion
 
-            #region Drivers
-            List<Drivers> drivers = new List<Drivers> {
-                new Drivers { Id = 1, Discount = 0, FirstName = "Fernando", LastName = "Alonso", Price = 20000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 2, Discount = 0, FirstName = "Esteban", LastName = "Ocon", Price = 5000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 3, Discount = 0, FirstName = "Max", LastName = "Verstappen", Price = 25000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 4, Discount = 0, FirstName = "Sergio", LastName = "Perez", Price = 8000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 5, Discount = 0, FirstName = "Charles", LastName = "Leclerc", Price = 12000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 6, Discount = 0, FirstName = "Carlos", LastName = "Sainz", Price = 10000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 7, Discount = 0, FirstName = "Lewis", LastName = "Hamilton", Price = 40000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 8, Discount = 0, FirstName = "George", LastName = "Russell", Price = 5000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 9, Discount = 0, FirstName = "Lando", LastName = "Norris", Price = 20000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 10, Discount = 0, FirstName = "Daniel", LastName = "Ricciardo", Price = 15000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 11, Discount = 0, FirstName = "Valtteri", LastName = "Bottas", Price = 10000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 12, Discount = 0, FirstName = "Zhou", LastName = "Guanyu", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 13, Discount = 0, FirstName = "Pierre", LastName = "Gasly", Price = 5000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 14, Discount = 0, FirstName = "Yuki", LastName = "Tsunoda", Price = 750000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 15, Discount = 0, FirstName = "Nicholas", LastName = "Latifi", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 16, Discount = 0, FirstName = "Alexander", LastName = "Albon", Price = 2000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 17, Discount = 0, FirstName = "Sebastian", LastName = "Vettel", Price = 15000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 18, Discount = 0, FirstName = "Lance", LastName = "Stroll", Price = 10000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 19, Discount = 0, FirstName = "Kevin", LastName = "Magnussen", Price = 6000000, Status = Status.ProductStatus.AVAILABLE },
-                new Drivers { Id = 20, Discount = 0, FirstName = "Mick", LastName = "Schumacher", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
+            #region Products
+            List<Product> products = new List<Product>
+            {
+                new Product
+                {
+                    Id = 1,
+                    Discount = 0,
+                    Name = "Fernando Alonso",
+                    Price = 20000000,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 2,
+                    Discount = 0,
+                    Name = "Esteban Ocon",
+                    Price = 5000000,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 3,
+                    Discount = 0,
+                    Name = "Max Verstappen",
+                    Price = 25000000,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 4,
+                    Discount = 0,
+                    Name = "Sergio Perez",
+                    Price = 8000000,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 5,
+                    Discount = 0,
+                    Name = "Charles Leclerc",
+                    Price = 12000000,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 6,
+                    Discount = 0,
+                    Name = "Carlos Sainz",
+                    Price = 10000000,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 7,
+                    Name = "Lewis Hamilton",
+                    Price = 40000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 8,
+                    Name = "George Russell",
+                    Price = 5000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 9,
+                    Name = "Lando Norris",
+                    Price = 20000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 10,
+                    Name = "Daniel Ricciardo",
+                    Price = 15000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 11,
+                    Name = "Valtteri Bottas",
+                    Price = 10000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 12,
+                    Name = "Zhou Guanyu",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 13,
+                    Name = "Pierre Gasly",
+                    Price = 5000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 14,
+                    Name = "Yuki Tsunoda",
+                    Price = 750000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 15,
+                    Name = "Nicholas Latifi",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 16,
+                    Name = "Alexander Albon",
+                    Price = 2000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 17,
+                    Name = "Sebastian Vettel",
+                    Price = 15000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 18,
+                    Name = "Lance Stroll",
+                    Price = 10000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 19,
+                    Name = "Kevin Magnussen",
+                    Price = 6000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 20,
+                    Name = "Mick Schumacher",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.DRIVER
+                },
+                new Product
+                {
+                    Id = 21,
+                    Name = "Mattias Binotto",
+                    Price = 3000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 22,
+                    Name = "Frédéric Vasseur",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 23,
+                    Name = "Franz Tost",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 24,
+                    Name = "Otmar Szafnauer",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 25,
+                    Name = "Guenther Steiner",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 26,
+                    Name = "Andreas Seidl",
+                    Price = 2000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 27,
+                    Name = "Toto Wolff",
+                    Price = 9100000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 28,
+                    Name = "Christian Horner",
+                    Price = 10000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 29,
+                    Name = "Jost Capito",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 30,
+                    Name = "Mike Krack",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                },
+                new Product
+                {
+                    Id = 31,
+                    Name = "Red Bull Powertrains",
+                    Price = 50000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.POWERUNIT
+                },
+                new Product
+                {
+                    Id = 32,
+                    Name = "Ferrari engines",
+                    Price = 40000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.POWERUNIT
+                },
+                new Product
+                {
+                    Id = 33,
+                    Name = "Mercedes engines",
+                    Price = 35000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.POWERUNIT
+                },
+                new Product
+                {
+                    Id = 34,
+                    Name = "Renault engines",
+                    Price = 30000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.POWERUNIT
+                },
+                new Product
+                {
+                    Id = 35,
+                    Name = "Jody Egginton",
+                    Price = 600000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 36,
+                    Name = "Pierre Wache",
+                    Price = 2000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 37,
+                    Name = "Enrico Cardile",
+                    Price = 1500000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 38,
+                    Name = "Simone Resta",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 39,
+                    Name = "Matt Harman",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 40,
+                    Name = "Mike Elliott",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 41,
+                    Name = "Ben Watkins",
+                    Price = 800000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 42,
+                    Name = "Francois-Xavier Demaison",
+                    Price = 750000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 43,
+                    Name = "Jan Monchaux",
+                    Price = 500000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 44,
+                    Name = "Andrew Green",
+                    Price = 400000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                },
+                new Product
+                {
+                    Id = 45,
+                    Name = "Ben Michell",
+                    Price = 2000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 46,
+                    Name = "Chris Cronin",
+                    Price = 1500000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 47,
+                    Name = "Jorn Becker",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 48,
+                    Name = "Alex Chan",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 49,
+                    Name = "Mattia Spini",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 50,
+                    Name = "Pierre Hamelin",
+                    Price = 800000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 51,
+                    Name = "Gary Gannon",
+                    Price = 750000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 52,
+                    Name = "Ed Regan",
+                    Price = 600000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 53,
+                    Name = "Gaetan Jego",
+                    Price = 500000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 54,
+                    Name = "James Urwin",
+                    Price = 400000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 55,
+                    Name = "Josh Peckett",
+                    Price = 2000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 56,
+                    Name = "Karel Loos",
+                    Price = 1500000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 57,
+                    Name = "Riccardo Musconi",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 58,
+                    Name = "Peter Bonnington",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 59,
+                    Name = "Gianpiero Lambiase",
+                    Price = 1000000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 60,
+                    Name = "Hugh Bird",
+                    Price = 800000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 61,
+                    Name = "Jason Prior",
+                    Price = 750000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 62,
+                    Name = "Christopher Hayes",
+                    Price = 600000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 63,
+                    Name = "Riccardo Adami",
+                    Price = 500000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
+                new Product
+                {
+                    Id = 64,
+                    Name = "Xavier Marcos Padros",
+                    Price = 400000,
+                    Discount = 0,
+                    Status = Status.ProductStatus.AVAILABLE,
+                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                },
             };
 
-            builder.Entity<Drivers>().HasData(drivers);
-            #endregion
-
-            #region Principals
-            List<Principals> principals = new List<Principals> {
-                new Principals { Id = 1, Discount = 0, FirstName = "Mattias", LastName = "Binotto", Price = 3000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 2, Discount = 0, FirstName = "Frédéric", LastName = "Vasseur", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 3, Discount = 0, FirstName = "Franz", LastName = "Tost", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 4, Discount = 0, FirstName = "Otmar", LastName = "Szafnauer", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 5, Discount = 0, FirstName = "Guenther", LastName = "Steiner", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 6, Discount = 0, FirstName = "Andreas", LastName = "Seidl", Price = 2000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 7, Discount = 0, FirstName = "Toto", LastName = "Wolff", Price = 9100000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 8, Discount = 0, FirstName = "Christian", LastName = "Horner", Price = 10000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 9, Discount = 0, FirstName = "Jost", LastName = "Capito", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new Principals { Id = 10, Discount = 0, FirstName = "Mike", LastName = "Krack", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-            };
-
-            builder.Entity<Principals>().HasData(principals);
-            #endregion
-
-            #region PowerUnits
-            List<PowerUnits> powerUnits = new List<PowerUnits> {
-                new PowerUnits { Id = 1, Discount = 0, Name = "Red Bull Powertrains", Price = 50000000, Status = Status.ProductStatus.AVAILABLE },
-                new PowerUnits { Id = 2, Discount = 0, Name = "Ferrari engines", Price = 40000000, Status = Status.ProductStatus.AVAILABLE },
-                new PowerUnits { Id = 3, Discount = 0, Name = "Mercedes engines", Price = 35000000, Status = Status.ProductStatus.AVAILABLE },
-                new PowerUnits { Id = 4, Discount = 0, Name = "Renault engines", Price = 30000000, Status = Status.ProductStatus.AVAILABLE },
-            };
-
-            builder.Entity<PowerUnits>().HasData(powerUnits);
-            #endregion
-
-            #region TechnicalChiefs
-            List<TechnicalChiefs> technicalChiefs = new List<TechnicalChiefs> {
-                new TechnicalChiefs { Id = 1, Discount = 0, FirstName = "Pierre", LastName = "Wache", Price = 2000000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 2, Discount = 0, FirstName = "Enrico", LastName = "Cardile", Price = 1500000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 3, Discount = 0, FirstName = "Simone", LastName = "Resta", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 4, Discount = 0, FirstName = "Matt", LastName = "Harman", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 5, Discount = 0, FirstName = "Mike", LastName = "Elliott", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 6, Discount = 0, FirstName = "Ben", LastName = "Watkins", Price = 800000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 7, Discount = 0, FirstName = "Francois-Xavier", LastName = "Demaison", Price = 750000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 8, Discount = 0, FirstName = "Jody", LastName = "Egginton", Price = 600000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 9, Discount = 0, FirstName = "Jan", LastName = "Monchaux", Price = 500000, Status = Status.ProductStatus.AVAILABLE },
-                new TechnicalChiefs { Id = 10, Discount = 0, FirstName = "Andrew", LastName = "Green", Price = 400000, Status = Status.ProductStatus.AVAILABLE },
-            };
-
-            builder.Entity<TechnicalChiefs>().HasData(technicalChiefs);
-            #endregion
-
-            #region RaceEngineers
-            List<RaceEngineers> raceEngineers = new List<RaceEngineers> {
-                new RaceEngineers { Id = 1, Discount = 0, FirstName = "Ben", LastName = "Michell", Price = 2000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 2, Discount = 0, FirstName = "Chris", LastName = "Cronin", Price = 1500000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 3, Discount = 0, FirstName = "Jorn", LastName = "Becker", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 4, Discount = 0, FirstName = "Alex", LastName = "Chan", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 5, Discount = 0, FirstName = "Mattia", LastName = "Spini", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 6, Discount = 0, FirstName = "Pierre", LastName = "Hamelin", Price = 800000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 7, Discount = 0, FirstName = "Gary", LastName = "Gannon", Price = 750000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 8, Discount = 0, FirstName = "Ed", LastName = "Regan", Price = 600000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 9, Discount = 0, FirstName = "Gaetan", LastName = "Jego", Price = 500000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 10, Discount = 0, FirstName = "James", LastName = "Urwin", Price = 400000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 11, Discount = 0, FirstName = "Josh", LastName = "Peckett", Price = 2000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 12, Discount = 0, FirstName = "Karel", LastName = "Loos", Price = 1500000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 13, Discount = 0, FirstName = "Riccardo", LastName = "Musconi", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 14, Discount = 0, FirstName = "Peter", LastName = "Bonnington", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 15, Discount = 0, FirstName = "Gianpiero", LastName = "Lambiase", Price = 1000000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 16, Discount = 0, FirstName = "Hugh", LastName = "Bird", Price = 800000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 17, Discount = 0, FirstName = "Jason", LastName = "Prior", Price = 750000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 18, Discount = 0, FirstName = "Christopher", LastName = "Hayes", Price = 600000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 19, Discount = 0, FirstName = "Riccardo", LastName = "Adami", Price = 500000, Status = Status.ProductStatus.AVAILABLE },
-                new RaceEngineers { Id = 20, Discount = 0, FirstName = "Xavier Marcos", LastName = "Padros", Price = 400000, Status = Status.ProductStatus.AVAILABLE },
-            };
-
-            builder.Entity<RaceEngineers>().HasData(raceEngineers);
+            builder.Entity<Product>().HasData(products);
             #endregion
         }
     }

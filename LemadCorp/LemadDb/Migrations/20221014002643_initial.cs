@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LemadDb.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,58 +49,7 @@ namespace LemadDb.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "engineers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discount = table.Column<byte>(type: "tinyint", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_engineers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "mechanics",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discount = table.Column<byte>(type: "tinyint", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_mechanics", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "pilots",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discount = table.Column<byte>(type: "tinyint", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_pilots", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "powerUnits",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -108,28 +57,13 @@ namespace LemadDb.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Discount = table.Column<byte>(type: "tinyint", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
+                    ProductCategory = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_powerUnits", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "principals",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discount = table.Column<byte>(type: "tinyint", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_principals", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -243,9 +177,9 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "40c21a13-8b48-41ab-8233-0c0da77dec60", "6b9180e1-e862-4425-9605-af8d8c57b3a9", "Administrator", "ADMINISTRATOR" },
-                    { "2d8827d5-58fc-4712-aa78-1d515bf804b4", "807682f9-c922-450f-8cf4-ce156a050135", "Seller", "SELLER" },
-                    { "fd0a8819-134f-46d3-aaa7-6ead77cadeed", "5852ffbe-249d-44cf-8016-5e728ac562e8", "Buyer", "BUYER" }
+                    { "f94aa649-5fe4-4b90-ad6c-ec38e49a1998", "81111bed-2dfe-454d-b26a-8abc43404c6f", "Buyer", "BUYER" },
+                    { "28a65325-1753-4846-bcfa-6d9a9cc87c85", "56df0cac-7713-4b52-ad0f-21d183a5ec6f", "Seller", "SELLER" },
+                    { "2cf308e5-2064-4591-969d-977f7add0f34", "295f6406-dcf5-437a-9ae7-e86057ba04cf", "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -253,8 +187,86 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "EntrepriseName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Photo", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "68c22a90-a81e-4511-b591-caca8c18f0d4", 0, "d649dd63-2f40-4618-9ba8-de2ffe62b05c", "admin@lemadrid.com", false, "Admin", false, null, null, null, "AQAAAAEAACcQAAAAEMtURw6X/9REsEFiqhcVv/n2o86iyfL4mooT5CPZJhce7KToW1FkuANBnnH4Xh8ffQ==", null, false, null, "bb904b53-168d-4968-a17b-995a02a43ace", false, null },
-                    { "de2c418e-55c3-4c68-8c91-f5ef2b9083d7", 0, "d9873c62-ad72-49df-b39a-08252a3bc857", "hugolapointe@cegepsth.qc.ca", false, "Cégep Saint-Hyacinthe", false, null, null, null, "AQAAAAEAACcQAAAAEI90Nw0WEDjvF1naDWfjbzbXPfnlYDsz5S8+jEOAupGkr1kQ5wx2suqgAsHOIuK+MQ==", null, false, null, "776dcd21-b853-411c-b367-2369936e6814", false, null }
+                    { "f2a2d25e-ebef-4f38-9eb5-16ece6575dcd", 0, "c686bf92-0270-4f86-94e1-f9cdf200c487", "hugolapointe@cegepsth.qc.ca", false, "Cégep Saint-Hyacinthe", false, null, null, null, "AQAAAAEAACcQAAAAEA4Bk5j9iSvz6e1WuxtrNH2DuffIomozOsvgvWMqs0B3jVKEsb14RDrQTfPJw1WY6A==", null, false, null, "da27d61e-e199-4a09-8935-413cc5612466", false, null },
+                    { "8081537e-9cdb-49c6-a2d8-6830d16d3b4a", 0, "e9a039f4-94e5-4790-b04d-3e4d47bcf28e", "admin@lemadrid.com", false, "Admin", false, null, null, null, "AQAAAAEAACcQAAAAEJDewDVlVCQg/slCy8wUIqhrNiFO4pdeZaq11uwHLVtTlGN7fSdgYO+ZfEwS6D6Qsg==", null, false, null, "c67efd2f-04d5-4032-91c9-d731668d1c3b", false, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Discount", "Name", "Photo", "Price", "ProductCategory", "Status" },
+                values: new object[,]
+                {
+                    { 37, (byte)0, "Enrico Cardile", null, 1500000m, 4, 0 },
+                    { 38, (byte)0, "Simone Resta", null, 1000000m, 4, 0 },
+                    { 39, (byte)0, "Matt Harman", null, 1000000m, 4, 0 },
+                    { 40, (byte)0, "Mike Elliott", null, 1000000m, 4, 0 },
+                    { 41, (byte)0, "Ben Watkins", null, 800000m, 4, 0 },
+                    { 42, (byte)0, "Francois-Xavier Demaison", null, 750000m, 4, 0 },
+                    { 43, (byte)0, "Jan Monchaux", null, 500000m, 4, 0 },
+                    { 44, (byte)0, "Andrew Green", null, 400000m, 4, 0 },
+                    { 45, (byte)0, "Ben Michell", null, 2000000m, 3, 0 },
+                    { 46, (byte)0, "Chris Cronin", null, 1500000m, 3, 0 },
+                    { 47, (byte)0, "Jorn Becker", null, 1000000m, 3, 0 },
+                    { 48, (byte)0, "Alex Chan", null, 1000000m, 3, 0 },
+                    { 49, (byte)0, "Mattia Spini", null, 1000000m, 3, 0 },
+                    { 51, (byte)0, "Gary Gannon", null, 750000m, 3, 0 },
+                    { 36, (byte)0, "Pierre Wache", null, 2000000m, 4, 0 },
+                    { 53, (byte)0, "Gaetan Jego", null, 500000m, 3, 0 },
+                    { 54, (byte)0, "James Urwin", null, 400000m, 3, 0 },
+                    { 55, (byte)0, "Josh Peckett", null, 2000000m, 3, 0 },
+                    { 56, (byte)0, "Karel Loos", null, 1500000m, 3, 0 },
+                    { 57, (byte)0, "Riccardo Musconi", null, 1000000m, 3, 0 },
+                    { 58, (byte)0, "Peter Bonnington", null, 1000000m, 3, 0 },
+                    { 59, (byte)0, "Gianpiero Lambiase", null, 1000000m, 3, 0 },
+                    { 60, (byte)0, "Hugh Bird", null, 800000m, 3, 0 },
+                    { 61, (byte)0, "Jason Prior", null, 750000m, 3, 0 },
+                    { 62, (byte)0, "Christopher Hayes", null, 600000m, 3, 0 },
+                    { 63, (byte)0, "Riccardo Adami", null, 500000m, 3, 0 },
+                    { 64, (byte)0, "Xavier Marcos Padros", null, 400000m, 3, 0 },
+                    { 50, (byte)0, "Pierre Hamelin", null, 800000m, 3, 0 },
+                    { 52, (byte)0, "Ed Regan", null, 600000m, 3, 0 },
+                    { 35, (byte)0, "Jody Egginton", null, 600000m, 4, 0 },
+                    { 33, (byte)0, "Mercedes engines", null, 35000000m, 2, 0 },
+                    { 2, (byte)0, "Esteban Ocon", null, 5000000m, 0, 0 },
+                    { 3, (byte)0, "Max Verstappen", null, 25000000m, 0, 0 },
+                    { 4, (byte)0, "Sergio Perez", null, 8000000m, 0, 0 },
+                    { 5, (byte)0, "Charles Leclerc", null, 12000000m, 0, 0 },
+                    { 6, (byte)0, "Carlos Sainz", null, 10000000m, 0, 0 },
+                    { 7, (byte)0, "Lewis Hamilton", null, 40000000m, 0, 0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Discount", "Name", "Photo", "Price", "ProductCategory", "Status" },
+                values: new object[,]
+                {
+                    { 8, (byte)0, "George Russell", null, 5000000m, 0, 0 },
+                    { 9, (byte)0, "Lando Norris", null, 20000000m, 0, 0 },
+                    { 10, (byte)0, "Daniel Ricciardo", null, 15000000m, 0, 0 },
+                    { 11, (byte)0, "Valtteri Bottas", null, 10000000m, 0, 0 },
+                    { 12, (byte)0, "Zhou Guanyu", null, 1000000m, 0, 0 },
+                    { 13, (byte)0, "Pierre Gasly", null, 5000000m, 0, 0 },
+                    { 14, (byte)0, "Yuki Tsunoda", null, 750000m, 0, 0 },
+                    { 15, (byte)0, "Nicholas Latifi", null, 1000000m, 0, 0 },
+                    { 16, (byte)0, "Alexander Albon", null, 2000000m, 0, 0 },
+                    { 17, (byte)0, "Sebastian Vettel", null, 15000000m, 0, 0 },
+                    { 18, (byte)0, "Lance Stroll", null, 10000000m, 0, 0 },
+                    { 32, (byte)0, "Ferrari engines", null, 40000000m, 2, 0 },
+                    { 31, (byte)0, "Red Bull Powertrains", null, 50000000m, 2, 0 },
+                    { 30, (byte)0, "Mike Krack", null, 1000000m, 1, 0 },
+                    { 29, (byte)0, "Jost Capito", null, 1000000m, 1, 0 },
+                    { 28, (byte)0, "Christian Horner", null, 10000000m, 1, 0 },
+                    { 27, (byte)0, "Toto Wolff", null, 9100000m, 1, 0 },
+                    { 34, (byte)0, "Renault engines", null, 30000000m, 2, 0 },
+                    { 26, (byte)0, "Andreas Seidl", null, 2000000m, 1, 0 },
+                    { 24, (byte)0, "Otmar Szafnauer", null, 1000000m, 1, 0 },
+                    { 23, (byte)0, "Franz Tost", null, 1000000m, 1, 0 },
+                    { 22, (byte)0, "Frédéric Vasseur", null, 1000000m, 1, 0 },
+                    { 21, (byte)0, "Mattias Binotto", null, 3000000m, 1, 0 },
+                    { 20, (byte)0, "Mick Schumacher", null, 1000000m, 0, 0 },
+                    { 19, (byte)0, "Kevin Magnussen", null, 6000000m, 0, 0 },
+                    { 25, (byte)0, "Guenther Steiner", null, 1000000m, 1, 0 },
+                    { 1, (byte)0, "Fernando Alonso", null, 20000000m, 0, 0 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -315,19 +327,7 @@ namespace LemadDb.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "engineers");
-
-            migrationBuilder.DropTable(
-                name: "mechanics");
-
-            migrationBuilder.DropTable(
-                name: "pilots");
-
-            migrationBuilder.DropTable(
-                name: "powerUnits");
-
-            migrationBuilder.DropTable(
-                name: "principals");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -19,216 +19,7 @@ namespace LemadDb.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("LemadDb.Domain.Entities.Drivers", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte>("Discount")
-                        .HasColumnType("tinyint");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("pilots");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Discount = (byte)0,
-                            FirstName = "Fernando",
-                            LastName = "Alonso",
-                            Price = 20000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Discount = (byte)0,
-                            FirstName = "Esteban",
-                            LastName = "Ocon",
-                            Price = 5000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Discount = (byte)0,
-                            FirstName = "Max",
-                            LastName = "Verstappen",
-                            Price = 25000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Discount = (byte)0,
-                            FirstName = "Sergio",
-                            LastName = "Perez",
-                            Price = 8000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Discount = (byte)0,
-                            FirstName = "Charles",
-                            LastName = "Leclerc",
-                            Price = 12000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Discount = (byte)0,
-                            FirstName = "Carlos",
-                            LastName = "Sainz",
-                            Price = 10000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Discount = (byte)0,
-                            FirstName = "Lewis",
-                            LastName = "Hamilton",
-                            Price = 40000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Discount = (byte)0,
-                            FirstName = "George",
-                            LastName = "Russell",
-                            Price = 5000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Discount = (byte)0,
-                            FirstName = "Lando",
-                            LastName = "Norris",
-                            Price = 20000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Discount = (byte)0,
-                            FirstName = "Daniel",
-                            LastName = "Ricciardo",
-                            Price = 15000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Discount = (byte)0,
-                            FirstName = "Valtteri",
-                            LastName = "Bottas",
-                            Price = 10000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Discount = (byte)0,
-                            FirstName = "Zhou",
-                            LastName = "Guanyu",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Discount = (byte)0,
-                            FirstName = "Pierre",
-                            LastName = "Gasly",
-                            Price = 5000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Discount = (byte)0,
-                            FirstName = "Yuki",
-                            LastName = "Tsunoda",
-                            Price = 750000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Discount = (byte)0,
-                            FirstName = "Nicholas",
-                            LastName = "Latifi",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Discount = (byte)0,
-                            FirstName = "Alexander",
-                            LastName = "Albon",
-                            Price = 2000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Discount = (byte)0,
-                            FirstName = "Sebastian",
-                            LastName = "Vettel",
-                            Price = 15000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Discount = (byte)0,
-                            FirstName = "Lance",
-                            LastName = "Stroll",
-                            Price = 10000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Discount = (byte)0,
-                            FirstName = "Kevin",
-                            LastName = "Magnussen",
-                            Price = 6000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Discount = (byte)0,
-                            FirstName = "Mick",
-                            LastName = "Schumacher",
-                            Price = 1000000m,
-                            Status = 0
-                        });
-                });
-
-            modelBuilder.Entity("LemadDb.Domain.Entities.PowerUnits", b =>
+            modelBuilder.Entity("LemadDb.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -241,494 +32,597 @@ namespace LemadDb.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductCategory")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("powerUnits");
+                    b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Discount = (byte)0,
-                            Name = "Red Bull Powertrains",
-                            Price = 50000000m,
+                            Name = "Fernando Alonso",
+                            Price = 20000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 2,
                             Discount = (byte)0,
-                            Name = "Ferrari engines",
-                            Price = 40000000m,
+                            Name = "Esteban Ocon",
+                            Price = 5000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 3,
                             Discount = (byte)0,
-                            Name = "Mercedes engines",
-                            Price = 35000000m,
+                            Name = "Max Verstappen",
+                            Price = 25000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 4,
                             Discount = (byte)0,
-                            Name = "Renault engines",
-                            Price = 30000000m,
-                            Status = 0
-                        });
-                });
-
-            modelBuilder.Entity("LemadDb.Domain.Entities.Principals", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte>("Discount")
-                        .HasColumnType("tinyint");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("principals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Discount = (byte)0,
-                            FirstName = "Mattias",
-                            LastName = "Binotto",
-                            Price = 3000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Discount = (byte)0,
-                            FirstName = "Frédéric",
-                            LastName = "Vasseur",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Discount = (byte)0,
-                            FirstName = "Franz",
-                            LastName = "Tost",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Discount = (byte)0,
-                            FirstName = "Otmar",
-                            LastName = "Szafnauer",
-                            Price = 1000000m,
+                            Name = "Sergio Perez",
+                            Price = 8000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 5,
                             Discount = (byte)0,
-                            FirstName = "Guenther",
-                            LastName = "Steiner",
-                            Price = 1000000m,
+                            Name = "Charles Leclerc",
+                            Price = 12000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 6,
                             Discount = (byte)0,
-                            FirstName = "Andreas",
-                            LastName = "Seidl",
-                            Price = 2000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Discount = (byte)0,
-                            FirstName = "Toto",
-                            LastName = "Wolff",
-                            Price = 9100000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Discount = (byte)0,
-                            FirstName = "Christian",
-                            LastName = "Horner",
+                            Name = "Carlos Sainz",
                             Price = 10000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Discount = (byte)0,
-                            FirstName = "Jost",
-                            LastName = "Capito",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Discount = (byte)0,
-                            FirstName = "Mike",
-                            LastName = "Krack",
-                            Price = 1000000m,
-                            Status = 0
-                        });
-                });
-
-            modelBuilder.Entity("LemadDb.Domain.Entities.RaceEngineers", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte>("Discount")
-                        .HasColumnType("tinyint");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("mechanics");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Discount = (byte)0,
-                            FirstName = "Ben",
-                            LastName = "Michell",
-                            Price = 2000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Discount = (byte)0,
-                            FirstName = "Chris",
-                            LastName = "Cronin",
-                            Price = 1500000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Discount = (byte)0,
-                            FirstName = "Jorn",
-                            LastName = "Becker",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Discount = (byte)0,
-                            FirstName = "Alex",
-                            LastName = "Chan",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Discount = (byte)0,
-                            FirstName = "Mattia",
-                            LastName = "Spini",
-                            Price = 1000000m,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Discount = (byte)0,
-                            FirstName = "Pierre",
-                            LastName = "Hamelin",
-                            Price = 800000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 7,
                             Discount = (byte)0,
-                            FirstName = "Gary",
-                            LastName = "Gannon",
-                            Price = 750000m,
+                            Name = "Lewis Hamilton",
+                            Price = 40000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 8,
                             Discount = (byte)0,
-                            FirstName = "Ed",
-                            LastName = "Regan",
-                            Price = 600000m,
+                            Name = "George Russell",
+                            Price = 5000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 9,
                             Discount = (byte)0,
-                            FirstName = "Gaetan",
-                            LastName = "Jego",
-                            Price = 500000m,
+                            Name = "Lando Norris",
+                            Price = 20000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 10,
                             Discount = (byte)0,
-                            FirstName = "James",
-                            LastName = "Urwin",
-                            Price = 400000m,
+                            Name = "Daniel Ricciardo",
+                            Price = 15000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 11,
                             Discount = (byte)0,
-                            FirstName = "Josh",
-                            LastName = "Peckett",
-                            Price = 2000000m,
+                            Name = "Valtteri Bottas",
+                            Price = 10000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 12,
                             Discount = (byte)0,
-                            FirstName = "Karel",
-                            LastName = "Loos",
-                            Price = 1500000m,
+                            Name = "Zhou Guanyu",
+                            Price = 1000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 13,
                             Discount = (byte)0,
-                            FirstName = "Riccardo",
-                            LastName = "Musconi",
-                            Price = 1000000m,
+                            Name = "Pierre Gasly",
+                            Price = 5000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 14,
                             Discount = (byte)0,
-                            FirstName = "Peter",
-                            LastName = "Bonnington",
-                            Price = 1000000m,
+                            Name = "Yuki Tsunoda",
+                            Price = 750000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 15,
                             Discount = (byte)0,
-                            FirstName = "Gianpiero",
-                            LastName = "Lambiase",
+                            Name = "Nicholas Latifi",
                             Price = 1000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 16,
                             Discount = (byte)0,
-                            FirstName = "Hugh",
-                            LastName = "Bird",
-                            Price = 800000m,
+                            Name = "Alexander Albon",
+                            Price = 2000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 17,
                             Discount = (byte)0,
-                            FirstName = "Jason",
-                            LastName = "Prior",
-                            Price = 750000m,
+                            Name = "Sebastian Vettel",
+                            Price = 15000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 18,
                             Discount = (byte)0,
-                            FirstName = "Christopher",
-                            LastName = "Hayes",
-                            Price = 600000m,
+                            Name = "Lance Stroll",
+                            Price = 10000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 19,
                             Discount = (byte)0,
-                            FirstName = "Riccardo",
-                            LastName = "Adami",
-                            Price = 500000m,
+                            Name = "Kevin Magnussen",
+                            Price = 6000000m,
+                            ProductCategory = 0,
                             Status = 0
                         },
                         new
                         {
                             Id = 20,
                             Discount = (byte)0,
-                            FirstName = "Xavier Marcos",
-                            LastName = "Padros",
-                            Price = 400000m,
+                            Name = "Mick Schumacher",
+                            Price = 1000000m,
+                            ProductCategory = 0,
                             Status = 0
-                        });
-                });
-
-            modelBuilder.Entity("LemadDb.Domain.Entities.TechnicalChiefs", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte>("Discount")
-                        .HasColumnType("tinyint");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("engineers");
-
-                    b.HasData(
+                        },
                         new
                         {
-                            Id = 1,
+                            Id = 21,
                             Discount = (byte)0,
-                            FirstName = "Pierre",
-                            LastName = "Wache",
+                            Name = "Mattias Binotto",
+                            Price = 3000000m,
+                            ProductCategory = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Discount = (byte)0,
+                            Name = "Frédéric Vasseur",
+                            Price = 1000000m,
+                            ProductCategory = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Discount = (byte)0,
+                            Name = "Franz Tost",
+                            Price = 1000000m,
+                            ProductCategory = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Discount = (byte)0,
+                            Name = "Otmar Szafnauer",
+                            Price = 1000000m,
+                            ProductCategory = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Discount = (byte)0,
+                            Name = "Guenther Steiner",
+                            Price = 1000000m,
+                            ProductCategory = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Discount = (byte)0,
+                            Name = "Andreas Seidl",
                             Price = 2000000m,
+                            ProductCategory = 1,
                             Status = 0
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 27,
                             Discount = (byte)0,
-                            FirstName = "Enrico",
-                            LastName = "Cardile",
-                            Price = 1500000m,
+                            Name = "Toto Wolff",
+                            Price = 9100000m,
+                            ProductCategory = 1,
                             Status = 0
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 28,
                             Discount = (byte)0,
-                            FirstName = "Simone",
-                            LastName = "Resta",
+                            Name = "Christian Horner",
+                            Price = 10000000m,
+                            ProductCategory = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Discount = (byte)0,
+                            Name = "Jost Capito",
                             Price = 1000000m,
+                            ProductCategory = 1,
                             Status = 0
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 30,
                             Discount = (byte)0,
-                            FirstName = "Matt",
-                            LastName = "Harman",
+                            Name = "Mike Krack",
                             Price = 1000000m,
+                            ProductCategory = 1,
                             Status = 0
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 31,
                             Discount = (byte)0,
-                            FirstName = "Mike",
-                            LastName = "Elliott",
-                            Price = 1000000m,
+                            Name = "Red Bull Powertrains",
+                            Price = 50000000m,
+                            ProductCategory = 2,
                             Status = 0
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 32,
                             Discount = (byte)0,
-                            FirstName = "Ben",
-                            LastName = "Watkins",
-                            Price = 800000m,
+                            Name = "Ferrari engines",
+                            Price = 40000000m,
+                            ProductCategory = 2,
                             Status = 0
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 33,
                             Discount = (byte)0,
-                            FirstName = "Francois-Xavier",
-                            LastName = "Demaison",
-                            Price = 750000m,
+                            Name = "Mercedes engines",
+                            Price = 35000000m,
+                            ProductCategory = 2,
                             Status = 0
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 34,
                             Discount = (byte)0,
-                            FirstName = "Jody",
-                            LastName = "Egginton",
+                            Name = "Renault engines",
+                            Price = 30000000m,
+                            ProductCategory = 2,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Discount = (byte)0,
+                            Name = "Jody Egginton",
                             Price = 600000m,
+                            ProductCategory = 4,
                             Status = 0
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 36,
                             Discount = (byte)0,
-                            FirstName = "Jan",
-                            LastName = "Monchaux",
+                            Name = "Pierre Wache",
+                            Price = 2000000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Discount = (byte)0,
+                            Name = "Enrico Cardile",
+                            Price = 1500000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Discount = (byte)0,
+                            Name = "Simone Resta",
+                            Price = 1000000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Discount = (byte)0,
+                            Name = "Matt Harman",
+                            Price = 1000000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Discount = (byte)0,
+                            Name = "Mike Elliott",
+                            Price = 1000000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Discount = (byte)0,
+                            Name = "Ben Watkins",
+                            Price = 800000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Discount = (byte)0,
+                            Name = "Francois-Xavier Demaison",
+                            Price = 750000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Discount = (byte)0,
+                            Name = "Jan Monchaux",
                             Price = 500000m,
+                            ProductCategory = 4,
                             Status = 0
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 44,
                             Discount = (byte)0,
-                            FirstName = "Andrew",
-                            LastName = "Green",
+                            Name = "Andrew Green",
                             Price = 400000m,
+                            ProductCategory = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Discount = (byte)0,
+                            Name = "Ben Michell",
+                            Price = 2000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Discount = (byte)0,
+                            Name = "Chris Cronin",
+                            Price = 1500000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Discount = (byte)0,
+                            Name = "Jorn Becker",
+                            Price = 1000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Discount = (byte)0,
+                            Name = "Alex Chan",
+                            Price = 1000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Discount = (byte)0,
+                            Name = "Mattia Spini",
+                            Price = 1000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Discount = (byte)0,
+                            Name = "Pierre Hamelin",
+                            Price = 800000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Discount = (byte)0,
+                            Name = "Gary Gannon",
+                            Price = 750000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Discount = (byte)0,
+                            Name = "Ed Regan",
+                            Price = 600000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Discount = (byte)0,
+                            Name = "Gaetan Jego",
+                            Price = 500000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Discount = (byte)0,
+                            Name = "James Urwin",
+                            Price = 400000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Discount = (byte)0,
+                            Name = "Josh Peckett",
+                            Price = 2000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Discount = (byte)0,
+                            Name = "Karel Loos",
+                            Price = 1500000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Discount = (byte)0,
+                            Name = "Riccardo Musconi",
+                            Price = 1000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Discount = (byte)0,
+                            Name = "Peter Bonnington",
+                            Price = 1000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Discount = (byte)0,
+                            Name = "Gianpiero Lambiase",
+                            Price = 1000000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Discount = (byte)0,
+                            Name = "Hugh Bird",
+                            Price = 800000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 61,
+                            Discount = (byte)0,
+                            Name = "Jason Prior",
+                            Price = 750000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 62,
+                            Discount = (byte)0,
+                            Name = "Christopher Hayes",
+                            Price = 600000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 63,
+                            Discount = (byte)0,
+                            Name = "Riccardo Adami",
+                            Price = 500000m,
+                            ProductCategory = 3,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 64,
+                            Discount = (byte)0,
+                            Name = "Xavier Marcos Padros",
+                            Price = 400000m,
+                            ProductCategory = 3,
                             Status = 0
                         });
                 });
@@ -807,30 +701,30 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "929072db-8545-45d8-9262-03eb600d7af6",
+                            Id = "8081537e-9cdb-49c6-a2d8-6830d16d3b4a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dec295b8-c623-407c-b471-5a1532956c2c",
+                            ConcurrencyStamp = "e9a039f4-94e5-4790-b04d-3e4d47bcf28e",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEMY46YKCiwhnNoEU9/eQzlgfkaa9U8D+9P+nFyvM7NcsNZYi3oST3UYOaOghhAKNGw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJDewDVlVCQg/slCy8wUIqhrNiFO4pdeZaq11uwHLVtTlGN7fSdgYO+ZfEwS6D6Qsg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4efaffbf-caa8-40d3-a70a-36b83bd8e265",
+                            SecurityStamp = "c67efd2f-04d5-4032-91c9-d731668d1c3b",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "a8f5d026-9c1e-4e4b-8b3c-38527ca0cb93",
+                            Id = "f2a2d25e-ebef-4f38-9eb5-16ece6575dcd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "87400d4b-69d6-4013-adcf-73c215421fa7",
+                            ConcurrencyStamp = "c686bf92-0270-4f86-94e1-f9cdf200c487",
                             Email = "hugolapointe@cegepsth.qc.ca",
                             EmailConfirmed = false,
                             EntrepriseName = "Cégep Saint-Hyacinthe",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEAOeWQlA0imWE6RMY67EsbqTMw3h5ItrrhVGKGGrVlcgteM2LYf4x4xmYNSbkCVV1w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA4Bk5j9iSvz6e1WuxtrNH2DuffIomozOsvgvWMqs0B3jVKEsb14RDrQTfPJw1WY6A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4cb48ee7-f8e8-4a40-a041-6118392f0cdf",
+                            SecurityStamp = "da27d61e-e199-4a09-8935-413cc5612466",
                             TwoFactorEnabled = false
                         });
                 });
@@ -864,22 +758,22 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dafe99cc-bbaa-4626-83bf-6cd2c457e34a",
-                            ConcurrencyStamp = "bd8ae457-9e62-418b-b2c7-148841565bad",
+                            Id = "2cf308e5-2064-4591-969d-977f7add0f34",
+                            ConcurrencyStamp = "295f6406-dcf5-437a-9ae7-e86057ba04cf",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "247b9ec3-0857-4e1c-8eb9-d47d90671a68",
-                            ConcurrencyStamp = "ab6dc999-6ddf-44ce-a72d-227817c4ee8c",
+                            Id = "28a65325-1753-4846-bcfa-6d9a9cc87c85",
+                            ConcurrencyStamp = "56df0cac-7713-4b52-ad0f-21d183a5ec6f",
                             Name = "Seller",
                             NormalizedName = "SELLER"
                         },
                         new
                         {
-                            Id = "5cef8371-bb9a-4e93-b0c5-4cd2bb322231",
-                            ConcurrencyStamp = "9a02d26c-c189-49e4-9824-e84d1fa9c3e3",
+                            Id = "f94aa649-5fe4-4b90-ad6c-ec38e49a1998",
+                            ConcurrencyStamp = "81111bed-2dfe-454d-b26a-8abc43404c6f",
                             Name = "Buyer",
                             NormalizedName = "BUYER"
                         });

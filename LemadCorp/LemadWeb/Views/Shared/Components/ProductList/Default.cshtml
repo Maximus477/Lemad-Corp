@@ -1,1 +1,70 @@
-﻿
+﻿@model PaginatedList<Product>
+
+
+@if (!ViewBag.Verification)
+{
+    <p>No products availables!</p>
+}
+else
+{
+    @foreach (Product item in Model)
+    {
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 row justify-content-center" style="padding-left:0; padding-right:0; padding-bottom:30px;">
+            <div class="div-product">
+                @*<div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                <div class="product-image col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" style="background-image:url(data:image/*;base64,@(Convert.ToBase64String(item.Photo)))"></div>
+                <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>*@
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="text-product">
+                        <h4>
+                            <a class="real-basic-link" asp-controller="Product" asp-action="Detail">@item.Name</a>
+                        </h4>
+                        <h5>
+                            @if (item.Status == Status.ProductStatus.AVAILABLE)
+                            {
+                                <a class="real-basic-link" asp-controller="Product" asp-action="Detail">@item.Price.ToString("C")</a>
+                            }
+                            else if (item.Status == Status.ProductStatus.PROMOTION)
+                            {
+                                <a class="real-basic-link" asp-controller="Product" asp-action="Detail">@((item.Price - (item.Price - item.Discount)).ToString("C"))</a>
+                            }
+                            else if (item.Status == Status.ProductStatus.UNAVAILABLE)
+                            {
+                                <a class="real-basic-link" asp-controller="Product" asp-action="Detail">Unavailable right now!</a>
+                            }                        
+                        </h5>
+                        <div>
+                            @item.ProductCategory
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    var prevDisabled = !Model.HasPreviousPage ? "circle-link-disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "circle-link-disabled" : "";
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row" style="text-align: center">
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
+        <div id="pilot-previous" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @prevDisabled" onclick="change(@(Model.PageIndex - 1), @Model.Search)">Previous</div>
+        <div id="pilot-next" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @nextDisabled" onclick="change(@(Model.PageIndex + 1), @Model.Search)">Next</div>
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
+    </div>
+}
+
+<script type="text/javascript">
+    function change(count, search = "") {
+        $('#lst').html("");
+        $.ajax({
+            url: '@Url.Action("reload", "Product")',
+            data: {
+                pageNumber: count,
+                search: search
+            },
+            success: function (data) {
+                $('#lst').html(data);
+            }
+        })
+    }
+</script>

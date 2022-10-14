@@ -4,6 +4,8 @@
     --color-text: rgb(0, 0, 0);
     // Background
     --color-background-pri: rgb(255, 255, 255);
+    --color-background-pri-2: rgb(235, 235, 235);
+    --color-background-pri-3: rgb(245, 245, 245);
     --color-background-sec: rgb(225, 6, 0);
     --color-background-ter: rgb(245, 245, 245);
     --color-background-qua: rgb(205, 6, 0);
@@ -23,6 +25,8 @@ html[data-theme="dark"] {
     --color-text: rgb(255, 255, 255);
     //Background
     --color-background-pri: rgb(30, 30, 30);
+    --color-background-pri-2: rgb(40, 40, 40);
+    --color-background-pri-3: rgb(35, 35, 35);
     --color-background-sec: rgb(225, 6, 0);
     --color-background-ter: rgb(40, 40, 40);
     --color-background-qua: rgb(205, 6, 0);
