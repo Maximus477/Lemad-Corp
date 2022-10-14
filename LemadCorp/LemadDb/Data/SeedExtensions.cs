@@ -240,7 +240,7 @@ namespace LemadDb.Data
                 new Product
                 {
                     Id = 21,
-                    Name = "Mattias Binotto",
+                    Name = "Mattia Binotto",
                     Price = 3000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
