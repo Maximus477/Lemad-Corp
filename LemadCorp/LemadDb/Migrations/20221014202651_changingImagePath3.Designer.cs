@@ -4,14 +4,16 @@ using LemadDb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LemadDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221014202651_changingImagePath3")]
+    partial class changingImagePath3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -686,8 +688,8 @@ namespace LemadDb.Migrations
                         {
                             Id = 64,
                             Discount = (byte)0,
-                            Name = "Xavier Marcos Pardos",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\XavierMarcosPardos.png",
+                            Name = "Xavier Marcos Padros",
+                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\XavierMarcosPadros.png",
                             Price = 400000m,
                             ProductCategory = 3,
                             Status = 0
@@ -768,30 +770,30 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8cd54326-e9c3-4da2-9737-686e8aad94d9",
+                            Id = "e4109a7d-888f-47fa-a912-f0d261ef4b75",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f0acbd2c-515a-4096-80d2-d47766b3be2a",
+                            ConcurrencyStamp = "dfe2c87e-f620-4085-ae22-150f7ad76fa0",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEDVPON0kUfW0wPIivLR+0ledOfBOo5nJt71iPTjADaSMXV9xZsyplEuvnp0z3Qg9zQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDWp22ra1YN1xkbIN1yvoCCLoDxv797VAQPfgrk34vZTLTqIzuU/09rKJMc9/fHLsg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd537fe1-c12e-4e7b-8584-cf25d744240a",
+                            SecurityStamp = "f3349a64-4779-4b35-ba5c-360344dd1df6",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "30095261-8066-4da9-b79e-35444ba54600",
+                            Id = "26026d71-ea8e-4c72-8cd4-fa8242aa0471",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9e74d0e4-17a5-4fde-9c3b-4e77f3fbf411",
+                            ConcurrencyStamp = "77025b34-0850-4f72-9c03-851c39adde72",
                             Email = "hugolapointe@cegepsth.qc.ca",
                             EmailConfirmed = false,
                             EntrepriseName = "Cégep Saint-Hyacinthe",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAENpojj5ClnXXQG7q3nQwz4XBFyTPm9a8JMdAuUWWyZIfI0U7IlCk/4qMNW2xZbx15A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGPcsZuEBw+v8dj/rH1iJqXQDP0n+fqzk91f7BWBxXH8qbzibZNdQwI45HMuO3HZnw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b287e770-792d-475b-97a6-89c56f2dba0d",
+                            SecurityStamp = "53027229-e9c4-4acd-a995-c044af5e97e5",
                             TwoFactorEnabled = false
                         });
                 });
@@ -825,22 +827,22 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c589b6aa-8cdf-43e3-8f73-3e59b3438780",
-                            ConcurrencyStamp = "5d977086-fc84-4926-a16c-ebfe4f3e2e09",
+                            Id = "7fe934c5-b013-4c28-8de3-181b6b7e82d0",
+                            ConcurrencyStamp = "da5887c7-8021-4f3e-b957-1321c59a96d4",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "e055c1a9-a2ab-4f10-8256-22536cae586c",
-                            ConcurrencyStamp = "0af8711d-ce58-4538-ad74-7b804a89f5e6",
+                            Id = "5c584110-1bb3-4be4-bec9-0ea7558e8129",
+                            ConcurrencyStamp = "f9932a03-d843-4492-85ba-7c6de91bafd1",
                             Name = "Seller",
                             NormalizedName = "SELLER"
                         },
                         new
                         {
-                            Id = "f927790d-e8b5-44a0-9111-95f4e71d47db",
-                            ConcurrencyStamp = "d4b2630e-b4f1-49d0-a308-f1790a71c7f9",
+                            Id = "0d30a975-eae6-4a5f-a95a-ebcb95111c0f",
+                            ConcurrencyStamp = "996a1b94-7f10-47b0-82a7-d3f202744efb",
                             Name = "Buyer",
                             NormalizedName = "BUYER"
                         });

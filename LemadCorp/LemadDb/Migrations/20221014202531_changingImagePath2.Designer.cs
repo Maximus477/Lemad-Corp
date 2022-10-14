@@ -4,14 +4,16 @@ using LemadDb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LemadDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221014202531_changingImagePath2")]
+    partial class changingImagePath2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -596,8 +598,8 @@ namespace LemadDb.Migrations
                         {
                             Id = 55,
                             Discount = (byte)0,
-                            Name = "Josh Pecket",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\JoshPecket.png",
+                            Name = "Josh Peckett",
+                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\JoshPeckett.png",
                             Price = 2000000m,
                             ProductCategory = 3,
                             Status = 0
@@ -686,8 +688,8 @@ namespace LemadDb.Migrations
                         {
                             Id = 64,
                             Discount = (byte)0,
-                            Name = "Xavier Marcos Pardos",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\XavierMarcosPardos.png",
+                            Name = "Xavier Marcos Padros",
+                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\XavierMarcosPadros.png",
                             Price = 400000m,
                             ProductCategory = 3,
                             Status = 0
@@ -768,30 +770,30 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8cd54326-e9c3-4da2-9737-686e8aad94d9",
+                            Id = "fa3fae60-c996-41bf-8200-c3fcfc836fab",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f0acbd2c-515a-4096-80d2-d47766b3be2a",
+                            ConcurrencyStamp = "84f5045e-6363-4cf3-9bc2-624b4fe4f2d4",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEDVPON0kUfW0wPIivLR+0ledOfBOo5nJt71iPTjADaSMXV9xZsyplEuvnp0z3Qg9zQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOqEKeaBd8NS2N/hYVQTv0OQsmyBwuVOz0Vm1JEQThx/YcCJzJOpHI1CTv1QSaXklA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd537fe1-c12e-4e7b-8584-cf25d744240a",
+                            SecurityStamp = "b80a0d57-91ff-475a-ae86-5e57953d725f",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "30095261-8066-4da9-b79e-35444ba54600",
+                            Id = "5873d68f-3ca6-424c-8af6-4c6707cf5d79",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9e74d0e4-17a5-4fde-9c3b-4e77f3fbf411",
+                            ConcurrencyStamp = "9da37471-dbf9-4c20-8413-d33a60873947",
                             Email = "hugolapointe@cegepsth.qc.ca",
                             EmailConfirmed = false,
                             EntrepriseName = "Cégep Saint-Hyacinthe",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAENpojj5ClnXXQG7q3nQwz4XBFyTPm9a8JMdAuUWWyZIfI0U7IlCk/4qMNW2xZbx15A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK1P4W/Vp2w91at599RUPrulsNbb9/6gqP4jVZXdNdNzDlaKnfyd8XDWUgsf4n80nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b287e770-792d-475b-97a6-89c56f2dba0d",
+                            SecurityStamp = "c69113a6-03ce-422b-a724-a6bc10b9ac35",
                             TwoFactorEnabled = false
                         });
                 });
@@ -825,22 +827,22 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c589b6aa-8cdf-43e3-8f73-3e59b3438780",
-                            ConcurrencyStamp = "5d977086-fc84-4926-a16c-ebfe4f3e2e09",
+                            Id = "2ff38e4e-868f-4651-9844-85d62912af86",
+                            ConcurrencyStamp = "acd6cbd5-c5be-4106-9f4d-1de4027eca69",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "e055c1a9-a2ab-4f10-8256-22536cae586c",
-                            ConcurrencyStamp = "0af8711d-ce58-4538-ad74-7b804a89f5e6",
+                            Id = "746d2afc-db95-46b0-bd06-a36cbfcbcea1",
+                            ConcurrencyStamp = "91c3a0c0-5e8e-4cd8-878f-ec94b7070715",
                             Name = "Seller",
                             NormalizedName = "SELLER"
                         },
                         new
                         {
-                            Id = "f927790d-e8b5-44a0-9111-95f4e71d47db",
-                            ConcurrencyStamp = "d4b2630e-b4f1-49d0-a308-f1790a71c7f9",
+                            Id = "3237ed22-4e4d-4183-8954-f960f1517abd",
+                            ConcurrencyStamp = "ac9da030-bf1a-4041-b733-f3f085dd33ba",
                             Name = "Buyer",
                             NormalizedName = "BUYER"
                         });

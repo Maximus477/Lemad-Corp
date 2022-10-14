@@ -64,7 +64,8 @@ namespace LemadDb.Data
                     Name = "Fernando Alonso",
                     Price = 20000000,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/FernandoAlonso.png").FullName
                 },
                 new Product
                 {
@@ -73,7 +74,8 @@ namespace LemadDb.Data
                     Name = "Esteban Ocon",
                     Price = 5000000,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/EstebanOcon.png").FullName
                 },
                 new Product
                 {
@@ -82,7 +84,8 @@ namespace LemadDb.Data
                     Name = "Max Verstappen",
                     Price = 25000000,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/MaxVerstappen.png").FullName
                 },
                 new Product
                 {
@@ -91,7 +94,8 @@ namespace LemadDb.Data
                     Name = "Sergio Perez",
                     Price = 8000000,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/SergioPerez.png").FullName
                 },
                 new Product
                 {
@@ -100,7 +104,8 @@ namespace LemadDb.Data
                     Name = "Charles Leclerc",
                     Price = 12000000,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/CharlesLeclerc.png").FullName
                 },
                 new Product
                 {
@@ -109,7 +114,8 @@ namespace LemadDb.Data
                     Name = "Carlos Sainz",
                     Price = 10000000,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/CarlosSainz.png").FullName
                 },
                 new Product
                 {
@@ -118,7 +124,8 @@ namespace LemadDb.Data
                     Price = 40000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/LewisHamilton.png").FullName
                 },
                 new Product
                 {
@@ -127,7 +134,8 @@ namespace LemadDb.Data
                     Price = 5000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/GeorgeRussell.png").FullName
                 },
                 new Product
                 {
@@ -136,7 +144,8 @@ namespace LemadDb.Data
                     Price = 20000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/LandoNorris.png").FullName
                 },
                 new Product
                 {
@@ -145,7 +154,8 @@ namespace LemadDb.Data
                     Price = 15000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/DanielRicciardo.png").FullName
                 },
                 new Product
                 {
@@ -154,7 +164,8 @@ namespace LemadDb.Data
                     Price = 10000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/ValtteriBottas.png").FullName
                 },
                 new Product
                 {
@@ -163,7 +174,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/ZhouGuanyu.png").FullName
                 },
                 new Product
                 {
@@ -172,7 +184,8 @@ namespace LemadDb.Data
                     Price = 5000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/PierreGasly.png").FullName
                 },
                 new Product
                 {
@@ -181,7 +194,8 @@ namespace LemadDb.Data
                     Price = 750000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/YukiTsunoda.png").FullName
                 },
                 new Product
                 {
@@ -190,7 +204,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/NicholasLatifi.png").FullName
                 },
                 new Product
                 {
@@ -199,7 +214,8 @@ namespace LemadDb.Data
                     Price = 2000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/AlexanderAlbon.png").FullName
                 },
                 new Product
                 {
@@ -208,7 +224,8 @@ namespace LemadDb.Data
                     Price = 15000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/SebastianVettel.png").FullName
                 },
                 new Product
                 {
@@ -217,7 +234,8 @@ namespace LemadDb.Data
                     Price = 10000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/LanceStroll.png").FullName
                 },
                 new Product
                 {
@@ -226,7 +244,8 @@ namespace LemadDb.Data
                     Price = 6000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/KevinMagnussen.png").FullName
                 },
                 new Product
                 {
@@ -235,16 +254,18 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.DRIVER
+                    ProductCategory = Category.ProductCategory.DRIVER,
+                    Path = new FileInfo("wwwroot/img/products/drivers/MickSchumacher.png").FullName
                 },
                 new Product
                 {
                     Id = 21,
-                    Name = "Mattias Binotto",
+                    Name = "Mattia Binotto",
                     Price = 3000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/MattiaBinotto.png").FullName
                 },
                 new Product
                 {
@@ -253,7 +274,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/FredericVasseur.png").FullName
                 },
                 new Product
                 {
@@ -262,7 +284,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/FranzTost.png").FullName
                 },
                 new Product
                 {
@@ -271,7 +294,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/OtmarSzafnauer.png").FullName
                 },
                 new Product
                 {
@@ -280,7 +304,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/GuentherSteiner.png").FullName
                 },
                 new Product
                 {
@@ -289,7 +314,8 @@ namespace LemadDb.Data
                     Price = 2000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/AndreasSeidl.png").FullName
                 },
                 new Product
                 {
@@ -298,7 +324,8 @@ namespace LemadDb.Data
                     Price = 9100000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/TotoWolff.png").FullName
                 },
                 new Product
                 {
@@ -307,7 +334,8 @@ namespace LemadDb.Data
                     Price = 10000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/ChristianHorner.png").FullName
                 },
                 new Product
                 {
@@ -316,7 +344,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/JostCapito.png").FullName
                 },
                 new Product
                 {
@@ -325,7 +354,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.PRINCIPAL
+                    ProductCategory = Category.ProductCategory.PRINCIPAL,
+                    Path = new FileInfo("wwwroot/img/products/principals/MikeKrack.png").FullName
                 },
                 new Product
                 {
@@ -334,7 +364,8 @@ namespace LemadDb.Data
                     Price = 50000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.POWERUNIT
+                    ProductCategory = Category.ProductCategory.POWERUNIT,
+                    Path = new FileInfo("wwwroot/img/products/powerunits/RedBullPowertrains.png").FullName
                 },
                 new Product
                 {
@@ -343,7 +374,8 @@ namespace LemadDb.Data
                     Price = 40000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.POWERUNIT
+                    ProductCategory = Category.ProductCategory.POWERUNIT,
+                    Path = new FileInfo("wwwroot/img/products/powerunits/FerrariEngines.png").FullName
                 },
                 new Product
                 {
@@ -352,7 +384,8 @@ namespace LemadDb.Data
                     Price = 35000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.POWERUNIT
+                    ProductCategory = Category.ProductCategory.POWERUNIT,
+                    Path = new FileInfo("wwwroot/img/products/powerunits/MercedesEngines.png").FullName
                 },
                 new Product
                 {
@@ -361,7 +394,8 @@ namespace LemadDb.Data
                     Price = 30000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.POWERUNIT
+                    ProductCategory = Category.ProductCategory.POWERUNIT,
+                    Path = new FileInfo("wwwroot/img/products/powerunits/RenaultEngines.png").FullName
                 },
                 new Product
                 {
@@ -370,16 +404,18 @@ namespace LemadDb.Data
                     Price = 600000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/JodyEgginton.png").FullName
                 },
                 new Product
                 {
                     Id = 36,
-                    Name = "Pierre Wache",
+                    Name = "Pierre Washe",
                     Price = 2000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/PierreWashe.png").FullName
                 },
                 new Product
                 {
@@ -388,7 +424,8 @@ namespace LemadDb.Data
                     Price = 1500000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/EnricoCardile.png").FullName
                 },
                 new Product
                 {
@@ -397,7 +434,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/SimoneResta.png").FullName
                 },
                 new Product
                 {
@@ -406,7 +444,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/MattHarman.png").FullName
                 },
                 new Product
                 {
@@ -415,7 +454,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/MikeElliott.png").FullName
                 },
                 new Product
                 {
@@ -424,7 +464,8 @@ namespace LemadDb.Data
                     Price = 800000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/BenWatkins.png").FullName
                 },
                 new Product
                 {
@@ -433,7 +474,8 @@ namespace LemadDb.Data
                     Price = 750000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/FrancoisXavierDemaison.png").FullName
                 },
                 new Product
                 {
@@ -442,7 +484,8 @@ namespace LemadDb.Data
                     Price = 500000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/JanMonchaux.png").FullName
                 },
                 new Product
                 {
@@ -451,7 +494,8 @@ namespace LemadDb.Data
                     Price = 400000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF
+                    ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
+                    Path = new FileInfo("wwwroot/img/products/technicalchiefs/AndrewGreen.png").FullName
                 },
                 new Product
                 {
@@ -460,7 +504,8 @@ namespace LemadDb.Data
                     Price = 2000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/BenMichell.png").FullName
                 },
                 new Product
                 {
@@ -469,7 +514,8 @@ namespace LemadDb.Data
                     Price = 1500000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/ChrisCronin.png").FullName
                 },
                 new Product
                 {
@@ -478,7 +524,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/JornBecker.png").FullName
                 },
                 new Product
                 {
@@ -487,7 +534,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/AlexChan.png").FullName
                 },
                 new Product
                 {
@@ -496,7 +544,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/MattiaSpini.png").FullName
                 },
                 new Product
                 {
@@ -505,7 +554,8 @@ namespace LemadDb.Data
                     Price = 800000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/PierreHamelin.png").FullName
                 },
                 new Product
                 {
@@ -514,7 +564,8 @@ namespace LemadDb.Data
                     Price = 750000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/GaryGannon.png").FullName
                 },
                 new Product
                 {
@@ -523,7 +574,8 @@ namespace LemadDb.Data
                     Price = 600000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/EdRegan.png").FullName
                 },
                 new Product
                 {
@@ -532,7 +584,8 @@ namespace LemadDb.Data
                     Price = 500000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/GaetanJego.png").FullName
                 },
                 new Product
                 {
@@ -541,16 +594,18 @@ namespace LemadDb.Data
                     Price = 400000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/JamesUrwin.png").FullName
                 },
                 new Product
                 {
                     Id = 55,
-                    Name = "Josh Peckett",
+                    Name = "Josh Pecket",
                     Price = 2000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/JoshPecket.png").FullName
                 },
                 new Product
                 {
@@ -559,7 +614,8 @@ namespace LemadDb.Data
                     Price = 1500000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/KarelLoos.png").FullName
                 },
                 new Product
                 {
@@ -568,7 +624,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/RiccardoMusconi.png").FullName
                 },
                 new Product
                 {
@@ -577,7 +634,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/PeterBonnington.png").FullName
                 },
                 new Product
                 {
@@ -586,7 +644,8 @@ namespace LemadDb.Data
                     Price = 1000000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/GianpieroLambiase.png").FullName
                 },
                 new Product
                 {
@@ -595,7 +654,8 @@ namespace LemadDb.Data
                     Price = 800000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/HughBird.png").FullName
                 },
                 new Product
                 {
@@ -604,7 +664,8 @@ namespace LemadDb.Data
                     Price = 750000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/JasonPrior.png").FullName
                 },
                 new Product
                 {
@@ -613,7 +674,8 @@ namespace LemadDb.Data
                     Price = 600000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/CristopherHayes.png").FullName
                 },
                 new Product
                 {
@@ -622,16 +684,18 @@ namespace LemadDb.Data
                     Price = 500000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/RiccardoAdami.png").FullName
                 },
                 new Product
                 {
                     Id = 64,
-                    Name = "Xavier Marcos Padros",
+                    Name = "Xavier Marcos Pardos",
                     Price = 400000,
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
-                    ProductCategory = Category.ProductCategory.RACEENGINEER
+                    ProductCategory = Category.ProductCategory.RACEENGINEER,
+                    Path = new FileInfo("wwwroot/img/products/raceengineers/XavierMarcosPardos.png").FullName
                 },
             };
 

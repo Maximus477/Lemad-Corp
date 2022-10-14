@@ -29,6 +29,8 @@ namespace LemadDb.Domain.Entities
 
         public ProductStatus Status { get; set; }
 
+        public string Path { get; set; }
+
         public byte[] Photo { get; set; }
 
         #region Stats
