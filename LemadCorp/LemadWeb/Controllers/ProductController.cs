@@ -165,6 +165,48 @@ namespace LemadWeb.Controllers
                 return RedirectToAction("List");
             }
         }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var product = await _context.Products
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                return View(product);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Delete(int Id)
+        {
+            try
+            {
+                var product = await _context.Products.FindAsync(Id);
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
         #endregion
 
         [AllowAnonymous]
