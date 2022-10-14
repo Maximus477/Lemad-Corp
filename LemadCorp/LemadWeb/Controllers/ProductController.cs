@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LemadDb.Data;
 using LemadDb.Domain.Entities;
+using LemadWeb.ViewModels.Product;
 
 namespace LemadWeb.Controllers
 {
@@ -32,16 +33,16 @@ namespace LemadWeb.Controllers
             return View();
         }
 
-        #region Driver
+        #region Product
         [AllowAnonymous]
-        public IActionResult CreateDriver()
+        public IActionResult Create()
         {
             return View();
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> CreateDriver(DriverViewModel model)
+        public async Task<IActionResult> Create(ProductViewModel model)
         {
             try
             {
@@ -50,171 +51,16 @@ namespace LemadWeb.Controllers
                     return View();
                 }
 
-                Drivers driver = new Drivers()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Price = model.Price,
-                    Discount = model.Discount,
-                    Status = model.Status,
-                };
-
-                _context.Add(driver);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("List");
-            }
-            catch
-            {
-                return RedirectToAction(nameof(Index));
-            }
-        }
-        #endregion
-
-        #region Principal
-        [AllowAnonymous]
-        public IActionResult CreatePrincipal()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> CreatePrincipal(PrincipalViewModel model)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return View();
-                }
-
-                Principals principal = new Principals()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Price = model.Price,
-                    Discount = model.Discount,
-                    Status = model.Status,
-                };
-
-                _context.Add(principal);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("List");
-            }
-            catch
-            {
-                return RedirectToAction(nameof(Index));
-            }
-        }
-        #endregion
-
-        #region TechnicalChief
-        [AllowAnonymous]
-        public IActionResult CreateTechnicalChief()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> CreateTechnicalChief(TechnicalChiefViewModel model)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return View();
-                }
-
-                TechnicalChiefs technicalChief = new TechnicalChiefs()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Price = model.Price,
-                    Discount = model.Discount,
-                    Status = model.Status,
-                };
-                
-                _context.Add(technicalChief);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("List");
-            }
-            catch
-            {
-                return RedirectToAction(nameof(Index));
-            }
-        }
-        #endregion
-
-        #region RaceEngineer
-        [AllowAnonymous]
-        public IActionResult CreateRaceEngineer()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> CreateRaceEngineer(RaceEngineerViewModel model)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return View();
-                }
-
-                RaceEngineers raceEngineer = new RaceEngineers()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Price = model.Price,
-                    Discount = model.Discount,
-                    Status = model.Status,
-                };
-
-                _context.Add(raceEngineer);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("List");
-            }
-            catch
-            {
-                return RedirectToAction(nameof(Index));
-            }
-        }
-        #endregion
-
-        #region PowerUnit
-        [AllowAnonymous]
-        public IActionResult CreatePowerUnit()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> CreatePowerUnit(PowerUnitViewModel model)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return View();
-                }
-
-                PowerUnits powerUnit = new PowerUnits()
+                Product product = new Product()
                 {
                     Name = model.Name,
                     Price = model.Price,
                     Discount = model.Discount,
                     Status = model.Status,
+                    ProductCategory = model.ProductCategory
                 };
 
-                _context.Add(powerUnit);
+                _context.Add(product);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("List");
