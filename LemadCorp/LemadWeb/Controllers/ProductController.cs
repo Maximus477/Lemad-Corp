@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Http;
 using System.Runtime.Serialization.Formatters.Binary;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using LemadWeb.ViewModels.Product;
 
 namespace LemadWeb.Controllers
 {
@@ -39,7 +40,6 @@ namespace LemadWeb.Controllers
             return View();
         }
 
-        #region Product
         [AllowAnonymous]
         public IActionResult Create()
         {
@@ -173,6 +173,29 @@ namespace LemadWeb.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Delete(int Id)
+        {
+            try
+            {
+                if (Id == null) {
+                    return NotFound();
+                }
+
+                var model = await _context.Products.FirstOrDefaultAsync(p => p.Id == Id);
+
+                if (model == null) {
+                    return NotFound();
+                }
+
+                return View(model);
+            }
+            catch {
+                return RedirectToAction("List");
+            }
+        }
+
+        [AllowAnonymous]
         public IActionResult reload(int pageNumber, string search = "")
         {
             return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber });
@@ -181,10 +204,8 @@ namespace LemadWeb.Controllers
         private void verifierImage()
         {
             using (SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=LemadDb;Trusted_Connection=True;MultipleActiveResultSets=true"))
-            try
             {
                 foreach (Product item in _context.Products.ToList())
-                if (id == null)
                 {
                     if (item.Path != null && item.Photo == null)
                     {
@@ -199,54 +220,12 @@ namespace LemadWeb.Controllers
                         }
                     }
                 }
-                    return NotFound();
-                }
-
-                var product = await _context.Products
-                    .FirstOrDefaultAsync(m => m.Id == id);
-                if (product == null)
-                {
-                    return NotFound();
-                }
-
-                return View(product);
-            }
-            catch
-            {
-                return RedirectToAction("List");
             }
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> Delete(int Id)
+        private bool ProductExists(int id)
         {
-            try
-            {
-                var product = await _context.Products.FindAsync(Id);
-                _context.Products.Remove(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("List");
-            }
-            catch
-            {
-                return RedirectToAction("List");
-            }
+            return _context.Products.Any(e => e.Id == id);
         }
-
-        //string sqlQuery = $"SELECT d.BulkColumn FROM OPENROWSET(BULK N'{item.Path}', SINGLE_BLOB) as d";
-        //
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    BinaryFormatter bf = new BinaryFormatter();
-        //    MemoryStream ms = new MemoryStream();
-        //    while (reader.Read())
-        //    {
-        //        bf.Serialize(ms, reader[0]);
-        //        item.Photo = ms.ToArray();
-        //    }
-        //        
-        //    _context.SaveChanges();
-        //    reader.Close();
-        //    //byte[] photo = Convert.FromBase64String(reader["BulkColumn"].ToString());
     }
 }
