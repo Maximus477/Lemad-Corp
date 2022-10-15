@@ -27,7 +27,8 @@ namespace LemadWeb.ViewComponents
             // Sorting:
             // Name
             // Price
-            // +2
+            // Discount
+            // Date
 
             // Filters:
             // Intervales de prix
@@ -36,6 +37,18 @@ namespace LemadWeb.ViewComponents
 
             switch (sortOrder)
             {
+                case "date_desc":
+                    item = item.OrderByDescending(p => p.DateNaissance).ToList();
+                    break;
+                case "Date":
+                    item = item.OrderBy(p => p.DateNaissance).ToList();
+                    break;
+                case "discount_desc":
+                    item = item.OrderByDescending(p => p.Discount).ToList();
+                    break;
+                case "Discount":
+                    item = item.OrderBy(p => p.Discount).ToList();
+                    break;
                 case "name_desc":
                     item = item.OrderByDescending(p => p.Name).ToList();
                     break;
@@ -54,7 +67,7 @@ namespace LemadWeb.ViewComponents
                 item = item.Where(c => c.Name.ToLower().Contains(search.ToLower()) || c.ProductCategory.ToString().ToLower().Contains(search.ToLower())).ToList();
 
             ViewBag.Verification = (item.Count() > 0) ? true : false;
-            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search));
+            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search, sortOrder));
         }
     }
 }

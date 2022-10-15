@@ -50,23 +50,25 @@ else
     var prevDisabled = !Model.HasPreviousPage ? "circle-link-disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "circle-link-disabled" : "";
     var search = Model.Search == null ? "" : Model.Search;
+    var sortorder = Model.SortOrder == null ? "" : Model.SortOrder;
 
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row" style="text-align: center">
         <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
-        <div id="pilot-previous" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @prevDisabled" onclick="change(@(Model.PageIndex - 1), '@search')">Previous</div>
-        <div id="pilot-next" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @nextDisabled" onclick="change(@(Model.PageIndex + 1), '@search')">Next</div>
+        <div id="pilot-previous" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @prevDisabled" onclick="change(@(Model.PageIndex - 1), '@search', '@sortorder')">Previous</div>
+        <div id="pilot-next" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @nextDisabled" onclick="change(@(Model.PageIndex + 1), '@search', '@sortorder')">Next</div>
         <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
     </div>
 }
 
 <script type="text/javascript">
-    function change(count, search) {
+    function change(count, search, sortorder) {
         $('#lst').html("");
         $.ajax({
             url: '@Url.Action("reload", "Product")',
             data: {
                 pageNumber: count,
-                search: search
+                search: search,
+                sortOrder: sortorder
             },
             success: function (data) {
                 $('#lst').html(data);

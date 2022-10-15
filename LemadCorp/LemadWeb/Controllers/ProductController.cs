@@ -34,7 +34,7 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString)
         {
-            if (searchString == null)
+             if (searchString == null)
                 searchString = "";
 
             if (sortOrder == null)
@@ -42,6 +42,8 @@ namespace LemadWeb.Controllers
 
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
 
             ViewData["CurrentFilter"] = searchString;
             ViewData["Filter"] = sortOrder;
@@ -248,9 +250,9 @@ namespace LemadWeb.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult reload(int pageNumber, string search = "")
+        public IActionResult reload(int pageNumber, string sortOrder, string search = "")
         {
-            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber });
+            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder });
         }
 
         private void verifierImage()

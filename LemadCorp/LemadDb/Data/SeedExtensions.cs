@@ -73,7 +73,11 @@ namespace LemadDb.Data
                     Price = 20000000,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/FernandoAlonso.png"
+                    Path = "wwwroot/img/products/drivers/FernandoAlonso.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1981, 07, 29),
+                    Description = "Teflonso, the spanish GOAT",
+                    Quote = "I am one of the best to have raced in F1. I am probably not fastest in qualifying, or the wet, but I am 9.5 in all areas. I try to benefit from that."
                 },
                 new Product
                 {
@@ -83,7 +87,11 @@ namespace LemadDb.Data
                     Price = 5000000,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/EstebanOcon.png"
+                    Path = "wwwroot/img/products/drivers/EstebanOcon.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1996, 09, 17),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -93,7 +101,11 @@ namespace LemadDb.Data
                     Price = 25000000,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/MaxVerstappen.png"
+                    Path = "wwwroot/img/products/drivers/MaxVerstappen.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1997, 09, 30),
+                    Description = "Mad Max",
+                    Quote = "Mistakes happen, and they happen to the best of us."
                 },
                 new Product
                 {
@@ -103,7 +115,11 @@ namespace LemadDb.Data
                     Price = 8000000,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/SergioPerez.png"
+                    Path = "wwwroot/img/products/drivers/SergioPerez.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 26),
+                    Description = "Checo",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -113,7 +129,11 @@ namespace LemadDb.Data
                     Price = 12000000,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/CharlesLeclerc.png"
+                    Path = "wwwroot/img/products/drivers/CharlesLeclerc.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1997, 10, 16),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -123,7 +143,11 @@ namespace LemadDb.Data
                     Price = 10000000,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/CarlosSainz.png"
+                    Path = "wwwroot/img/products/drivers/CarlosSainz.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1994, 09, 1),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -133,7 +157,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/LewisHamilton.png"
+                    Path = "wwwroot/img/products/drivers/LewisHamilton.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1985, 01, 07),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -143,7 +171,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/GeorgeRussell.png"
+                    Path = "wwwroot/img/products/drivers/GeorgeRussell.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1998, 02, 15),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -153,7 +185,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/LandoNorris.png"
+                    Path = "wwwroot/img/products/drivers/LandoNorris.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1999, 11, 13),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -163,7 +199,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/DanielRicciardo.png"
+                    Path = "wwwroot/img/products/drivers/DanielRicciardo.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1989, 07, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -173,7 +213,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/ValtteriBottas.png"
+                    Path = "wwwroot/img/products/drivers/ValtteriBottas.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1989, 08, 28),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -183,7 +227,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/ZhouGuanyu.png"
+                    Path = "wwwroot/img/products/drivers/ZhouGuanyu.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1999, 05, 30),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -193,7 +241,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/PierreGasly.png"
+                    Path = "wwwroot/img/products/drivers/PierreGasly.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1996, 02, 7),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -203,7 +255,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/YukiTsunoda.png"
+                    Path = "wwwroot/img/products/drivers/YukiTsunoda.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(2000, 05, 11),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -213,7 +269,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/NicholasLatifi.png"
+                    Path = "wwwroot/img/products/drivers/NicholasLatifi.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1995, 06, 29),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -223,7 +283,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/AlexanderAlbon.png"
+                    Path = "wwwroot/img/products/drivers/AlexanderAlbon.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1996, 03, 23),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -233,7 +297,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/SebastianVettel.png"
+                    Path = "wwwroot/img/products/drivers/SebastianVettel.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1987, 07, 03),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -243,7 +311,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/LanceStroll.png"
+                    Path = "wwwroot/img/products/drivers/LanceStroll.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1998, 11, 29),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -253,7 +325,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/KevinMagnussen.png"
+                    Path = "wwwroot/img/products/drivers/KevinMagnussen.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1992, 11, 05),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -263,7 +339,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.DRIVER,
-                    Path = "wwwroot/img/products/drivers/MickSchumacher.png"
+                    Path = "wwwroot/img/products/drivers/MickSchumacher.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1999, 03, 22),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -273,7 +353,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/MattiaBinotto.png"
+                    Path = "wwwroot/img/products/principals/MattiaBinotto.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -283,7 +367,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/FredericVasseur.png"
+                    Path = "wwwroot/img/products/principals/FredericVasseur.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -293,7 +381,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/FranzTost.png"
+                    Path = "wwwroot/img/products/principals/FranzTost.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -303,7 +395,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/OtmarSzafnauer.png"
+                    Path = "wwwroot/img/products/principals/OtmarSzafnauer.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -313,7 +409,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/GuentherSteiner.png"
+                    Path = "wwwroot/img/products/principals/GuentherSteiner.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -323,7 +423,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/AndreasSeidl.png"
+                    Path = "wwwroot/img/products/principals/AndreasSeidl.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -333,7 +437,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/TotoWolff.png"
+                    Path = "wwwroot/img/products/principals/TotoWolff.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -343,7 +451,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/ChristianHorner.png"
+                    Path = "wwwroot/img/products/principals/ChristianHorner.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -353,7 +465,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/JostCapito.png"
+                    Path = "wwwroot/img/products/principals/JostCapito.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -363,7 +479,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.PRINCIPAL,
-                    Path = "wwwroot/img/products/principals/MikeKrack.png"
+                    Path = "wwwroot/img/products/principals/MikeKrack.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -373,7 +493,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.POWERUNIT,
-                    Path = "wwwroot/img/products/powerunits/RedBullPowertrains.png"
+                    Path = "wwwroot/img/products/powerunits/RedBullPowertrains.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(2022, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -383,7 +507,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.POWERUNIT,
-                    Path = "wwwroot/img/products/powerunits/FerrariEngines.png"
+                    Path = "wwwroot/img/products/powerunits/FerrariEngines.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(2022, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -393,7 +521,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.POWERUNIT,
-                    Path = "wwwroot/img/products/powerunits/MercedesEngines.png"
+                    Path = "wwwroot/img/products/powerunits/MercedesEngines.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(2022, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -403,7 +535,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.POWERUNIT,
-                    Path = "wwwroot/img/products/powerunits/RenaultEngines.png"
+                    Path = "wwwroot/img/products/powerunits/RenaultEngines.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(2022, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -413,7 +549,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/JodyEgginton.png"
+                    Path = "wwwroot/img/products/technicalchiefs/JodyEgginton.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -423,7 +563,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/PierreWashe.png"
+                    Path = "wwwroot/img/products/technicalchiefs/PierreWashe.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -433,7 +577,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/EnricoCardile.png"
+                    Path = "wwwroot/img/products/technicalchiefs/EnricoCardile.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -443,7 +591,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/SimoneResta.png"
+                    Path = "wwwroot/img/products/technicalchiefs/SimoneResta.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -453,7 +605,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/MattHarman.png"
+                    Path = "wwwroot/img/products/technicalchiefs/MattHarman.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -463,7 +619,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/MikeElliott.png"
+                    Path = "wwwroot/img/products/technicalchiefs/MikeElliott.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -473,7 +633,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/BenWatkins.png"
+                    Path = "wwwroot/img/products/technicalchiefs/BenWatkins.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -483,7 +647,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/FrancoisXavierDemaison.png"
+                    Path = "wwwroot/img/products/technicalchiefs/FrancoisXavierDemaison.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -493,7 +661,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/JanMonchaux.png"
+                    Path = "wwwroot/img/products/technicalchiefs/JanMonchaux.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -503,7 +675,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.TECHNICALCHIEF,
-                    Path = "wwwroot/img/products/technicalchiefs/AndrewGreen.png"
+                    Path = "wwwroot/img/products/technicalchiefs/AndrewGreen.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -513,7 +689,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/BenMichell.png"
+                    Path = "wwwroot/img/products/raceengineers/BenMichell.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -523,7 +703,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/ChrisCronin.png"
+                    Path = "wwwroot/img/products/raceengineers/ChrisCronin.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -533,7 +717,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/JornBecker.png"
+                    Path = "wwwroot/img/products/raceengineers/JornBecker.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -543,7 +731,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/AlexChan.png"
+                    Path = "wwwroot/img/products/raceengineers/AlexChan.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -553,7 +745,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/MattiaSpini.png"
+                    Path = "wwwroot/img/products/raceengineers/MattiaSpini.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -563,7 +759,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/PierreHamelin.png"
+                    Path = "wwwroot/img/products/raceengineers/PierreHamelin.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -573,7 +773,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/GaryGannon.png"
+                    Path = "wwwroot/img/products/raceengineers/GaryGannon.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -583,7 +787,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/EdRegan.png"
+                    Path = "wwwroot/img/products/raceengineers/EdRegan.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -593,7 +801,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/GaetanJego.png"
+                    Path = "wwwroot/img/products/raceengineers/GaetanJego.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -603,7 +815,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/JamesUrwin.png"
+                    Path = "wwwroot/img/products/raceengineers/JamesUrwin.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -613,7 +829,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/JoshPecket.png"
+                    Path = "wwwroot/img/products/raceengineers/JoshPecket.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -623,7 +843,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/KarelLoos.png"
+                    Path = "wwwroot/img/products/raceengineers/KarelLoos.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -633,7 +857,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/RiccardoMusconi.png"
+                    Path = "wwwroot/img/products/raceengineers/RiccardoMusconi.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -643,7 +871,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/PeterBonnington.png"
+                    Path = "wwwroot/img/products/raceengineers/PeterBonnington.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -653,7 +885,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/GianpieroLambiase.png"
+                    Path = "wwwroot/img/products/raceengineers/GianpieroLambiase.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -663,7 +899,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/HughBird.png"
+                    Path = "wwwroot/img/products/raceengineers/HughBird.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -673,7 +913,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/JasonPrior.png"
+                    Path = "wwwroot/img/products/raceengineers/JasonPrior.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -683,7 +927,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/CristopherHayes.png"
+                    Path = "wwwroot/img/products/raceengineers/CristopherHayes.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -693,7 +941,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/RiccardoAdami.png"
+                    Path = "wwwroot/img/products/raceengineers/RiccardoAdami.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
                 new Product
                 {
@@ -703,7 +955,11 @@ namespace LemadDb.Data
                     Discount = 0,
                     Status = Status.ProductStatus.AVAILABLE,
                     ProductCategory = Category.ProductCategory.RACEENGINEER,
-                    Path = "wwwroot/img/products/raceengineers/XavierMarcosPardos.png"
+                    Path = "wwwroot/img/products/raceengineers/XavierMarcosPardos.png",
+                    MaxContractTime = 5,
+                    DateNaissance = new DateTime(1990, 01, 01),
+                    Description = "",
+                    Quote = ""
                 },
             };
 
