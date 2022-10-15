@@ -18,6 +18,7 @@ namespace LemadWeb.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(
             string sortOrder = null,
             string search = null,
+            string filter = null,
             int? pageNumber = 1
             )
         {
@@ -66,7 +67,50 @@ namespace LemadWeb.ViewComponents
             if (!string.IsNullOrEmpty(search))
                 item = item.Where(c => c.Name.ToLower().Contains(search.ToLower()) || c.ProductCategory.ToString().ToLower().Contains(search.ToLower())).ToList();
 
-            ViewBag.Verification = (item.Count() > 0) ? true : false;
+            if (!string.IsNullOrEmpty(filter))
+            {
+                switch (filter)
+                {
+                    case "tier1":
+                        item = item.Where(c => c.Price <= 650000).ToList();
+                        break;
+                    case "tier2":
+                        item = item.Where(c => c.Price > 650000 && c.Price <= 850000).ToList();
+                        break;
+                    case "tier3":
+                        item = item.Where(c => c.Price > 850000 && c.Price <= 1000000).ToList();
+                        break;
+                    case "tier4":
+                        item = item.Where(c => c.Price > 1000000 && c.Price <= 2000000).ToList();
+                        break;
+                    case "tier5":
+                        item = item.Where(c => c.Price > 2000000 && c.Price <= 10000000).ToList();
+                        break;
+                    case "tier6":
+                        item = item.Where(c => c.Price > 10000000 && c.Price <= 25000000).ToList();
+                        break;
+                    case "tier7":
+                        item = item.Where(c => c.Price > 25000000).ToList();
+                        break;
+                    case "AVAILABLE":
+                        item = item.Where(c => c.Status == Status.ProductStatus.AVAILABLE).ToList();
+                        break;
+                    case "INCOMMANDE":
+                        item = item.Where(c => c.Status == Status.ProductStatus.INCOMMANDE).ToList();
+                        break;
+                    case "UNAVAILABLE":
+                        item = item.Where(c => c.Status == Status.ProductStatus.UNAVAILABLE).ToList();
+                        break;
+                    case "LIQUIDATION":
+                        item = item.Where(c => c.Status == Status.ProductStatus.LIQUIDATION).ToList();
+                        break;
+                    case "PROMOTION":
+                        item = item.Where(c => c.Status == Status.ProductStatus.PROMOTION).ToList();
+                        break;
+                }
+            }
+
+                ViewBag.Verification = (item.Count() > 0) ? true : false;
             return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search, sortOrder));
         }
     }

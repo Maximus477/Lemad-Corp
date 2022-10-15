@@ -32,19 +32,26 @@ namespace LemadWeb.Controllers
         public ProductController(ApplicationDbContext context) { _context = context; }
 
         [AllowAnonymous]
-        public IActionResult List(string sortOrder, string searchString)
+        public IActionResult List(string sortOrder, string searchString, string filter)
         {
-             if (searchString == null)
+            if (filter == null)
+                filter = "";
+
+            if (searchString == null)
                 searchString = "";
 
             if (sortOrder == null)
                 sortOrder = "";
 
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
+            if (!(filter != null && sortOrder == "Price"))
+            {
+                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+                ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+                ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
+            }
 
+            ViewData["ItemFilter"] = filter;
             ViewData["CurrentFilter"] = searchString;
             ViewData["Filter"] = sortOrder;
 
