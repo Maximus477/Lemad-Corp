@@ -16,9 +16,10 @@ namespace LemadWeb.ViewComponents
         public ProductList(ApplicationDbContext context) { _context = context; }
 
         public async Task<IViewComponentResult> InvokeAsync(
+            string sortOrder = null,
             string search = null,
-            int? pageNumber = 1,
-            string sortOrder = null)
+            int? pageNumber = 1
+            )
         {
             var products = from p in _context.Products
                           select p;
