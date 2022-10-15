@@ -51,10 +51,11 @@ namespace LemadWeb
                 .AddSignInManager()
                 .AddDefaultTokenProviders();
 
-            services.AddAuthentication(options => {
+            services.AddAuthentication(options =>
+            {
                 options.DefaultScheme = IdentityConstants.ApplicationScheme;
                 options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-            });
+            }).AddIdentityCookies();
 
             services.AddControllersWithViews();
         }

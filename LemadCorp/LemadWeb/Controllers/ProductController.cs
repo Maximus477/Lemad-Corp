@@ -59,13 +59,13 @@ namespace LemadWeb.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model)
         {
@@ -109,7 +109,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             try
@@ -124,14 +124,6 @@ namespace LemadWeb.Controllers
                 {
                     return NotFound();
                 }
-                //ProductViewModel viewModel = new ProductViewModel()
-                //{
-                //    Name = model.Name,
-                //    Price = model.Price,
-                //    Discount = model.Discount,
-                //    Status = model.Status,
-                //    ProductCategory = model.ProductCategory
-                //};
                 return View(model);
             }
             catch
@@ -140,7 +132,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,ProductCategory,Status,Path,Photo")] Product model)
         {
@@ -216,7 +208,32 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [AllowAnonymous]
+
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var model = await _context.Products.FindAsync(id);
+                if (model == null)
+                {
+                    return NotFound();
+                }
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("List");
+            }
+        }
+
+
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Delete(int Id)
         {

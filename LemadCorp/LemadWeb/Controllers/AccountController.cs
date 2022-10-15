@@ -39,16 +39,20 @@ namespace LemadWeb.Controllers
         // POST : Account/Login
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginVM model, string ReturnUrl = null)
+        public async Task<IActionResult> Login(LoginVM model, string ReturnUrl = "/Home/Index")
         {
             if (!ModelState.IsValid)
                 return View(model);
 
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(
+                model.Email, model.Password, false, false);
+
+            if (result.IsLockedOut)
+                return View("Lockout");
 
             if (!result.Succeeded)
             {
-                ModelState.AddModelError(String.Empty, "Connection Failed!");
+                ModelState.AddModelError(string.Empty, "Connexion échouée!");
                 return View(model);
             }
 
@@ -73,7 +77,8 @@ namespace LemadWeb.Controllers
             var user = new ApplicationUser
             {
                 UserName = model.Email,
-                Email = model.Email
+                Email = model.Email,
+                EntrepriseName = model.EntrepriseName,
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -89,7 +94,7 @@ namespace LemadWeb.Controllers
 
         // GET : Account/LogOut
         [Authorize]
-        public async Task<IActionResult> LogOut(string ReturnUrl = null)
+        public async Task<IActionResult> Logout(string ReturnUrl = "/Home/Index")
         {
             try
             {

@@ -13,46 +13,54 @@ namespace LemadDb.Data
 {
     public static class SeedExtensions
     {
+        private static readonly PasswordHasher<ApplicationUser> PASSWORD_HASHER = new();
+
+        private static ApplicationUser CreateUser(string email, string password, string entreprise)
+        {
+            var user = new ApplicationUser
+            {
+                UserName = email,
+                NormalizedUserName = email.ToUpper(),
+                Email = email,
+                NormalizedEmail = email.ToUpper(),
+                EntrepriseName = entreprise
+            };
+            user.PasswordHash = PASSWORD_HASHER.HashPassword(user, password);
+
+            return user;
+        }
+
+        private static void SeedUsers(this ModelBuilder builder, IEnumerable<ApplicationUser> users)
+        {
+            foreach (var user in users)
+            {
+                builder.Entity<ApplicationUser>().HasData(user);
+            }
+        }
+
+        private static void SeedUsersToRole(this ModelBuilder builder, IEnumerable<ApplicationUser> users, IdentityRole role)
+        {
+            builder.Entity<IdentityRole>().HasData(role);
+
+            foreach (var user in users)
+            {
+                builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+                {
+                    UserId = user.Id,
+                    RoleId = role.Id
+                });
+            }
+        }
+
         public static void Seed(this ModelBuilder builder)
         {
-            #region Roles
-            List<IdentityRole> roles = new List<IdentityRole>()
-            {
-                new IdentityRole {
-                    Name = "Administrator",
-                    NormalizedName = "ADMINISTRATOR"
-                },
-                new IdentityRole {
-                    Name = "Seller",
-                    NormalizedName = "SELLER"
-                },
-                new IdentityRole {
-                    Name = "Buyer",
-                    NormalizedName = "BUYER"
-                }
+            var admins = new List<ApplicationUser>() {
+                CreateUser("admin@lemadrid.com", "!Qwerty123", "Admin"),
+                CreateUser("hugo@lemadrid.com", "!Qwerty123", "Cegep de Saint-Hyacinthe")
             };
 
-            builder.Entity<IdentityRole>().HasData(roles);
-            #endregion
-
-            #region User
-            List<ApplicationUser> users = new List<ApplicationUser>()
-            {
-                new ApplicationUser {
-                    Email = "admin@lemadrid.com",
-                    EntrepriseName = "Admin"
-                },
-                new ApplicationUser {
-                    Email = "hugolapointe@cegepsth.qc.ca",
-                    EntrepriseName = "Cégep Saint-Hyacinthe"
-                }
-            };
-
-            users[0].PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(users[0], "!Qwerty123");
-            users[1].PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(users[1], "!Qwerty123");
-
-            builder.Entity<ApplicationUser>().HasData(users);
-            #endregion
+            builder.SeedUsers(admins);
+            builder.SeedUsersToRole(admins, new IdentityRole("Administrator"));
 
             #region Products
             List<Product> products = new List<Product>
