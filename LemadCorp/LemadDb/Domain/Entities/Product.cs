@@ -24,6 +24,11 @@ namespace LemadDb.Domain.Entities
         public decimal Price { get; set; }
 
         public byte Discount { get; set; }
+        public int MaxContractTime { get; set; }
+
+        public DateTime DateNaissance { get; set; }
+        public string Description { get; set; } = "";
+        public string Quote { get; set; } = "";
 
         public ProductCategory ProductCategory { get; set; }
 
@@ -58,11 +63,19 @@ namespace LemadDb.Domain.Entities
                 .NotEmpty().WithMessage("The discount cannot be empty!")
                 .When(e => e.Discount >= 0 && e.Discount <= 100).WithMessage("The discount must be greater or equal and 0 and less or equal than 100");
 
+            RuleFor(e => e.MaxContractTime)
+                .NotEmpty().WithMessage("The id cannot be empty!")
+                .When(e => e.MaxContractTime >= 0 && e.MaxContractTime <= 25).WithMessage("The discount must be greater or equal and 0 and less or equal than 25");
+
+            RuleFor(e => e.DateNaissance)
+                .NotEmpty().WithMessage("The date cannot be empty!")
+                .When(e => e.DateNaissance <= DateTime.Now).WithMessage("The date must be before today!");
+
             RuleFor(e => e.Status)
                 .NotEmpty()
                 .WithMessage("The Status cannot be empty!");
 
-            RuleFor(e => e.ProductCategory)
+            RuleFor(e => e.ProductCategory)
                 .NotEmpty()
                 .WithMessage("The type cannot be empty!");
         }

@@ -25,8 +25,8 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu">
-                        @Html.ActionLink("Nom", "List", new { sortOrder = ViewBag.NameSortParm })
-                        @Html.ActionLink("Prix", "List", new { sortOrder = ViewBag.PriceSortParm })
+                        @Html.ActionLink("Nom", "List", new { sortOrder = ViewBag.NameSortParm, searchString = ViewData["CurrentFilter"] })
+                        @Html.ActionLink("Prix", "List", new { sortOrder = ViewBag.PriceSortParm, searchString = ViewData["CurrentFilter"]})
                     </div>
                 </div>
             </div>

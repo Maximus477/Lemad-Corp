@@ -34,7 +34,7 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString)
         {
-            if (searchString == null)
+             if (searchString == null)
                 searchString = "";
 
             if (sortOrder == null)
@@ -231,9 +231,9 @@ namespace LemadWeb.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult reload(int pageNumber, string search = "")
+        public IActionResult reload(int pageNumber, string sortOrder, string search = "")
         {
-            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber });
+            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder });
         }
 
         private void verifierImage()

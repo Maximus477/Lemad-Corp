@@ -27,6 +27,8 @@ namespace LemadWeb.ViewComponents
             // Sorting:
             // Name
             // Price
+            // Discount
+            // Products types
             // +2
 
             // Filters:
@@ -54,7 +56,7 @@ namespace LemadWeb.ViewComponents
                 item = item.Where(c => c.Name.ToLower().Contains(search.ToLower()) || c.ProductCategory.ToString().ToLower().Contains(search.ToLower())).ToList();
 
             ViewBag.Verification = (item.Count() > 0) ? true : false;
-            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search));
+            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search, sortOrder));
         }
     }
 }
