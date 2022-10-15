@@ -21,8 +21,8 @@ namespace LemadWeb.ViewComponents
             int? pageNumber = 1
             )
         {
-            var products = from p in _context.Products
-                          select p;
+            int pageSize = 12;
+            var item = _context.Products.ToList();
 
             // Sorting:
             // Name
@@ -37,21 +37,19 @@ namespace LemadWeb.ViewComponents
             switch (sortOrder)
             {
                 case "name_desc":
-                    products = products.OrderByDescending(p => p.Name);
+                    item = item.OrderByDescending(p => p.Name).ToList();
                     break;
                 case "Price":
-                    products = products.OrderBy(p => p.Price);
+                    item = item.OrderBy(p => p.Price).ToList();
                     break;
                 case "price_desc":
-                    products = products.OrderByDescending(p => p.Price);
+                    item = item.OrderByDescending(p => p.Price).ToList();
                     break;
                 default:
-                    products = products.OrderBy(p => p.Name);
+                    item = item.OrderBy(p => p.Name).ToList();
                     break;
             }
 
-            int pageSize = 12;
-            var item = products.ToList();
             if (!string.IsNullOrEmpty(search))
                 item = item.Where(c => c.Name.ToLower().Contains(search.ToLower()) || c.ProductCategory.ToString().ToLower().Contains(search.ToLower())).ToList();
 
