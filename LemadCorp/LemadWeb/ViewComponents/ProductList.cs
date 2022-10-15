@@ -28,8 +28,7 @@ namespace LemadWeb.ViewComponents
             // Name
             // Price
             // Discount
-            // Products types
-            // +2
+            // Date
 
             // Filters:
             // Intervales de prix
@@ -38,6 +37,18 @@ namespace LemadWeb.ViewComponents
 
             switch (sortOrder)
             {
+                case "date_desc":
+                    item = item.OrderByDescending(p => p.DateNaissance).ToList();
+                    break;
+                case "Date":
+                    item = item.OrderBy(p => p.DateNaissance).ToList();
+                    break;
+                case "discount_desc":
+                    item = item.OrderByDescending(p => p.Discount).ToList();
+                    break;
+                case "Discount":
+                    item = item.OrderBy(p => p.Discount).ToList();
+                    break;
                 case "name_desc":
                     item = item.OrderByDescending(p => p.Name).ToList();
                     break;

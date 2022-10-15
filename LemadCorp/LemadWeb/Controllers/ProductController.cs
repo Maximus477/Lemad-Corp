@@ -42,6 +42,8 @@ namespace LemadWeb.Controllers
 
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
 
             ViewData["CurrentFilter"] = searchString;
             ViewData["Filter"] = sortOrder;
