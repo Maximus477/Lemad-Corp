@@ -32,12 +32,19 @@ namespace LemadWeb.Controllers
         public ProductController(ApplicationDbContext context) { _context = context; }
 
         [AllowAnonymous]
-        public IActionResult List(string searchString)
+        public IActionResult List(string sortOrder, string searchString)
         {
             if (searchString == null)
                 searchString = "";
 
+            if (sortOrder == null)
+                sortOrder = "";
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+
             ViewData["CurrentFilter"] = searchString;
+            ViewData["Filter"] = sortOrder;
 
             verifierImage();
             return View();

@@ -5,26 +5,38 @@
 
 
 @section Styles {
-    <link rel="stylesheet" href="~/sass/catalogue.css" />
+<link rel="stylesheet" href="~/sass/catalogue.css" />
 }
 
 <div class="container-padding">
     <a asp-area="" asp-controller="Product" asp-action="Create">Create a product</a>
     <div class="row">
         <div class="change-list col-12 col-sm-12 col-md-2 col-lg-2 col-lg-2 col-xl-2">
-            
         </div>
         <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="title">
                 <h2>Catalogue</h2>
             </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="title">
+                <div class="btn-group">
+                    <p class="total-white-link button-dropdown">Products</p>
+                    <button type="button" class="dropdown-toggle dropdown-toggle-split button-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        @Html.ActionLink("Nom", "List", new { sortOrder = ViewBag.NameSortParm })
+                        @Html.ActionLink("Prix", "List", new { sortOrder = ViewBag.PriceSortParm })
+                    </div>
+                </div>
+            </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="list-div">
                     <div class="row justify-content-center" id="lst">
-                        <vc:product-list search="@ViewData["CurrentFilter"]"></vc:product-list>
+                        <vc:product-list search="@ViewData["CurrentFilter"]" sortOrder="@ViewData["Filter"]"></vc:product-list>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
