@@ -42,18 +42,109 @@ namespace LemadDb.Domain.Entities
 
         #endregion
 
+
+        public string GetDate
+        {
+            get
+            {
+                var age = DateTime.Today.Year - DateNaissance.Year;
+                if (DateNaissance.Date > DateTime.Today.AddYears(-age)) age--;
+
+                if (ProductCategory == Category.ProductCategory.POWERUNIT)
+                {
+                    return "Date de création: " + DateNaissance.ToString("dd MMM yyyy") + " (" + age.ToString() + " ans)";
+                } else
+                {
+                    return "Date de naissance: " + DateNaissance.ToString("dd MMM yyyy") + " (" + age.ToString() + " ans)";
+                }
+            }
+        }
+        public string GetCategoryName
+        {
+            get
+            {
+                switch (ProductCategory)
+                {
+                    case Category.ProductCategory.DRIVER:
+                        return "Driver";
+                        break;
+                    case Category.ProductCategory.POWERUNIT:
+                        return "Power unit";
+                        break;
+                    case Category.ProductCategory.PRINCIPAL:
+                        return "Team principal";
+                        break;
+                    case Category.ProductCategory.TECHNICALCHIEF:
+                        return "Technical chief";
+                        break;
+                    case Category.ProductCategory.RACEENGINEER:
+                        return "Race engineer";
+                        break;
+                    default:
+                        return "";
+                        break;
+                }
+            }
+        }
         public decimal ActualPrice
         {
             get
             {
-                return Price - (((decimal)Discount/100) * Price);
+                return Price - (((decimal)Discount / 100) * Price);
             }
         }
         public decimal DiscountAmount
         {
             get
             {
-                return ((decimal)Discount /100) * Price;
+                return ((decimal)Discount / 100) * Price;
+            }
+        }
+        internal static long MaxThreeSignificantDigits(long x)
+        {
+            int i = (int)Math.Log10(x);
+            i = Math.Max(0, i - 2);
+            i = (int)Math.Pow(10, i);
+            return x / i * i;
+        }
+        public string FormatNumber(decimal num)
+        {
+            num = MaxThreeSignificantDigits((long)num);
+            Double dnum = Decimal.ToDouble(num);
+
+            if (num >= 100000000)
+                return (dnum / 1000000D).ToString("0.#M");
+            if (num >= 1000000)
+                return (dnum / 1000000D).ToString("0.##M");
+            if (num >= 100000)
+                return (dnum / 1000D).ToString("0k");
+            if (num >= 100000)
+                return (dnum / 1000D).ToString("0.#k");
+            if (num >= 1000)
+                return (dnum / 1000D).ToString("0.##k");
+            return dnum.ToString("#,0");
+        }
+
+        public string GetDisponibility()
+        {
+            switch(Status)
+            {
+                case Data.Status.ProductStatus.AVAILABLE:
+                    return "Disponible";
+                    break;
+                case Data.Status.ProductStatus.UNAVAILABLE:
+                    return "Indisponible";
+                    break;
+                case Data.Status.ProductStatus.INCOMMANDE:
+                    return "Non dispobile, en commande...";
+                    break;
+                case Data.Status.ProductStatus.LIQUIDATION:
+                    return "En liquidation!";
+                    break;
+                case Data.Status.ProductStatus.PROMOTION:
+                    return "En promotion!";
+                    break;
+                default: return "";
             }
         }
     }
