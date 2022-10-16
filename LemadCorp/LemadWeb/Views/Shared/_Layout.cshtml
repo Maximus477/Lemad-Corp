@@ -22,9 +22,9 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="navbar-toggler-icon fa fa-bars"></i>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between row">
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between row">
                     <ul class="navbar-nav" style="width:100%">
-                        <li class="nav-item col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
                             <div class="btn-group">
                                 <a class="total-white-link button-dropdown" asp-area="" asp-controller="Product" asp-action="List">Products</a>
                                 <button type="button" class="dropdown-toggle dropdown-toggle-split button-dropdown"
@@ -40,14 +40,14 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                             <form asp-controller="Product" asp-action="List" method="get" class="form-inline search-form row">
                                 <input class="searchbar col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" type="search" 
                                 placeholder="Search a product..." aria-label="Search" name="searchString" value="@ViewData["CurrentFilter"]" />
-                                <button class="button-header col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2" type="submit" value="">
+                                <button class="button-header col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2" type="submit" value="">
                                     <i class="fa fa-search fa-align-center"></i>
                                 </button>
-                                <a class="button-header-alt col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" asp-area="" asp-controller="" asp-action="">
+                                <a class="button-header-alt col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" asp-area="" asp-controller="" asp-action="">
                                     <i class="fa fa-shopping-cart fa-align-center"></i>
                                 </a>
                             </form>
@@ -76,11 +76,11 @@
                                 </button>
                             </div>
                         </li>-->
-                        <li class="nav-item col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2" style="text-align: center; vertical-align:middle;">
+                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="text-align: center; vertical-align:middle;">
                             @if (!User.Identity.IsAuthenticated)
                             {
                                 <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
-                                    <p>Login<i class="fa fa-user"></i></p>
+                                    <p>Login@*<i class="fa fa-user"></i>*@</p>
                                 </a>
                             }
                             else
