@@ -56,7 +56,7 @@ namespace LemadWeb.ViewComponents
             }
 
             if (!string.IsNullOrEmpty(search))
-                item = item.Where(c => c.Name.ToLower().Contains(search.ToLower()) || c.ProductCategory.ToString().ToLower().Contains(search.ToLower())).ToList();
+                item = item.Where(c => c.Name.ToLower().Contains(search.ToLower())).ToList();
 
             if (!string.IsNullOrEmpty(Pricefilter))
             {
