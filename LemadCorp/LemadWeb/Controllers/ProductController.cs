@@ -78,7 +78,11 @@ namespace LemadWeb.Controllers
                     Price = model.Price,
                     Discount = model.Discount,
                     Status = model.Status,
-                    ProductCategory = model.ProductCategory
+                    ProductCategory = model.ProductCategory,
+                    MaxContractTime = model.MaxContractTime,
+                    DateNaissance = model.DateNaissance,
+                    Description = model.Description,
+                    Quote = model.Quote
                 };
 
                 if (Request.Form.Count > 0)
@@ -235,19 +239,11 @@ namespace LemadWeb.Controllers
         {
             try
             {
-                if (Id == null)
-                {
-                    return NotFound();
-                }
-
                 var model = await _context.Products.FirstOrDefaultAsync(p => p.Id == Id);
+                _context.Products.Remove(model);
+                _context.SaveChanges();
 
-                if (model == null)
-                {
-                    return NotFound();
-                }
-
-                return View(model);
+                return RedirectToAction("List");
             }
             catch
             {

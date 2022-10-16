@@ -42,6 +42,26 @@
                 <span asp-validation-for="ProductCategory" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="MaxContractTime" class="control-label"></label>
+                <input asp-for="MaxContractTime" class="form-control" />
+                <span asp-validation-for="MaxContractTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateNaissance" class="control-label"></label>
+                <input type="date" asp-for="DateNaissance" class="form-control" />
+                <span asp-validation-for="DateNaissance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quote" class="control-label"></label>
+                <input asp-for="Quote" class="form-control" />
+                <span asp-validation-for="Quote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -53,5 +73,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

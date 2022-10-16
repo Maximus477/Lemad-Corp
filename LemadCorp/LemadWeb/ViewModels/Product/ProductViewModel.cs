@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using System;
 using System.ComponentModel.DataAnnotations;
 using static LemadDb.Data.Category;
 using static LemadDb.Data.Status;
@@ -18,6 +19,11 @@ namespace LemadWeb.ViewModels.Product
         public ProductStatus Status { get; set; }
 
         public byte[] Photo { get; set; }
+        public int MaxContractTime { get; set; }
+
+        public DateTime DateNaissance { get; set; }
+        public string Description { get; set; } = "";
+        public string Quote { get; set; } = "";
     }
 
     public class ProductValidator : AbstractValidator<ProductViewModel>
