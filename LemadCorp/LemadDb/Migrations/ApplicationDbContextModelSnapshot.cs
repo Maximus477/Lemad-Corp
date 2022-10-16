@@ -1036,35 +1036,35 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c34626c0-52e1-45ae-8a94-8d3a1137c68a",
+                            Id = "fc01847b-3b7f-4146-94de-9bfe27bcbbaa",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4c030395-ca98-488e-86cf-14a92a125f93",
+                            ConcurrencyStamp = "226cad23-abeb-4e22-a096-4ac056bd5338",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LEMADRID.COM",
                             NormalizedUserName = "ADMIN@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFCgbiWgAeUQ+4MVwUxo19bl0WuBc+jn+7piGwFj4vZ1CoWgihnaFtKIvsFWrcWkwg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELOn7Twsr9DzF6/IiWO6Ly8hPDpJ8tE/XlgoUjkFkAjv1qpH+Zb94qJFneJUZA/eMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c1fa7b01-b96b-496f-a71d-f812a5ca576d",
+                            SecurityStamp = "feaf2652-fdca-4fb8-b211-04a5e5ee77e8",
                             TwoFactorEnabled = false,
                             UserName = "admin@lemadrid.com"
                         },
                         new
                         {
-                            Id = "555242c9-e199-40d4-8dd5-f493fbfc1fa2",
+                            Id = "2c41a3d0-f23b-4e88-9187-fcdbb0ac851f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0a58feb2-22e1-4ee1-8953-79172c83094c",
+                            ConcurrencyStamp = "e531e970-f850-4ad5-96b9-962e656b8710",
                             Email = "hugo@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Cegep de Saint-Hyacinthe",
                             LockoutEnabled = false,
                             NormalizedEmail = "HUGO@LEMADRID.COM",
                             NormalizedUserName = "HUGO@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECONBkaMhw8+5yBaoYjWzw/UqNDAqJfzzqKn8M/rA+UHSLjv2NbzqqQQS+UK35SJ2A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBJx8Rx21ojuwDYgWZFSW0Dv4eNvUJNKnebbMSQwhf/vmUgI584q+4IlN6tjhgnheQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "21b06564-ca30-486e-8577-44b23a4027a2",
+                            SecurityStamp = "b646922c-5d7a-4d20-ab6b-f7ceb88757e8",
                             TwoFactorEnabled = false,
                             UserName = "hugo@lemadrid.com"
                         });
@@ -1099,8 +1099,8 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "49b9cc8e-cf6a-4920-8f70-ff117273992e",
-                            ConcurrencyStamp = "8e330466-3c05-425a-a8f0-45bedb0cfb42",
+                            Id = "346325f9-a767-4934-af2c-66c6a688e258",
+                            ConcurrencyStamp = "4c216c3b-fae3-43d9-83b9-16fb74abf708",
                             Name = "Administrator"
                         });
                 });
@@ -1192,13 +1192,13 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "c34626c0-52e1-45ae-8a94-8d3a1137c68a",
-                            RoleId = "49b9cc8e-cf6a-4920-8f70-ff117273992e"
+                            UserId = "fc01847b-3b7f-4146-94de-9bfe27bcbbaa",
+                            RoleId = "346325f9-a767-4934-af2c-66c6a688e258"
                         },
                         new
                         {
-                            UserId = "555242c9-e199-40d4-8dd5-f493fbfc1fa2",
-                            RoleId = "49b9cc8e-cf6a-4920-8f70-ff117273992e"
+                            UserId = "2c41a3d0-f23b-4e88-9187-fcdbb0ac851f",
+                            RoleId = "346325f9-a767-4934-af2c-66c6a688e258"
                         });
                 });
 

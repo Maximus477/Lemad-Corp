@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LemadDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221016193201_seedEdit")]
-    partial class seedEdit
+    [Migration("20221016204909_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -169,14 +169,14 @@ namespace LemadDb.Migrations
                             Id = 8,
                             DateNaissance = new DateTime(1998, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 2,
                             MaxContractTime = 5,
                             Name = "George Russell",
                             Path = "wwwroot/img/products/drivers/GeorgeRussell.png",
                             Price = 5000000m,
                             ProductCategory = 0,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -239,14 +239,14 @@ namespace LemadDb.Migrations
                             Id = 13,
                             DateNaissance = new DateTime(1996, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 18,
                             MaxContractTime = 5,
                             Name = "Pierre Gasly",
                             Path = "wwwroot/img/products/drivers/PierreGasly.png",
                             Price = 5000000m,
                             ProductCategory = 0,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -267,14 +267,14 @@ namespace LemadDb.Migrations
                             Id = 15,
                             DateNaissance = new DateTime(1995, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 60,
                             MaxContractTime = 5,
                             Name = "Nicholas Latifi",
                             Path = "wwwroot/img/products/drivers/NicholasLatifi.png",
                             Price = 1000000m,
                             ProductCategory = 0,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -309,28 +309,28 @@ namespace LemadDb.Migrations
                             Id = 18,
                             DateNaissance = new DateTime(1998, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 49,
                             MaxContractTime = 5,
                             Name = "Lance Stroll",
                             Path = "wwwroot/img/products/drivers/LanceStroll.png",
                             Price = 10000000m,
                             ProductCategory = 0,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
                             Id = 19,
                             DateNaissance = new DateTime(1992, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 22,
                             MaxContractTime = 5,
                             Name = "Kevin Magnussen",
                             Path = "wwwroot/img/products/drivers/KevinMagnussen.png",
                             Price = 6000000m,
                             ProductCategory = 0,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -379,14 +379,14 @@ namespace LemadDb.Migrations
                             Id = 23,
                             DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 25,
                             MaxContractTime = 5,
                             Name = "Franz Tost",
                             Path = "wwwroot/img/products/principals/FranzTost.png",
                             Price = 1000000m,
                             ProductCategory = 1,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -407,14 +407,14 @@ namespace LemadDb.Migrations
                             Id = 25,
                             DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 34,
                             MaxContractTime = 5,
                             Name = "Guenther Steiner",
                             Path = "wwwroot/img/products/principals/GuentherSteiner.png",
                             Price = 1000000m,
                             ProductCategory = 1,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -449,14 +449,14 @@ namespace LemadDb.Migrations
                             Id = 28,
                             DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 13,
                             MaxContractTime = 5,
                             Name = "Christian Horner",
                             Path = "wwwroot/img/products/principals/ChristianHorner.png",
                             Price = 10000000m,
                             ProductCategory = 1,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -519,14 +519,14 @@ namespace LemadDb.Migrations
                             Id = 33,
                             DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 15,
                             MaxContractTime = 5,
                             Name = "Mercedes engines",
                             Path = "wwwroot/img/products/powerunits/MercedesEngines.png",
                             Price = 35000000m,
                             ProductCategory = 2,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -575,14 +575,14 @@ namespace LemadDb.Migrations
                             Id = 37,
                             DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 10,
                             MaxContractTime = 5,
                             Name = "Enrico Cardile",
                             Path = "wwwroot/img/products/technicalchiefs/EnricoCardile.png",
                             Price = 1500000m,
                             ProductCategory = 4,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -631,14 +631,14 @@ namespace LemadDb.Migrations
                             Id = 41,
                             DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 10,
                             MaxContractTime = 5,
                             Name = "Ben Watkins",
                             Path = "wwwroot/img/products/technicalchiefs/BenWatkins.png",
                             Price = 800000m,
                             ProductCategory = 4,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -757,14 +757,14 @@ namespace LemadDb.Migrations
                             Id = 50,
                             DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 5,
                             MaxContractTime = 5,
                             Name = "Pierre Hamelin",
                             Path = "wwwroot/img/products/raceengineers/PierreHamelin.png",
                             Price = 800000m,
                             ProductCategory = 3,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -827,14 +827,14 @@ namespace LemadDb.Migrations
                             Id = 55,
                             DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 0,
+                            Discount = 5,
                             MaxContractTime = 5,
                             Name = "Josh Pecket",
                             Path = "wwwroot/img/products/raceengineers/JoshPecket.png",
                             Price = 2000000m,
                             ProductCategory = 3,
                             Quote = "",
-                            Status = 0
+                            Status = 4
                         },
                         new
                         {
@@ -1038,35 +1038,35 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2b106ed6-df3d-4b70-b8b7-e5f2cc860eff",
+                            Id = "fc01847b-3b7f-4146-94de-9bfe27bcbbaa",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3847bd63-8247-4932-bb72-d673b4deb367",
+                            ConcurrencyStamp = "226cad23-abeb-4e22-a096-4ac056bd5338",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LEMADRID.COM",
                             NormalizedUserName = "ADMIN@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENuh0NlcImiBxUKrZ5fNWJk1Y4oA11rgkfoXUKU/vEGwuYgA0AcKjLyHZ3mGkhchGg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELOn7Twsr9DzF6/IiWO6Ly8hPDpJ8tE/XlgoUjkFkAjv1qpH+Zb94qJFneJUZA/eMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d95680fe-47e7-4532-b3db-b10813ac020f",
+                            SecurityStamp = "feaf2652-fdca-4fb8-b211-04a5e5ee77e8",
                             TwoFactorEnabled = false,
                             UserName = "admin@lemadrid.com"
                         },
                         new
                         {
-                            Id = "e82262e3-354b-44e5-8f79-f13b0ea1f92d",
+                            Id = "2c41a3d0-f23b-4e88-9187-fcdbb0ac851f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "413fd30e-eec5-418b-bcbd-23135cf8fbf2",
+                            ConcurrencyStamp = "e531e970-f850-4ad5-96b9-962e656b8710",
                             Email = "hugo@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Cegep de Saint-Hyacinthe",
                             LockoutEnabled = false,
                             NormalizedEmail = "HUGO@LEMADRID.COM",
                             NormalizedUserName = "HUGO@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKRY57U3N8Y3Bq6GC1WRGCJghs7CezEyXRFB0nq8GsO9zEW1WoxGkmkMGbr31xcTnA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBJx8Rx21ojuwDYgWZFSW0Dv4eNvUJNKnebbMSQwhf/vmUgI584q+4IlN6tjhgnheQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7b65c32e-ea64-4bb8-b241-d5259f216f88",
+                            SecurityStamp = "b646922c-5d7a-4d20-ab6b-f7ceb88757e8",
                             TwoFactorEnabled = false,
                             UserName = "hugo@lemadrid.com"
                         });
@@ -1101,8 +1101,8 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e043fdb6-7ca7-4c03-9443-903989a2b069",
-                            ConcurrencyStamp = "0c131837-032d-4d7b-8c6f-498c8b5a1872",
+                            Id = "346325f9-a767-4934-af2c-66c6a688e258",
+                            ConcurrencyStamp = "4c216c3b-fae3-43d9-83b9-16fb74abf708",
                             Name = "Administrator"
                         });
                 });
@@ -1194,13 +1194,13 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2b106ed6-df3d-4b70-b8b7-e5f2cc860eff",
-                            RoleId = "e043fdb6-7ca7-4c03-9443-903989a2b069"
+                            UserId = "fc01847b-3b7f-4146-94de-9bfe27bcbbaa",
+                            RoleId = "346325f9-a767-4934-af2c-66c6a688e258"
                         },
                         new
                         {
-                            UserId = "e82262e3-354b-44e5-8f79-f13b0ea1f92d",
-                            RoleId = "e043fdb6-7ca7-4c03-9443-903989a2b069"
+                            UserId = "2c41a3d0-f23b-4e88-9187-fcdbb0ac851f",
+                            RoleId = "346325f9-a767-4934-af2c-66c6a688e258"
                         });
                 });
 
