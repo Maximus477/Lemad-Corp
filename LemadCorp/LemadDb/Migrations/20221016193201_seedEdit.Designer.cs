@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LemadDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221014002643_initial")]
-    partial class initial
+    [Migration("20221016193201_seedEdit")]
+    partial class seedEdit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,10 +28,22 @@ namespace LemadDb.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte>("Discount")
-                        .HasColumnType("tinyint");
+                    b.Property<DateTime>("DateNaissance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxContractTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Photo")
@@ -42,6 +54,9 @@ namespace LemadDb.Migrations
 
                     b.Property<int>("ProductCategory")
                         .HasColumnType("int");
+
+                    b.Property<string>("Quote")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -54,577 +69,897 @@ namespace LemadDb.Migrations
                         new
                         {
                             Id = 1,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1981, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Teflonso, the spanish GOAT",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Fernando Alonso",
+                            Path = "wwwroot/img/products/drivers/FernandoAlonso.png",
                             Price = 20000000m,
                             ProductCategory = 0,
+                            Quote = "I am one of the best to have raced in F1. I am probably not fastest in qualifying, or the wet, but I am 9.5 in all areas. I try to benefit from that.",
                             Status = 0
                         },
                         new
                         {
                             Id = 2,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1996, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Esteban Ocon",
+                            Path = "wwwroot/img/products/drivers/EstebanOcon.png",
                             Price = 5000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 3,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1997, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mad Max",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Max Verstappen",
+                            Path = "wwwroot/img/products/drivers/MaxVerstappen.png",
                             Price = 25000000m,
                             ProductCategory = 0,
+                            Quote = "Mistakes happen, and they happen to the best of us.",
                             Status = 0
                         },
                         new
                         {
                             Id = 4,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Checo",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Sergio Perez",
+                            Path = "wwwroot/img/products/drivers/SergioPerez.png",
                             Price = 8000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 5,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1997, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Charles Leclerc",
+                            Path = "wwwroot/img/products/drivers/CharlesLeclerc.png",
                             Price = 12000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 6,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1994, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Carlos Sainz",
+                            Path = "wwwroot/img/products/drivers/CarlosSainz.png",
                             Price = 10000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 7,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1985, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Lewis Hamilton",
+                            Path = "wwwroot/img/products/drivers/LewisHamilton.png",
                             Price = 40000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 8,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1998, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "George Russell",
+                            Path = "wwwroot/img/products/drivers/GeorgeRussell.png",
                             Price = 5000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 9,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1999, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Lando Norris",
+                            Path = "wwwroot/img/products/drivers/LandoNorris.png",
                             Price = 20000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 10,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1989, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Daniel Ricciardo",
+                            Path = "wwwroot/img/products/drivers/DanielRicciardo.png",
                             Price = 15000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 11,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1989, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Valtteri Bottas",
+                            Path = "wwwroot/img/products/drivers/ValtteriBottas.png",
                             Price = 10000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 12,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1999, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Zhou Guanyu",
+                            Path = "wwwroot/img/products/drivers/ZhouGuanyu.png",
                             Price = 1000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 13,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1996, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Pierre Gasly",
+                            Path = "wwwroot/img/products/drivers/PierreGasly.png",
                             Price = 5000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 14,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2000, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Yuki Tsunoda",
+                            Path = "wwwroot/img/products/drivers/YukiTsunoda.png",
                             Price = 750000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 15,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1995, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Nicholas Latifi",
+                            Path = "wwwroot/img/products/drivers/NicholasLatifi.png",
                             Price = 1000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 16,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1996, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Alexander Albon",
+                            Path = "wwwroot/img/products/drivers/AlexanderAlbon.png",
                             Price = 2000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 17,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1987, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Sebastian Vettel",
+                            Path = "wwwroot/img/products/drivers/SebastianVettel.png",
                             Price = 15000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 18,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1998, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Lance Stroll",
+                            Path = "wwwroot/img/products/drivers/LanceStroll.png",
                             Price = 10000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 19,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1992, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Kevin Magnussen",
+                            Path = "wwwroot/img/products/drivers/KevinMagnussen.png",
                             Price = 6000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 20,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1999, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mick Schumacher",
+                            Path = "wwwroot/img/products/drivers/MickSchumacher.png",
                             Price = 1000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 21,
-                            Discount = (byte)0,
-                            Name = "Mattias Binotto",
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
+                            Name = "Mattia Binotto",
+                            Path = "wwwroot/img/products/principals/MattiaBinotto.png",
                             Price = 3000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 22,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Frédéric Vasseur",
+                            Path = "wwwroot/img/products/principals/FredericVasseur.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 23,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Franz Tost",
+                            Path = "wwwroot/img/products/principals/FranzTost.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 24,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Otmar Szafnauer",
+                            Path = "wwwroot/img/products/principals/OtmarSzafnauer.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 25,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Guenther Steiner",
+                            Path = "wwwroot/img/products/principals/GuentherSteiner.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 26,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Andreas Seidl",
+                            Path = "wwwroot/img/products/principals/AndreasSeidl.png",
                             Price = 2000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 27,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Toto Wolff",
+                            Path = "wwwroot/img/products/principals/TotoWolff.png",
                             Price = 9100000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 28,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Christian Horner",
+                            Path = "wwwroot/img/products/principals/ChristianHorner.png",
                             Price = 10000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 29,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jost Capito",
+                            Path = "wwwroot/img/products/principals/JostCapito.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 30,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mike Krack",
+                            Path = "wwwroot/img/products/principals/MikeKrack.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 31,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Red Bull Powertrains",
+                            Path = "wwwroot/img/products/powerunits/RedBullPowertrains.png",
                             Price = 50000000m,
                             ProductCategory = 2,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 32,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Ferrari engines",
+                            Path = "wwwroot/img/products/powerunits/FerrariEngines.png",
                             Price = 40000000m,
                             ProductCategory = 2,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 33,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mercedes engines",
+                            Path = "wwwroot/img/products/powerunits/MercedesEngines.png",
                             Price = 35000000m,
                             ProductCategory = 2,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 34,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Renault engines",
+                            Path = "wwwroot/img/products/powerunits/RenaultEngines.png",
                             Price = 30000000m,
                             ProductCategory = 2,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 35,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jody Egginton",
+                            Path = "wwwroot/img/products/technicalchiefs/JodyEgginton.png",
                             Price = 600000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 36,
-                            Discount = (byte)0,
-                            Name = "Pierre Wache",
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
+                            Name = "Pierre Washe",
+                            Path = "wwwroot/img/products/technicalchiefs/PierreWashe.png",
                             Price = 2000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 37,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Enrico Cardile",
+                            Path = "wwwroot/img/products/technicalchiefs/EnricoCardile.png",
                             Price = 1500000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 38,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Simone Resta",
+                            Path = "wwwroot/img/products/technicalchiefs/SimoneResta.png",
                             Price = 1000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 39,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Matt Harman",
+                            Path = "wwwroot/img/products/technicalchiefs/MattHarman.png",
                             Price = 1000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 40,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mike Elliott",
+                            Path = "wwwroot/img/products/technicalchiefs/MikeElliott.png",
                             Price = 1000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 41,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Ben Watkins",
+                            Path = "wwwroot/img/products/technicalchiefs/BenWatkins.png",
                             Price = 800000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 42,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Francois-Xavier Demaison",
+                            Path = "wwwroot/img/products/technicalchiefs/FrancoisXavierDemaison.png",
                             Price = 750000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 43,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jan Monchaux",
+                            Path = "wwwroot/img/products/technicalchiefs/JanMonchaux.png",
                             Price = 500000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 44,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Andrew Green",
+                            Path = "wwwroot/img/products/technicalchiefs/AndrewGreen.png",
                             Price = 400000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 45,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Ben Michell",
+                            Path = "wwwroot/img/products/raceengineers/BenMichell.png",
                             Price = 2000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 46,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Chris Cronin",
+                            Path = "wwwroot/img/products/raceengineers/ChrisCronin.png",
                             Price = 1500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 47,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jorn Becker",
+                            Path = "wwwroot/img/products/raceengineers/JornBecker.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 48,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 10,
+                            MaxContractTime = 5,
                             Name = "Alex Chan",
+                            Path = "wwwroot/img/products/raceengineers/AlexChan.png",
                             Price = 1000000m,
                             ProductCategory = 3,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 49,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mattia Spini",
+                            Path = "wwwroot/img/products/raceengineers/MattiaSpini.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 50,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Pierre Hamelin",
+                            Path = "wwwroot/img/products/raceengineers/PierreHamelin.png",
                             Price = 800000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 51,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Gary Gannon",
+                            Path = "wwwroot/img/products/raceengineers/GaryGannon.png",
                             Price = 750000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 52,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Ed Regan",
+                            Path = "wwwroot/img/products/raceengineers/EdRegan.png",
                             Price = 600000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 53,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Gaetan Jego",
+                            Path = "wwwroot/img/products/raceengineers/GaetanJego.png",
                             Price = 500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 54,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "James Urwin",
+                            Path = "wwwroot/img/products/raceengineers/JamesUrwin.png",
                             Price = 400000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 55,
-                            Discount = (byte)0,
-                            Name = "Josh Peckett",
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
+                            Name = "Josh Pecket",
+                            Path = "wwwroot/img/products/raceengineers/JoshPecket.png",
                             Price = 2000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 56,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Karel Loos",
+                            Path = "wwwroot/img/products/raceengineers/KarelLoos.png",
                             Price = 1500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 57,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Riccardo Musconi",
+                            Path = "wwwroot/img/products/raceengineers/RiccardoMusconi.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 58,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Peter Bonnington",
+                            Path = "wwwroot/img/products/raceengineers/PeterBonnington.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 59,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Gianpiero Lambiase",
+                            Path = "wwwroot/img/products/raceengineers/GianpieroLambiase.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 60,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Hugh Bird",
+                            Path = "wwwroot/img/products/raceengineers/HughBird.png",
                             Price = 800000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 61,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jason Prior",
+                            Path = "wwwroot/img/products/raceengineers/JasonPrior.png",
                             Price = 750000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 62,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Christopher Hayes",
+                            Path = "wwwroot/img/products/raceengineers/CristopherHayes.png",
                             Price = 600000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 63,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Riccardo Adami",
+                            Path = "wwwroot/img/products/raceengineers/RiccardoAdami.png",
                             Price = 500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 64,
-                            Discount = (byte)0,
-                            Name = "Xavier Marcos Padros",
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
+                            Name = "Xavier Marcos Pardos",
+                            Path = "wwwroot/img/products/raceengineers/XavierMarcosPardos.png",
                             Price = 400000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         });
                 });
@@ -703,31 +1038,37 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8081537e-9cdb-49c6-a2d8-6830d16d3b4a",
+                            Id = "2b106ed6-df3d-4b70-b8b7-e5f2cc860eff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e9a039f4-94e5-4790-b04d-3e4d47bcf28e",
+                            ConcurrencyStamp = "3847bd63-8247-4932-bb72-d673b4deb367",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEJDewDVlVCQg/slCy8wUIqhrNiFO4pdeZaq11uwHLVtTlGN7fSdgYO+ZfEwS6D6Qsg==",
+                            NormalizedEmail = "ADMIN@LEMADRID.COM",
+                            NormalizedUserName = "ADMIN@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAENuh0NlcImiBxUKrZ5fNWJk1Y4oA11rgkfoXUKU/vEGwuYgA0AcKjLyHZ3mGkhchGg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c67efd2f-04d5-4032-91c9-d731668d1c3b",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "d95680fe-47e7-4532-b3db-b10813ac020f",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@lemadrid.com"
                         },
                         new
                         {
-                            Id = "f2a2d25e-ebef-4f38-9eb5-16ece6575dcd",
+                            Id = "e82262e3-354b-44e5-8f79-f13b0ea1f92d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c686bf92-0270-4f86-94e1-f9cdf200c487",
-                            Email = "hugolapointe@cegepsth.qc.ca",
+                            ConcurrencyStamp = "413fd30e-eec5-418b-bcbd-23135cf8fbf2",
+                            Email = "hugo@lemadrid.com",
                             EmailConfirmed = false,
-                            EntrepriseName = "Cégep Saint-Hyacinthe",
+                            EntrepriseName = "Cegep de Saint-Hyacinthe",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEA4Bk5j9iSvz6e1WuxtrNH2DuffIomozOsvgvWMqs0B3jVKEsb14RDrQTfPJw1WY6A==",
+                            NormalizedEmail = "HUGO@LEMADRID.COM",
+                            NormalizedUserName = "HUGO@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKRY57U3N8Y3Bq6GC1WRGCJghs7CezEyXRFB0nq8GsO9zEW1WoxGkmkMGbr31xcTnA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "da27d61e-e199-4a09-8935-413cc5612466",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "7b65c32e-ea64-4bb8-b241-d5259f216f88",
+                            TwoFactorEnabled = false,
+                            UserName = "hugo@lemadrid.com"
                         });
                 });
 
@@ -760,24 +1101,9 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2cf308e5-2064-4591-969d-977f7add0f34",
-                            ConcurrencyStamp = "295f6406-dcf5-437a-9ae7-e86057ba04cf",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "28a65325-1753-4846-bcfa-6d9a9cc87c85",
-                            ConcurrencyStamp = "56df0cac-7713-4b52-ad0f-21d183a5ec6f",
-                            Name = "Seller",
-                            NormalizedName = "SELLER"
-                        },
-                        new
-                        {
-                            Id = "f94aa649-5fe4-4b90-ad6c-ec38e49a1998",
-                            ConcurrencyStamp = "81111bed-2dfe-454d-b26a-8abc43404c6f",
-                            Name = "Buyer",
-                            NormalizedName = "BUYER"
+                            Id = "e043fdb6-7ca7-4c03-9443-903989a2b069",
+                            ConcurrencyStamp = "0c131837-032d-4d7b-8c6f-498c8b5a1872",
+                            Name = "Administrator"
                         });
                 });
 
@@ -864,6 +1190,18 @@ namespace LemadDb.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "2b106ed6-df3d-4b70-b8b7-e5f2cc860eff",
+                            RoleId = "e043fdb6-7ca7-4c03-9443-903989a2b069"
+                        },
+                        new
+                        {
+                            UserId = "e82262e3-354b-44e5-8f79-f13b0ea1f92d",
+                            RoleId = "e043fdb6-7ca7-4c03-9443-903989a2b069"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

@@ -31,7 +31,7 @@ else
                             }
                             else if (item.Status == Status.ProductStatus.PROMOTION)
                             {
-                                <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@((item.Price - (item.Price - item.Discount)).ToString("C"))</a>
+                                <a style="color:red; font-weight: bold;" class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.ActualPrice.ToString("C") (@item.Discount)%</a>
                             }
                             else if (item.Status == Status.ProductStatus.UNAVAILABLE)
                             {

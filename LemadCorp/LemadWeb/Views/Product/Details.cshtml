@@ -18,13 +18,13 @@
                 @Html.DisplayNameFor(model => model.Price)
             </dt>
             <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.Price)
+                @Html.DisplayFor(model => model.ActualPrice)
             </dd>
             <dt class="col-sm-3">
                 @Html.DisplayNameFor(model => model.Discount)
             </dt>
             <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.Discount)
+                @Html.DisplayFor(model => model.Discount)% (@Html.DisplayFor(model => model.DiscountAmount))$
             </dd>
             <dt class="col-sm-3">
                 @Html.DisplayNameFor(model => model.ProductCategory)

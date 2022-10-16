@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LemadDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221014202531_changingImagePath2")]
-    partial class changingImagePath2
+    [Migration("20221016193706_seedEdit2")]
+    partial class seedEdit2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,17 @@ namespace LemadDb.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte>("Discount")
-                        .HasColumnType("tinyint");
+                    b.Property<DateTime>("DateNaissance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxContractTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -46,6 +55,9 @@ namespace LemadDb.Migrations
                     b.Property<int>("ProductCategory")
                         .HasColumnType("int");
 
+                    b.Property<string>("Quote")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -57,641 +69,897 @@ namespace LemadDb.Migrations
                         new
                         {
                             Id = 1,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1981, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Teflonso, the spanish GOAT",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Fernando Alonso",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\FernandoAlonso.png",
+                            Path = "wwwroot/img/products/drivers/FernandoAlonso.png",
                             Price = 20000000m,
                             ProductCategory = 0,
+                            Quote = "I am one of the best to have raced in F1. I am probably not fastest in qualifying, or the wet, but I am 9.5 in all areas. I try to benefit from that.",
                             Status = 0
                         },
                         new
                         {
                             Id = 2,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1996, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Esteban Ocon",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\EstebanOcon.png",
+                            Path = "wwwroot/img/products/drivers/EstebanOcon.png",
                             Price = 5000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 3,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1997, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mad Max",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Max Verstappen",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\MaxVerstappen.png",
+                            Path = "wwwroot/img/products/drivers/MaxVerstappen.png",
                             Price = 25000000m,
                             ProductCategory = 0,
+                            Quote = "Mistakes happen, and they happen to the best of us.",
                             Status = 0
                         },
                         new
                         {
                             Id = 4,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Checo",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Sergio Perez",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\SergioPerez.png",
+                            Path = "wwwroot/img/products/drivers/SergioPerez.png",
                             Price = 8000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 5,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1997, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Charles Leclerc",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\CharlesLeclerc.png",
+                            Path = "wwwroot/img/products/drivers/CharlesLeclerc.png",
                             Price = 12000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 6,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1994, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Carlos Sainz",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\CarlosSainz.png",
+                            Path = "wwwroot/img/products/drivers/CarlosSainz.png",
                             Price = 10000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 7,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1985, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Lewis Hamilton",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\LewisHamilton.png",
+                            Path = "wwwroot/img/products/drivers/LewisHamilton.png",
                             Price = 40000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 8,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1998, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 2,
+                            MaxContractTime = 5,
                             Name = "George Russell",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\GeorgeRussell.png",
+                            Path = "wwwroot/img/products/drivers/GeorgeRussell.png",
                             Price = 5000000m,
                             ProductCategory = 0,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 9,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1999, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Lando Norris",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\LandoNorris.png",
+                            Path = "wwwroot/img/products/drivers/LandoNorris.png",
                             Price = 20000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 10,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1989, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Daniel Ricciardo",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\DanielRicciardo.png",
+                            Path = "wwwroot/img/products/drivers/DanielRicciardo.png",
                             Price = 15000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 11,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1989, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Valtteri Bottas",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\ValtteriBottas.png",
+                            Path = "wwwroot/img/products/drivers/ValtteriBottas.png",
                             Price = 10000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 12,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1999, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Zhou Guanyu",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\ZhouGuanyu.png",
+                            Path = "wwwroot/img/products/drivers/ZhouGuanyu.png",
                             Price = 1000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 13,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1996, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 18,
+                            MaxContractTime = 5,
                             Name = "Pierre Gasly",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\PierreGasly.png",
+                            Path = "wwwroot/img/products/drivers/PierreGasly.png",
                             Price = 5000000m,
                             ProductCategory = 0,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 14,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2000, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Yuki Tsunoda",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\YukiTsunoda.png",
+                            Path = "wwwroot/img/products/drivers/YukiTsunoda.png",
                             Price = 750000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 15,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1995, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 60,
+                            MaxContractTime = 5,
                             Name = "Nicholas Latifi",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\NicholasLatifi.png",
+                            Path = "wwwroot/img/products/drivers/NicholasLatifi.png",
                             Price = 1000000m,
                             ProductCategory = 0,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 16,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1996, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Alexander Albon",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\AlexanderAlbon.png",
+                            Path = "wwwroot/img/products/drivers/AlexanderAlbon.png",
                             Price = 2000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 17,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1987, 7, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Sebastian Vettel",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\SebastianVettel.png",
+                            Path = "wwwroot/img/products/drivers/SebastianVettel.png",
                             Price = 15000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 18,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1998, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 49,
+                            MaxContractTime = 5,
                             Name = "Lance Stroll",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\LanceStroll.png",
+                            Path = "wwwroot/img/products/drivers/LanceStroll.png",
                             Price = 10000000m,
                             ProductCategory = 0,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 19,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1992, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 22,
+                            MaxContractTime = 5,
                             Name = "Kevin Magnussen",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\KevinMagnussen.png",
+                            Path = "wwwroot/img/products/drivers/KevinMagnussen.png",
                             Price = 6000000m,
                             ProductCategory = 0,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 20,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1999, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mick Schumacher",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\drivers\\MickSchumacher.png",
+                            Path = "wwwroot/img/products/drivers/MickSchumacher.png",
                             Price = 1000000m,
                             ProductCategory = 0,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 21,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mattia Binotto",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\MattiaBinotto.png",
+                            Path = "wwwroot/img/products/principals/MattiaBinotto.png",
                             Price = 3000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 22,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Frédéric Vasseur",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\FredericVasseur.png",
+                            Path = "wwwroot/img/products/principals/FredericVasseur.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 23,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 25,
+                            MaxContractTime = 5,
                             Name = "Franz Tost",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\FranzTost.png",
+                            Path = "wwwroot/img/products/principals/FranzTost.png",
                             Price = 1000000m,
                             ProductCategory = 1,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 24,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Otmar Szafnauer",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\OtmarSzafnauer.png",
+                            Path = "wwwroot/img/products/principals/OtmarSzafnauer.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 25,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 34,
+                            MaxContractTime = 5,
                             Name = "Guenther Steiner",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\GuentherSteiner.png",
+                            Path = "wwwroot/img/products/principals/GuentherSteiner.png",
                             Price = 1000000m,
                             ProductCategory = 1,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 26,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Andreas Seidl",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\AndreasSeidl.png",
+                            Path = "wwwroot/img/products/principals/AndreasSeidl.png",
                             Price = 2000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 27,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Toto Wolff",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\TotoWolff.png",
+                            Path = "wwwroot/img/products/principals/TotoWolff.png",
                             Price = 9100000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 28,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 13,
+                            MaxContractTime = 5,
                             Name = "Christian Horner",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\ChristianHorner.png",
+                            Path = "wwwroot/img/products/principals/ChristianHorner.png",
                             Price = 10000000m,
                             ProductCategory = 1,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 29,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jost Capito",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\JostCapito.png",
+                            Path = "wwwroot/img/products/principals/JostCapito.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 30,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mike Krack",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\principals\\MikeKrack.png",
+                            Path = "wwwroot/img/products/principals/MikeKrack.png",
                             Price = 1000000m,
                             ProductCategory = 1,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 31,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Red Bull Powertrains",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\powerunits\\RedBullPowertrains.png",
+                            Path = "wwwroot/img/products/powerunits/RedBullPowertrains.png",
                             Price = 50000000m,
                             ProductCategory = 2,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 32,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Ferrari engines",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\powerunits\\FerrariEngines.png",
+                            Path = "wwwroot/img/products/powerunits/FerrariEngines.png",
                             Price = 40000000m,
                             ProductCategory = 2,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 33,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 15,
+                            MaxContractTime = 5,
                             Name = "Mercedes engines",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\powerunits\\MercedesEngines.png",
+                            Path = "wwwroot/img/products/powerunits/MercedesEngines.png",
                             Price = 35000000m,
                             ProductCategory = 2,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 34,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Renault engines",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\powerunits\\RenaultEngines.png",
+                            Path = "wwwroot/img/products/powerunits/RenaultEngines.png",
                             Price = 30000000m,
                             ProductCategory = 2,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 35,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jody Egginton",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\JodyEgginton.png",
+                            Path = "wwwroot/img/products/technicalchiefs/JodyEgginton.png",
                             Price = 600000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 36,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Pierre Washe",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\PierreWashe.png",
+                            Path = "wwwroot/img/products/technicalchiefs/PierreWashe.png",
                             Price = 2000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 37,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 10,
+                            MaxContractTime = 5,
                             Name = "Enrico Cardile",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\EnricoCardile.png",
+                            Path = "wwwroot/img/products/technicalchiefs/EnricoCardile.png",
                             Price = 1500000m,
                             ProductCategory = 4,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 38,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Simone Resta",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\SimoneResta.png",
+                            Path = "wwwroot/img/products/technicalchiefs/SimoneResta.png",
                             Price = 1000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 39,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Matt Harman",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\MattHarman.png",
+                            Path = "wwwroot/img/products/technicalchiefs/MattHarman.png",
                             Price = 1000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 40,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mike Elliott",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\MikeElliott.png",
+                            Path = "wwwroot/img/products/technicalchiefs/MikeElliott.png",
                             Price = 1000000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 41,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 10,
+                            MaxContractTime = 5,
                             Name = "Ben Watkins",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\BenWatkins.png",
+                            Path = "wwwroot/img/products/technicalchiefs/BenWatkins.png",
                             Price = 800000m,
                             ProductCategory = 4,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 42,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Francois-Xavier Demaison",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\FrancoisXavierDemaison.png",
+                            Path = "wwwroot/img/products/technicalchiefs/FrancoisXavierDemaison.png",
                             Price = 750000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 43,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jan Monchaux",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\JanMonchaux.png",
+                            Path = "wwwroot/img/products/technicalchiefs/JanMonchaux.png",
                             Price = 500000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 44,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Andrew Green",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\technicalchiefs\\AndrewGreen.png",
+                            Path = "wwwroot/img/products/technicalchiefs/AndrewGreen.png",
                             Price = 400000m,
                             ProductCategory = 4,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 45,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Ben Michell",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\BenMichell.png",
+                            Path = "wwwroot/img/products/raceengineers/BenMichell.png",
                             Price = 2000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 46,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Chris Cronin",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\ChrisCronin.png",
+                            Path = "wwwroot/img/products/raceengineers/ChrisCronin.png",
                             Price = 1500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 47,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jorn Becker",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\JornBecker.png",
+                            Path = "wwwroot/img/products/raceengineers/JornBecker.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 48,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 10,
+                            MaxContractTime = 5,
                             Name = "Alex Chan",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\AlexChan.png",
+                            Path = "wwwroot/img/products/raceengineers/AlexChan.png",
                             Price = 1000000m,
                             ProductCategory = 3,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 49,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Mattia Spini",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\MattiaSpini.png",
+                            Path = "wwwroot/img/products/raceengineers/MattiaSpini.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 50,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 5,
+                            MaxContractTime = 5,
                             Name = "Pierre Hamelin",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\PierreHamelin.png",
+                            Path = "wwwroot/img/products/raceengineers/PierreHamelin.png",
                             Price = 800000m,
                             ProductCategory = 3,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 51,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Gary Gannon",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\GaryGannon.png",
+                            Path = "wwwroot/img/products/raceengineers/GaryGannon.png",
                             Price = 750000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 52,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Ed Regan",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\EdRegan.png",
+                            Path = "wwwroot/img/products/raceengineers/EdRegan.png",
                             Price = 600000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 53,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Gaetan Jego",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\GaetanJego.png",
+                            Path = "wwwroot/img/products/raceengineers/GaetanJego.png",
                             Price = 500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 54,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "James Urwin",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\JamesUrwin.png",
+                            Path = "wwwroot/img/products/raceengineers/JamesUrwin.png",
                             Price = 400000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 55,
-                            Discount = (byte)0,
-                            Name = "Josh Peckett",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\JoshPeckett.png",
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 5,
+                            MaxContractTime = 5,
+                            Name = "Josh Pecket",
+                            Path = "wwwroot/img/products/raceengineers/JoshPecket.png",
                             Price = 2000000m,
                             ProductCategory = 3,
-                            Status = 0
+                            Quote = "",
+                            Status = 4
                         },
                         new
                         {
                             Id = 56,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Karel Loos",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\KarelLoos.png",
+                            Path = "wwwroot/img/products/raceengineers/KarelLoos.png",
                             Price = 1500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 57,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Riccardo Musconi",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\RiccardoMusconi.png",
+                            Path = "wwwroot/img/products/raceengineers/RiccardoMusconi.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 58,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Peter Bonnington",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\PeterBonnington.png",
+                            Path = "wwwroot/img/products/raceengineers/PeterBonnington.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 59,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Gianpiero Lambiase",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\GianpieroLambiase.png",
+                            Path = "wwwroot/img/products/raceengineers/GianpieroLambiase.png",
                             Price = 1000000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 60,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Hugh Bird",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\HughBird.png",
+                            Path = "wwwroot/img/products/raceengineers/HughBird.png",
                             Price = 800000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 61,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Jason Prior",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\JasonPrior.png",
+                            Path = "wwwroot/img/products/raceengineers/JasonPrior.png",
                             Price = 750000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 62,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Christopher Hayes",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\CristopherHayes.png",
+                            Path = "wwwroot/img/products/raceengineers/CristopherHayes.png",
                             Price = 600000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 63,
-                            Discount = (byte)0,
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
                             Name = "Riccardo Adami",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\RiccardoAdami.png",
+                            Path = "wwwroot/img/products/raceengineers/RiccardoAdami.png",
                             Price = 500000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         },
                         new
                         {
                             Id = 64,
-                            Discount = (byte)0,
-                            Name = "Xavier Marcos Padros",
-                            Path = "C:\\Ecole\\Commerce\\Travaux\\Lemad-Corp\\LemadCorp\\LemadWeb\\wwwroot\\img\\products\\raceengineers\\XavierMarcosPadros.png",
+                            DateNaissance = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Discount = 0,
+                            MaxContractTime = 5,
+                            Name = "Xavier Marcos Pardos",
+                            Path = "wwwroot/img/products/raceengineers/XavierMarcosPardos.png",
                             Price = 400000m,
                             ProductCategory = 3,
+                            Quote = "",
                             Status = 0
                         });
                 });
@@ -770,31 +1038,37 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fa3fae60-c996-41bf-8200-c3fcfc836fab",
+                            Id = "c34626c0-52e1-45ae-8a94-8d3a1137c68a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "84f5045e-6363-4cf3-9bc2-624b4fe4f2d4",
+                            ConcurrencyStamp = "4c030395-ca98-488e-86cf-14a92a125f93",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             EntrepriseName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEOqEKeaBd8NS2N/hYVQTv0OQsmyBwuVOz0Vm1JEQThx/YcCJzJOpHI1CTv1QSaXklA==",
+                            NormalizedEmail = "ADMIN@LEMADRID.COM",
+                            NormalizedUserName = "ADMIN@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFCgbiWgAeUQ+4MVwUxo19bl0WuBc+jn+7piGwFj4vZ1CoWgihnaFtKIvsFWrcWkwg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b80a0d57-91ff-475a-ae86-5e57953d725f",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "c1fa7b01-b96b-496f-a71d-f812a5ca576d",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@lemadrid.com"
                         },
                         new
                         {
-                            Id = "5873d68f-3ca6-424c-8af6-4c6707cf5d79",
+                            Id = "555242c9-e199-40d4-8dd5-f493fbfc1fa2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9da37471-dbf9-4c20-8413-d33a60873947",
-                            Email = "hugolapointe@cegepsth.qc.ca",
+                            ConcurrencyStamp = "0a58feb2-22e1-4ee1-8953-79172c83094c",
+                            Email = "hugo@lemadrid.com",
                             EmailConfirmed = false,
-                            EntrepriseName = "Cégep Saint-Hyacinthe",
+                            EntrepriseName = "Cegep de Saint-Hyacinthe",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEK1P4W/Vp2w91at599RUPrulsNbb9/6gqP4jVZXdNdNzDlaKnfyd8XDWUgsf4n80nw==",
+                            NormalizedEmail = "HUGO@LEMADRID.COM",
+                            NormalizedUserName = "HUGO@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAECONBkaMhw8+5yBaoYjWzw/UqNDAqJfzzqKn8M/rA+UHSLjv2NbzqqQQS+UK35SJ2A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c69113a6-03ce-422b-a724-a6bc10b9ac35",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "21b06564-ca30-486e-8577-44b23a4027a2",
+                            TwoFactorEnabled = false,
+                            UserName = "hugo@lemadrid.com"
                         });
                 });
 
@@ -827,24 +1101,9 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2ff38e4e-868f-4651-9844-85d62912af86",
-                            ConcurrencyStamp = "acd6cbd5-c5be-4106-9f4d-1de4027eca69",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "746d2afc-db95-46b0-bd06-a36cbfcbcea1",
-                            ConcurrencyStamp = "91c3a0c0-5e8e-4cd8-878f-ec94b7070715",
-                            Name = "Seller",
-                            NormalizedName = "SELLER"
-                        },
-                        new
-                        {
-                            Id = "3237ed22-4e4d-4183-8954-f960f1517abd",
-                            ConcurrencyStamp = "ac9da030-bf1a-4041-b733-f3f085dd33ba",
-                            Name = "Buyer",
-                            NormalizedName = "BUYER"
+                            Id = "49b9cc8e-cf6a-4920-8f70-ff117273992e",
+                            ConcurrencyStamp = "8e330466-3c05-425a-a8f0-45bedb0cfb42",
+                            Name = "Administrator"
                         });
                 });
 
@@ -931,6 +1190,18 @@ namespace LemadDb.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "c34626c0-52e1-45ae-8a94-8d3a1137c68a",
+                            RoleId = "49b9cc8e-cf6a-4920-8f70-ff117273992e"
+                        },
+                        new
+                        {
+                            UserId = "555242c9-e199-40d4-8dd5-f493fbfc1fa2",
+                            RoleId = "49b9cc8e-cf6a-4920-8f70-ff117273992e"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

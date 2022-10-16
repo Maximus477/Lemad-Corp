@@ -131,8 +131,11 @@ namespace LemadWeb.ViewComponents
             {
                 switch (Discountfilter)
                 {
+                    case "tier0":
+                        item = item.Where(c => c.Discount > 0).ToList();
+                        break;
                     case "tier1":
-                        item = item.Where(c => c.Discount <= 5).ToList();
+                        item = item.Where(c => c.Discount > 0 && c.Discount <= 5).ToList();
                         break;
                     case "tier2":
                         item = item.Where(c => c.Discount > 5 && c.Discount <= 10).ToList();

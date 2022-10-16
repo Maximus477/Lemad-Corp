@@ -23,7 +23,7 @@ namespace LemadDb.Domain.Entities
 
         public decimal Price { get; set; }
 
-        public byte Discount { get; set; }
+        public int Discount { get; set; }
         public int MaxContractTime { get; set; }
 
         public DateTime DateNaissance { get; set; }
@@ -41,6 +41,21 @@ namespace LemadDb.Domain.Entities
         #region Stats
 
         #endregion
+
+        public decimal ActualPrice
+        {
+            get
+            {
+                return Price - (((decimal)Discount/100) * Price);
+            }
+        }
+        public decimal DiscountAmount
+        {
+            get
+            {
+                return ((decimal)Discount /100) * Price;
+            }
+        }
     }
 
     public class ProductValidator : AbstractValidator<Product>
