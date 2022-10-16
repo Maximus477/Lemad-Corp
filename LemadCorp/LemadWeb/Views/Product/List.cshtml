@@ -18,27 +18,27 @@
             <a asp-area="" asp-controller="Product" asp-action="Create">Create a product</a>
             <br /><br />
             <div>Trier les produits: </div>
-            @Html.ActionLink("Par Nom", "List", new { sortOrder = ViewBag.NameSortParm, searchString = ViewData["CurrentFilter"] }) <br />
-            @Html.ActionLink("Par Prix", "List", new { sortOrder = ViewBag.PriceSortParm, searchString = ViewData["CurrentFilter"]})<br />
-            @Html.ActionLink("Par Date", "List", new { sortOrder = ViewBag.DateSortParm, searchString = ViewData["CurrentFilter"] })<br />
-            @Html.ActionLink("Par Rabais", "List", new { sortOrder = ViewBag.DiscountParm, searchString = ViewData["CurrentFilter"] })<br /><br />
+            @Html.ActionLink("Par Nom", "List", new { sortOrder = ViewBag.NameSortParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"]} ) <br />
+            @Html.ActionLink("Par Prix", "List", new { sortOrder = ViewBag.PriceSortParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"]} )<br />
+            @Html.ActionLink("Par Date", "List", new { sortOrder = ViewBag.DateSortParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"]} )<br />
+            @Html.ActionLink("Par Rabais", "List", new { sortOrder = ViewBag.DiscountParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"]} )<br /><br />
 
             <div>Filtrer les produits: </div>
             <div>Par prix: </div>
-            @Html.ActionLink("Moins de $650k", "List", new { sortOrder = "Price", searchString = ViewData["CurrentFilter"], filter = "tier1" }) <br />
-            @Html.ActionLink("+$650k-$850k", "List", new { sortOrder = "Price", searchString = ViewData["CurrentFilter"], filter = "tier2" })<br />
-            @Html.ActionLink("+$850k-$1M", "List", new { sortOrder = "Price", searchString = ViewData["CurrentFilter"], filter = "tier3" })<br />
-            @Html.ActionLink("+$1M-$2M", "List", new { sortOrder = "Price", searchString = ViewData["CurrentFilter"], filter = "tier4" })<br />
-            @Html.ActionLink("+$2M-$10M", "List", new { sortOrder = "Price", searchString = ViewData["CurrentFilter"], filter = "tier5" })<br />
-            @Html.ActionLink("+$10M-$25M", "List", new { sortOrder = "Price", searchString = ViewData["CurrentFilter"], filter = "tier6" })<br />
-            @Html.ActionLink("+$25M", "List", new { sortOrder = "Price", searchString = ViewData["CurrentFilter"], filter = "tier7" })<br />
+            @Html.ActionLink("Moins de $650k", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier1", Statefilter = ViewData["Statefilter"] }) <br />
+            @Html.ActionLink("+$650k-$850k", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier2", Statefilter = ViewData["Statefilter"]} )<br />
+            @Html.ActionLink("+$850k-$1M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier3", Statefilter = ViewData["Statefilter"]} )<br />
+            @Html.ActionLink("+$1M-$2M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier4", Statefilter = ViewData["Statefilter"]} )<br />
+            @Html.ActionLink("+$2M-$10M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier5", Statefilter = ViewData["Statefilter"]} )<br />
+            @Html.ActionLink("+$10M-$25M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier6", Statefilter = ViewData["Statefilter"]} )<br />
+            @Html.ActionLink("+$25M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier7", Statefilter = ViewData["Statefilter"]} )<br />
 
             <div>Par statut: </div>
-            @Html.ActionLink("AVAILABLE", "List", new { searchString = ViewData["CurrentFilter"], filter = "AVAILABLE" }) <br />
-            @Html.ActionLink("INCOMMANDE", "List", new { searchString = ViewData["CurrentFilter"], filter = "INCOMMANDE" })<br />
-            @Html.ActionLink("UNAVAILABLE", "List", new { searchString = ViewData["CurrentFilter"], filter = "UNAVAILABLE" })<br />
-            @Html.ActionLink("LIQUIDATION", "List", new { searchString = ViewData["CurrentFilter"], filter = "LIQUIDATION" })<br />
-            @Html.ActionLink("PROMOTION", "List", new { searchString = ViewData["CurrentFilter"], filter = "PROMOTION" })<br />
+            @Html.ActionLink("AVAILABLE", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "AVAILABLE" }) <br />
+            @Html.ActionLink("INCOMMANDE", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "INCOMMANDE" })<br />
+            @Html.ActionLink("UNAVAILABLE", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "UNAVAILABLE" })<br />
+            @Html.ActionLink("LIQUIDATION", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "LIQUIDATION" })<br />
+            @Html.ActionLink("PROMOTION", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "PROMOTION" })<br />
         </div>
         <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="title">
@@ -49,7 +49,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="list-div">
                     <div class="row justify-content-center" id="lst">
-                        <vc:product-list search="@ViewData["CurrentFilter"]" sort-order="@ViewData["Filter"]" filter="@ViewData["ItemFilter"]"></vc:product-list>
+                        <vc:product-list search="@ViewData["CurrentFilter"]" sort-order="@ViewData["Filter"]" pricefilter="@ViewData["Pricefilter"]" statefilter="@ViewData["Statefilter"]"></vc:product-list>
                     </div>
                 </div>
             </div>

@@ -32,28 +32,22 @@ namespace LemadWeb.Controllers
         public ProductController(ApplicationDbContext context) { _context = context; }
 
         [AllowAnonymous]
-        public IActionResult List(string sortOrder, string searchString, string filter)
+        public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter)
         {
-            if (filter == null)
-                filter = "";
+            if (searchString == null) { searchString = ""; }
+            if (sortOrder == null) { sortOrder = ""; }
+            if (Pricefilter == null) { Pricefilter = ""; }
+            if (Statefilter == null) { Statefilter = ""; }
 
-            if (searchString == null)
-                searchString = "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
 
-            if (sortOrder == null)
-                sortOrder = "";
-
-            if (!(filter != null && sortOrder == "Price"))
-            {
-                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-                ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
-                ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-                ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
-            }
-
-            ViewData["ItemFilter"] = filter;
-            ViewData["CurrentFilter"] = searchString;
             ViewData["Filter"] = sortOrder;
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["Pricefilter"] = Pricefilter;
+            ViewData["Statefilter"] = Statefilter;
 
             verifierImage();
             return View();
@@ -85,7 +79,7 @@ namespace LemadWeb.Controllers
                     ProductCategory = model.ProductCategory
                 };
 
-                if (Request.Form.Count > 0)
+                if (Request.Form.Count > 0)
                 {
                     IFormFile file = Request.Form.Files.FirstOrDefault();
                     if (file != null)
@@ -147,7 +141,7 @@ namespace LemadWeb.Controllers
                 {
                     try
                     {
-                        if (Request.Form.Count > 0)
+                        if (Request.Form.Count > 0)
                         {
                             IFormFile file = Request.Form.Files.FirstOrDefault();
                             if (file != null)
@@ -239,27 +233,30 @@ namespace LemadWeb.Controllers
         {
             try
             {
-                if (Id == null) {
+                if (Id == null)
+                {
                     return NotFound();
                 }
 
                 var model = await _context.Products.FirstOrDefaultAsync(p => p.Id == Id);
 
-                if (model == null) {
+                if (model == null)
+                {
                     return NotFound();
                 }
 
                 return View(model);
             }
-            catch {
+            catch
+            {
                 return RedirectToAction("List");
             }
         }
 
         [AllowAnonymous]
-        public IActionResult reload(int pageNumber, string sortOrder, string search = "")
+        public IActionResult reload(int pageNumber, string sortOrder, string PriceFilter, string Statefilter, string search = "")
         {
-            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder });
+            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter });
         }
 
         private void verifierImage()

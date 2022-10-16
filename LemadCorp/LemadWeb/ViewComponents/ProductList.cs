@@ -18,23 +18,12 @@ namespace LemadWeb.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(
             string sortOrder = null,
             string search = null,
-            string filter = null,
-            int? pageNumber = 1
-            )
+            string Pricefilter = null,
+            string Statefilter = null,
+            int? pageNumber = 1)
         {
             int pageSize = 12;
             var item = _context.Products.ToList();
-
-            // Sorting:
-            // Name
-            // Price
-            // Discount
-            // Date
-
-            // Filters:
-            // Intervales de prix
-            // Status
-            // +2
 
             switch (sortOrder)
             {
@@ -67,9 +56,9 @@ namespace LemadWeb.ViewComponents
             if (!string.IsNullOrEmpty(search))
                 item = item.Where(c => c.Name.ToLower().Contains(search.ToLower()) || c.ProductCategory.ToString().ToLower().Contains(search.ToLower())).ToList();
 
-            if (!string.IsNullOrEmpty(filter))
+            if (!string.IsNullOrEmpty(Pricefilter))
             {
-                switch (filter)
+                switch (Pricefilter)
                 {
                     case "tier1":
                         item = item.Where(c => c.Price <= 650000).ToList();
@@ -92,6 +81,12 @@ namespace LemadWeb.ViewComponents
                     case "tier7":
                         item = item.Where(c => c.Price > 25000000).ToList();
                         break;
+                }
+            }
+            if (!string.IsNullOrEmpty(Statefilter))
+            {
+                switch (Statefilter)
+                {
                     case "AVAILABLE":
                         item = item.Where(c => c.Status == Status.ProductStatus.AVAILABLE).ToList();
                         break;
@@ -110,8 +105,8 @@ namespace LemadWeb.ViewComponents
                 }
             }
 
-                ViewBag.Verification = (item.Count() > 0) ? true : false;
-            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search, sortOrder));
+            ViewBag.Verification = (item.Count() > 0) ? true : false;
+            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search, sortOrder, Pricefilter, Statefilter));
         }
     }
 }
