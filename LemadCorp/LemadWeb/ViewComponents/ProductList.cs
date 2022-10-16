@@ -20,6 +20,8 @@ namespace LemadWeb.ViewComponents
             string search = null,
             string Pricefilter = null,
             string Statefilter = null,
+            string Categoryfilter = null,
+            string Discountfilter = null,
             int? pageNumber = 1)
         {
             int pageSize = 12;
@@ -104,9 +106,51 @@ namespace LemadWeb.ViewComponents
                         break;
                 }
             }
+            if (!string.IsNullOrEmpty(Categoryfilter))
+            {
+                switch (Categoryfilter)
+                {
+                    case "DRIVER":
+                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.DRIVER).ToList();
+                        break;
+                    case "PRINCIPAL":
+                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.PRINCIPAL).ToList();
+                        break;
+                    case "RACEENGINEER":
+                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.RACEENGINEER).ToList();
+                        break;
+                    case "TECHNICALCHIEF":
+                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.TECHNICALCHIEF).ToList();
+                        break;
+                    case "POWERUNIT":
+                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.POWERUNIT).ToList();
+                        break;
+                }
+            }
+            if (!string.IsNullOrEmpty(Discountfilter))
+            {
+                switch (Discountfilter)
+                {
+                    case "tier1":
+                        item = item.Where(c => c.Discount <= 5).ToList();
+                        break;
+                    case "tier2":
+                        item = item.Where(c => c.Discount > 5 && c.Discount <= 10).ToList();
+                        break;
+                    case "tier3":
+                        item = item.Where(c => c.Discount > 10 && c.Discount <= 20).ToList();
+                        break;
+                    case "tier4":
+                        item = item.Where(c => c.Discount > 20 && c.Discount <= 35).ToList();
+                        break;
+                    case "tier5":
+                        item = item.Where(c => c.Discount > 35).ToList();
+                        break;
+                }
+            }
 
             ViewBag.Verification = (item.Count() > 0) ? true : false;
-            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search, sortOrder, Pricefilter, Statefilter));
+            return View(PaginatedList<Product>.CreateAsync(item, pageNumber ?? 1, pageSize, search, sortOrder, Pricefilter, Statefilter, Categoryfilter, Discountfilter));
         }
     }
 }

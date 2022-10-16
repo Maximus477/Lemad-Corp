@@ -15,8 +15,10 @@ namespace LemadDb.Data
         public string SortOrder { get; private set; }
         public string PriceFilter { get; set; }
         public string StateFilter { get; set; }
+        public string CategoryFilter { get; set; }
+        public string DiscountFilter { get; set; }
 
-        public PaginatedList(List<T> items, int count, int pageIndex, int pageSize, string search, string sortOrder, string priceFilter, string stateFilter)
+        public PaginatedList(List<T> items, int count, int pageIndex, int pageSize, string search, string sortOrder, string priceFilter, string stateFilter, string categoryFilter, string discountFilter)
         {
             PageIndex = pageIndex;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
@@ -26,17 +28,19 @@ namespace LemadDb.Data
             SortOrder = sortOrder;
             PriceFilter = priceFilter;
             StateFilter = stateFilter;
+            CategoryFilter = categoryFilter;
+            DiscountFilter = discountFilter;
         }
 
         public bool HasPreviousPage => PageIndex > 1;
 
         public bool HasNextPage => PageIndex < TotalPages;
 
-        public static PaginatedList<T> CreateAsync(List<T> source, int pageIndex, int pageSize, string search, string sortOrder, string priceFilter, string stateFilter)
+        public static PaginatedList<T> CreateAsync(List<T> source, int pageIndex, int pageSize, string search, string sortOrder, string priceFilter, string stateFilter, string categoryFilter, string discountFilter)
         {
             var count = source.Count();
             var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            return new PaginatedList<T>(items, count, pageIndex, pageSize, search, sortOrder, priceFilter, stateFilter);
+            return new PaginatedList<T>(items, count, pageIndex, pageSize, search, sortOrder, priceFilter, stateFilter, categoryFilter, discountFilter);
         }
     }
 }

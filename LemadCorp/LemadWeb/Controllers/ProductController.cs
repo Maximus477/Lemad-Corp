@@ -32,7 +32,7 @@ namespace LemadWeb.Controllers
         public ProductController(ApplicationDbContext context) { _context = context; }
 
         [AllowAnonymous]
-        public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter)
+        public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
         {
             if (searchString == null) { searchString = ""; }
             if (sortOrder == null) { sortOrder = ""; }
@@ -48,6 +48,8 @@ namespace LemadWeb.Controllers
             ViewData["CurrentFilter"] = searchString;
             ViewData["Pricefilter"] = Pricefilter;
             ViewData["Statefilter"] = Statefilter;
+            ViewData["CategoryFilter"] = CategoryFilter;
+            ViewData["DiscountFilter"] = DiscountFilter;
 
             verifierImage();
             return View();
@@ -254,9 +256,9 @@ namespace LemadWeb.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult reload(int pageNumber, string sortOrder, string PriceFilter, string Statefilter, string search = "")
+        public IActionResult reload(int pageNumber, string sortOrder, string PriceFilter, string Statefilter, string CategoryFilter, string DiscountFilter, string search = "")
         {
-            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter });
+            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter  = DiscountFilter });
         }
 
         private void verifierImage()
