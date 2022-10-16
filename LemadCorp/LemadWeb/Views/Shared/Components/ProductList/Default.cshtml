@@ -47,8 +47,8 @@ else
         </div>
     }
 
-    var prevDisabled = !Model.HasPreviousPage ? "circle-link-disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "circle-link-disabled" : "";
+    var prevDisabled = !Model.HasPreviousPage ? "circle-link-disabled disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "circle-link-disabled disabled" : "";
     var search = Model.Search == null ? "" : Model.Search;
     var sortorder = Model.SortOrder == null ? "" : Model.SortOrder;
     var pricefilter = Model.PriceFilter == null ? "" : Model.PriceFilter;
@@ -58,29 +58,31 @@ else
 
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row" style="text-align: center">
         <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
-        <div id="pilot-previous" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @prevDisabled" onclick="change(@(Model.PageIndex - 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Previous</div>
-        <div id="pilot-next" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @nextDisabled" onclick="change(@(Model.PageIndex + 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Next</div>
+        <div id="pilot-previous" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @prevDisabled" onclick="change('@Model.HasPreviousPage', @(Model.PageIndex - 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Previous</div>
+        <div id="pilot-next" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @nextDisabled" onclick="change('@Model.HasNextPage', @(Model.PageIndex + 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Next</div>
         <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
     </div>
 }
 
 <script type="text/javascript">
-    function change(count, search, sortorder, pricefilter, statefilter, categoryfilter, discountfilter) {
-        $('#lst').html("");
-        $.ajax({
-            url: '@Url.Action("reload", "Product")',
-            data: {
-                pageNumber: count,
-                search: search,
-                sortOrder: sortorder,
-                PriceFilter: pricefilter,
-                StateFilter: statefilter,
-                CategoryFilter: categoryfilter,
-                DiscountFilter: discountfilter
-            },
-            success: function (data) {
-                $('#lst').html(data);
-            }
-        })
+    function change(verification, count, search, sortorder, pricefilter, statefilter, categoryfilter, discountfilter) {
+        if (verification == 'True') {
+            $('#lst').html("");
+            $.ajax({
+                url: '@Url.Action("reload", "Product")',
+                data: {
+                    pageNumber: count,
+                    search: search,
+                    sortOrder: sortorder,
+                    PriceFilter: pricefilter,
+                    StateFilter: statefilter,
+                    CategoryFilter: categoryfilter,
+                    DiscountFilter: discountfilter
+                },
+                success: function (data) {
+                    $('#lst').html(data);
+                }
+            })
+        }
     }
 </script>
