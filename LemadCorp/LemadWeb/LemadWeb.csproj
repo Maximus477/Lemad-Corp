@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.20.2" />
     <PackageReference Include="JavaScriptEngineSwitcher.V8.Native.win-x86" Version="3.20.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />

@@ -69,7 +69,7 @@ namespace LemadWeb.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View();
+                    return View(model);
                 }
 
                 Product product = new Product()
@@ -98,6 +98,11 @@ namespace LemadWeb.Controllers
                     }
                 }
 
+                if (product.Photo == null)
+                {
+                    return View(model);
+                }
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
 
@@ -105,7 +110,7 @@ namespace LemadWeb.Controllers
             }
             catch
             {
-                return RedirectToAction("List");
+                return View(model);
             }
         }
 
