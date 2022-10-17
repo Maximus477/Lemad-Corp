@@ -7,13 +7,6 @@
         <form asp-action="Edit" method="post" role="form" enctype="multipart/form-data">
             <div class="form-group">
                 <img id="Photo" src="data:image/png;base64,@(Convert.ToBase64String(Model.Photo))" style="height: 100px; width:100px;" />
-                <input type="file"
-                       id="pic"
-                       accept=".png,.jpg,.jpeg,.gif,.tif"
-                       asp-for="Photo"
-                       class="form-control"
-                       onchange="document.getElementById('Photo').src = window.URL.createObjectURL(this.files[0]);" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -33,6 +26,26 @@
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="MaxContractTime" class="control-label"></label>
+                <input asp-for="MaxContractTime" class="form-control" />
+                <span asp-validation-for="MaxContractTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateNaissance" class="control-label"></label>
+                <input type="date" asp-for="DateNaissance" class="form-control" />
+                <span asp-validation-for="DateNaissance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quote" class="control-label"></label>
+                <input asp-for="Quote" class="form-control" />
+                <span asp-validation-for="Quote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<Status.ProductStatus>()" class="form-control"></select>
                 <span asp-validation-for="Status" class="text-danger"></span>
@@ -42,6 +55,7 @@
                 <select asp-for="ProductCategory" class="form-control" asp-items="Html.GetEnumSelectList<Category.ProductCategory>()" class="form-control"></select>
                 <span asp-validation-for="ProductCategory" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

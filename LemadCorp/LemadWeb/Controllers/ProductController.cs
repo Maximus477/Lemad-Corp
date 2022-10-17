@@ -134,7 +134,7 @@ namespace LemadWeb.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,ProductCategory,Status,Path,Photo")] Product model)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,MaxContractTime,DateNaissance,Description,Quote,ProductCategory,Status,Photo")] Product model)
         {
             try
             {
@@ -147,19 +147,17 @@ namespace LemadWeb.Controllers
                 {
                     try
                     {
-                        if (Request.Form.Count > 0)
-                        {
-                            IFormFile file = Request.Form.Files.FirstOrDefault();
-                            if (file != null)
-                            {
-                                using (var dataStream = new MemoryStream())
-                                {
-                                    await file.CopyToAsync(dataStream);
-                                    model.Photo = dataStream.ToArray();
-                                }
-                            }
-                        }
-                        _context.Update(model);
+                        Product product = await _context.Products.FindAsync(id);
+                        product.Name = model.Name;
+                        product.Price = model.Price;
+                        product.Discount = model.Discount;
+                        product.MaxContractTime = model.MaxContractTime;
+                        product.DateNaissance = model.DateNaissance;
+                        product.Description = model.Description;
+                        product.Quote = model.Quote;
+                        product.ProductCategory = model.ProductCategory;
+                        product.Status = model.Status;
+                        
                         await _context.SaveChangesAsync();
                     }
                     catch (DbUpdateConcurrencyException)
