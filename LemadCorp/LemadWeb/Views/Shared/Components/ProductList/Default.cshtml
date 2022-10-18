@@ -57,10 +57,10 @@ else
     var discountfilter = Model.DiscountFilter == null ? "" : Model.DiscountFilter;
 
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row" style="text-align: center">
-        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
-        <div id="pilot-previous" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @prevDisabled" onclick="change('@Model.HasPreviousPage', @(Model.PageIndex - 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Previous</div>
-        <div id="pilot-next" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 circle-link @nextDisabled" onclick="change('@Model.HasNextPage', @(Model.PageIndex + 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Next</div>
-        <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5"></div>
+        <div class="col-3 col-sm-3 col-md-5 col-lg-5 col-xl-5"></div>
+        <div id="pilot-previous" class="col-3 col-sm-3 col-md-1 col-lg-1 col-xl-1 circle-link @prevDisabled" onclick="change('@Model.HasPreviousPage', @(Model.PageIndex - 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Previous</div>
+        <div id="pilot-next" class="col-3 col-sm-3 col-md-1 col-lg-1 col-xl-1 circle-link @nextDisabled" onclick="change('@Model.HasNextPage', @(Model.PageIndex + 1), '@search', '@sortorder', '@pricefilter', '@statefilter', '@categoryfilter', '@discountfilter')">Next</div>
+        <div class="col-3 col-sm-3 col-md-5 col-lg-5 col-xl-5"></div>
     </div>
 }
 
