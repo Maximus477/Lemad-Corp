@@ -38,17 +38,12 @@ namespace LemadWeb.ViewModels.Product
                 .NotEmpty().WithMessage("The price cannot be empty!")
                 .GreaterThan(0).WithMessage("The price must be higher than $0.0");
 
-            RuleFor(e => e.Discount)
+            RuleFor(e => (int)e.Discount)
                 .NotEmpty().WithMessage("The discount cannot be empty!")
-                .When(e => e.Discount >= 0 && e.Discount <= 100).WithMessage("The discount must be greater or equal and 0 and less or equal than 100");
+                .GreaterThanOrEqualTo(0).WithMessage("The discount must be greater or equal than 0 and smaller than 100");
 
-            RuleFor(e => e.Status)
-                .NotEmpty()
-                .WithMessage("The Status cannot be empty!");
-
-            RuleFor(e => e.ProductCategory)
-                .NotEmpty()
-                .WithMessage("The type cannot be empty!");
+            RuleFor(e => (int)e.Discount)
+                .LessThanOrEqualTo(100).WithMessage("The discount must be smaller or equal than 100");
         }
     }
 }
