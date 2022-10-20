@@ -34,25 +34,49 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
         {
-            if (searchString == null) { searchString = ""; }
+            List<string> listString = new List<string>();
+
+            if (searchString == null) { listString.Add(""); }
+            else {
+                string name = "";
+                int i = 0;
+                foreach (char c in searchString) {
+                    if (c == ',')
+                    {
+                        listString.Add(name);
+                        name = "";
+                        i++;
+                    }
+                    else if (i == searchString.Length - 1)
+                    {
+                        name += c;
+                        listString.Add(name);
+                    }
+                    else
+                    {
+                        name += c;
+                        i++;
+                    }
+                }
+            }
             if (sortOrder == null) { sortOrder = ""; }
             if (Pricefilter == null) { Pricefilter = ""; }
             if (Statefilter == null) { Statefilter = ""; }
 
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
-
-            ViewData["Filter"] = sortOrder;
-            ViewData["CurrentFilter"] = searchString;
-            ViewData["Pricefilter"] = Pricefilter;
-            ViewData["Statefilter"] = Statefilter;
-            ViewData["CategoryFilter"] = CategoryFilter;
-            ViewData["DiscountFilter"] = DiscountFilter;
+            ListProductVM model = new ListProductVM(
+                listString, 
+                Pricefilter, 
+                Statefilter, 
+                CategoryFilter, 
+                DiscountFilter, 
+                sortOrder, 
+                String.IsNullOrEmpty(sortOrder) ? "name_desc" : "",
+                sortOrder == "Price" ? "price_desc" : "Price",
+                sortOrder == "Date" ? "date_desc" : "Date",
+                sortOrder == "Discount" ? "discount_desc" : "Discount");
 
             verifierImage();
-            return View();
+            return View(model);
         }
 
         [Authorize(Roles = "Administrator")]

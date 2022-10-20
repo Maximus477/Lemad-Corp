@@ -2,6 +2,7 @@
 using LemadDb.Data;
 using LemadDb.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace LemadWeb.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(
             string sortOrder = null,
-            string search = null,
+            List<string> search = null,
             string Pricefilter = null,
             string Statefilter = null,
             string Categoryfilter = null,
@@ -55,8 +56,21 @@ namespace LemadWeb.ViewComponents
                     break;
             }
 
-            if (!string.IsNullOrEmpty(search))
-                item = item.Where(c => c.Name.ToLower().Contains(search.ToLower())).ToList();
+            if (search[0] != "") {
+                List<Product> newList = new List<Product>();
+                foreach (string name in search) {
+                    if (name != "" && name != " ")
+                    {
+                        foreach(Product product in item.Where(c => c.Name.ToLower().Contains(name.ToLower())))
+                        {
+                            if (!newList.Contains(product))
+                                newList.Add(product);
+                        }
+                    }
+                }
+                item = newList;
+            }
+            //item = item.Where(c => c.Name.ToLower().Contains(search.ToLower())).ToList();
 
             if (!string.IsNullOrEmpty(Pricefilter))
             {

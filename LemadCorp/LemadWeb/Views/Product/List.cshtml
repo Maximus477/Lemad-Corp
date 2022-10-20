@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model ListProductVM
+
 
 @section Styles {
 <link rel="stylesheet" href="~/sass/catalogue.css" />
@@ -21,10 +23,10 @@
             <div class="dropdown">
                 <button class="dropbtn">Trier</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Par Nom", "List", new { sortOrder = ViewBag.NameSortParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("Par Prix", "List", new { sortOrder = ViewBag.PriceSortParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("Par Date", "List", new { sortOrder = ViewBag.DateSortParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("Par Rabais", "List", new { sortOrder = ViewBag.DiscountParm, searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
+                    @Html.ActionLink("Par Nom", "List", new { sortOrder = Model.NameSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Par Prix", "List", new { sortOrder = Model.PriceSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
+                    @Html.ActionLink("Par Date", "List", new { sortOrder = Model.DateSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
+                    @Html.ActionLink("Par Rabais", "List", new { sortOrder = Model.DiscountSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
                 </div>
             </div>
 
@@ -33,14 +35,14 @@
             <div class="dropdown">
                 <button class="dropbtn">Par prix</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Tous les prix", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Moins de $650k", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier1", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("+$650k-$850k", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier2", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("+$850k-$1M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier3", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("+$1M-$2M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier4", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("+$2M-$10M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier5", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("+$10M-$25M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier6", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
-                    @Html.ActionLink("+$25M", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = "tier7", Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"]} )
+                    @Html.ActionLink("Tous les prix", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
+                    @Html.ActionLink("Moins de $650k", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier1", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
+                    @Html.ActionLink("+$650k-$850k", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier2", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("+$850k-$1M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier3", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("+$1M-$2M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier4", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("+$2M-$10M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier5", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("+$10M-$25M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier6", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("+$25M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier7", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
                 </div>
             </div>
 
@@ -48,12 +50,12 @@
             <div class="dropdown">
                 <button class="dropbtn">Par statut</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Tous les statuts", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "", CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Available", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "AVAILABLE", CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("In command", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "INCOMMANDE", CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Unavailable", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "UNAVAILABLE", CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Liquidation", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "LIQUIDATION", CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Promotion", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = "PROMOTION", CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = ViewData["DiscountFilter"] })
+                    @Html.ActionLink("Tous les statuts", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Available", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "AVAILABLE", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("In command", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "INCOMMANDE", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Unavailable", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "UNAVAILABLE", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Liquidation", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "LIQUIDATION", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Promotion", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "PROMOTION", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
                 </div>
             </div>
 
@@ -61,12 +63,12 @@
             <div class="dropdown">
                 <button class="dropbtn">Par catégorie</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Toutes les catégories", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = "", DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Driver", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = "DRIVER", DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Principals", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = "PRINCIPAL", DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Race engineer", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = "RACEENGINEER", DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Techincal chief", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = "TECHNICALCHIEF", DiscountFilter = ViewData["DiscountFilter"] })
-                    @Html.ActionLink("Power unit", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = "POWERUNIT", DiscountFilter = ViewData["DiscountFilter"] })
+                    @Html.ActionLink("Toutes les catégories", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "", DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Driver", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "DRIVER", DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Principals", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "PRINCIPAL", DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Race engineer", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "RACEENGINEER", DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Techincal chief", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "TECHNICALCHIEF", DiscountFilter = Model.DiscountFilter} )
+                    @Html.ActionLink("Power unit", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter ="POWERUNIT", DiscountFilter = Model.DiscountFilter} )
                 </div>
             </div>
 
@@ -74,13 +76,13 @@
             <div class="dropdown">
                 <button class="dropbtn">Par rabais</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Retirer le filtre", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = "" })
-                    @Html.ActionLink("N'importe quel rabais", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = "tier0" })
-                    @Html.ActionLink("+0%-5%", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = "tier1" })
-                    @Html.ActionLink("+5%-10%", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = "tier2" })
-                    @Html.ActionLink("+10%-20%", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = "tier3" })
-                    @Html.ActionLink("+20%-35%", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = "tier4" })
-                    @Html.ActionLink("+35%", "List", new { sortOrder = ViewData["Filter"], searchString = ViewData["CurrentFilter"], Pricefilter = ViewData["Pricefilter"], Statefilter = ViewData["Statefilter"], CategoryFilter = ViewData["CategoryFilter"], DiscountFilter = "tier5" })
+                    @Html.ActionLink("Retirer le filtre", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "" })
+                    @Html.ActionLink("N'importe quel rabais", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier0" })
+                    @Html.ActionLink("+0%-5%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier1" })
+                    @Html.ActionLink("+5%-10%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier2" })
+                    @Html.ActionLink("+10%-20%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier3" })
+                    @Html.ActionLink("+20%-35%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier4" })
+                    @Html.ActionLink("+35%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier5" })
                 </div>
             </div>
             <br /><br />
@@ -95,10 +97,32 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="list-div">
                     <div class="row justify-content-center" id="lst">
-                        <vc:product-list search="@ViewData["CurrentFilter"]" sort-order="@ViewData["Filter"]" pricefilter="@ViewData["Pricefilter"]" statefilter="@ViewData["Statefilter"]" categoryfilter="@ViewData["CategoryFilter"]" discountfilter="@ViewData["DiscountFilter"]"></vc:product-list>
+                        <vc:product-list search="@Model.SearchFilter" sort-order="@Model.SortOrder" pricefilter="@Model.PriceFilter" statefilter="@Model.StateFilter" categoryfilter="@Model.CategoryFilter" discountfilter="@Model.DiscountFilter"></vc:product-list>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function reload(sortOrder, search, priceFilter, stateFilter, categoryFilter, discountFilter) {
+        if (verification == 'True') {
+            $('#lst').html("");
+            $.ajax({
+                url: '@Url.Action("reload", "Product")',
+                data: {
+                    pageNumber: 1,
+                    search: search,
+                    sortOrder: sortOrder,
+                    PriceFilter: priceFilter,
+                    StateFilter: stateFilter,
+                    CategoryFilter: categoryFilter,
+                    DiscountFilter: discountFilter
+                },
+                success: function (data) {
+                    $('#lst').html(data);
+                }
+            })
+        }
+    }
+</script>

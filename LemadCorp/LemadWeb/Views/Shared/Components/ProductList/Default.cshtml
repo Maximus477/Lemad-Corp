@@ -47,9 +47,12 @@ else
         </div>
     }
 
+    List<string> newList = new List<string>();
+    newList.Add("");
+
     var prevDisabled = !Model.HasPreviousPage ? "circle-link-disabled disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "circle-link-disabled disabled" : "";
-    var search = Model.Search == null ? "" : Model.Search;
+    var search = Model.Search == null ? newList : Model.Search;
     var sortorder = Model.SortOrder == null ? "" : Model.SortOrder;
     var pricefilter = Model.PriceFilter == null ? "" : Model.PriceFilter;
     var statefilter = Model.StateFilter == null ? "" : Model.StateFilter;
