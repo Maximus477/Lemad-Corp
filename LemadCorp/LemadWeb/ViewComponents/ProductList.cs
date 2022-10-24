@@ -70,7 +70,6 @@ namespace LemadWeb.ViewComponents
                 }
                 item = newList;
             }
-            //item = item.Where(c => c.Name.ToLower().Contains(search.ToLower())).ToList();
 
             if (!string.IsNullOrEmpty(Pricefilter))
             {

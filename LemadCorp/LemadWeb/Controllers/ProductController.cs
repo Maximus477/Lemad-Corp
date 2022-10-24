@@ -34,37 +34,12 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
         {
-            List<string> listString = new List<string>();
-
-            if (searchString == null) { listString.Add(""); }
-            else {
-                string name = "";
-                int i = 0;
-                foreach (char c in searchString) {
-                    if (c == ',')
-                    {
-                        listString.Add(name);
-                        name = "";
-                        i++;
-                    }
-                    else if (i == searchString.Length - 1)
-                    {
-                        name += c;
-                        listString.Add(name);
-                    }
-                    else
-                    {
-                        name += c;
-                        i++;
-                    }
-                }
-            }
             if (sortOrder == null) { sortOrder = ""; }
             if (Pricefilter == null) { Pricefilter = ""; }
             if (Statefilter == null) { Statefilter = ""; }
 
             ListProductVM model = new ListProductVM(
-                listString, 
+                createListSearch(searchString), 
                 Pricefilter, 
                 Statefilter, 
                 CategoryFilter, 
@@ -281,7 +256,39 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult reload(int pageNumber, string sortOrder, string PriceFilter, string Statefilter, string CategoryFilter, string DiscountFilter, string search = "")
         {
-            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter  = DiscountFilter });
+            return ViewComponent("ProductList", new { search = createListSearch(search), pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter  = DiscountFilter });
+        }
+
+        private List<string> createListSearch(string search)
+        {
+            List<string> listString = new List<string>();
+            if (search == null) { listString.Add(""); }
+            else
+            {
+                string name = "";
+                int i = 0;
+                foreach (char c in search)
+                {
+                    if (c == ',')
+                    {
+                        listString.Add(name);
+                        name = "";
+                        i++;
+                    }
+                    else if (i == search.Length - 1)
+                    {
+                        name += c;
+                        listString.Add(name);
+                    }
+                    else
+                    {
+                        name += c;
+                        i++;
+                    }
+                }
+            }
+
+            return listString;
         }
 
         private void verifierImage()

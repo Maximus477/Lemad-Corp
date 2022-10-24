@@ -9,12 +9,51 @@
     <link rel="stylesheet" href="~/FontAwesome/css/all.css" />
     <link rel="stylesheet" href="~/sass/layout.css" />
     <link rel="stylesheet" href="~/sass/general.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Astloch' rel='stylesheet'>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @RenderSection("Styles", false)
 </head>
 <body>
     <header class="header">
+        @*<nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+        <a class="logo total-white-link" asp-area="" asp-controller="Home" asp-action="Index"></a>
+        <button class="navbar-toggler" style="color: white" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <p><i class="navbar-toggler-icon fa fa-bars"></i>Menu</p>
+        </button>
+        <div class="navbar-collapse collapse show">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item active dropdown">
+        <a id="product-dropdown" class="total-white-link" aria-expanded="false" exp asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="">Products</a>
+        <div class="dropdown-menu" aria-labelledby="product-dropdown">
+        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="DRIVER">Pilots</a>
+        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="RACEENGINEER">Engineers</a>
+        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="TECHNICALCHIEF">Mechanics</a>
+        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="PRINCIPAL">Principals</a>
+        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="POWERUNIT">Power units</a>
+        </div>
+        </li>
+        <li class="nav-item">
+        @if (!User.Identity.IsAuthenticated)
+        {
+        <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
+        <i class="fa fa-user"></i>
+        </a>
+        }
+        else
+        {
+        <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
+        <i class="fa fa-user"></i>
+        </a>
+        }
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav>*@
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
                 <a class="logo total-white-link col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" asp-area="" asp-controller="Home" asp-action="Index"></a>
@@ -58,6 +97,7 @@
                                     </form>
                                 </fieldset>
                             </div>
+
                             @*<form asp-controller="Product" asp-action="List" method="get" class="form-inline search-form row">
                             <input class="searchbar col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" type="search"
                             placeholder="Search a product..." aria-label="Search" name="searchString" value="@ViewData["CurrentFilter"]" />
@@ -70,40 +110,40 @@
                             </form>*@
                         </li>
                         @*<li class="nav-item navbar-item">
-                        <div class="color-toggler">
-                        <p class="total-white-link">Change color mode</p>
-                        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite" draggable="false">
-                        <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                        <mask class="moon" id="moon-mask">
-                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                        <circle cx="24" cy="10" r="6" fill="black" />
-                        </mask>
-                        <g class="sun-beams" stroke="currentColor">
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                        </g>
-                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                        </svg>
-                        </button>
-                        </div>
+                            <div class="color-toggler">
+                                <p class="total-white-link">Change color mode</p>
+                                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite" draggable="false">
+                                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                                        <mask class="moon" id="moon-mask">
+                                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                                            <circle cx="24" cy="10" r="6" fill="black" />
+                                        </mask>
+                                        <g class="sun-beams" stroke="currentColor">
+                                            <line x1="12" y1="1" x2="12" y2="3" />
+                                            <line x1="12" y1="21" x2="12" y2="23" />
+                                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                            <line x1="1" y1="12" x2="3" y2="12" />
+                                            <line x1="21" y1="12" x2="23" y2="12" />
+                                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                                        </g>
+                                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                                    </svg>
+                                </button>
+                            </div>
                         </li>*@
                         <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="text-align: center; vertical-align:middle;">
                             @if (!User.Identity.IsAuthenticated)
                             {
                                 <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
-                                    <p>Login@*<i class="fa fa-user"></i>*@</p>
+                                    <i class="fa fa-user"></i>
                                 </a>
                             }
                             else
                             {
                                 <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
-                                    <p>Logout<i class="fa fa-user"></i></p>
+                                    <i class="fa fa-user"></i>
                                 </a>
                             }
                         </li>
@@ -151,7 +191,9 @@
     <script type="text/javascript" src="~/js/theme-switch.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="~/js/choices.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript">
+        AOS.init();
         var textPresetVal = new Choices('#choices-text-preset-values', { removeItemButton: true, });
 
         function returnArray() {
