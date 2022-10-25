@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LemadDb.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,6 +19,8 @@ namespace LemadDb.Domain.User
 
         public string Cellphone { get; set; }
 
+        // nav
         public ICollection<AddressUser> CivicAddress { get; set; }
+        public Cart Cart { get; set; }
     }
 }

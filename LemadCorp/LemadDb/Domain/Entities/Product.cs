@@ -11,6 +11,7 @@ using LemadDb.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LemadDb.Domain.Entities
 {
@@ -37,6 +38,9 @@ namespace LemadDb.Domain.Entities
         public string Path { get; set; }
 
         public byte[] Photo { get; set; }
+
+        // nav
+        public IEnumerable<Cart> Cart { get; set; }
 
         #region Stats
 

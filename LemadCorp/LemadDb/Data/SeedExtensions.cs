@@ -127,6 +127,18 @@ namespace LemadDb.Data
             }
         }
 
+        private static void SeedUsersToCart(this ModelBuilder builder, IEnumerable<ApplicationUser> users)
+        {
+            foreach (ApplicationUser user in users)
+            {
+                builder.Entity<Cart>().HasData(new Cart {
+                    Id = Guid.NewGuid(),
+                    UserId = user.UserId,
+                    Products = new List<Product>()
+                });
+            }
+        }
+
         private static void SeedImage(IEnumerable<Product> products)
         {
             using (SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=LemadDb;Trusted_Connection=True;MultipleActiveResultSets=true"))
@@ -153,19 +165,15 @@ namespace LemadDb.Data
                 CreateRole("admin"),
                 CreateRole("buyer")
             };
-
             SeedRoles(builder, roles);
 
             List<AdresseCivique> adressesCiviques = new List<AdresseCivique> {
                 CreateAddress("3000 Av. Boullé", "Saint-Hyacinthe", "Québec", "Canada", "J2S 1H9"),
                 CreateAddress("1899 Henri-Becquerel", "Sainte-Julie", "Québec", "Canada", "J3E 1V6")
             };
-
             SeedAddress(builder, adressesCiviques);
 
-            var admins = new List<ApplicationUser>() {
-                CreateUser("admin@lemadrid.com", "!Qwerty123")
-            };
+            var admins = new List<ApplicationUser>() { CreateUser("admin@lemadrid.com", "!Qwerty123") };
 
             var users = new List<ApplicationUser> {
                 CreateUser(builder, "hugo@lemadrid.com", "Hugo", "Lapointe", "(450)-773-6800", "!Qwerty123"),
@@ -177,11 +185,14 @@ namespace LemadDb.Data
 
             builder.SeedUsers(admins);
             builder.SeedUsers(users);
+
             builder.SeedUsersToRole(admins, roles[0]);
             builder.SeedUsersToRole(users, roles[1]);
 
             builder.SeedUsersToAddress(new List<ApplicationUser> { users[0], users[2], users[3], users[4] }, adressesCiviques[0]);
             builder.SeedUsersToAddress(new List<ApplicationUser> { users[1] }, adressesCiviques[1]);
+
+            builder.SeedUsersToCart(users);
             #endregion
 
             #region Products
