@@ -9,14 +9,19 @@
 }
 
 @font-face {
-    font-family: 'crete-round';
-    src: url('../Fonts/abigral-vmoel-webfont.ttf') format('truetype');
+    font-family: 'abigail';
+    src: url('../Fonts/abigral-vmoel-webfont.eot');
+    src: url('../Fonts/abigral-vmoel-webfont.eot#iefix') format('embedded-opentype'), 
+         url('../Fonts/abigral-vmoel-webfont.woff2') format('woff2'), 
+         url('../Fonts/abigral-vmoel-webfont.woff') format('woff'), 
+         url('../Fonts/abigral-vmoel-webfont.ttf') format('truetype'), 
+         url('../Fonts/abigral-vmoel-webfont.svg#NomPolice') format('svg');
     font-weight: bolder;
     font-style: normal;
 }
 
 h1, h2, h3, h4, p {
-    font-family: 'crete-round'
+    font-family: 'abigail'
 }
 
 a:link, a:visited, a:hover {

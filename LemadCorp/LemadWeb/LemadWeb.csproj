@@ -43,6 +43,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\engineers\" />
+    <Folder Include="wwwroot\Fonts\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
