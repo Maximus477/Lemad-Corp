@@ -23,11 +23,11 @@ else {
                             <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
                         </h4>
                         <h5>
-                            @if (item.Status == Status.ProductStatus.AVAILABLE) {
+                            @if (item.Status == ProductStatus.AVAILABLE) {
                                 <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Price.ToString("C")</a>
-                            } else if (item.Status == Status.ProductStatus.PROMOTION || item.Status == Status.ProductStatus.LIQUIDATION) {
+                            } else if (item.Status == ProductStatus.PROMOTION || item.Status == ProductStatus.LIQUIDATION) {
                                 <a style="color:red; font-weight: bold;" class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.ActualPrice.ToString("C") (@item.Discount%)</a>
-                            } else if (item.Status == Status.ProductStatus.UNAVAILABLE || item.Status == Status.ProductStatus.INCOMMANDE) {
+                            } else if (item.Status == ProductStatus.UNAVAILABLE || item.Status == ProductStatus.INCOMMANDE) {
                                 <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">Unavailable right now!</a>
                             }
                         </h5>

@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
-using static LemadDb.Data.Status;
-using static LemadDb.Data.Category;
+using static LemadDb.Data.Enumerable;
 using LemadDb.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -49,7 +48,7 @@ namespace LemadDb.Domain.Entities
                 var age = DateTime.Today.Year - DateNaissance.Year;
                 if (DateNaissance.Date > DateTime.Today.AddYears(-age)) age--;
 
-                if (ProductCategory == Category.ProductCategory.POWERUNIT)
+                if (ProductCategory == ProductCategory.POWERUNIT)
                 {
                     return "Creation date: " + DateNaissance.ToString("dd MMM yyyy") + " (" + age.ToString() + " ans)";
                 } else
@@ -64,19 +63,19 @@ namespace LemadDb.Domain.Entities
             {
                 switch (ProductCategory)
                 {
-                    case Category.ProductCategory.DRIVER:
+                    case ProductCategory.DRIVER:
                         return "Driver";
                         break;
-                    case Category.ProductCategory.POWERUNIT:
+                    case ProductCategory.POWERUNIT:
                         return "Power unit";
                         break;
-                    case Category.ProductCategory.PRINCIPAL:
+                    case ProductCategory.PRINCIPAL:
                         return "Team principal";
                         break;
-                    case Category.ProductCategory.TECHNICALCHIEF:
+                    case ProductCategory.TECHNICALCHIEF:
                         return "Technical chief";
                         break;
-                    case Category.ProductCategory.RACEENGINEER:
+                    case ProductCategory.RACEENGINEER:
                         return "Race engineer";
                         break;
                     default:
@@ -128,19 +127,19 @@ namespace LemadDb.Domain.Entities
         {
             switch(Status)
             {
-                case Data.Status.ProductStatus.AVAILABLE:
+                case ProductStatus.AVAILABLE:
                     return "available";
                     break;
-                case Data.Status.ProductStatus.UNAVAILABLE:
+                case ProductStatus.UNAVAILABLE:
                     return "unavailable";
                     break;
-                case Data.Status.ProductStatus.INCOMMANDE:
+                case ProductStatus.INCOMMANDE:
                     return "unavailable, in command...";
                     break;
-                case Data.Status.ProductStatus.LIQUIDATION:
+                case ProductStatus.LIQUIDATION:
                     return "In liquidation!";
                     break;
-                case Data.Status.ProductStatus.PROMOTION:
+                case ProductStatus.PROMOTION:
                     return "In promotion!";
                     break;
                 default: return "";

@@ -18,7 +18,7 @@
                 <br />
                 <br />
                 <h3>Prix: @Model.FormatNumber(@Model.ActualPrice) (rabais de @Model.FormatNumber(Model.DiscountAmount)$)</h3>
-                @if (Model.Status == Status.ProductStatus.LIQUIDATION || Model.Status == Status.ProductStatus.PROMOTION)
+                @if (Model.Status == ProductStatus.LIQUIDATION || Model.Status == ProductStatus.PROMOTION)
                 {
                     <h4 style="color:red">Disponibility: @Model.GetDisponibility()</h4>
                 }

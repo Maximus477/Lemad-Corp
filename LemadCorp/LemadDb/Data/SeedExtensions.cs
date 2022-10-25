@@ -9,8 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static LemadDb.Data.Category;
-using static LemadDb.Data.Status;
+using static LemadDb.Data.Enumerable;
 
 namespace LemadDb.Data
 {
