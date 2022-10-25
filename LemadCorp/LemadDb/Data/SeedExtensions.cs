@@ -127,18 +127,6 @@ namespace LemadDb.Data
             }
         }
 
-        private static void SeedUsersToCart(this ModelBuilder builder, IEnumerable<ApplicationUser> users)
-        {
-            foreach (ApplicationUser user in users)
-            {
-                builder.Entity<Cart>().HasData(new Cart {
-                    Id = Guid.NewGuid(),
-                    UserId = user.UserId,
-                    Products = new List<Product>()
-                });
-            }
-        }
-
         private static void SeedImage(IEnumerable<Product> products)
         {
             using (SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=LemadDb;Trusted_Connection=True;MultipleActiveResultSets=true"))
@@ -191,8 +179,6 @@ namespace LemadDb.Data
 
             builder.SeedUsersToAddress(new List<ApplicationUser> { users[0], users[2], users[3], users[4] }, adressesCiviques[0]);
             builder.SeedUsersToAddress(new List<ApplicationUser> { users[1] }, adressesCiviques[1]);
-
-            builder.SeedUsersToCart(users);
             #endregion
 
             #region Products

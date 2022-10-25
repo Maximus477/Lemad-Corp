@@ -21,6 +21,6 @@ namespace LemadDb.Domain.User
 
         // nav
         public ICollection<AddressUser> CivicAddress { get; set; }
-        public Cart Cart { get; set; }
+        public Command Cart { get; set; }
     }
 }

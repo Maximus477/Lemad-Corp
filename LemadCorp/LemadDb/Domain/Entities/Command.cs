@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace LemadDb.Domain.Entities
 {
-    public class Cart
+    public class Command
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public IEnumerable<Product> Products { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

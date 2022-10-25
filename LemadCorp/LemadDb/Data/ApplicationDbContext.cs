@@ -13,7 +13,7 @@ namespace LemadDb.Data
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Command> Commands { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
