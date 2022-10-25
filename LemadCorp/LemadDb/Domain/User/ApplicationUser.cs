@@ -12,7 +12,6 @@ namespace LemadDb.Domain.User
 {
     public class ApplicationUser : IdentityUser
     {
-        public Guid UserId { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -20,7 +19,7 @@ namespace LemadDb.Domain.User
         public string Cellphone { get; set; }
 
         // nav
-        public ICollection<AddressUser> CivicAddress { get; set; }
-        public Command Cart { get; set; }
+        public IEnumerable<AddressUser> CivicAddresses { get; set; }
+        public IEnumerable<Command> Commands { get; set; }
     }
 }

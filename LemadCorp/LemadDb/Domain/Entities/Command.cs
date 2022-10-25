@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LemadDb.Domain.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,11 @@ namespace LemadDb.Domain.Entities
     public class Command
     {
         public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-        public IEnumerable<Product> Products { get; set; }
+        public string ApplicationUserId { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        // nav
+        public IEnumerable<Product> Products { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

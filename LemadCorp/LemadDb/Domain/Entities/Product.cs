@@ -40,12 +40,7 @@ namespace LemadDb.Domain.Entities
         public byte[] Photo { get; set; }
 
         // nav
-        public IEnumerable<Command> Cart { get; set; }
-
-        #region Stats
-
-        #endregion
-
+        public Command Command { get; set; }
 
         public string GetDate
         {

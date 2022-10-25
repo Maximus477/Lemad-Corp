@@ -10,14 +10,9 @@ namespace LemadDb.Domain.User
     public class AddressUser
     {
         [Required]
-        public Guid AddressId { get; set; }
+        public Guid AdresseCiviqueId { get; set; }
 
         [Required]
-        public Guid UserId { get; set; }
-
-        // nav
-        public ApplicationUser ApplicationUser { get; set; }
-
-        public AdresseCivique AdresseCivique { get; set; }
+        public string ApplicationUserId { get; set; }
     }
 }

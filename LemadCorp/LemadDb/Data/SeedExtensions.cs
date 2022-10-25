@@ -22,7 +22,6 @@ namespace LemadDb.Data
         {
             var user = new ApplicationUser
             {
-                UserId = Guid.NewGuid(),
                 UserName = email,
                 FirstName = firstName,
                 LastName = lastName,
@@ -40,7 +39,6 @@ namespace LemadDb.Data
         {
             var user = new ApplicationUser
             {
-                UserId = Guid.NewGuid(),
                 UserName = email,
                 NormalizedEmail = email.ToUpper(),
                 Email = email,
@@ -121,8 +119,8 @@ namespace LemadDb.Data
             foreach (ApplicationUser user in users)
             {
                 builder.Entity<AddressUser>().HasData(new AddressUser {
-                    UserId = user.UserId,
-                    AddressId = address.Id
+                    ApplicationUserId = user.Id,
+                    AdresseCiviqueId = address.Id
                 });
             }
         }

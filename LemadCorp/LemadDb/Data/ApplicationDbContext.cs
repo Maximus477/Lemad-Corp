@@ -23,7 +23,7 @@ namespace LemadDb.Data
             base.OnModelCreating(builder);
 
             builder.Entity<AddressUser>()
-                .HasKey(c => new { c.AddressId, c.UserId });
+                .HasKey(c => new { c.AdresseCiviqueId, c.ApplicationUserId });
 
             builder.Seed();
         }
