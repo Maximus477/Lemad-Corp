@@ -9,13 +9,9 @@ namespace LemadDb.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Product> Products { get; set; }
+        public DbSet<AdresseCivique> CivicAddresses { get; set; }
 
-        //public DbSet<Drivers> Drivers { get; set; }
-        //public DbSet<Principals> Principals { get; set; }
-        //public DbSet<PowerUnits> PowerUnits { get; set; }
-        //public DbSet<TechnicalChiefs> TechnicalChiefs { get; set; }
-        //public DbSet<RaceEngineers> RaceEngineers { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
@@ -23,6 +19,10 @@ namespace LemadDb.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<AddressUser>()
+                .HasKey(c => new { c.AddressId, c.UserId });
+
             builder.Seed();
         }
 

@@ -78,7 +78,6 @@ namespace LemadWeb.Controllers
             {
                 UserName = model.Email,
                 Email = model.Email,
-                EntrepriseName = model.EntrepriseName,
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);

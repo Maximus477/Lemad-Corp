@@ -34,6 +34,8 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
         {
+            verifierImage();
+
             if (sortOrder == null) { sortOrder = ""; }
             if (Pricefilter == null) { Pricefilter = ""; }
             if (Statefilter == null) { Statefilter = ""; }
@@ -50,7 +52,6 @@ namespace LemadWeb.Controllers
                 sortOrder == "Date" ? "date_desc" : "Date",
                 sortOrder == "Discount" ? "discount_desc" : "Discount");
 
-            verifierImage();
             return View(model);
         }
 
