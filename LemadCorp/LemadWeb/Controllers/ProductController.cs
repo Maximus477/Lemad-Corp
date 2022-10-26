@@ -20,6 +20,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using LemadWeb.ViewModels.Product;
 using System.Net.WebSockets;
+using Microsoft.Extensions.Configuration;
 
 
 namespace LemadWeb.Controllers
@@ -28,13 +29,14 @@ namespace LemadWeb.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public ProductController(ApplicationDbContext context) { _context = context; }
+        public ProductController(ApplicationDbContext context, IConfiguration configuration) { _context = context; _configuration = configuration; }
 
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
         {
-            verifierImage();
+            //verifierImage();
 
             if (sortOrder == null) { sortOrder = ""; }
             if (Pricefilter == null) { Pricefilter = ""; }
@@ -294,7 +296,7 @@ namespace LemadWeb.Controllers
 
         private void verifierImage()
         {
-            using (SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=LemadDb;Trusted_Connection=True;MultipleActiveResultSets=true"))
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 foreach (Product item in _context.Products.ToList())
                 {

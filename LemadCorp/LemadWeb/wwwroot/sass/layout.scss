@@ -3,7 +3,7 @@
 @import "button.css";
 @import "color.css";
 
-// Logo
+// Header
 .logo {
     background-image: url('../img/goodlogo2.png');
     background-repeat: no-repeat;
@@ -13,113 +13,146 @@
     padding: 0;
 }
 
-// Header
-header, .navbar{
-    background-color:var(--color-background-sec);
+.navbar {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-background-sec);
 }
 
-.navbar{
-    padding:0;
+.nav-header {
+    width: 100%;
 }
 
-.navbar-nav{
-    margin-left:5%;
+.navbar-nav {
+    width: 70%;
+    margin-left: auto;
+    text-align: center;
+    margin-left: 0;
 }
 
 .nav-item {
-    padding-top:5px;
-    padding-bottom:5px;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 0;
+    justify-content: center;
     padding-right: 30px;
+}
+
+@media (max-width: 990px) {
+    .navbar-nav {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+.text-container {
+    height: 100%;
+    position: relative;
+}
+
+.centered-element {
+    margin: 0;
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-login {
+    display: block;
+}
+
+.btn-login p {
+}
+
+.btn-group {
+    width: 95%;
+    margin-right:5%;
+    height: 53px;
+}
+
+.dropdown-menu {
+    width: 100%;
+    background-color: var(--color-header-text);
+    height: 170px;
+}
+
+#call-list {
+    width: 75%;
+    background-color: var(--color-button-sec);
+}
+
+.btn-group button {
+    width: 25%;
 }
 
 .navbar-toggler-icon {
     color: var(--color-header-text);
+    margin-right:25px;
 }
 
-.container {
-    margin-left: 5%;
-    margin-right: 5%;
-    padding-bottom: 1%;
-    padding-top: 1%;
+// Header
+header {
+    background-color: var(--color-background-sec);
 }
 
 .container-padding {
     padding-top: 4%;
 }
 
-@media (max-width: 575px){
-    .container-padding{
+@media (max-width: 575px) {
+    .container-padding {
         padding-top: 10%;
     }
 }
 
-.color-toggler{
+.color-toggler {
     display: flex;
-}
-
-.btn-login p{
-    padding-left: 7px;
-    padding-right: 7px;
-    top: 50%;
 }
 
 .nav-header {
     border-bottom: 1px solid var(--color-border-alt) !important;
 }
 
-header{
+header {
     background-color: var(--color-background-sec);
 }
 
-.item-right{
-    margin-left: auto;
-    width:20%;
-}
-
-    .item-right li{
-        align-self: center;
-        vertical-align: middle;
-        left: auto !important;
-        right: 0px;
-    }
-
-    .item-right li i{
-        vertical-align: middle;
-    }
-
-.item-left{
-    margin-right: 10px;
-    width: 80%;
-}
-
-.container-header{
+.container-header {
     margin-left: 30px;
-    margin-right:0px;
-}
-
-.nav-header{
-    width: 100%;
+    margin-right: 0px;
 }
 
 // Footer
-footer{
-    background-color:var(--color-background-qua);
+footer {
+    background-color: var(--color-background-qua);
 }
 
 // Body
-body{
-    background-color:var(--color-background-pri);
+body {
+    background-color: var(--color-background-pri);
 }
 
 
-.div-theme{
+.div-theme {
     vertical-align: middle;
     margin-right: 15px;
 }
 
-    .div-theme button{
-        margin-right: 10px;
-    }
+.div-theme button {
+    margin-right: 10px;
+}
 
 /* 
     Button Dark Mode 
@@ -127,7 +160,7 @@ body{
 */
 
 .theme-toggle,
-.sun-and-moon{
+.sun-and-moon {
     color: white;
 }
 
@@ -244,9 +277,9 @@ body{
 /*===============================
 =            Choices            =
 ===============================*/
-.form-searchbar{
-    width:100%;
-    border-radius:5%;
+.form-searchbar {
+    width: 100%;
+    border-radius: 5%;
 }
 
 .choices {
@@ -613,7 +646,7 @@ body{
 
 .s005 {
     max-height: 30px;
-    width:100%;
+    width: 100%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: center;
@@ -625,7 +658,7 @@ body{
     background-size: cover;
     background-position: center center;
     //margin-top:15px;
-    margin-bottom:15px;
+    margin-bottom: 15px;
 }
 
 .s005 form {

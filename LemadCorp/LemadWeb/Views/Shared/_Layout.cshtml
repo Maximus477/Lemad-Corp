@@ -17,43 +17,6 @@
 </head>
 <body>
     <header class="header">
-        @*<nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-        <a class="logo total-white-link" asp-area="" asp-controller="Home" asp-action="Index"></a>
-        <button class="navbar-toggler" style="color: white" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <p><i class="navbar-toggler-icon fa fa-bars"></i>Menu</p>
-        </button>
-        <div class="navbar-collapse collapse show">
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item active dropdown">
-        <a id="product-dropdown" class="total-white-link" aria-expanded="false" exp asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="">Products</a>
-        <div class="dropdown-menu" aria-labelledby="product-dropdown">
-        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="DRIVER">Pilots</a>
-        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="RACEENGINEER">Engineers</a>
-        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="TECHNICALCHIEF">Mechanics</a>
-        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="PRINCIPAL">Principals</a>
-        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="POWERUNIT">Power units</a>
-        </div>
-        </li>
-        <li class="nav-item">
-        @if (!User.Identity.IsAuthenticated)
-        {
-        <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
-        <i class="fa fa-user"></i>
-        </a>
-        }
-        else
-        {
-        <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
-        <i class="fa fa-user"></i>
-        </a>
-        }
-        </li>
-        </ul>
-        </div>
-        </div>
-        </nav>*@
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
                 <a class="logo total-white-link col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" asp-area="" asp-controller="Home" asp-action="Index"></a>
@@ -61,11 +24,17 @@
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="navbar-toggler-icon fa fa-bars"></i>
                 </button>
-                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between row">
-                    <ul class="navbar-nav" style="width:100%">
-                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="navbar-collapse collapse show">
+                    <ul class="navbar-nav ml-auto row">
+                        <li class="nav-item active dropdown col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
                             <div class="btn-group">
-                                <a id="call-list" class="total-white-link button-dropdown" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="">Products</a>
+                                <a id="call-list" class="total-white-link" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="">
+                                    <div class="text-container">
+                                        <div class="centered-element">
+                                            Products
+                                        </div>
+                                    </div>
+                                </a>
                                 <button type="button" class="dropdown-toggle dropdown-toggle-split button-dropdown"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="sr-only">Toggle Dropdown</span>
@@ -79,7 +48,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 row">
+                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
                             <div class="s005">
                                 <fieldset style="width:100%; max-height:30px;">
                                     <form class="form-searchbar" asp-controller="Product" asp-action="List" method="get">
@@ -87,8 +56,7 @@
                                             <div class="input-field">
                                                 <input class="form-control"
                                                        id="choices-text-preset-values"
-                                                       type="text"
-                                                       placeholder="Search a product..." />
+                                                       type="text" />
                                                 <button class="btn-search" type="button" onclick="callList()">
                                                     <i class="fa fa-search fa-align-center"></i>
                                                 </button>
@@ -97,53 +65,29 @@
                                     </form>
                                 </fieldset>
                             </div>
-
-                            @*<form asp-controller="Product" asp-action="List" method="get" class="form-inline search-form row">
-                            <input class="searchbar col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" type="search"
-                            placeholder="Search a product..." aria-label="Search" name="searchString" value="@ViewData["CurrentFilter"]" />
-                            <button class="button-header col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2" type="submit" value="">
-                            <i class="fa fa-search fa-align-center"></i>
-                            </button>
-                            <a class="button-header-alt col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" asp-area="" asp-controller="" asp-action="">
-                            <i class="fa fa-shopping-cart fa-align-center"></i>
-                            </a>
-                            </form>*@
                         </li>
-                        @*<li class="nav-item navbar-item">
-                            <div class="color-toggler">
-                                <p class="total-white-link">Change color mode</p>
-                                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite" draggable="false">
-                                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                                        <mask class="moon" id="moon-mask">
-                                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                                            <circle cx="24" cy="10" r="6" fill="black" />
-                                        </mask>
-                                        <g class="sun-beams" stroke="currentColor">
-                                            <line x1="12" y1="1" x2="12" y2="3" />
-                                            <line x1="12" y1="21" x2="12" y2="23" />
-                                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                                            <line x1="1" y1="12" x2="3" y2="12" />
-                                            <line x1="21" y1="12" x2="23" y2="12" />
-                                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                                        </g>
-                                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </li>*@
-                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="text-align: center; vertical-align:middle;">
-                            @if (!User.Identity.IsAuthenticated)
-                            {
-                                <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
-                                    <i class="fa fa-user"></i>
+                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                            <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Product" asp-action="Cart">
+                                <div class="text-container">
+                                    <div class="centered-element">
+                                        Cart <i class="fa fa-cart-shopping"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                            @if (!User.Identity.IsAuthenticated) {
+                                <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
+                                    <div class="text-container">
+                                        <div class="centered-element">
+                                            Login <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
                                 </a>
                             }
-                            else
-                            {
-                                <a class="nav-link btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
-                                    <i class="fa fa-user"></i>
+                            else {
+                                <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
+                                    <p><i class="fa fa-user"></i>Logout</p>
                                 </a>
                             }
                         </li>
