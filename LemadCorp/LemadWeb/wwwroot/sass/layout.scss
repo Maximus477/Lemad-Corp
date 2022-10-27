@@ -4,6 +4,24 @@
 @import "color.css";
 
 // Header
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
 .logo {
     background-image: url('../img/goodlogo2.png');
     background-repeat: no-repeat;
@@ -113,165 +131,13 @@ header {
 
 @media (max-width: 575px) {
     .container-padding {
-        padding-top: 10%;
+        padding-top: 8%;
     }
-}
-
-.color-toggler {
-    display: flex;
-}
-
-.nav-header {
-    border-bottom: 1px solid var(--color-border-alt) !important;
-}
-
-header {
-    background-color: var(--color-background-sec);
-}
-
-.container-header {
-    margin-left: 30px;
-    margin-right: 0px;
 }
 
 // Footer
 footer {
     background-color: var(--color-background-qua);
-}
-
-// Body
-body {
-    background-color: var(--color-background-pri);
-}
-
-
-.div-theme {
-    vertical-align: middle;
-    margin-right: 15px;
-}
-
-.div-theme button {
-    margin-right: 10px;
-}
-
-/* 
-    Button Dark Mode 
-    Source : https://web.dev/building-a-theme-switch-component/
-*/
-
-.theme-toggle,
-.sun-and-moon {
-    color: white;
-}
-
-.sun-and-moon > :is(.moon,.sun,.sun-beams) {
-    transform-origin: center center
-}
-
-.sun-and-moon > :is(.moon,.sun) {
-    fill: var(--icon-fill)
-}
-
-.theme-toggle:is(:hover,:focus-visible) > .sun-and-moon > :is(.moon,.sun) {
-    fill: var(--icon-fill-hover)
-}
-
-.sun-and-moon > .sun-beams {
-    stroke: var(--icon-fill);
-    stroke-width: 2px //2px / 1px
-}
-
-.theme-toggle:is(:hover,:focus-visible) .sun-and-moon > .sun-beams {
-    stroke: var(--icon-fill-hover)
-}
-
-[data-theme=dark] .sun-and-moon > .sun {
-    transform: scale(1.75)
-}
-
-[data-theme=dark] .sun-and-moon > .sun-beams {
-    opacity: 0
-}
-
-[data-theme=dark] .sun-and-moon > .moon > circle {
-    transform: translate(-7px)
-}
-
-@supports (cx: 1) {
-    [data-theme=dark] .sun-and-moon > .moon > circle {
-        transform: translate(0);
-        cx: 17 // 17 / 8
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .sun-and-moon > .sun {
-        transition: transform .5s var(--ease-elastic-3)
-    }
-
-    .sun-and-moon > .sun-beams {
-        transition: transform .5s var(--ease-elastic-4),opacity .5s var(--ease-3)
-    }
-
-    .sun-and-moon .moon > circle {
-        transition: transform .25s var(--ease-out-5)
-    }
-
-    @supports (cx: 1) {
-        .sun-and-moon .moon > circle {
-            transition: cx .25s var(--ease-out-5)
-        }
-    }
-
-    [data-theme=dark] .sun-and-moon > .sun {
-        transform: scale(1.75);
-        transition-timing-function: var(--ease-3);
-        transition-duration: .25s
-    }
-
-    [data-theme=dark] .sun-and-moon > .sun-beams {
-        transform: rotate(-25deg);
-        transition-duration: .15s
-    }
-
-    [data-theme=dark] .sun-and-moon > .moon > circle {
-        transition-delay: .25s;
-        transition-duration: .5s
-    }
-}
-
-.theme-toggle {
-    --size: 2rem; //2rem / 1rem
-    --icon-fill: rgb(255,255,255);
-    --icon-fill-hover: rgb(245,245,245);
-    background: none;
-    border: none;
-    padding: 0;
-    inline-size: var(--size);
-    block-size: var(--size);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    outline-offset: 5px
-}
-
-.theme-toggle > svg {
-    inline-size: 100%;
-    block-size: 100%;
-    stroke-linecap: round
-}
-
-[data-theme=dark] .theme-toggle {
-    --icon-fill: rgb(255,255,255);
-    --icon-fill-hover: rgb(245,245,245);
-}
-
-@media (hover: none) {
-    .theme-toggle {
-        --size: 48px //48px / 24px
-    }
 }
 
 /*===============================

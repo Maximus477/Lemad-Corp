@@ -1,5 +1,229 @@
 ﻿@import "color.css";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400|Raleway:300);
 
+/*
+    General
+*/
+
+.row {
+    width: 100%;
+    margin-left: 0;
+}
+
+/*
+    Slogan
+*/
+
+.slogan-div {
+    width: 100%;
+    background-image: url('../img/home/slogan-pattern2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img-slogan {
+    display: none;
+    width: 100%;
+    aspect-ratio: 2.8/1;
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+
+@media(min-width:900px) {
+    .img-slogan {
+        display: initial;
+    }
+}
+
+.first-text {
+    padding: 5% 15%;
+    margin-top: 15%;
+    margin-bottom: 5%;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.first-text h2,
+.first-text h4 {
+    color: rgb(60, 60, 60);
+}
+
+/*
+    Sponsor
+*/
+.sponsor-div {
+    background-color: var(--color-button-sec);
+    width: 100%;
+}
+
+.sp-text {
+    padding: 5%;
+    color: white;
+    text-align: center;
+}
+
+.sp-text h4 {
+    color: white;
+}
+
+.sponsor-image {
+    text-align: center;
+    width: 100%;
+    margin: 2%;
+}
+
+.sponsor-img {
+    background-color: rgb(255,255,255, 0.3);
+    border-radius: 50%;
+    width: 75%;
+    aspect-ratio: 1/1;
+    margin-bottom: 10%;
+    padding: 5%;
+}
+
+.sponsor-img:hover {
+    background-color: rgb(255,255,255);
+}
+
+/*
+    Feature
+*/
+
+.feature-link-title {
+    margin-top: 5%;
+    text-align: center;
+}
+
+.feature-link-title-prod{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.feature-link {
+    margin-top: 8%;
+    text-align: center;
+}
+
+@media(min-width: 900px){
+    .feature-link {
+        margin-top: 2%;
+    }
+}
+
+$color1: var(--color-button-sec);
+$color2: rgb(22, 117, 4);
+$color3: rgb(2, 75, 120);
+$color4: rgb(59, 5, 135);
+$color5: rgb(191, 97, 4);
+
+.feature-button,
+.feature-button:visited,
+.feature-button:link {
+    position: relative;
+    text-decoration: none;
+    background-color: white;
+    padding: 2% 10%;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+}
+
+.feature-button:hover,
+.feature-button:visited:hover,
+.feature-button:link:hover {
+    text-decoration: none;
+    color: white;
+}
+
+#driver{
+    color: $color1;
+    border: 1px solid $color1;
+}
+
+#driver:hover{
+    background-color: $color1;
+    color: white;
+}
+
+#engineer {
+    color: $color2;
+    border: 1px solid $color2;
+}
+
+#engineer:hover {
+    background-color: $color2;
+    color: white;
+}
+
+#technical {
+    color: $color3;
+    border: 1px solid $color3;
+}
+
+#technical:hover {
+    background-color: $color3;
+    color: white;
+}
+
+#principal {
+    color: $color4;
+    border: 1px solid $color4;
+}
+
+#principal:hover {
+    background-color: $color4;
+    color: white;
+}
+
+#powerunit {
+    color: $color5;
+    border: 1px solid $color5;
+}
+
+#powerunit:hover {
+    background-color: $color5;
+    color: white;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.div-feature{
+    width:75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-image {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+#img-product {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+    Other
+*/
 .basic-text-center {
     color: var(--color-text);
     text-align: center;
@@ -86,8 +310,8 @@
 }
 
 .product-row {
-    height:90%;
-    padding-top:10vh;
+    height: 90%;
+    padding-top: 10vh;
 }
 
 .alonso {
@@ -172,8 +396,8 @@
 }
 
 .name-product {
-    font-size:150%;
-    padding-top:2vh;
+    font-size: 150%;
+    padding-top: 2vh;
 }
 
 .price-product {
@@ -181,14 +405,14 @@
     padding-top: 0.5vh;
 }
 
-.product {
+/*.product {
     background-color: #FFC170;
     padding-top: 3vh;
     border-color: var(--color-background-sec);
     height: 70vh;
     padding-right: 2px !important;
     padding-left: 2px !important;
-}
+}*/
 
 .product-white {
     background-color: #EEEEE9;
@@ -301,7 +525,7 @@
 
 .item-box {
     background-color: white;
-    padding-top:2vh;
+    padding-top: 2vh;
 }
 
 .red-border {
@@ -310,11 +534,11 @@
 
 
 .display-flex {
-    display:flex;
+    display: flex;
 }
 
 .square-white {
-    padding:5%;
+    padding: 5%;
     aspect-ratio: 1 / 1;
     position: relative; /* If you want text inside of it */
     background-color: #EEEEE9
@@ -363,7 +587,7 @@
 
     &:before {
         content: "\f5e4";
-        color:black;
+        color: black;
         font-family: FontAwesome;
         position: absolute;
         display: flex;

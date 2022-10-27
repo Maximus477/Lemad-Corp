@@ -1,0 +1,43 @@
+﻿@section Styles {
+    <link rel="stylesheet" href="~/sass/ContactForm.css" />
+}
+
+    @model List<Product>
+
+@foreach (var item in Model)
+{
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 row" style="padding-left:0; padding-right:0; padding-bottom:30px; text-align: center;"
+        data-aos="zoom-out">
+        <div class="div-feature">
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="feature-image col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                <img id="img-product" src="data:image/*;base64,@(Convert.ToBase64String(item.Photo))" loading="lazy" />
+            </div>
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="text-product">
+                    <h4>
+                        <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
+                    </h4>
+                    <h5>
+                        @if (item.Status == ProductStatus.AVAILABLE)
+                        {
+                            <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Price.ToString("C")</a>
+                        }
+                        else if (item.Status == ProductStatus.PROMOTION || item.Status == ProductStatus.LIQUIDATION)
+                        {
+                            <a style="color:red; font-weight: bold;" class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.ActualPrice.ToString("C") (@item.Discount%)</a>
+                        }
+                        else if (item.Status == ProductStatus.UNAVAILABLE || item.Status == ProductStatus.INCOMMANDE)
+                        {
+                            <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">Unavailable right now!</a>
+                        }
+                    </h5>
+                    <div>
+                        @item.ProductCategory
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

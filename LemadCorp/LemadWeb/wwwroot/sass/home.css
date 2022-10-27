@@ -1,4 +1,216 @@
-﻿@import "color.css";
+﻿@charset "UTF-8";
+@import "color.css";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400|Raleway:300);
+/*
+    General
+*/
+.row {
+  width: 100%;
+  margin-left: 0;
+}
+
+/*
+    Slogan
+*/
+.slogan-div {
+  width: 100%;
+  background-image: url("../img/home/slogan-pattern2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.img-slogan {
+  display: none;
+  width: 100%;
+  aspect-ratio: 2.8/1;
+  margin-top: 15%;
+  margin-bottom: 10%;
+}
+
+@media (min-width: 900px) {
+  .img-slogan {
+    display: initial;
+  }
+}
+.first-text {
+  padding: 5% 15%;
+  margin-top: 15%;
+  margin-bottom: 5%;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.first-text h2,
+.first-text h4 {
+  color: #3c3c3c;
+}
+
+/*
+    Sponsor
+*/
+.sponsor-div {
+  background-color: var(--color-button-sec);
+  width: 100%;
+}
+
+.sp-text {
+  padding: 5%;
+  color: white;
+  text-align: center;
+}
+
+.sp-text h4 {
+  color: white;
+}
+
+.sponsor-image {
+  text-align: center;
+  width: 100%;
+  margin: 2%;
+}
+
+.sponsor-img {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 75%;
+  aspect-ratio: 1/1;
+  margin-bottom: 10%;
+  padding: 5%;
+}
+
+.sponsor-img:hover {
+  background-color: white;
+}
+
+/*
+    Feature
+*/
+.feature-link-title {
+  margin-top: 5%;
+  text-align: center;
+}
+
+.feature-link-title-prod {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.feature-link {
+  margin-top: 8%;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .feature-link  {
+    margin-top: 2%;
+  }
+}
+.feature-button,
+.feature-button:visited,
+.feature-button:link {
+  position: relative;
+  text-decoration: none;
+  background-color: white;
+  padding: 2% 10%;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+}
+
+.feature-button:hover,
+.feature-button:visited:hover,
+.feature-button:link:hover {
+  text-decoration: none;
+  color: white;
+}
+
+#driver {
+  color: var(--color-button-sec);
+  border: 1px solid var(--color-button-sec);
+}
+
+#driver:hover {
+  background-color: var(--color-button-sec);
+  color: white;
+}
+
+#engineer {
+  color: #167504;
+  border: 1px solid #167504;
+}
+
+#engineer:hover {
+  background-color: #167504;
+  color: white;
+}
+
+#technical {
+  color: #024b78;
+  border: 1px solid #024b78;
+}
+
+#technical:hover {
+  background-color: #024b78;
+  color: white;
+}
+
+#principal {
+  color: #3b0587;
+  border: 1px solid #3b0587;
+}
+
+#principal:hover {
+  background-color: #3b0587;
+  color: white;
+}
+
+#powerunit {
+  color: #bf6104;
+  border: 1px solid #bf6104;
+}
+
+#powerunit:hover {
+  background-color: #bf6104;
+  color: white;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.div-feature {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-image {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+#img-product {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+    Other
+*/
 .basic-text-center {
   color: var(--color-text);
   text-align: center;
@@ -180,15 +392,14 @@
   padding-top: 0.5vh;
 }
 
-.product {
-  background-color: #FFC170;
-  padding-top: 3vh;
-  border-color: var(--color-background-sec);
-  height: 70vh;
-  padding-right: 2px !important;
-  padding-left: 2px !important;
-}
-
+/*.product {
+    background-color: #FFC170;
+    padding-top: 3vh;
+    border-color: var(--color-background-sec);
+    height: 70vh;
+    padding-right: 2px !important;
+    padding-left: 2px !important;
+}*/
 .product-white {
   background-color: #EEEEE9;
   padding-top: 3vh;
