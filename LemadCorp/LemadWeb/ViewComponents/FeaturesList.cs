@@ -67,7 +67,9 @@ namespace LemadWeb.ViewComponents
                 .ToList();
 
             products.AddRange(_context.Products.Where(c => c.ProductCategory == ProductCategory.DRIVER)
-                                .Where(c => c.Price >= 15000000).ToList());
+                                .Where(c => c.Price >= 15000000)
+                                .Where(c => c.Status == ProductStatus.AVAILABLE)
+                                .ToList());
 
             return products;
         }
@@ -81,7 +83,9 @@ namespace LemadWeb.ViewComponents
                 .ToList();
 
             products.AddRange(_context.Products.Where(c => c.ProductCategory == ProductCategory.RACEENGINEER)
-                                .Where(c => c.Price >= 1500000).ToList());
+                                .Where(c => c.Price >= 1500000)
+                                .Where(c => c.Status == ProductStatus.AVAILABLE)
+                                .ToList());
 
             return products;
         }
@@ -95,7 +99,9 @@ namespace LemadWeb.ViewComponents
                 .ToList();
 
             products.AddRange(_context.Products.Where(c => c.ProductCategory == ProductCategory.TECHNICALCHIEF)
-                                .Where(c => c.Price >= 1000000).ToList());
+                                .Where(c => c.Status == ProductStatus.AVAILABLE)
+                                .Where(c => c.Price >= 1000000)
+                                .ToList());
 
             return products;
         }
@@ -109,23 +115,19 @@ namespace LemadWeb.ViewComponents
                 .ToList();
 
             products.AddRange(_context.Products.Where(c => c.ProductCategory == ProductCategory.PRINCIPAL)
-                                .Where(c => c.Price >= 2000000).ToList());
+                                .Where(c => c.Price >= 2000000)
+                                .Where(c => c.Status == ProductStatus.AVAILABLE)
+                                .ToList());
 
             return products;
         }
 
         private List<Product> CalculatePowerUnit()
         {
-            List<Product> products = new List<Product>();
-
-            products = _context.Products.Where(c => c.ProductCategory == ProductCategory.POWERUNIT)
-                .Where(c => c.Status == ProductStatus.PROMOTION)
-                .ToList();
-
-            products.AddRange(_context.Products.Where(c => c.ProductCategory == ProductCategory.POWERUNIT)
-                                .Where(c => c.Price >= 35000000).ToList());
-
-            return products;
+            return _context.Products.Where(c => c.ProductCategory == ProductCategory.POWERUNIT && 
+                                            (c.Status == ProductStatus.AVAILABLE || 
+                                             c.Status == ProductStatus.PROMOTION))
+                                    .ToList();
         }
     }
 }

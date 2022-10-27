@@ -84,18 +84,33 @@ namespace LemadDb.Domain.Entities
                 }
             }
         }
+        public string GetPrice
+        {
+            get { return FormatNumber(Price) + "$"; }
+        }
+        public string GetActualPrice
+        {
+            get { return FormatNumber((Price - (((decimal)Discount / 100) * Price))) + "$"; }
+        }
         public decimal ActualPrice
         {
-            get
-            {
-                return Price - (((decimal)Discount / 100) * Price);
-            }
+            get { return Price - (((decimal)Discount / 100) * Price); }
         }
         public decimal DiscountAmount
         {
             get
             {
                 return ((decimal)Discount / 100) * Price;
+            }
+        }
+        public string getReverseDiscount
+        {
+            get
+            {
+                char[] charArray = Discount.ToString().ToCharArray();
+                Array.Reverse(charArray);
+                string word = new string(charArray);
+                return ("FFO %" + word);
             }
         }
         internal static long MaxThreeSignificantDigits(long x)
@@ -144,6 +159,22 @@ namespace LemadDb.Domain.Entities
                     break;
                 default: return "";
             }
+        }
+
+        private string FormatNumber(long num)
+        {
+            if (num >= 100000000)
+                return (num / 1000000D).ToString("0.#M");
+            else if (num >= 1000000)
+                return (num / 1000000D).ToString("0.##M");
+            else if (num >= 100000)
+                return (num / 1000D).ToString("0k");
+            else if (num >= 100000)
+                return (num / 1000D).ToString("0.#k");
+            else if (num >= 1000)
+                return (num / 1000D).ToString("0.##k");
+            else
+                return num.ToString("#,0");
         }
     }
 
