@@ -20,6 +20,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using LemadWeb.ViewModels.Product;
 using System.Net.WebSockets;
+using Microsoft.Extensions.Configuration;
 
 
 namespace LemadWeb.Controllers
@@ -28,31 +29,32 @@ namespace LemadWeb.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public ProductController(ApplicationDbContext context) { _context = context; }
+        public ProductController(ApplicationDbContext context, IConfiguration configuration) { _context = context; _configuration = configuration; }
 
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
         {
-            if (searchString == null) { searchString = ""; }
+            //verifierImage();
+
             if (sortOrder == null) { sortOrder = ""; }
             if (Pricefilter == null) { Pricefilter = ""; }
             if (Statefilter == null) { Statefilter = ""; }
 
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.DiscountParm = sortOrder == "Discount" ? "discount_desc" : "Discount";
+            ListProductVM model = new ListProductVM(
+                createListSearch(searchString), 
+                Pricefilter, 
+                Statefilter, 
+                CategoryFilter, 
+                DiscountFilter, 
+                sortOrder, 
+                String.IsNullOrEmpty(sortOrder) ? "name_desc" : "",
+                sortOrder == "Price" ? "price_desc" : "Price",
+                sortOrder == "Date" ? "date_desc" : "Date",
+                sortOrder == "Discount" ? "discount_desc" : "Discount");
 
-            ViewData["Filter"] = sortOrder;
-            ViewData["CurrentFilter"] = searchString;
-            ViewData["Pricefilter"] = Pricefilter;
-            ViewData["Statefilter"] = Statefilter;
-            ViewData["CategoryFilter"] = CategoryFilter;
-            ViewData["DiscountFilter"] = DiscountFilter;
-
-            verifierImage();
-            return View();
+            return View(model);
         }
 
         [Authorize(Roles = "Administrator")]
@@ -257,12 +259,44 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult reload(int pageNumber, string sortOrder, string PriceFilter, string Statefilter, string CategoryFilter, string DiscountFilter, string search = "")
         {
-            return ViewComponent("ProductList", new { search = search, pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter  = DiscountFilter });
+            return ViewComponent("ProductList", new { search = createListSearch(search), pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter  = DiscountFilter });
+        }
+
+        private List<string> createListSearch(string search)
+        {
+            List<string> listString = new List<string>();
+            if (search == null) { listString.Add(""); }
+            else
+            {
+                string name = "";
+                int i = 0;
+                foreach (char c in search)
+                {
+                    if (c == ',')
+                    {
+                        listString.Add(name);
+                        name = "";
+                        i++;
+                    }
+                    else if (i == search.Length - 1)
+                    {
+                        name += c;
+                        listString.Add(name);
+                    }
+                    else
+                    {
+                        name += c;
+                        i++;
+                    }
+                }
+            }
+
+            return listString;
         }
 
         private void verifierImage()
         {
-            using (SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=LemadDb;Trusted_Connection=True;MultipleActiveResultSets=true"))
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 foreach (Product item in _context.Products.ToList())
                 {

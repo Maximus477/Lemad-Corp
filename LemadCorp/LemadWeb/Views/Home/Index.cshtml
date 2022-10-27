@@ -3,161 +3,224 @@
 }
 
 @section Styles {
-<link rel="stylesheet" href="~/sass/home.css" />
-<link rel="stylesheet" href="~/sass/about.css" />
+    <link rel="stylesheet" href="~/sass/home.css" />
+    <link rel="stylesheet" href="~/sass/about.css" />
 }
 
-@model ContactClientForm
+    @model ContactClientForm
 
-<div class="row">
-    <div class="square-white basic-text col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <h1 class="basic-text-center" style="padding-top:10%">Fast teams, fast cars. <br> Your winning team starts here.</h1>
-        <h2 class="basic-text-center">Sign up now to get started.</h2>
-        <h4 class="basic-text-center">The best teams and over 500 000 others have done the same.</h4>
+    <div class="row">
+        <div class="slogan-div col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="first-text"
+                 data-aos="flip-up">
+                    <h1>Fast teams, fast cars. <br> Your winning team starts here.</h1>
+                    <h2>Sign up now to get started.</h2>
+                    <h4>The best teams and over 500 000 others have done the same.</h4>
+                </div>
+            </div>
+            <div class="col-0 col-sm-0 col-md-7 col-lg-7 col-xl-7"
+             data-aos="fade-left">
+                <img class="img-slogan" src="~/img/home/slogan-logo.png" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="feature-link-title">
+                <h4>Featured products</h4>
+            </div>
+        </div>
 
-        <div class="team-logo-row team-logos"></div>
-    </div>
-    <div class="square-gold col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <h1 class="basic-text-center">Popular drivers</h1>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <div class="feature-link"
+            data-aos="zoom-in-up">
+                <a id="driver" class="feature-button" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="DRIVER">Driver</a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 product">
-                <div class="product-box-outline">
-                    <div class="product-box">
-                        <div class="fernando">
-                        </div>
-                        <h3 class="product-name">Fernando Alonso</h3>
-                        <h4 class="product-description">20,000,000$</h4>
-                    </div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <div class="feature-link"
+             data-aos="zoom-in-up">
+                <a id="engineer" class="feature-button" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="RACEENGINEER">Race Engineer</a>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <div class="feature-link"
+             data-aos="zoom-in-up">
+                <a id="technical" class="feature-button" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="TECHNICALCHIEF">Technical Chief</a>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <div class="feature-link"
+             data-aos="zoom-in-up">
+                <a id="principal" class="feature-button" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="PRINCIPAL">Principal</a>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <div class="feature-link"
+             data-aos="zoom-in-up">
+                <a id="powerunit" class="feature-button" asp-area="" asp-controller="Product" asp-action="List" asp-route-CategoryFilter="POWERUNIT">Power Unit</a>
+            </div>
+        </div>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <hr /> </div>
+    </div>
+    <div class="row"> @* Features List *@
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="feature-link-title-prod">
+                    <h4>Popular Drivers</h4>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 product">
-                <div class="product-box-outline">
-                    <div class="product-box">
-                        <div class="max">
-                        </div>
-                        <h3 class="product-name">Max Verstappen</h3>
-                        <h4 class="product-description">25,000,000$</h4>
-                    </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+                <vc:features-list type="DRIVER"></vc:features-list>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <hr /> </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="feature-link-title-prod">
+                    <h4>Popular Race Engineers</h4>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="square-gold col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div>
-            <h2 style="text-align:center">Featured products</h2><br />
-            <a class="effect effect-3" href="Product/List?CategoryFilter=DRIVER" title="Learn More">Pilots</a>
-            <a class="effect effect-3" href="Product/List?CategoryFilter=PRINCIPAL" title="Learn More">Team principals</a>
-            <a class="effect effect-3" href="Product/List?CategoryFilter=RACEENGINEER" title="Learn More">Engineers</a>
-            <a class="effect effect-3" href="Product/List?CategoryFilter=TECHNICALCHIEF" title="Learn More">Mechanics</a>
-            <a class="effect effect-3" href="Product/List?CategoryFilter=POWERUNIT" title="Learn More">Power units</a>
-        </div>
-    </div>
-    <div class="square-white col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <h1 class="basic-text-center">Popular team principals</h1>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+                <vc:features-list type="ENGINEER"></vc:features-list>
             </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <hr /> </div>
         </div>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 product-white">
-                <div class="product-box-outline">
-                    <div class="product-box">
-                        <div class="mattia">
-                        </div>
-                        <h3 class="product-name">Mattia Binotto</h3>
-                        <h4 class="product-description">3,000,000$</h4>
-                    </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="feature-link-title-prod">
+                    <h4>Popular Technical Chiefs</h4>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 product-white">
-                <div class="product-box-outline">
-                    <div class="product-box">
-                        <div class="guenther">
-                        </div>
-                        <h3 class="product-name">Guenther Steiner</h3>
-                        <h4 class="product-description">1,000,000$</h4>
-                    </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+                <vc:features-list type="TECHNICAL"></vc:features-list>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <hr /> </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="feature-link-title-prod">
+                    <h4>Popular Principals</h4>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="square-white circuitimage col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-    </div>
-    <div class="square-gold col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <h1 class="basic-text-center">Popular power units</h1>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+                <vc:features-list type="PRINCIPAL"></vc:features-list>
             </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <hr /> </div>
         </div>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 product">
-                <div class="product-box-outline">
-                    <div class="product-box">
-                        <div class="redbullpowertrains">
-                        </div>
-                        <h3 class="product-name">Red Bull Powertrains</h3>
-                        <h4 class="product-description">50,000,000$</h4>
-                    </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="feature-link-title-prod">
+                    <h4>Popular Power Units</h4>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 product">
-                <div class="product-box-outline">
-                    <div class="product-box">
-                        <div class="ferrariengines">
-                        </div>
-                        <h3 class="product-name">Ferrari engines</h3>
-                        <h4 class="product-description">40,000,000$</h4>
-                    </div>
-                </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+                <vc:features-list type="POWERUNIT"></vc:features-list>
             </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <hr /> </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="square-gold col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <h1 style="text-align:center">Interested? Talk to an agent!</h1>
-        <h4 style="text-align:center">Complete de form below and we'll reach out to you in no time</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-12">
-                <form asp-action="ContactClientTemp">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="FullName" class="control-label">Full Name</label>
-                        <input asp-for="FullName" class="form-control" />
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Message" class="control-label"></label>
-                        <textarea asp-for="Message" class="form-control"></textarea>
-                        <span asp-validation-for="Message" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Submit!" class="btn btn-primary" disabled />
-                    </div>
-                </form>
+    <div class="row"> @* Contact Form *@
+        <div class="col-0 col-sm-0 col-md-2 col-lg-2 col-xl-2"></div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        </div>
+        <div class="col-0 col-sm-0 col-md-2 col-lg-2 col-xl-2"></div>
+    </div>
+    <div class="row">
+        <div class="sponsor-div col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+            <div class="col-0 col-sm-0 col-md-3 col-lg-3 col-xl-3"></div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="sp-text">
+                    <h4>The site is used and approved by these teams:</h4>
+                </div>
+            </div>
+            <div class="col-0 col-sm-0 col-md-3 col-lg-3 col-xl-3"></div>
 
-                @section Scripts {
-                @{
-                await Html.RenderPartialAsync("_ValidationScriptsPartial");
-                }
-                }
+            <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.mercedesamgf1.com/en/'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/mercedes-logo.png" />
+                </div>
             </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.ferrari.com/en-CA/formula1'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/ferrari-logo.png" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.redbullracing.com/int-en'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/redbull-logo.png" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.alpine-cars.co.uk/f1-team.html'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/alphine-logo.png" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.mclaren.com/racing/'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/mclaren-logo.png" />
+                </div>
+            </div>
+            <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.astonmartinf1.com/en-GB/'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/aston-logo.png" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://scuderia.alphatauri.com/en/'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/alpha-logo.png" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.sauber-group.com/motorsport/formula-1/'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/alfa-logo.png" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.haasf1team.com/'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/haas-logo.png" />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div class="sponsor-image" onclick="location.href='https://www.williamsf1.com/'"
+                 data-aos="zoom-in">
+                    <img class="sponsor-img" src="~/img/home/williams-logo.png" />
+                </div>
+            </div>
+            <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
         </div>
     </div>
-    <div class="square-white hamilton-team col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-    </div>
-</div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.feature-button')
+                .on('mouseenter', function (e) {
+                    var parentOffset = $(this).offset(),
+                        relX = e.pageX - parentOffset.left,
+                        relY = e.pageY - parentOffset.top;
+                    $(this).find('span').css({ top: relY, left: relX })
+                })
+                .on('mouseout', function (e) {
+                    var parentOffset = $(this).offset(),
+                        relX = e.pageX - parentOffset.left,
+                        relY = e.pageY - parentOffset.top;
+                    $(this).find('span').css({ top: relY, left: relX })
+                });
+        });
+    </script>

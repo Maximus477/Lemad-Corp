@@ -17,6 +17,21 @@ namespace LemadWeb.ViewModels.Account
         [Required]
         public string PasswordConfirmation { get; set; }
 
-        public byte[] Photo { get; set; }
+        #region Address
+        [Required]
+        public string Address { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string Province { get; set; }
+
+        [Required]
+        public string Country { get; set; }
+
+        [Required]
+        public string PostalCode { get; set; }
+        #endregion
     }
 }

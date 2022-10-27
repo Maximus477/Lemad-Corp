@@ -19,12 +19,34 @@ namespace LemadDb.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("LemadDb.Domain.Entities.Command", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Commands");
+                });
+
             modelBuilder.Entity("LemadDb.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid?>("CommandId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateNaissance")
                         .HasColumnType("datetime2");
@@ -60,6 +82,8 @@ namespace LemadDb.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommandId");
 
                     b.ToTable("Products");
 
@@ -237,7 +261,7 @@ namespace LemadDb.Migrations
                             Id = 13,
                             DateNaissance = new DateTime(1996, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
-                            Discount = 18,
+                            Discount = 80,
                             MaxContractTime = 5,
                             Name = "Pierre Gasly",
                             Path = "wwwroot/img/products/drivers/PierreGasly.png",
@@ -962,6 +986,99 @@ namespace LemadDb.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LemadDb.Domain.User.AddressUser", b =>
+                {
+                    b.Property<Guid>("AdresseCiviqueId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("AdresseCiviqueId", "ApplicationUserId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("AddressUser");
+
+                    b.HasData(
+                        new
+                        {
+                            AdresseCiviqueId = new Guid("5dfcb1e1-3fd6-4b8a-a730-e56a9163b7c4"),
+                            ApplicationUserId = "9c42e86b-f867-4625-8b15-9b537f888b88"
+                        },
+                        new
+                        {
+                            AdresseCiviqueId = new Guid("5dfcb1e1-3fd6-4b8a-a730-e56a9163b7c4"),
+                            ApplicationUserId = "e8e6b9c2-0bda-4c4a-912f-219386b6c40c"
+                        },
+                        new
+                        {
+                            AdresseCiviqueId = new Guid("5dfcb1e1-3fd6-4b8a-a730-e56a9163b7c4"),
+                            ApplicationUserId = "5bcac41e-7c91-47a1-95d5-db49b00f568f"
+                        },
+                        new
+                        {
+                            AdresseCiviqueId = new Guid("5dfcb1e1-3fd6-4b8a-a730-e56a9163b7c4"),
+                            ApplicationUserId = "14cb37a7-12b0-4ead-bf34-b0b642629606"
+                        },
+                        new
+                        {
+                            AdresseCiviqueId = new Guid("67790e07-da65-416c-8ccd-d7e8f8f40fbd"),
+                            ApplicationUserId = "87209de5-9088-40f7-8f45-93a0aea864ef"
+                        });
+                });
+
+            modelBuilder.Entity("LemadDb.Domain.User.AdresseCivique", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Province")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CivicAddresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("5dfcb1e1-3fd6-4b8a-a730-e56a9163b7c4"),
+                            Address = "3000 Av. Boullé",
+                            City = "Saint-Hyacinthe",
+                            Country = "Canada",
+                            PostalCode = "J2S 1H9",
+                            Province = "Québec"
+                        },
+                        new
+                        {
+                            Id = new Guid("67790e07-da65-416c-8ccd-d7e8f8f40fbd"),
+                            Address = "1899 Henri-Becquerel",
+                            City = "Sainte-Julie",
+                            Country = "Canada",
+                            PostalCode = "J3E 1V6",
+                            Province = "Québec"
+                        });
+                });
+
             modelBuilder.Entity("LemadDb.Domain.User.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -969,6 +1086,9 @@ namespace LemadDb.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Cellphone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -981,8 +1101,10 @@ namespace LemadDb.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("EntrepriseName")
-                        .IsRequired()
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -1007,9 +1129,6 @@ namespace LemadDb.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -1036,37 +1155,114 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ff2184b3-e750-49ff-a096-b8d1c0139772",
+                            Id = "710203d9-5242-44c1-a7ea-31e44ce8e29e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8d616b0f-ae3c-4f28-85c4-6e62ac7e78bf",
+                            ConcurrencyStamp = "20e0f6b7-3b61-43b4-8533-a633c8755d12",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
-                            EntrepriseName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LEMADRID.COM",
                             NormalizedUserName = "ADMIN@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIe9ND1PwehUlg4eTonfSMy5iUGMz9jevuEpW6tYxeVY/uUIcJNmhQhihnS8WS80Ug==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELDDMR9fBWTe4vVviyYUjPJIWewvOq1WkZbT2Wj3NkRjEHMOgrCw6krmNV6WQcoE6w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "166dee84-7d21-4bd4-92d1-44fc2545339c",
+                            SecurityStamp = "e5a804d0-21cb-4312-ba03-c4bd84d0c484",
                             TwoFactorEnabled = false,
                             UserName = "admin@lemadrid.com"
                         },
                         new
                         {
-                            Id = "fd654be7-21ed-4669-9a8b-175ca8f1689c",
+                            Id = "9c42e86b-f867-4625-8b15-9b537f888b88",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "086c3e98-4f68-4cb4-a969-802cdb64ad49",
+                            Cellphone = "(450)-773-6800",
+                            ConcurrencyStamp = "c6abfb91-3357-4563-ba0c-273c3e4621e8",
                             Email = "hugo@lemadrid.com",
                             EmailConfirmed = false,
-                            EntrepriseName = "Cegep de Saint-Hyacinthe",
+                            FirstName = "Hugo",
+                            LastName = "Lapointe",
                             LockoutEnabled = false,
                             NormalizedEmail = "HUGO@LEMADRID.COM",
                             NormalizedUserName = "HUGO@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKwtMcr+pQmhGz3gnV6BT7lQLKYgurLdjv3qipsVEu0/Dh8FnZY9J+rw4PshuWNH6g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL6lMO33+nwCOn3K7dEFsn4jqf4VGRC+q5xvwV5PaRqixT4zrrCHzbL84gkMWfblMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c4347944-40ce-45cb-9253-f18af04418f9",
+                            SecurityStamp = "6fd6179a-1113-4c69-b3c1-4ac99d3605e7",
                             TwoFactorEnabled = false,
                             UserName = "hugo@lemadrid.com"
+                        },
+                        new
+                        {
+                            Id = "87209de5-9088-40f7-8f45-93a0aea864ef",
+                            AccessFailedCount = 0,
+                            Cellphone = "(450)-649-8594",
+                            ConcurrencyStamp = "11f346e6-f125-427a-9cd9-b47c7c891377",
+                            Email = "karl.mainville@lemadrid.com",
+                            EmailConfirmed = false,
+                            FirstName = "Karl",
+                            LastName = "Mainville",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "KARL.MAINVILLE@LEMADRID.COM",
+                            NormalizedUserName = "KARL.MAINVILLE@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF8/DXs2wHe8L+3tTdKgf4x14fSCQW5den7poFtYXCQFWj03rwU2uHhNtICroIijLw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5870f94d-5f36-4f33-a6e6-635d02617a8b",
+                            TwoFactorEnabled = false,
+                            UserName = "karl.mainville@lemadrid.com"
+                        },
+                        new
+                        {
+                            Id = "e8e6b9c2-0bda-4c4a-912f-219386b6c40c",
+                            AccessFailedCount = 0,
+                            Cellphone = "(450)-538-3982",
+                            ConcurrencyStamp = "a1d89b61-508a-4d68-b4d4-6cd47ba50cb0",
+                            Email = "maxime.lefebvre@lemadrid.com",
+                            EmailConfirmed = false,
+                            FirstName = "Maxime",
+                            LastName = "Lefebvre",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MAXIME.LEFEBVRE@LEMADRID.COM",
+                            NormalizedUserName = "MAXIME.LEFEBVRE@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP75w9VDLlqkSOxF938eZAKuwhwerqZYEq/yVIm/GoheEROD225ZRvuJ0A+/pvlg2A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2c108cf6-3280-48e5-a9b4-bb8d4c05125d",
+                            TwoFactorEnabled = false,
+                            UserName = "maxime.lefebvre@lemadrid.com"
+                        },
+                        new
+                        {
+                            Id = "5bcac41e-7c91-47a1-95d5-db49b00f568f",
+                            AccessFailedCount = 0,
+                            Cellphone = "(450)-213-5697",
+                            ConcurrencyStamp = "48bf6333-184c-46ef-8248-42ac403b6f4c",
+                            Email = "louis.garceau@lemadrid.com",
+                            EmailConfirmed = false,
+                            FirstName = "Louis",
+                            LastName = "Garceau",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "LOUIS.GARCEAU@LEMADRID.COM",
+                            NormalizedUserName = "LOUIS.GARCEAU@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKoT2xKAtyMlStC/AakAd8WyjAlDuQho1w+HH9ut8QMHgzFH3EZwAhM4EmeZyGrxaw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "bf1a3eef-d7fa-458c-8179-e3801b890ebb",
+                            TwoFactorEnabled = false,
+                            UserName = "louis.garceau@lemadrid.com"
+                        },
+                        new
+                        {
+                            Id = "14cb37a7-12b0-4ead-bf34-b0b642629606",
+                            AccessFailedCount = 0,
+                            Cellphone = "(450)-789-4673",
+                            ConcurrencyStamp = "2c328386-3292-47b0-92a9-79ad15547be1",
+                            Email = "laurent.brochu@lemadrid.com",
+                            EmailConfirmed = false,
+                            FirstName = "Laurent",
+                            LastName = "Brochu",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "LAURENT.BROCHU@LEMADRID.COM",
+                            NormalizedUserName = "LAURENT.BROCHU@LEMADRID.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAELx8EyVs+0Q+wKn56okYg5mHvBfWiRovfuozy/GsWZiRNo38pVRt8/9DLRj5P89bZA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ab64039f-9985-44ef-92ed-77d727626007",
+                            TwoFactorEnabled = false,
+                            UserName = "laurent.brochu@lemadrid.com"
                         });
                 });
 
@@ -1099,9 +1295,17 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fc1b2ed1-a810-43cd-a63e-b5ce89c7b8d3",
-                            ConcurrencyStamp = "d7233e5f-7eae-4656-9388-ef3e79e1c3d1",
-                            Name = "Administrator"
+                            Id = "ed3685cd-a84e-43f7-862d-4ae5d96513f8",
+                            ConcurrencyStamp = "fd626be4-451f-4039-9fbd-f47268fc0cd6",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "27a0aaad-88f2-40c6-ac81-31c8bbfa085b",
+                            ConcurrencyStamp = "7df83f0d-911f-4ffa-8ad8-d4a61206aeea",
+                            Name = "buyer",
+                            NormalizedName = "BUYER"
                         });
                 });
 
@@ -1192,13 +1396,33 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "ff2184b3-e750-49ff-a096-b8d1c0139772",
-                            RoleId = "fc1b2ed1-a810-43cd-a63e-b5ce89c7b8d3"
+                            UserId = "710203d9-5242-44c1-a7ea-31e44ce8e29e",
+                            RoleId = "ed3685cd-a84e-43f7-862d-4ae5d96513f8"
                         },
                         new
                         {
-                            UserId = "fd654be7-21ed-4669-9a8b-175ca8f1689c",
-                            RoleId = "fc1b2ed1-a810-43cd-a63e-b5ce89c7b8d3"
+                            UserId = "9c42e86b-f867-4625-8b15-9b537f888b88",
+                            RoleId = "27a0aaad-88f2-40c6-ac81-31c8bbfa085b"
+                        },
+                        new
+                        {
+                            UserId = "87209de5-9088-40f7-8f45-93a0aea864ef",
+                            RoleId = "27a0aaad-88f2-40c6-ac81-31c8bbfa085b"
+                        },
+                        new
+                        {
+                            UserId = "e8e6b9c2-0bda-4c4a-912f-219386b6c40c",
+                            RoleId = "27a0aaad-88f2-40c6-ac81-31c8bbfa085b"
+                        },
+                        new
+                        {
+                            UserId = "5bcac41e-7c91-47a1-95d5-db49b00f568f",
+                            RoleId = "27a0aaad-88f2-40c6-ac81-31c8bbfa085b"
+                        },
+                        new
+                        {
+                            UserId = "14cb37a7-12b0-4ead-bf34-b0b642629606",
+                            RoleId = "27a0aaad-88f2-40c6-ac81-31c8bbfa085b"
                         });
                 });
 
@@ -1219,6 +1443,39 @@ namespace LemadDb.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("LemadDb.Domain.Entities.Command", b =>
+                {
+                    b.HasOne("LemadDb.Domain.User.ApplicationUser", "ApplicationUser")
+                        .WithMany("Commands")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("LemadDb.Domain.Entities.Product", b =>
+                {
+                    b.HasOne("LemadDb.Domain.Entities.Command", "Command")
+                        .WithMany("Products")
+                        .HasForeignKey("CommandId");
+
+                    b.Navigation("Command");
+                });
+
+            modelBuilder.Entity("LemadDb.Domain.User.AddressUser", b =>
+                {
+                    b.HasOne("LemadDb.Domain.User.AdresseCivique", null)
+                        .WithMany("AddressUser")
+                        .HasForeignKey("AdresseCiviqueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LemadDb.Domain.User.ApplicationUser", null)
+                        .WithMany("CivicAddresses")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1270,6 +1527,23 @@ namespace LemadDb.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LemadDb.Domain.Entities.Command", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("LemadDb.Domain.User.AdresseCivique", b =>
+                {
+                    b.Navigation("AddressUser");
+                });
+
+            modelBuilder.Entity("LemadDb.Domain.User.ApplicationUser", b =>
+                {
+                    b.Navigation("CivicAddresses");
+
+                    b.Navigation("Commands");
                 });
 #pragma warning restore 612, 618
         }
