@@ -2,78 +2,14 @@
     ViewData["Title"] = "Contact Us Page";
 }
 
-@section Styles {
-<link rel="stylesheet" href="~/sass/home.css" />
-<link rel="stylesheet" href="~/sass/about.css" />
+@section Styles {
+    <link rel="stylesheet" href="~/sass/ContactForm.css" />
 }
 
-@model ContactClientForm
-
 <div class="row">
-    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4"></div>
-    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-        <br />
-        <br />
-        <br />
-        <h1 style="text-align:center">Interested? Talk to an agent!</h1>
-        <h4 style="text-align:center">Complete de form below and we'll reach out to you in no time</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-12">
-                <form asp-action="ContactClientTemp">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="FullName" class="control-label">Full Name</label>
-                        <input asp-for="FullName" class="form-control" />
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Message" class="control-label"></label>
-                        <textarea asp-for="Message" class="form-control"></textarea>
-                        <span asp-validation-for="Message" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Submit!" class="btn btn-primary" disabled />
-                    </div>
-                </form>
-
-                @section Scripts {
-                @{
-                await Html.RenderPartialAsync("_ValidationScriptsPartial");
-                }
-                }
-            </div>
-        </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 row justify-content-center">
+        <vc:contact-form></vc:contact-form>
     </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
 </div>
-<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4"></div>
-
-<div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row no-gutters location">
-        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 total-white-link">
-            <h4>Address:</h4>
-            <p>
-                3000 Av. Boullé, <br />
-                Saint-Hyacinthe, QC J2S 1H9
-            </p>
-        </div>
-        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 total-white-link">
-            <h4>Email:</h4>
-            <p>
-                LeMadrid@entreprise.com
-            </p>
-        </div>
-        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 total-white-link">
-            <h4>Call Us</h4>
-            <p>
-                (450) 773-6800
-            </p>
-        </div>
-    </div>
-</div>
-

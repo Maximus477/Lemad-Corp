@@ -302,6 +302,7 @@
   border-radius: 20px;
   color: white;
   text-decoration: none;
+  pointer-events: auto;
 }
 
 .div-feature:hover .cart-button {
@@ -323,4 +324,8 @@
     left: 25%;
     top: 75%;
   }
+}
+.unclickable {
+  pointer-events: none;
+  cursor: default;
 }

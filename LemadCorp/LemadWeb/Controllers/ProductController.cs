@@ -57,6 +57,15 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
+
+        [AllowAnonymous]
+        public IActionResult Cart(string ProductId)
+        {
+            ViewData["Test"] = ProductId;
+
+            return View();
+        }
+
         [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {

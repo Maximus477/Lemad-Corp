@@ -67,13 +67,14 @@
                             </div>
                         </li>
                         <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                            <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Product" asp-action="Cart">
+                            <div class="btn-login button-header total-white-link" onclick="callCart()">
                                 <div class="text-container">
                                     <div class="centered-element">
                                         Cart <i class="fa fa-cart-shopping"></i>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
+                            <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                         </li>
                         <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
                             @if (!User.Identity.IsAuthenticated) {
@@ -132,12 +133,11 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="~/js/theme-switch.js"></script>
+    <script src="~/js/theme-switch.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="~/js/choices.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script type="text/javascript">
-        AOS.init();
         var textPresetVal = new Choices('#choices-text-preset-values', { removeItemButton: true, });
 
         function returnArray() {
@@ -168,6 +168,29 @@
             const button = document.getElementById('call-list');
             button.click();
         }
+
+        function addCart(id) {
+            var prodId = window.localStorage.ProductId;
+            if (prodId == null) {
+                window.localStorage.ProductId = id;
+                console.log(window.localStorage.getItem('ProductId'));
+            }
+            else {
+                window.localStorage.ProductId = prodId + ',' + id;
+                console.log(window.localStorage.getItem('ProductId'))
+            }
+        }
+
+        function callCart() {
+            var rep = localStorage.ProductId;
+            console.log(rep);
+            $('#cart-link').attr('href', '/Product/Cart?ProductId=' + rep);
+            document.getElementById('cart-link').click();
+        }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({});
     </script>
 </body>
 </html>
