@@ -170,15 +170,33 @@
         }
 
         function addCart(id) {
-            var prodId = window.localStorage.ProductId;
+            var prodId = getCart();
+            let verification = false;
+
             if (prodId == null) {
                 window.localStorage.ProductId = id;
                 console.log(window.localStorage.getItem('ProductId'));
             }
             else {
-                window.localStorage.ProductId = prodId + ',' + id;
+                prodId.forEach(verifyId);
+
+                function verifyId(item) {
+                    if (item == id)
+                        verification = true;
+                }
+
+                if (verification == false) {
+                    window.localStorage.ProductId = prodId + ',' + id;
+                }
                 console.log(window.localStorage.getItem('ProductId'))
             }
+        }
+
+        function getCart() {
+            var prodId = window.localStorage.ProductId;
+            if (prodId != null)
+                return prodId.split(',');
+            return null;
         }
 
         function callCart() {
