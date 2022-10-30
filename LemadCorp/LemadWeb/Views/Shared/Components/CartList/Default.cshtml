@@ -1,0 +1,115 @@
+﻿@model ListCart
+
+<div class="cart-row row">
+    <div class="cart-list col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 align-items-stretch"
+         data-aos="fade-in">
+        <div class="title">
+            <h2>Cart</h2>
+            <span id="number-item" class="pl-3">@Model.CountProduct items</span>
+        </div>
+        <hr class="mr-4" />
+        @if (Model.CountProduct > 0) {
+            @foreach (var item in Model.Products) {
+                <div id="div-@item.Key.Id">
+                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                            <img class="img-fluid rounded-3" src="data:image/*;base64,@(Convert.ToBase64String(item.Key.Photo))"
+                         alt="@item.Key.Name" />
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <h6 class="text-muted">@item.Key.GetCategoryName</h6>
+                            <h6 class="text-black mb-0">@item.Key.Name</h6>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
+                            <button id="btn-decrement-@item.Key.Id" class="btn btn-link px-2"
+                            onclick="decrementItemCart('@item.Key.Id')">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <input id="form1" min="1" value="@item.Value" max="@item.Key.MaxContractTime" name="contract" type="number" class="form-control form-control-sm" />
+                            <button id="btn-increment-@item.Key.Id" class="btn btn-link px-2"
+                            onclick="incrementItemCart('@item.Key.Id', @item.Key.MaxContractTime)">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                            @if (item.Key.Discount > 0)
+                            {
+                                <h6 class="mb-0"><span class="hashed">@item.Key.GetPrice</span> @item.Key.GetActualPrice</h6>
+                            }
+                            else
+                            {
+                                <h6 class="mb-0">@item.Key.GetPrice</h6>
+                            }
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                            <a class="text-muted" onclick="deleteItemCart('@item.Key.Id')">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                </div>
+            }
+        }
+        else {
+            <div style="text-align:center;">
+                <h3>Your cart is empty</h3>
+                <hr class="my-4" />
+            </div>
+        }
+    </div>
+    <div id="cart-info" class="cart-info col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 align-items-stretch"
+         data-aos="fade-in">
+        <vc:cart-info products="@Model.Products"></vc:cart-info>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function deleteItemCart(id) {
+        let elementId = 'div-' + id;
+        const element = document.getElementById(elementId);
+
+        const number = document.getElementById('number-item');
+
+        element.remove();
+        removeCart(id);
+        
+        let text = returnCart() + " items";
+        number.innerHTML = text;
+
+        recallCartInfo();
+    }
+
+    function decrementItemCart(id){
+        const prodId = 'btn-decrement-' + id;
+        document.getElementById(prodId).parentNode.querySelector('input[type=number]').stepDown();
+
+        decrementCart(id);
+
+        recallCartInfo();
+    }
+
+    function incrementItemCart(id, max){
+        const prodId = 'btn-increment-' + id;
+        document.getElementById(prodId).parentNode.querySelector('input[type=number]').stepUp();
+
+        incrementCart(id, max);
+
+        recallCartInfo();
+    }
+
+    function recallCartInfo() {
+        const product = window.localStorage.ProductId;
+
+        $('#cart-info').html("");
+        $.ajax({
+            url: '@Url.Action("reloadCart", "Product")',
+            data: {
+                products: product
+            },
+            success: function (data) {
+                $('#cart-info').html(data);
+            }
+        })
+    }
+</script>

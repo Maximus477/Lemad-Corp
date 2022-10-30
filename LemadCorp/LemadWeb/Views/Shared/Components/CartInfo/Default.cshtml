@@ -1,0 +1,31 @@
+﻿@model CartInfoVM
+
+<div class="title">
+    <h3>Summary</h3>
+</div>
+<hr class="mr-4" />
+<div class="text-white d-flex justify-content-between mb-4">
+    <h5 class="text-uppercase">Total: </h5>
+    <h5>@Model.GetTotal</h5>
+</div>
+<div class="text-white d-flex justify-content-between mb-4">
+    <h5 class="text-uppercase">Discount: </h5>
+    <h5>@Model.GetTotalDiscount</h5>
+</div>
+<div class="text-white d-flex justify-content-between mb-4">
+    <h5 class="text-uppercase">Subtotal: </h5>
+    <h5>@Model.GetTotalWithDiscount</h5>
+</div>
+<hr />
+<div class="text-white d-flex justify-content-between mb-4">
+    <h5 class="text-uppercase">Final Price: </h5>
+    <h5>@Model.GetTotalWithTaxes</h5>
+</div>
+<div class="button-div text-white justify-content-center mb-4">
+    @if (Model.CountProduct > 0) {
+        <button class="checkout-button">Proceed to Checkout</button>
+    }
+    else {
+        <button class="checkout-button" disabled>Proceed to Checkout</button>
+    }
+</div>

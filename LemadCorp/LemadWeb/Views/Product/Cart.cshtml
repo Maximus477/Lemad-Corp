@@ -1,1 +1,21 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CartVM
+
+@section Styles {
+    <link rel="stylesheet" href="~/sass/cart.css" />
+}
+
+    <div class="cart-content">
+        <div class="row">
+            <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                <vc:cart-list products="@Model.Products"></vc:cart-list>
+            </div>
+            <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+
+        </div>
+    </div>

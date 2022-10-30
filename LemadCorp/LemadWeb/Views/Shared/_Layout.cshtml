@@ -174,22 +174,130 @@
             let verification = false;
 
             if (prodId == null) {
-                window.localStorage.ProductId = id;
+                window.localStorage.ProductId = '{' + id + ';1}';
                 console.log(window.localStorage.getItem('ProductId'));
             }
             else {
                 prodId.forEach(verifyId);
 
                 function verifyId(item) {
-                    if (item == id)
+                    if (item.includes("{" + id + ";"))
                         verification = true;
                 }
 
                 if (verification == false) {
-                    window.localStorage.ProductId = prodId + ',' + id;
+                    window.localStorage.ProductId = prodId + ',{' + id + ';1}';
                 }
                 console.log(window.localStorage.getItem('ProductId'))
             }
+        }
+
+        function removeCart(id) {
+            var prodId = getCart();
+            var production = null;
+
+            if (prodId != null) {
+                production = [];
+                prodId.forEach(deleteId);
+                 
+                function deleteId(item) {
+                    if (!item.includes("{" + id + ";")) {
+                        production.push(item);
+                    }
+                }
+
+                if (production.length > 0) {
+                    window.localStorage.ProductId = production;
+                }
+                else {
+                    window.localStorage.clear();
+                }
+            }
+
+            console.log(window.localStorage.ProductId);
+        }
+
+        function incrementCart(id, max) {
+            var prodId = getCart();
+            var production = [];
+
+            if (prodId != null) {
+                prodId.forEach(incrementId);
+
+                function incrementId(item) {
+                    if (item.includes("{" + id + ";")) {
+                        var newItem = "{" + id + ";";
+                        var number = id.length + 2;
+                        var contractTimeStr = item.slice(number, (item.length - 1));
+                        var contractTime = parseInt(contractTimeStr);
+
+                        if (contractTime != max) {
+                            contractTime++;
+                        }
+
+                        newItem += contractTime + "}";
+
+                        production.push(newItem);
+                    }
+                    else {
+                        production.push(item);
+                    }
+                }
+
+                if (production.length > 0) {
+                    window.localStorage.ProductId = production;
+                }
+                else {
+                    window.localStorage.clear();
+                }
+            }
+        }
+
+        function decrementCart(id) {
+            var prodId = getCart();
+            const min = 1;
+            var production = [];
+
+            if (prodId != null) {
+                prodId.forEach(decrementId);
+
+                function decrementId(item) {
+                    if (item.includes("{" + id + ";")) {
+                        var newItem = "{" + id + ";";
+                        var number = id.length + 2;
+                        var contractTimeStr = item.slice(number, (item.length - 1));
+                        var contractTime = parseInt(contractTimeStr);
+
+                        if (contractTime != min) {
+                            contractTime--;
+                        }
+
+                        newItem += contractTime + "}";
+
+                        production.push(newItem);
+                    }
+                    else {
+                        production.push(item);
+                    }
+                }
+
+                if (production.length > 0) {
+                    window.localStorage.ProductId = production;
+                }
+                else {
+                    window.localStorage.clear();
+                }
+            }
+        }
+
+        function returnCart() {
+            const number = getCart();
+
+            if (number == null) {
+                return '0';
+            }
+
+            return number.length;
         }
 
         function getCart() {
@@ -201,6 +309,10 @@
 
         function callCart() {
             var rep = localStorage.ProductId;
+
+            if (rep == null)
+                rep = '';
+
             console.log(rep);
             $('#cart-link').attr('href', '/Product/Cart?ProductId=' + rep);
             document.getElementById('cart-link').click();

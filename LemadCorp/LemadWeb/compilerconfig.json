@@ -34,5 +34,9 @@
   {
     "outputFile": "wwwroot/sass/ContactForm.css",
     "inputFile": "wwwroot/sass/ContactForm.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/cart.css",
+    "inputFile": "wwwroot/sass/cart.scss"
   }
 ]
