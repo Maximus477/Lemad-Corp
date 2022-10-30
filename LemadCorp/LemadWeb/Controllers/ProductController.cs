@@ -70,6 +70,14 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        public IActionResult Command(string ProductId, decimal total, decimal totalDiscount, decimal totalWithDiscount, decimal totalWithTaxes)
+        {
+            Dictionary<Product, string> dictionary = createDictionaryProduct(ProductId);
+
+            return View();
+        }
+
         [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
@@ -324,6 +332,23 @@ namespace LemadWeb.Controllers
 
                 string[] product = products[i].Split(';');
                 dictionary.Add(product[0], product[1]);
+            }
+
+            return dictionary;
+        }
+
+        private Dictionary<Product, string> createDictionaryProduct(string lists)
+        {
+            Dictionary<Product, string> dictionary = new Dictionary<Product, string>();
+            string[] products = lists.Split(',');
+            for (int i = 0; i < products.Length; ++i)
+            {
+
+                products[i] = products[i].Substring(products[i].IndexOf("{") + 1);
+                products[i] = products[i].Substring(0, products[i].IndexOf("}"));
+
+                string[] product = products[i].Split(';');
+                dictionary.Add(_context.Products.Where(c => c.Id == int.Parse(product[0])).SingleOrDefault(), product[1]);
             }
 
             return dictionary;
