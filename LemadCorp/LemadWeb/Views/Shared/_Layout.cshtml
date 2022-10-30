@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="~/sass/general.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Astloch' rel='stylesheet'>
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     @RenderSection("Styles", false)
 </head>
 <body>
@@ -77,7 +78,8 @@
                             <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                         </li>
                         <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                            @if (!User.Identity.IsAuthenticated) {
+                            @if (!User.Identity.IsAuthenticated)
+                            {
                                 <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
                                     <div class="text-container">
                                         <div class="centered-element">
@@ -86,7 +88,8 @@
                                     </div>
                                 </a>
                             }
-                            else {
+                            else
+                            {
                                 <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
                                     <p><i class="fa fa-user"></i>Logout</p>
                                 </a>
@@ -132,13 +135,57 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/theme-switch.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="~/js/choices.js"></script>
 
     <script type="text/javascript">
+        $(document).ready(function () {
+            var prod = getCart();
+            console.log(prod);
+
+            if (prod != null) {
+                prod.forEach(hideAlready);
+
+                function hideAlready(item) {
+                    item = item.slice(1);
+                    item = item.slice(0, item.indexOf(';'));
+                    console.log(item);
+                    var name = 'cart-' + item;
+                    if (document.body.contains(document.getElementById(name))) {
+                        let button = document.getElementById(name);
+                        button.innerHTML = "Already in the Cart";
+                    }
+                }
+            }
+        });
+
         var textPresetVal = new Choices('#choices-text-preset-values', { removeItemButton: true, });
+
+        function preAddingCart(id, name) {
+            if (document.getElementById("cart-" + id).innerHTML.includes(" Add to Cart ")) {
+                $.confirm({
+                    title: 'Confirmation',
+                    content: 'Do you really want to add ' + name + ' to the cart?',
+                    buttons: {
+                        yes: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                $.alert(name + ' added to the cart!');
+                                addCart(id);
+                            }
+                        },
+                        no: {
+                            btnClass: 'btn-confirmation'
+                        }
+                    }
+                });
+            }
+        }
 
         function returnArray() {
             const inner = document.querySelector('.choices__inner');
@@ -180,7 +227,7 @@
             else {
                 prodId.forEach(verifyId);
 
-                function verifyId(item) {
+                function verifyId(item) {
                     if (item.includes("{" + id + ";"))
                         verification = true;
                 }
@@ -190,17 +237,23 @@
                 }
                 console.log(window.localStorage.getItem('ProductId'))
             }
+
+            var name = "cart-" + id;
+            if (document.body.contains(document.getElementById(name))) {
+                let button = document.getElementById(name);
+                button.innerHTML = "Already in the Cart";
+            }
         }
 
         function removeCart(id) {
             var prodId = getCart();
             var production = null;
 
-            if (prodId != null) {
+            if (prodId != null) {
                 production = [];
                 prodId.forEach(deleteId);
-                 
-                function deleteId(item) {
+
+                function deleteId(item) {
                     if (!item.includes("{" + id + ";")) {
                         production.push(item);
                     }
@@ -290,7 +343,7 @@
             }
         }
 
-        function returnCart() {
+        function returnCart() {
             const number = getCart();
 
             if (number == null) {
