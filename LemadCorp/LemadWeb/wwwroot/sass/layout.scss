@@ -120,6 +120,18 @@ header {
     margin-right:25px;
 }
 
+.btn-confirmation {
+    color: white;
+    background-color: var(--color-button-pri);
+    border: 1px solid white;
+}
+
+.btn-confirmation:hover {
+    background-color: white;
+    color: var(--color-button-pri);
+    border: 1px solid var(--color-button-pri);
+}
+
 // Header
 header {
     background-color: var(--color-background-sec);

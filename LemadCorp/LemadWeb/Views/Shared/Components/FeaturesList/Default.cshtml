@@ -12,7 +12,7 @@
                     @if (item.Discount > 0 && item.Status == ProductStatus.PROMOTION) {
                         <p onclick="location.href='/Product/Details/@item.Id'">@(item.getReverseDiscount)</p>
                     }
-                    <a id="cart-@item.Id" class="cart-button" style="color: white" onclick="addCart('@item.Id')">
+                    <a id="cart-@item.Id" class="cart-button" style="color: white" onclick="preAddingCart('@item.Id', '@item.Name')">
                         Add to Cart <i class="fa fa-add"></i>
                     </a>
                 </div>

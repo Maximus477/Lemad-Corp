@@ -42,7 +42,7 @@
                             }
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                            <a class="text-muted" onclick="deleteItemCart('@item.Key.Id')">
+                            <a class="text-muted" onclick="preRemoveCart('@item.Key.Id', '@item.Key.Name')">
                                 <i class="fas fa-times"></i>
                             </a>
                         </div>
@@ -65,6 +65,25 @@
 </div>
 
 <script type="text/javascript">
+    function preRemoveCart(id, name) {
+        $.confirm({
+            title: 'Confirmation',
+            content: 'Do you really want to remove ' + name + ' from the cart?',
+            buttons: {
+                yes: {
+                    btnClass: 'btn-confirmation',
+                    action: function () {
+                        $.alert(name + ' removed from the cart!');
+                        deleteItemCart(id);
+                    }
+                },
+                no: {
+                    btnClass: 'btn-confirmation'
+                }
+            }
+        });
+    }
+
     function deleteItemCart(id) {
         let elementId = 'div-' + id;
         const element = document.getElementById(elementId);
