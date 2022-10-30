@@ -1,4 +1,4 @@
-﻿html[data-theme=light] {
+﻿html {
   --color-header-text: rgb(255, 255, 255);
   --color-text: rgb(0, 0, 0);
   --color-background-pri: rgb(255, 255, 255);
@@ -15,18 +15,26 @@
   --color-line: rgb(225, 6, 0);
 }
 
-html[data-theme=dark] {
-  --color-text: rgb(255, 255, 255);
-  --color-background-pri: rgb(30, 30, 30);
-  --color-background-pri-2: rgb(40, 40, 40);
-  --color-background-pri-3: rgb(35, 35, 35);
-  --color-background-sec: rgb(225, 6, 0);
-  --color-background-ter: rgb(40, 40, 40);
-  --color-background-qua: rgb(205, 6, 0);
-  --color-button-pri: rgb(160, 6, 0);
-  --color-button-sec: rgb(180, 6, 0);
-  --color-button-text: rgb(0, 0, 0);
-  --color-border: rgb(135, 12, 6);
-  --color-border-alt: rgb(25, 25, 25);
-  --color-line: rgb(225, 6, 0);
+/*
+html[data-theme="dark"] {
+    //Text
+    --color-header-text: rgb(255, 255, 255);
+    --color-text: rgb(255, 255, 255);
+    //Background
+    --color-background-pri: rgb(30, 30, 30);
+    --color-background-pri-2: rgb(40, 40, 40);
+    --color-background-pri-3: rgb(35, 35, 35);
+    --color-background-sec: rgb(225, 6, 0);
+    --color-background-ter: rgb(40, 40, 40);
+    --color-background-qua: rgb(205, 6, 0);
+    //Button
+    --color-button-pri: rgb(160, 6, 0);
+    --color-button-sec: rgb(180, 6, 0);
+    --color-button-text: rgb(0, 0, 0);
+    //Border
+    --color-border: rgb(135, 12, 6);
+    --color-border-alt: rgb(25, 25, 25);
+    //Line
+    --color-line: rgb(225, 6, 0);
 }
+*/

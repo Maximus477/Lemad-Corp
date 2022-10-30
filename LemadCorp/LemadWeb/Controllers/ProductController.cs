@@ -57,6 +57,19 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
+
+        [AllowAnonymous]
+        public IActionResult Cart(string ProductId)
+        {
+            CartVM model;
+            if (ProductId != null)
+                model = new CartVM(createDictionnarySearch(ProductId));
+            else
+                model = new CartVM(new Dictionary<string, string>());
+
+            return View(model);
+        }
+
         [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
@@ -262,6 +275,12 @@ namespace LemadWeb.Controllers
             return ViewComponent("ProductList", new { search = createListSearch(search), pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter  = DiscountFilter });
         }
 
+        [AllowAnonymous]
+        public IActionResult reloadCart(string products)
+        {
+            return ViewComponent("CartInfo", new { strProducts = products });
+        }
+
         private List<string> createListSearch(string search)
         {
             List<string> listString = new List<string>();
@@ -292,6 +311,22 @@ namespace LemadWeb.Controllers
             }
 
             return listString;
+        }
+
+        private Dictionary<string, string> createDictionnarySearch(string lists)
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            string[] products = lists.Split(',');
+            for (int i = 0; i < products.Length; ++i) {
+
+                products[i] = products[i].Substring(products[i].IndexOf("{") + 1);
+                products[i] = products[i].Substring(0, products[i].IndexOf("}"));
+
+                string[] product = products[i].Split(';');
+                dictionary.Add(product[0], product[1]);
+            }
+
+            return dictionary;
         }
 
         private void verifierImage()

@@ -65,22 +65,16 @@ namespace LemadDb.Domain.Entities
                 {
                     case ProductCategory.DRIVER:
                         return "Driver";
-                        break;
                     case ProductCategory.POWERUNIT:
                         return "Power unit";
-                        break;
                     case ProductCategory.PRINCIPAL:
                         return "Team principal";
-                        break;
                     case ProductCategory.TECHNICALCHIEF:
                         return "Technical chief";
-                        break;
                     case ProductCategory.RACEENGINEER:
                         return "Race engineer";
-                        break;
                     default:
                         return "";
-                        break;
                 }
             }
         }

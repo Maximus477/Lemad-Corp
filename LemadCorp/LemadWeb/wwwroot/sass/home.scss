@@ -1,5 +1,5 @@
-﻿@import "color.css";
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400|Raleway:300);
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans:400|Raleway:300);
+@import "color.css";
 
 /*
     General
@@ -312,7 +312,9 @@ $color5: rgb(191, 97, 4);
     border-radius: 20px;
     color: white;
     text-decoration: none;
+    pointer-events: auto;
 }
+
 
 .div-feature:hover .cart-button {
     display: block;
@@ -335,4 +337,9 @@ $color5: rgb(191, 97, 4);
         left: 25%;
         top: 75%;
     }
+}
+
+.unclickable {
+    pointer-events: none;
+    cursor: default;
 }
