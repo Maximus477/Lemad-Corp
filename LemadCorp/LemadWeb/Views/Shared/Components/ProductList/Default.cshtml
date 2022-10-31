@@ -1,21 +1,19 @@
 ﻿@model PaginatedList<Product>
 
 
-@if (!ViewBag.Verification)
-{
+@if (!ViewBag.Verification) {
     <p>No products availables!</p>
 }
-else
-{
-    @foreach (Product item in Model)
-    {
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 row justify-content-center" style="padding-left:0; padding-right:0; padding-bottom:30px;">
+else {
+    @foreach (Product item in Model) {
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 row justify-content-center" style="padding-left:0; padding-right:0; padding-bottom:30px; width:100%">
             <div class="div-product">
                 <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
                 @if (item.Photo != null) {
-                    <div class="product-image col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" style="background-image:url(data:image/*;base64,@(Convert.ToBase64String(item.Photo)))"></div>
-                }
-                else {
+                    <div class="product-image col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" >
+                        <img id="img-product" src="data:image/*;base64,@(Convert.ToBase64String(item.Photo))" loading="lazy" />
+                    </div>
+                } else {
                     <div class="product-image col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" style="background-image:url('../img/no-image.png')"></div>
                 }
                 <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
@@ -25,18 +23,13 @@ else
                             <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
                         </h4>
                         <h5>
-                            @if (item.Status == Status.ProductStatus.AVAILABLE)
-                            {
+                            @if (item.Status == ProductStatus.AVAILABLE) {
                                 <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Price.ToString("C")</a>
-                            }
-                            else if (item.Status == Status.ProductStatus.PROMOTION || item.Status == Status.ProductStatus.LIQUIDATION)
-                            {
+                            } else if (item.Status == ProductStatus.PROMOTION || item.Status == ProductStatus.LIQUIDATION) {
                                 <a style="color:red; font-weight: bold;" class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.ActualPrice.ToString("C") (@item.Discount%)</a>
-                            }
-                            else if (item.Status == Status.ProductStatus.UNAVAILABLE || item.Status == Status.ProductStatus.INCOMMANDE)
-                            {
+                            } else if (item.Status == ProductStatus.UNAVAILABLE || item.Status == ProductStatus.INCOMMANDE) {
                                 <a class="real-basic-link" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">Unavailable right now!</a>
-                            }                        
+                            }
                         </h5>
                         <div>
                             @item.ProductCategory
@@ -47,9 +40,19 @@ else
         </div>
     }
 
+    List<string> newList = new List<string>();
+    newList.Add("");
+
+    var search = "";
+    if (Model.Search != null) {
+        foreach (var item in Model.Search) {
+            search += item + ",";
+        }
+        search = search.Substring(0, search.Length - 1);
+    }
+
     var prevDisabled = !Model.HasPreviousPage ? "circle-link-disabled disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "circle-link-disabled disabled" : "";
-    var search = Model.Search == null ? "" : Model.Search;
     var sortorder = Model.SortOrder == null ? "" : Model.SortOrder;
     var pricefilter = Model.PriceFilter == null ? "" : Model.PriceFilter;
     var statefilter = Model.StateFilter == null ? "" : Model.StateFilter;

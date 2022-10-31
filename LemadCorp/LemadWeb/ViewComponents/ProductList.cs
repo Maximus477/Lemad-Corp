@@ -2,11 +2,13 @@
 using LemadDb.Data;
 using LemadDb.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static LemadDb.Data.Enumerable;
 
 namespace LemadWeb.ViewComponents
 {
@@ -17,7 +19,7 @@ namespace LemadWeb.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(
             string sortOrder = null,
-            string search = null,
+            List<string> search = null,
             string Pricefilter = null,
             string Statefilter = null,
             string Categoryfilter = null,
@@ -55,8 +57,20 @@ namespace LemadWeb.ViewComponents
                     break;
             }
 
-            if (!string.IsNullOrEmpty(search))
-                item = item.Where(c => c.Name.ToLower().Contains(search.ToLower())).ToList();
+            if (search[0] != "") {
+                List<Product> newList = new List<Product>();
+                foreach (string name in search) {
+                    if (name != "" && name != " ")
+                    {
+                        foreach(Product product in item.Where(c => c.Name.ToLower().Contains(name.ToLower())))
+                        {
+                            if (!newList.Contains(product))
+                                newList.Add(product);
+                        }
+                    }
+                }
+                item = newList;
+            }
 
             if (!string.IsNullOrEmpty(Pricefilter))
             {
@@ -90,19 +104,19 @@ namespace LemadWeb.ViewComponents
                 switch (Statefilter)
                 {
                     case "AVAILABLE":
-                        item = item.Where(c => c.Status == Status.ProductStatus.AVAILABLE).ToList();
+                        item = item.Where(c => c.Status == ProductStatus.AVAILABLE).ToList();
                         break;
                     case "INCOMMANDE":
-                        item = item.Where(c => c.Status == Status.ProductStatus.INCOMMANDE).ToList();
+                        item = item.Where(c => c.Status == ProductStatus.INCOMMANDE).ToList();
                         break;
                     case "UNAVAILABLE":
-                        item = item.Where(c => c.Status == Status.ProductStatus.UNAVAILABLE).ToList();
+                        item = item.Where(c => c.Status == ProductStatus.UNAVAILABLE).ToList();
                         break;
                     case "LIQUIDATION":
-                        item = item.Where(c => c.Status == Status.ProductStatus.LIQUIDATION).ToList();
+                        item = item.Where(c => c.Status == ProductStatus.LIQUIDATION).ToList();
                         break;
                     case "PROMOTION":
-                        item = item.Where(c => c.Status == Status.ProductStatus.PROMOTION).ToList();
+                        item = item.Where(c => c.Status == ProductStatus.PROMOTION).ToList();
                         break;
                 }
             }
@@ -111,19 +125,19 @@ namespace LemadWeb.ViewComponents
                 switch (Categoryfilter)
                 {
                     case "DRIVER":
-                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.DRIVER).ToList();
+                        item = item.Where(c => c.ProductCategory == ProductCategory.DRIVER).ToList();
                         break;
                     case "PRINCIPAL":
-                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.PRINCIPAL).ToList();
+                        item = item.Where(c => c.ProductCategory == ProductCategory.PRINCIPAL).ToList();
                         break;
                     case "RACEENGINEER":
-                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.RACEENGINEER).ToList();
+                        item = item.Where(c => c.ProductCategory == ProductCategory.RACEENGINEER).ToList();
                         break;
                     case "TECHNICALCHIEF":
-                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.TECHNICALCHIEF).ToList();
+                        item = item.Where(c => c.ProductCategory == ProductCategory.TECHNICALCHIEF).ToList();
                         break;
                     case "POWERUNIT":
-                        item = item.Where(c => c.ProductCategory == Category.ProductCategory.POWERUNIT).ToList();
+                        item = item.Where(c => c.ProductCategory == ProductCategory.POWERUNIT).ToList();
                         break;
                 }
             }

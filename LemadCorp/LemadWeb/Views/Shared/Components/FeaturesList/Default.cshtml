@@ -1,0 +1,52 @@
+﻿@model List<Product>
+
+@foreach (var item in Model)
+{
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 row" style="padding-left:0; padding-right:0; padding-bottom:30px; text-align: center;"
+        data-aos="zoom-out">
+        <div id="feature-click" class="div-feature">
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                onclick="location.href='/Product/Details/@item.Id'"></div>
+            <div class="feature-image col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                <div id="img-product" style="background-image:url(data:image/*;base64,@(Convert.ToBase64String(item.Photo)))">
+                    @if (item.Discount > 0 && item.Status == ProductStatus.PROMOTION) {
+                        <p onclick="location.href='/Product/Details/@item.Id'">@(item.getReverseDiscount)</p>
+                    }
+                    <a id="cart-@item.Id" class="cart-button" style="color: white" onclick="preAddingCart('@item.Id', '@item.Name')">
+                        Add to Cart <i class="fa fa-add"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                onclick="location.href='/Product/Details/@item.Id'"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+                onclick="location.href='/Product/Details/@item.Id'">
+                <div class="text-product">
+                    <h4 class="real-basic-link">@item.Name</h4>
+                    <h5>
+                        @if (item.Status == ProductStatus.AVAILABLE) {
+                            @item.GetPrice
+                        } else if (item.Status == ProductStatus.PROMOTION || item.Status == ProductStatus.LIQUIDATION) {
+                            <span id="old-price">@item.GetPrice</span> @item.GetActualPrice
+                        } else if (item.Status == ProductStatus.UNAVAILABLE || item.Status == ProductStatus.INCOMMANDE) {
+                            @("Unavailable right now!")
+                        }
+                    </h5>
+                    <div class="feature-link-cat">
+                        @if(item.ProductCategory == ProductCategory.DRIVER) {
+                            <p id="driver-cat" class="feature-button-cat">Driver</p>
+                        } else if (item.ProductCategory == ProductCategory.TECHNICALCHIEF) {
+                            <p id="technical-cat" class="feature-button-cat">Technical Chief</p>
+                        } else if (item.ProductCategory == ProductCategory.RACEENGINEER) {
+                            <p id="engineer-cat" class="feature-button-cat">Race Engineer</p>
+                        } else if (item.ProductCategory == ProductCategory.PRINCIPAL) {
+                            <p id="principal-cat" class="feature-button-cat">Principal</p>
+                        } else {
+                            <p id="powerunit-cat" class="feature-button-cat">Power Unit</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

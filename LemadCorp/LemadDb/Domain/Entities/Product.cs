@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
-using static LemadDb.Data.Status;
-using static LemadDb.Data.Category;
+using static LemadDb.Data.Enumerable;
 using LemadDb.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LemadDb.Domain.Entities
 {
@@ -38,10 +38,8 @@ namespace LemadDb.Domain.Entities
 
         public byte[] Photo { get; set; }
 
-        #region Stats
-
-        #endregion
-
+        // nav
+        public Command Command { get; set; }
 
         public string GetDate
         {
@@ -50,7 +48,7 @@ namespace LemadDb.Domain.Entities
                 var age = DateTime.Today.Year - DateNaissance.Year;
                 if (DateNaissance.Date > DateTime.Today.AddYears(-age)) age--;
 
-                if (ProductCategory == Category.ProductCategory.POWERUNIT)
+                if (ProductCategory == ProductCategory.POWERUNIT)
                 {
                     return DateNaissance.ToString("yyyy");
                 } else
@@ -65,39 +63,48 @@ namespace LemadDb.Domain.Entities
             {
                 switch (ProductCategory)
                 {
-                    case Category.ProductCategory.DRIVER:
+                    case ProductCategory.DRIVER:
                         return "Driver";
-                        break;
-                    case Category.ProductCategory.POWERUNIT:
+                    case ProductCategory.POWERUNIT:
                         return "Power unit";
-                        break;
-                    case Category.ProductCategory.PRINCIPAL:
+                    case ProductCategory.PRINCIPAL:
                         return "Team principal";
-                        break;
-                    case Category.ProductCategory.TECHNICALCHIEF:
+                    case ProductCategory.TECHNICALCHIEF:
                         return "Technical chief";
-                        break;
-                    case Category.ProductCategory.RACEENGINEER:
+                    case ProductCategory.RACEENGINEER:
                         return "Race engineer";
-                        break;
                     default:
                         return "";
-                        break;
                 }
             }
         }
+        public string GetPrice
+        {
+            get { return FormatNumber(Price) + "$"; }
+        }
+        public string GetActualPrice
+        {
+            get { return FormatNumber((Price - (((decimal)Discount / 100) * Price))) + "$"; }
+        }
         public decimal ActualPrice
         {
-            get
-            {
-                return Price - (((decimal)Discount / 100) * Price);
-            }
+            get { return Price - (((decimal)Discount / 100) * Price); }
         }
         public decimal DiscountAmount
         {
             get
             {
                 return ((decimal)Discount / 100) * Price;
+            }
+        }
+        public string getReverseDiscount
+        {
+            get
+            {
+                char[] charArray = Discount.ToString().ToCharArray();
+                Array.Reverse(charArray);
+                string word = new string(charArray);
+                return ("FFO %" + word);
             }
         }
         internal static long MaxThreeSignificantDigits(long x)
@@ -129,23 +136,39 @@ namespace LemadDb.Domain.Entities
         {
             switch(Status)
             {
-                case Data.Status.ProductStatus.AVAILABLE:
+                case ProductStatus.AVAILABLE:
                     return "available";
                     break;
-                case Data.Status.ProductStatus.UNAVAILABLE:
+                case ProductStatus.UNAVAILABLE:
                     return "unavailable";
                     break;
                 case Data.Status.ProductStatus.INCOMMANDE:
                     return "in command";
                     break;
-                case Data.Status.ProductStatus.LIQUIDATION:
+                case ProductStatus.LIQUIDATION:
                     return "In liquidation!";
                     break;
-                case Data.Status.ProductStatus.PROMOTION:
+                case ProductStatus.PROMOTION:
                     return "In promotion!";
                     break;
                 default: return "";
             }
+        }
+
+        private string FormatNumber(long num)
+        {
+            if (num >= 100000000)
+                return (num / 1000000D).ToString("0.#M");
+            else if (num >= 1000000)
+                return (num / 1000000D).ToString("0.##M");
+            else if (num >= 100000)
+                return (num / 1000D).ToString("0k");
+            else if (num >= 100000)
+                return (num / 1000D).ToString("0.#k");
+            else if (num >= 1000)
+                return (num / 1000D).ToString("0.##k");
+            else
+                return num.ToString("#,0");
         }
     }
 

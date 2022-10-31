@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using System;
 using System.ComponentModel.DataAnnotations;
-using static LemadDb.Data.Category;
-using static LemadDb.Data.Status;
+using static LemadDb.Data.Enumerable;
 
 namespace LemadWeb.ViewModels.Product
 {

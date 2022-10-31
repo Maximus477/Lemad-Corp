@@ -1,0 +1,65 @@
+﻿@model ContactClientForm
+
+<div class="contact-div col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+     data-aos="fade-right">
+    <h3>Send us a message</h3>
+    <form class="contact-form" method="POST" novalidate="novalidate" data-form-type="other">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <input asp-for="FullName" class="form-control" placeholder="Name" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <textarea asp-for="Message" class="form-control" cols="30" rows="6" placeholder="Message"></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+        <div class="form-group submit-group">
+            <input type="submit" value="Send Message" class="btn-form" />
+        </div>
+    </form>
+</div>
+<div class="contactus-div col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 align-items-stretch" data-aos="fade-left">
+    <h3>Contact Us</h3>
+    <div class="dbox d-flex align-items-start">
+        <div class="address-icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-map-marker"></span>
+        </div>
+        <div class="text pl-3">
+            <p>
+                <span>Address:</span> <a href="https://www.google.com/maps/place/3000+Av.+Boull%C3%A9,+Saint-Hyacinthe,+QC+J2S+1H9/@@45.6175856,-72.9750216,17z/data=!3m1!4b1!4m5!3m4!1s0x4cc84de10c445f01:0xa39c70cc46a476fb!8m2!3d45.6175856!4d-72.9750216">3000 Av. Boullé, Saint-Hyacinthe, QC J2S 1H9</a>
+            </p>
+        </div>
+    </div>
+    <div class="dbox d-flex align-items-start">
+        <div class="address-icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-phone"></span>
+        </div>
+        <div class="text pl-3">
+            <p>
+                <span>Phone:</span> <a href="tel://4507736800">+ 4507 7368 00</a>
+            </p>
+        </div>
+    </div>
+    <div class="dbox d-flex align-items-start">
+        <div class="address-icon d-flex align-items-center justify-content-center">
+        <span class="fa fa-paper-plane"></span>
+    </div>
+    <div class="text pl-3">
+        <p>
+            <span>Email:</span> <a href="mailto:LeMadridInc@@entreprise.com">LeMadridInc@@entreprise.com</a>
+        </p>
+    </div>
+    </div>
+
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row">
+    </div>
+</div>

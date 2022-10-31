@@ -1,4 +1,4 @@
-﻿html[data-theme="light"] {
+﻿html {
     //Text
     --color-header-text: rgb(255, 255, 255);
     --color-text: rgb(0, 0, 0);
@@ -20,8 +20,10 @@
     --color-line: rgb(225, 6, 0);
 }
 
+/*
 html[data-theme="dark"] {
     //Text
+    --color-header-text: rgb(255, 255, 255);
     --color-text: rgb(255, 255, 255);
     //Background
     --color-background-pri: rgb(30, 30, 30);
@@ -40,3 +42,4 @@ html[data-theme="dark"] {
     //Line
     --color-line: rgb(225, 6, 0);
 }
+*/
