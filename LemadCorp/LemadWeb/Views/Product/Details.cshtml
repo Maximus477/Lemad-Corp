@@ -1,57 +1,103 @@
 ﻿@model Product
 
+@section Styles {
+<link rel="stylesheet" href="~/sass/detail.css" />
+}
+
 <div>
     <h5></h5>
     <hr />
     <br />
     <br />
-
     <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px; aspect-ratio: 1/1; width: 100%; background-repeat:no-repeat; background-size:cover; background-image:url(data:image/*;base64,@(Convert.ToBase64String(Model.Photo)))"></div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" style="padding:25px">
-            <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mt-3 mb-3">
+            @if (Model.ProductCategory == LemadDb.Data.Enumerable.ProductCategory.POWERUNIT)
+            {
+                <h1>@Model.Name - @Model.GetDate</h1>
+            }
+            else
+            {
                 <h1>@Model.Name - @Model.GetCategoryName</h1>
-                <h6>@Model.GetDate</h6>
-                <br />
-                <br />
-                <br />
-                <h3>Prix: @Model.FormatNumber(@Model.ActualPrice) (rabais de @Model.FormatNumber(Model.DiscountAmount)$)</h3>
-                @if (Model.Status == ProductStatus.LIQUIDATION || Model.Status == ProductStatus.PROMOTION)
-                {
-                    <h4 style="color:red">Disponibility: @Model.GetDisponibility()</h4>
-                }
-                else
-                {
-                    <h4 style="color:black">Disponibility: @Model.GetDisponibility()</h4>
-                }
-            </div>
+            }
         </div>
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" style="padding:25px">
-            <div class="row">
-                @if (Model.Description != "")
-                {
-                    <h3>Description: @Model.Description</h3>
-                }
-                else
-                {
-                    <h4>@Model.Name - @Model.GetCategoryName</h4>
-                    <h6>@Model.GetDate</h6>
-                }
-            </div>
-            <div class="row">
-                <br />
-                <br />
-                @if (Model.Quote != "")
-                {
-                    <h3>" @Model.Quote "</h3>
-                }
-            </div>
-        </div>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
     </div>
+    <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3" style="aspect-ratio: 1/1; width: 100%; background-repeat:no-repeat; background-size:cover; background-image:url(data:image/*;base64,@(Convert.ToBase64String(Model.Photo)))"></div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+            @if (Model.Status == LemadDb.Data.Enumerable.ProductStatus.LIQUIDATION || Model.Status == LemadDb.Data.Enumerable.ProductStatus.PROMOTION)
+            {
+                <h2 style="color:red; font-weight: 700;">$@Model.FormatNumber(@Model.ActualPrice) (Save $@Model.FormatNumber(Model.DiscountAmount))</h2>
+            }
+            else
+            {
+                <h2 style="color:black; font-weight: 700;">$@Model.FormatNumber(@Model.ActualPrice)</h2>
+            }
+            <br />
+            @if (Model.Status == LemadDb.Data.Enumerable.ProductStatus.INCOMMANDE || Model.Status == LemadDb.Data.Enumerable.ProductStatus.UNAVAILABLE)
+            {
+                <label for="quantity">Duration of contract:</label>
+                <input disabled type="number" id="quantity" name="quantity" min="1" max="@Model.MaxContractTime">
+                <br />
+                <button disabled class="button-24" role="button">Add to team!</button>
+                <br />
+                <br />
+                <span>Sorry, this @Model.GetCategoryName.ToLower() is @Model.GetDisponibility()</span>
+                <br />
+                <br />
+            }
+            else
+            {
+                <label for="quantity">Duration of contract:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="@Model.MaxContractTime">
+                <br />
+                <button class="button-24" role="button">Add to team!</button>
+                <br />
+                <br />
+            }
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
+    </div>
+    <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+            <br />
+            <h3>Description: </h3>
+            @if (Model.ProductCategory == LemadDb.Data.Enumerable.ProductCategory.POWERUNIT)
+            {
+                <h3>@Model.Name, made in @Model.GetDate is a @Model.GetCategoryName</h3>
+                <h3>@Model.Description</h3>
+            }
+            else
+            {
+                <h3>@Model.Name, is a @Model.GetDate.ToLower() years old @Model.GetCategoryName.ToLower()</h3>
+                <h3>@Model.Description</h3>
+            }
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
+    </div>
+    @if (Model.Quote != "")
+    {
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                <div class="blockquote-wrapper">
+                    <div class="blockquote">
+                        <h1>
+                            "@Model.Quote"
+                        </h1>
+                        <h4>@Model.Name</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
+        </div>
+    }
 </div>
-
 @if (User.IsInRole("Administrator"))
 {
     <div>
