@@ -142,7 +142,7 @@ namespace LemadDb.Domain.Entities
                 case ProductStatus.UNAVAILABLE:
                     return "unavailable";
                     break;
-                case Data.Status.ProductStatus.INCOMMANDE:
+                case ProductStatus.INCOMMANDE:
                     return "in command";
                     break;
                 case ProductStatus.LIQUIDATION:

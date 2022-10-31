@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-0 col-0"></div>
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mt-3 mb-3">
-            @if (Model.ProductCategory == Category.ProductCategory.POWERUNIT)
+            @if (Model.ProductCategory == LemadDb.Data.Enumerable.ProductCategory.POWERUNIT)
             {
                 <h1>@Model.Name - @Model.GetDate</h1>
             }
@@ -29,7 +29,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3" style="aspect-ratio: 1/1; width: 100%; background-repeat:no-repeat; background-size:cover; background-image:url(data:image/*;base64,@(Convert.ToBase64String(Model.Photo)))"></div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-            @if (Model.Status == Status.ProductStatus.LIQUIDATION || Model.Status == Status.ProductStatus.PROMOTION)
+            @if (Model.Status == LemadDb.Data.Enumerable.ProductStatus.LIQUIDATION || Model.Status == LemadDb.Data.Enumerable.ProductStatus.PROMOTION)
             {
                 <h2 style="color:red; font-weight: 700;">$@Model.FormatNumber(@Model.ActualPrice) (Save $@Model.FormatNumber(Model.DiscountAmount))</h2>
             }
@@ -38,7 +38,7 @@
                 <h2 style="color:black; font-weight: 700;">$@Model.FormatNumber(@Model.ActualPrice)</h2>
             }
             <br />
-            @if (Model.Status == Status.ProductStatus.INCOMMANDE || Model.Status == Status.ProductStatus.UNAVAILABLE)
+            @if (Model.Status == LemadDb.Data.Enumerable.ProductStatus.INCOMMANDE || Model.Status == LemadDb.Data.Enumerable.ProductStatus.UNAVAILABLE)
             {
                 <label for="quantity">Duration of contract:</label>
                 <input disabled type="number" id="quantity" name="quantity" min="1" max="@Model.MaxContractTime">
@@ -67,7 +67,7 @@
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
             <br />
             <h3>Description: </h3>
-            @if (Model.ProductCategory == Category.ProductCategory.POWERUNIT)
+            @if (Model.ProductCategory == LemadDb.Data.Enumerable.ProductCategory.POWERUNIT)
             {
                 <h3>@Model.Name, made in @Model.GetDate is a @Model.GetCategoryName</h3>
                 <h3>@Model.Description</h3>
