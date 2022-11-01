@@ -21,7 +21,8 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using LemadWeb.ViewModels.Product;
 using System.Net.WebSockets;
 using Microsoft.Extensions.Configuration;
-
+using Newtonsoft.Json;
+using JsonConverter = LemadDb.Data.JsonConverter;
 
 namespace LemadWeb.Controllers
 {
@@ -36,8 +37,6 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
         {
-            //verifierImage();
-
             if (sortOrder == null) { sortOrder = ""; }
             if (Pricefilter == null) { Pricefilter = ""; }
             if (Statefilter == null) { Statefilter = ""; }
@@ -61,30 +60,23 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult Cart(string ProductId)
         {
+            
             CartVM model;
             if (ProductId != null)
-                model = new CartVM(createDictionnarySearch(ProductId));
+                    model = new CartVM(JsonConverter.jsonToIntDictionary(ProductId));
             else
-                model = new CartVM(new Dictionary<string, string>());
+                model = new CartVM(new Dictionary<int, int>());
 
             return View(model);
         }
 
-        [AllowAnonymous]
-        public IActionResult Command(string ProductId, decimal total, decimal totalDiscount, decimal totalWithDiscount, decimal totalWithTaxes)
-        {
-            Dictionary<Product, string> dictionary = createDictionaryProduct(ProductId);
-
-            return View();
-        }
-
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model)
         {
@@ -137,7 +129,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             try
@@ -160,7 +152,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,MaxContractTime,DateNaissance,Description,Quote,ProductCategory,Status,Photo")] Product model)
         {
@@ -235,7 +227,7 @@ namespace LemadWeb.Controllers
         }
 
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             try
@@ -258,8 +250,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(int Id)
         {
@@ -319,61 +310,6 @@ namespace LemadWeb.Controllers
             }
 
             return listString;
-        }
-
-        private Dictionary<string, string> createDictionnarySearch(string lists)
-        {
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            string[] products = lists.Split(',');
-            for (int i = 0; i < products.Length; ++i) {
-
-                products[i] = products[i].Substring(products[i].IndexOf("{") + 1);
-                products[i] = products[i].Substring(0, products[i].IndexOf("}"));
-
-                string[] product = products[i].Split(';');
-                dictionary.Add(product[0], product[1]);
-            }
-
-            return dictionary;
-        }
-
-        private Dictionary<Product, string> createDictionaryProduct(string lists)
-        {
-            Dictionary<Product, string> dictionary = new Dictionary<Product, string>();
-            string[] products = lists.Split(',');
-            for (int i = 0; i < products.Length; ++i)
-            {
-
-                products[i] = products[i].Substring(products[i].IndexOf("{") + 1);
-                products[i] = products[i].Substring(0, products[i].IndexOf("}"));
-
-                string[] product = products[i].Split(';');
-                dictionary.Add(_context.Products.Where(c => c.Id == int.Parse(product[0])).SingleOrDefault(), product[1]);
-            }
-
-            return dictionary;
-        }
-
-        private void verifierImage()
-        {
-            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            {
-                foreach (Product item in _context.Products.ToList())
-                {
-                    if (item.Path != null && item.Photo == null)
-                    {
-                        string sqlQuery = @$"UPDATE Products SET Products.Photo = (SELECT BulkColumn FROM OPENROWSET(BULK N'{new FileInfo(item.Path).FullName}', SINGLE_BLOB) AS x) WHERE Products.Id = {item.Id}";
-                        using (SqlCommand command = connection.CreateCommand())
-                        {
-                            command.CommandText = sqlQuery;
-
-                            connection.Open();
-                            command.ExecuteNonQuery();
-                            connection.Close();
-                        }
-                    }
-                }
-            }
         }
 
         private bool ProductExists(int id)

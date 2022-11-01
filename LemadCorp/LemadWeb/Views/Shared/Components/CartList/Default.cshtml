@@ -22,12 +22,12 @@
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
                             <button id="btn-decrement-@item.Key.Id" class="btn btn-link px-2"
-                            onclick="decrementItemCart('@item.Key.Id')">
+                            onclick="decrementItemCart(@item.Key.Id)">
                                 <i class="fa fa-minus"></i>
                             </button>
                             <input id="form1" min="1" value="@item.Value" max="@item.Key.MaxContractTime" name="contract" type="number" class="form-control form-control-sm" />
                             <button id="btn-increment-@item.Key.Id" class="btn btn-link px-2"
-                            onclick="incrementItemCart('@item.Key.Id', @item.Key.MaxContractTime)">
+                            onclick="incrementItemCart(@item.Key.Id, @item.Key.MaxContractTime)">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -118,7 +118,7 @@
     }
 
     function recallCartInfo() {
-        const product = window.localStorage.ProductId;
+        const product = JSON.stringify(getCart());
 
         $('#cart-info').html("");
         $.ajax({

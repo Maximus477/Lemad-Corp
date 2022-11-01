@@ -4,9 +4,9 @@ namespace LemadWeb.ViewModels.Product
 {
     public class CartVM
     {
-        public Dictionary<string, string> Products { get; set; }
+        public Dictionary<int, int> Products { get; set; }
 
-        public CartVM(Dictionary<string, string> products)
+        public CartVM(Dictionary<int, int> products)
         { Products = products; }
     }
 }

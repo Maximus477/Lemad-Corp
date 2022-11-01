@@ -78,8 +78,7 @@
                             <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                         </li>
                         <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                            @if (!User.Identity.IsAuthenticated)
-                            {
+                            @if (!User.Identity.IsAuthenticated) {
                                 <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
                                     <div class="text-container">
                                         <div class="centered-element">
@@ -88,8 +87,7 @@
                                     </div>
                                 </a>
                             }
-                            else
-                            {
+                            else {
                                 <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
                                     <p><i class="fa fa-user"></i>Logout</p>
                                 </a>
@@ -166,27 +164,6 @@
 
         var textPresetVal = new Choices('#choices-text-preset-values', { removeItemButton: true, });
 
-        function preAddingCart(id, name) {
-            if (document.getElementById("cart-" + id).innerHTML.includes(" Add to Cart ")) {
-                $.confirm({
-                    title: 'Confirmation',
-                    content: 'Do you really want to add ' + name + ' to the cart?',
-                    buttons: {
-                        yes: {
-                            btnClass: 'btn-confirmation',
-                            action: function () {
-                                $.alert(name + ' added to the cart!');
-                                addCart(id);
-                            }
-                        },
-                        no: {
-                            btnClass: 'btn-confirmation'
-                        }
-                    }
-                });
-            }
-        }
-
         function returnArray() {
             const inner = document.querySelector('.choices__inner');
 
@@ -216,130 +193,112 @@
             button.click();
         }
 
-        function addCart(id) {
-            var prodId = getCart();
-            let verification = false;
+        /*
+            Cart
+        */
+        function preAddingCart(id, name) {
+            if (document.getElementById("cart-" + id).innerHTML.includes(" Add to Cart ")) {
+                $.confirm({
+                    title: 'Confirmation',
+                    content: 'Do you really want to add ' + name + ' to the cart?',
+                    buttons: {
+                        yes: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                $.alert(name + ' added to the cart!');
+                                addCart(id);
+                            }
+                        },
+                        no: {
+                            btnClass: 'btn-confirmation'
+                        }
+                    }
+                });
+            }
+        }
 
-            if (prodId == null) {
-                window.localStorage.ProductId = '{' + id + ';1}';
-                console.log(window.localStorage.getItem('ProductId'));
+        function addCart(productId) {
+            var products = getCart();
+
+            if (products == null) {
+                products = [];
+                products.push({ id: productId, contract: 1 });
             }
             else {
-                prodId.forEach(verifyId);
-
-                function verifyId(item) {
-                    if (item.includes("{" + id + ";"))
-                        verification = true;
+                if (products.find(obj => obj.id == productId)) { }
+                else {
+                    products.push({ id: productId, contract: 1 });
                 }
-
-                if (verification == false) {
-                    window.localStorage.ProductId = prodId + ',{' + id + ';1}';
-                }
-                console.log(window.localStorage.getItem('ProductId'))
             }
 
-            var name = "cart-" + id;
-            if (document.body.contains(document.getElementById(name))) {
-                let button = document.getElementById(name);
-                button.innerHTML = "Already in the Cart";
-            }
+            localStorage.setItem('Products', JSON.stringify(products));
         }
 
-        function removeCart(id) {
-            var prodId = getCart();
-            var production = null;
+        function removeCart(productId) {
+            var products = getCart();
+            var newProd = []
 
-            if (prodId != null) {
-                production = [];
-                prodId.forEach(deleteId);
+            if (products.find(obj => obj.id == productId)) {
+                const index = products.map(e => e.id).indexOf(productId);
 
-                function deleteId(item) {
-                    if (!item.includes("{" + id + ";")) {
-                        production.push(item);
+                products.forEach(function (item) {
+                    if (item.id != productId) {
+                        newProd.push(item);
                     }
-                }
+                })
 
-                if (production.length > 0) {
-                    window.localStorage.ProductId = production;
+
+
+                if (newProd.length > 0) {
+                    localStorage.setItem('Products', JSON.stringify(newProd));
                 }
                 else {
                     window.localStorage.clear();
                 }
+                
             }
-
-            console.log(window.localStorage.ProductId);
         }
 
-        function incrementCart(id, max) {
-            var prodId = getCart();
-            var production = [];
+        function incrementCart(productId, max) {
+            var products = getCart();
 
-            if (prodId != null) {
-                prodId.forEach(incrementId);
-
-                function incrementId(item) {
-                    if (item.includes("{" + id + ";")) {
-                        var newItem = "{" + id + ";";
-                        var number = id.length + 2;
-                        var contractTimeStr = item.slice(number, (item.length - 1));
-                        var contractTime = parseInt(contractTimeStr);
-
-                        if (contractTime != max) {
-                            contractTime++;
+            if (products != null) {
+                const newProd = products.map(obj => {
+                    if (obj.id === productId) {
+                        var number = obj.contract;
+                        if (obj.contract < max) {
+                            number = number + 1;
                         }
 
-                        newItem += contractTime + "}";
-
-                        production.push(newItem);
+                        return {...obj, contract: number };
                     }
-                    else {
-                        production.push(item);
-                    }
-                }
 
-                if (production.length > 0) {
-                    window.localStorage.ProductId = production;
-                }
-                else {
-                    window.localStorage.clear();
-                }
+                    return obj;
+                });
+
+                localStorage.setItem('Products', JSON.stringify(newProd));
             }
         }
 
-        function decrementCart(id) {
-            var prodId = getCart();
+        function decrementCart(productId) {
+            var products = getCart();
             const min = 1;
-            var production = [];
 
-            if (prodId != null) {
-                prodId.forEach(decrementId);
-
-                function decrementId(item) {
-                    if (item.includes("{" + id + ";")) {
-                        var newItem = "{" + id + ";";
-                        var number = id.length + 2;
-                        var contractTimeStr = item.slice(number, (item.length - 1));
-                        var contractTime = parseInt(contractTimeStr);
-
-                        if (contractTime != min) {
-                            contractTime--;
+            if (products != null) {
+                const newProd = products.map(obj => {
+                    if (obj.id === productId) {
+                        var number = obj.contract;
+                        if (obj.contract > min) {
+                            number = number - 1;
                         }
 
-                        newItem += contractTime + "}";
-
-                        production.push(newItem);
+                        return {...obj, contract: number };
                     }
-                    else {
-                        production.push(item);
-                    }
-                }
 
-                if (production.length > 0) {
-                    window.localStorage.ProductId = production;
-                }
-                else {
-                    window.localStorage.clear();
-                }
+                    return obj;
+                });
+
+                localStorage.setItem('Products', JSON.stringify(newProd));
             }
         }
 
@@ -354,20 +313,21 @@
         }
 
         function getCart() {
-            var prodId = window.localStorage.ProductId;
-            if (prodId != null)
-                return prodId.split(',');
+            var products = window.localStorage.Products;
+            if (products != null) {
+                var array = JSON.parse(products);
+                return array;
+            }
             return null;
         }
 
         function callCart() {
-            var rep = localStorage.ProductId;
+            var rep = getCart();
 
             if (rep == null)
                 rep = '';
 
-            console.log(rep);
-            $('#cart-link').attr('href', '/Product/Cart?ProductId=' + rep);
+            $('#cart-link').attr('href', '/Product/Cart?ProductId=' + JSON.stringify(rep));
             document.getElementById('cart-link').click();
         }
     </script>

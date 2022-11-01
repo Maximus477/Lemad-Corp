@@ -20,17 +20,17 @@ namespace LemadWeb.ViewComponents
         public CartInfo(ApplicationDbContext context) { _context = context; }
 
         public async Task<IViewComponentResult> InvokeAsync(
-            Dictionary<Product, string> products = null,
+            Dictionary<Product, int> products = null,
             string strProducts = null)
         {
-            Dictionary<Product, string> lstProduct = new Dictionary<Product, string>();
+            Dictionary<Product, int> lstProduct = new Dictionary<Product, int>();
             if (products != null) {
                 lstProduct = products;
             }
             else if (strProducts != null) {
-                Dictionary<string, string> dictionary = createDictionnarySearch(strProducts);
+                Dictionary<int, int> dictionary = JsonConverter.jsonToIntDictionary(strProducts);
                 foreach (var item in dictionary) {
-                    lstProduct.Add(_context.Products.Where(c => c.Id == int.Parse(item.Key)).SingleOrDefault(), item.Value);
+                    lstProduct.Add(_context.Products.Where(c => c.Id == item.Key).SingleOrDefault(), item.Value);
                 }
             }
 
@@ -43,9 +43,9 @@ namespace LemadWeb.ViewComponents
                 foreach (var item in lstProduct)
                 {
                     count++;
-                    total += (item.Key.Price * int.Parse(item.Value));
-                    totalDiscount += ((decimal)((double)item.Key.Price * (item.Key.Discount / 100d)) * int.Parse(item.Value));
-                    totalWithDiscount += (item.Key.Price * int.Parse(item.Value)) - ((decimal)((double)item.Key.Price * (item.Key.Discount / 100d)) * int.Parse(item.Value));
+                    total += (item.Key.Price * item.Value);
+                    totalDiscount += ((decimal)((double)item.Key.Price * (item.Key.Discount / 100d)) * item.Value);
+                    totalWithDiscount += (item.Key.Price * item.Value) - ((decimal)((double)item.Key.Price * (item.Key.Discount / 100d)) * item.Value);
                 }
             }
 
