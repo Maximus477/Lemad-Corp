@@ -1,10 +1,10 @@
 ﻿@import "color.css";
+@import "ProductList.css";
 h2 {
   text-align: center;
 }
 
 .catalog-title {
-  background-color: var(--color-background-sec);
   padding-top: 1%;
   padding-bottom: 1%;
   margin-bottom: 0;
@@ -79,10 +79,6 @@ h2 {
 
 .change-list {
   background-color: var(--color-background-pri-2);
-}
-
-.list-div {
-  background-color: var(--color-background-pri-3);
 }
 
 #title {

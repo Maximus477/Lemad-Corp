@@ -63,7 +63,7 @@ namespace LemadWeb.Controllers
         {
             
             CartVM model;
-            if (ProductId != null)
+            if (ProductId != "\"\"" && ProductId != null)
                     model = new CartVM(JsonConverter.jsonToIntDictionary(ProductId));
             else
                 model = new CartVM(new Dictionary<int, int>());

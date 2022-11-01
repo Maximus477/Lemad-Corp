@@ -42,5 +42,9 @@
   {
     "outputFile": "wwwroot/sass/detail.css",
     "inputFile": "wwwroot/sass/detail.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/ProductList.css",
+    "inputFile": "wwwroot/sass/ProductList.scss"
   }
 ]
