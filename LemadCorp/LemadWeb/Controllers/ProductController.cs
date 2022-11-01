@@ -70,7 +70,7 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -250,7 +250,8 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [Authorize(Roles = "admin")]
+
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Delete(int Id)
         {

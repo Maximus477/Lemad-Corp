@@ -50,10 +50,10 @@ namespace LemadDb.Domain.Entities
 
                 if (ProductCategory == ProductCategory.POWERUNIT)
                 {
-                    return "Creation date: " + DateNaissance.ToString("dd MMM yyyy") + " (" + age.ToString() + " ans)";
+                    return DateNaissance.ToString("yyyy");
                 } else
                 {
-                    return "Date of birth: " + DateNaissance.ToString("dd MMM yyyy") + " (" + age.ToString() + " ans)";
+                    return age.ToString();
                 }
             }
         }
@@ -143,7 +143,7 @@ namespace LemadDb.Domain.Entities
                     return "unavailable";
                     break;
                 case ProductStatus.INCOMMANDE:
-                    return "unavailable, in command...";
+                    return "in command";
                     break;
                 case ProductStatus.LIQUIDATION:
                     return "In liquidation!";
