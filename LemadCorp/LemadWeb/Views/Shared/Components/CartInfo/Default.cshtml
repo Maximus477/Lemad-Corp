@@ -36,8 +36,7 @@
 
 <script type="text/javascript">
     function callCommand(total, totalD, totalWD, totalWT) {
-        var prodId = window.localStorage.ProductId;
-        console.log(prodId);
+        var prodId = JSON.stringify(getCart());
 
         //window.localStorage.clear();
 
@@ -45,7 +44,7 @@
             type: "GET",
             url: "@Url.Action("Command", "Product")",
             data: {
-                ProductId: prodId,
+                products: prodId,
                 total: total,
                 totalDiscount: totalD,
                 totalWithDiscount: totalWD,

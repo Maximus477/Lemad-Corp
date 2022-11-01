@@ -23,6 +23,7 @@ using System.Net.WebSockets;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using JsonConverter = LemadDb.Data.JsonConverter;
+using Microsoft.CodeAnalysis;
 
 namespace LemadWeb.Controllers
 {
@@ -70,7 +71,19 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize]
+        public IActionResult Command(string products, decimal total, decimal totalDiscount, decimal totalWithDiscount, decimal totalWithTaxes)
+        {
+            Dictionary<Product, int> dictionary = JsonConverter.jsonToProductDictionary(_context, products);
+
+            if (User.Identity.IsAuthenticated) {
+                ApplicationUser user = User.Identity as ApplicationUser;
+                int i = 0;
+            }
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             return View();
