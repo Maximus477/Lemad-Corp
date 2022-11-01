@@ -23,9 +23,31 @@
 </div>
 <div class="button-div text-white justify-content-center mb-4">
     @if (Model.CountProduct > 0) {
-        <button class="checkout-button">Proceed to Checkout</button>
+        <button class="checkout-button"
+            onclick="callCommand('@Model.Total', '@Model.TotalDiscount', '@Model.TotalWithDiscount', '@Model.TotalWithTaxes');">Proceed to Checkout</button>
     }
     else {
         <button class="checkout-button" disabled>Proceed to Checkout</button>
     }
 </div>
+
+<script type="text/javascript">
+    function callCommand(total, totalD, totalWD, totalWT) {
+        var prodId = window.localStorage.ProductId;
+        console.log(prodId);
+
+        //window.localStorage.clear();
+
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("Command", "Product")",
+            data: {
+                ProductId: prodId,
+                total: total,
+                totalDiscount: totalD,
+                totalWithDiscount: totalWD,
+                totalWithTaxes: totalWT
+            }
+        });
+    }
+</script>
