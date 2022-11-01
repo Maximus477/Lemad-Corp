@@ -70,13 +70,44 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [AllowAnonymous]
+        public IActionResult Command(string ProductId, decimal total, decimal totalDiscount, decimal totalWithDiscount, decimal totalWithTaxes)
+        {
+            Dictionary<Product, string> dictionary = createDictionaryProduct(ProductId);
+
+
+            if (User.Identity.IsAuthenticated)
+            {
+                ApplicationUser user = User.Identity as ApplicationUser;
+                int i = 0;
+            }
+            return View();
+        }
+
+        private Dictionary<Product, string> createDictionaryProduct(string lists)
+        {
+            Dictionary<Product, string> dictionary = new Dictionary<Product, string>();
+            string[] products = lists.Split(',');
+            for (int i = 0; i < products.Length; ++i)
+            {
+
+                products[i] = products[i].Substring(products[i].IndexOf("{") + 1);
+                products[i] = products[i].Substring(0, products[i].IndexOf("}"));
+
+                string[] product = products[i].Split(';');
+                dictionary.Add(_context.Products.Where(c => c.Id == int.Parse(product[0])).SingleOrDefault(), product[1]);
+            }
+
+            return dictionary;
+        }
+
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model)
         {
@@ -129,7 +160,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             try
@@ -152,7 +183,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,MaxContractTime,DateNaissance,Description,Quote,ProductCategory,Status,Photo")] Product model)
         {
@@ -227,7 +258,7 @@ namespace LemadWeb.Controllers
         }
 
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             try
@@ -251,7 +282,7 @@ namespace LemadWeb.Controllers
         }
 
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(int Id)
         {

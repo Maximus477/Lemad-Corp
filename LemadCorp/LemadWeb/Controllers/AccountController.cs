@@ -56,6 +56,11 @@ namespace LemadWeb.Controllers
                 return View(model);
             }
 
+            if (User.Identity.IsAuthenticated)
+            {
+                ApplicationUser user = User.Identity as ApplicationUser;
+            }
+
             return new RedirectResult(url: ReturnUrl, permanent: true, preserveMethod: true);
         }
 
