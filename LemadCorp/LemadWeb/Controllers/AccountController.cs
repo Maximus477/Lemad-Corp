@@ -115,9 +115,11 @@ namespace LemadWeb.Controllers
 
         // GET : Account/Details
         [AllowAnonymous]
-        public IActionResult Details()
+        public async Task<IActionResult> Details()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            return View(user);
         }
 
         // GET : Account/Commands

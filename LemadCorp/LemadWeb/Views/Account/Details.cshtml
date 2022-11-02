@@ -4,6 +4,8 @@
 @{
 }
 
+@model LemadDb.Domain.User.ApplicationUser
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +24,7 @@
                                     <div class="m-b-25">
                                         <img src="https://img.icons8.com/fluency-systems-filled/100/000000/user-tag.png" class="img-radius" alt="User-Profile-Image">
                                     </div>
-                                    <h6 class="f-w-600">Firstname, Lastname</h6>
+                                    <h6 class="f-w-600">@Model.FirstName, @Model.LastName</h6>
                                     <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                 </div>
                             </div>
@@ -32,24 +34,27 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Email</p>
-                                            <h6 class="text-muted f-w-400">email address</h6>
+                                            <h6 class="text-muted f-w-400">@Model.Email</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Phone</p>
-                                            <h6 class="text-muted f-w-400">phone number</h6>
+                                            <h6 class="text-muted f-w-400">@Model.PhoneNumber</h6>
                                         </div>
                                     </div>
-                                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Adresses</h6>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Adress 1</p>
-                                            <h6 class="text-muted f-w-400">Adress 1</h6>
+                                    @if (@Model.CivicAddresses != null)
+                                    {
+                                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Adresses</h6>
+                                        <div class="row">
+                                            @foreach (var address in @Model.CivicAddresses.ToList())
+                                            {
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">@address.</p>
+                                                    <h6 class="text-muted f-w-400">@Model.CivicAddresses</h6>
+                                                </div>
+                                            }
                                         </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Adress 2</p>
-                                            <h6 class="text-muted f-w-400">Address 2</h6>
-                                        </div>
-                                    </div>
+                                    }
+
                                 </div>
                             </div>
                         </div>

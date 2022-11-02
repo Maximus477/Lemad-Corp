@@ -50,5 +50,9 @@
   {
     "outputFile": "wwwroot/sass/accountDetails.css",
     "inputFile": "wwwroot/sass/accountDetails.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/login.css",
+    "inputFile": "wwwroot/sass/login.scss"
   }
 ]
