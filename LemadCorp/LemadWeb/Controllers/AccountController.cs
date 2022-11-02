@@ -112,5 +112,19 @@ namespace LemadWeb.Controllers
 
             return RedirectToPage(ReturnUrl);
         }
+
+        // GET : Account/Details
+        [AllowAnonymous]
+        public IActionResult Details()
+        {
+            return View();
+        }
+
+        // GET : Account/Commands
+        [AllowAnonymous]
+        public IActionResult Commands()
+        {
+            return View();
+        }
     }
 }
