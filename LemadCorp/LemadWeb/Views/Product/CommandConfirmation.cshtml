@@ -1,0 +1,84 @@
+﻿@model CommandVM
+
+@section Styles {
+    <link rel="stylesheet" href="~/sass/command.css" />
+}
+<br />
+<br />
+<div class="container">
+<div class="row">
+    <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <h1>Are you certain you want to purchase these items?</h1>
+            <hr />
+            @foreach(var item in Model.Products)
+            {
+                <h3>@item.Name</h3>
+            }
+            <h3>Total before taxes: @Model.Total</h3>
+            <h3>Total discount: @Model.TotalDiscount</h3>
+            <h3>Total with discount: @Model.TotalWithDiscount</h3>
+            <h3>Total: @Model.TotalWithTaxes</h3>
+            <form asp-action="CommandConfirmation">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="FirstName" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="LastName" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Email" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Phone" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Address" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="City" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Province" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Country" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="PostalCode" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Total" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="TotalDiscount" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="TotalWithDiscount" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="TotalWithTaxes" type="hidden" class="form-control" />
+                </div>
+                <div>
+                    <button onclick="clearCart();" type="submit" value="CommandConfirmation" class="checkout-button">
+                        Confirm purchase
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function clearCart() {
+            localStorage.clear();
+        }
+</script>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

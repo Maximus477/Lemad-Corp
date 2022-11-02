@@ -3,6 +3,11 @@
 <div class="title">
     <h3>Summary</h3>
 </div>
+
+@{
+    var test = Model;
+    int i = 0;
+}
 <hr class="mr-4" />
 <div class="text-white d-flex justify-content-between mb-4">
     <h5 class="text-uppercase">Total: </h5>
@@ -23,22 +28,15 @@
 </div>
 <div class="button-div text-white justify-content-center mb-4">
     @if (Model.CountProduct > 0) {
-        <div class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                            <div class="btn-login button-header total-white-link" onclick="callTheCart()">
-                                <div class="text-container">
-                                    <div class="centered-element">
+                            <button class="checkout-button" onclick="callTheCart('@Model.Total', '@Model.TotalDiscount', '@Model.TotalWithDiscount', '@Model.TotalWithTaxes')">
                                         Proceed to Checkout
-                                    </div>
-                                </div>
-                            </div>
-                            <a id="command-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Command" asp-route-ProductId=""></a>
-        </div>
+                            </button>
+                            <a id="command-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Command" asp-route-total="" asp-route-totalDiscount="" asp-route-totalWithDiscount="" asp-route-totalWithTaxes="" asp-route-ProductId=""></a>
     }
     else {
         <button class="checkout-button" disabled>Proceed to Checkout</button>
     }
 </div>
-
 
 <script type="text/javascript">
     function getMyCart() {
@@ -50,13 +48,13 @@
             return null;
         }
 
-    function callTheCart() {
+    function callTheCart(total, totalDiscount, totalWithDiscount, totalWithTaxes) {
             var rep = getMyCart();
 
             if (rep == null)
                 rep = '';
 
-            $('#command-link').attr('href', '/Product/Command?ProductId=' + JSON.stringify(rep));
+            $('#command-link').attr('href', '/Product/Command?ProductId=' + JSON.stringify(rep) + '&total='  + total + '&totalDiscount='  + totalDiscount + '&totalWithDiscount='  + totalWithDiscount + '&totalWithTaxes='  + totalWithTaxes);
             document.getElementById('command-link').click();
         }
 </script>

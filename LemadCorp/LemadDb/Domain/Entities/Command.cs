@@ -21,6 +21,10 @@ namespace LemadDb.Domain.Entities
         public string Province { get; set; }
         public string Country { get; set; }
         public string PostalCode { get; set; }
+        public decimal Total { get; set; }
+        public decimal TotalDiscount { get; set; }
+        public decimal TotalWithDiscount { get; set; }
+        public decimal TotalWithTaxes { get; set; }
         //public AdresseCivique AdresseCivique { get; set; }
         public List<CommandProduct> ProductIDs { get; set; }
 
