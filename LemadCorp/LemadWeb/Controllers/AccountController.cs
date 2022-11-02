@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using LemadWeb.ViewModels.Account;
+using LemadDb.Data;
 
 namespace LemadWeb.Controllers
 {
@@ -19,14 +20,17 @@ namespace LemadWeb.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _context;
 
         public AccountController(UserManager<ApplicationUser> userManager,
                                  SignInManager<ApplicationUser> signInManager,
-                                 RoleManager<IdentityRole> roleManager)
+                                 RoleManager<IdentityRole> roleManager,
+                                 ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
         // GET : Account/Login
@@ -79,13 +83,50 @@ namespace LemadWeb.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            if (model.Password != model.PasswordConfirmation)
+            {
+                return View(model);
+            }
+
             var user = new ApplicationUser
             {
+                Id = Guid.NewGuid().ToString(),
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Cellphone = model.PhoneNumber,
                 UserName = model.Email,
                 Email = model.Email,
+                CivicAddresses = new List<AddressUser>(),
             };
 
+            var addressCivique = new AdresseCivique
+            {
+                Id = Guid.NewGuid(),
+                Address = model.Address,
+                City = model.City,
+                Province = model.Province,
+                Country = model.Country,
+                PostalCode = model.PostalCode,
+            };
+
+            var addressUser = new AddressUser()
+            {
+                AdresseCiviqueId = addressCivique.Id,
+                ApplicationUserId = user.Id
+            };
+
+            user.CivicAddresses.Add(addressUser);
+
+            //user.CivicAddresses.Add(AddressCivique);
+
+            _context.CivicAddresses.Add(addressCivique);
             var result = await _userManager.CreateAsync(user, model.Password);
+
+            //var a = _context.AdresseCivique.FirstOrDefault(a => a.UserId == "dcf0ecff-a189-4d7e-8bd8-24e6bee818d7");
+
+            //_context.AdresseCivique.Add(AddressCivique);
+            //user.CivicAddresses.Add(AddressCivique);
+            _context.SaveChanges();
 
             if (!result.Succeeded)
             {
