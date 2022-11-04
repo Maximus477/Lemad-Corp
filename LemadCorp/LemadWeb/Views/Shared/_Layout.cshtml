@@ -78,7 +78,8 @@
                             <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                         </li>
                         <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                            @if (!User.Identity.IsAuthenticated) {
+                            @if (!User.Identity.IsAuthenticated)
+                            {
                                 <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
                                     <div class="text-container">
                                         <div class="centered-element">
@@ -87,14 +88,16 @@
                                     </div>
                                 </a>
                             }
-                            else {
-                                <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Logout">
-                                    <div class="text-container">
-                                        <div class="centered-element">
-                                            Logout <i class="fa fa-user"></i>
-                                        </div>
+                            else
+                            {
+                                <div class="dropdown">
+                                    <button class="btn-login button-header total-white-link">Account</button>
+                                    <div class="dropdown-content">
+                                        <a asp-area="" asp-controller="Account" asp-action="Details">My account</a>
+                                        <a asp-area="" asp-controller="Account" asp-action="Commands">My commands</a>
+                                        <a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                                     </div>
-                                </a>
+                                </div>
                             }
                         </li>
                     </ul>
@@ -310,7 +313,7 @@
                 else {
                     window.localStorage.clear();
                 }
-                
+
             }
         }
 

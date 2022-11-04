@@ -3,6 +3,8 @@ using LemadDb.Domain.Entities;
 using System.Collections.Generic;
 using FluentValidation;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace LemadWeb.ViewModels.Product
 {
@@ -14,6 +16,8 @@ namespace LemadWeb.ViewModels.Product
         [EmailAddress]
         public string Email { get; set; }
         public string Phone { get; set; }
+        public bool AddNewAddress { get; set; }
+        public Guid SelectedAddress { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Province { get; set; }
