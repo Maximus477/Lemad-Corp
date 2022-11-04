@@ -34,6 +34,7 @@ namespace LemadWeb.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
         static private List<Product> _products;
+        static private Dictionary<int, int> _command;
 
         public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IConfiguration configuration) { _context = context; _userManager = userManager; _configuration = configuration; }
 
@@ -77,7 +78,7 @@ namespace LemadWeb.Controllers
         public async Task<IActionResult> Command(string ProductId, string total, string totalDiscount, string totalWithDiscount, string totalWithTaxes)
         {
             CommandVM model = new CommandVM();
-            var products = JsonConverter.jsonToIntDictionary(ProductId);
+            _command = JsonConverter.jsonToIntDictionary(ProductId);
             var user = await _userManager.GetUserAsync(HttpContext.User);
             model.FirstName = user.FirstName;
             model.LastName = user.LastName;
@@ -98,7 +99,7 @@ namespace LemadWeb.Controllers
                 model.PostalCode = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().PostalCode;
 
             }
-            foreach (var product in products)
+            foreach (var product in _command)
             {
                 model.Products.Add(_context.Products.Where(c => c.Id == product.Key).SingleOrDefault());
             }
@@ -158,7 +159,7 @@ namespace LemadWeb.Controllers
         {
             CommandVM model = new CommandVM()
             {
-                FirstName = FirstName, LastName = LastName, Email = Email, Phone = Phone, Address = Address, City = City, Province = Province, Country = Country, TotalWithTaxes=TotalWithTaxes, TotalWithDiscount=TotalWithDiscount, PostalCode=PostalCode, TotalDiscount=TotalDiscount, Total=Total
+                FirstName = FirstName, LastName = LastName, Email = Email, Phone = Phone, Address = Address, City = City, Province = Province, Country = Country, TotalWithTaxes=TotalWithTaxes, TotalWithDiscount=TotalWithDiscount, PostalCode=PostalCode, TotalDiscount=TotalDiscount, Total=Total, CommandDictionary=_command
             };
             model.Products = _products;
             //string FirstName, string LastName, string Email, string Phone, string Address, string City, string , string totalDiscount, string totalWithDiscount, string totalWithTaxes
@@ -193,11 +194,12 @@ namespace LemadWeb.Controllers
                     TotalDiscount = Decimal.Parse(model.TotalDiscount),
                     TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
                     TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
+                    Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED
                 };
                 command.ProductIDs = new List<CommandProduct>();
-                foreach (var item in _products)
+                foreach (var item in _command)
                 {
-                    CommandProduct commandProduct = new CommandProduct(item.Id);
+                    CommandProduct commandProduct = new CommandProduct(item.Key, item.Value);
                     command.ProductIDs.Add(commandProduct);
                 }
 
@@ -209,6 +211,52 @@ namespace LemadWeb.Controllers
             catch
             {
                 return View(model);
+            }
+        }
+
+        [Authorize]
+        public async Task<IActionResult> CommandCancelation(Guid? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var model = await _context.Commands.FindAsync(id);
+                if (model == null)
+                {
+                    return NotFound();
+                }
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                if (model.ApplicationUser.Id != user.Id || !User.IsInRole("admin"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CommandCancelation(Guid id)
+        {
+            try
+            {
+                var model = await _context.Commands.FindAsync(id);
+                model.Status = LemadDb.Data.Enumerable.CommandStatus.CANCELED;
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
 
