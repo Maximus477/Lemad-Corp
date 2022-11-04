@@ -25,5 +25,15 @@ namespace LemadDb.Data
             LIQUIDATION,
             PROMOTION
         };
+
+        public enum CommandStatus
+        {
+            CONFIRMED,
+            CANCELED,
+            IN_PREPERATION,
+            GETTING_DELIVERERD,
+            DELIVERED,
+            RETURNED
+        };
     }
 }

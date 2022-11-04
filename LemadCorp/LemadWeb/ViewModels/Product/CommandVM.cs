@@ -23,6 +23,7 @@ namespace LemadWeb.ViewModels.Product
         public string TotalDiscount { get; set; }
         public string TotalWithDiscount { get; set; }
         public string TotalWithTaxes { get; set; }
+        public Dictionary<int, int> CommandDictionary { get; set; }
         public List<LemadDb.Domain.Entities.Product> Products { get; set; } = new List<LemadDb.Domain.Entities.Product>();
 
         public CommandVM()

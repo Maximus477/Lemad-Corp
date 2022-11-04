@@ -5,21 +5,50 @@
 }
 <br />
 <br />
+<br />
+<br />
+
 <div class="container">
 <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-2">
         </div>
-        <div class="col-md-10">
-            <h1>Are you certain you want to purchase these items?</h1>
+        <div class="col-md-8 form-background">
+            <br />
+            <br />
+            <h2>Are you certain you want to purchase these items?</h2>
+            <hr />
+            <h4>First name : @Model.FirstName</h4>
+            <h4>Last name : @Model.LastName</h4>
+            <h4>Email : @Model.Email</h4>
+            <h4>Phone number : @Model.Phone</h4>
+            <h4>Address : @Model.Address</h4>
+            <h4>City : @Model.City</h4>
+            <h4>Province : @Model.Province</h4>
+            <h4>Country: @Model.Country</h4>
+            <h4>Postal code: @Model.PostalCode</h4>
             <hr />
             @foreach(var item in Model.Products)
             {
-                <h3>@item.Name</h3>
+                foreach(var dict in Model.CommandDictionary)
+                {
+                    if (@item.Id == dict.Key)
+                    {
+                        if (dict.Key > 1)
+                        {
+                            <h4>@item.Name for @dict.Value years</h4>
+                        }
+                        else
+                        {
+                            <h4>@item.Name for @dict.Value year</h4>
+                        }
+                    }
+                }
             }
-            <h3>Total before taxes: @Model.Total</h3>
-            <h3>Total discount: @Model.TotalDiscount</h3>
-            <h3>Total with discount: @Model.TotalWithDiscount</h3>
-            <h3>Total: @Model.TotalWithTaxes</h3>
+            <hr />
+            <h4>Total before discount: @Model.Total</h4>
+            <h4>Total discount: @Model.TotalDiscount</h4>
+            <h4>Total with discount: @Model.TotalWithDiscount</h4>
+            <h4>Total: @Model.TotalWithTaxes</h4>
             <form asp-action="CommandConfirmation">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -61,15 +90,22 @@
                 <div class="form-group">
                     <input asp-for="TotalWithTaxes" type="hidden" class="form-control" />
                 </div>
+                <br />
+                <br />
                 <div>
                     <button onclick="clearCart();" type="submit" value="CommandConfirmation" class="checkout-button">
                         Confirm purchase
                     </button>
                 </div>
+                <br />
+                <br />
             </form>
         </div>
     </div>
 </div>
+<br />
+<br />
+<br />
 
 <script type="text/javascript">
     function clearCart() {
