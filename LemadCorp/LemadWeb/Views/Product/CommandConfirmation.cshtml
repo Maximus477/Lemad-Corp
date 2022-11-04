@@ -33,7 +33,7 @@
                 {
                     if (@item.Id == dict.Key)
                     {
-                        if (dict.Key > 1)
+                        if (dict.Value > 1)
                         {
                             <h4>@item.Name for @dict.Value years</h4>
                         }
@@ -92,11 +92,15 @@
                 </div>
                 <br />
                 <br />
-                <div>
+                <div class="display-buttons">
                     <button onclick="clearCart();" type="submit" value="CommandConfirmation" class="checkout-button">
                         Confirm purchase
                     </button>
+                    <div class="checkout-button center-button" onclick="callCart()">
+                    Cancel the command
                 </div>
+                </div>
+                <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                 <br />
                 <br />
             </form>

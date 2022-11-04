@@ -241,6 +241,57 @@
             localStorage.setItem('Products', JSON.stringify(products));
         }
 
+        function preAddingCartWithDuration(id, name, max) {
+            if (document.getElementById("cart-" + id).innerHTML.includes(" Add to Cart ")) {
+                $.confirm({
+                    title: 'Confirmation',
+                    content: 'Do you really want to add ' + name + ' to the cart?',
+                    buttons: {
+                        yes: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                $.alert(name + ' added to the cart!');
+                                var x = document.getElementById('quantity').value;
+                                console.log(typeof(x))
+                                if (x === "")
+                                {
+                                    x = 1;
+                                }
+                                if (x > max)
+                                {
+                                    x = max;
+                                }
+                                addCartWithDuration(id, x);
+                            }
+                        },
+                        no: {
+                            btnClass: 'btn-confirmation'
+                        }
+                    }
+                });
+            }
+        }
+
+        function addCartWithDuration(productId, duration) {
+            var products = getCart();
+            console.log(duration)
+            console.log(duration)
+            console.log(duration)
+            console.log(duration)
+            if (products == null) {
+                products = [];
+                products.push({ id: productId, contract: duration });
+            }
+            else {
+                if (products.find(obj => obj.id == productId)) { }
+                else {
+                    products.push({ id: productId, contract: duration });
+                }
+            }
+
+            localStorage.setItem('Products', JSON.stringify(products));
+        }
+
         function removeCart(productId) {
             var products = getCart();
             var newProd = []
