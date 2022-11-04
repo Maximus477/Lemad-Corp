@@ -14,6 +14,7 @@ namespace LemadDb.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Command> Commands { get; set; }
+        public DbSet<Command> CommandProducts { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }

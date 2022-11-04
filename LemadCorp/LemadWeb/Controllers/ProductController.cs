@@ -31,9 +31,11 @@ namespace LemadWeb.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
+        static private List<Product> _products;
 
-        public ProductController(ApplicationDbContext context, IConfiguration configuration) { _context = context; _configuration = configuration; }
+        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IConfiguration configuration) { _context = context; _userManager = userManager; _configuration = configuration; }
 
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
@@ -72,15 +74,142 @@ namespace LemadWeb.Controllers
         }
 
         [Authorize]
-        public IActionResult Command(string products, decimal total, decimal totalDiscount, decimal totalWithDiscount, decimal totalWithTaxes)
+        public async Task<IActionResult> Command(string ProductId, string total, string totalDiscount, string totalWithDiscount, string totalWithTaxes)
         {
-            Dictionary<Product, int> dictionary = JsonConverter.jsonToProductDictionary(_context, products);
+            CommandVM model = new CommandVM();
+            var products = JsonConverter.jsonToIntDictionary(ProductId);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            model.FirstName = user.FirstName;
+            model.LastName = user.LastName;
+            model.Email = user.Email;
+            model.Phone = user.PhoneNumber;
+            model.UserID = user.Id;
+            model.Products = new List<Product>();
+            model.Total = total;
+            model.TotalDiscount = totalDiscount;
+            model.TotalWithDiscount = totalWithDiscount;
+            model.TotalWithTaxes = totalWithTaxes;
+            if (user.CivicAddresses != null)
+            {
+                model.Address = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Address;
+                model.City = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().City;
+                model.Province = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Province;
+                model.Country = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Country;
+                model.PostalCode = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().PostalCode;
 
-            if (User.Identity.IsAuthenticated) {
-                ApplicationUser user = User.Identity as ApplicationUser;
-                int i = 0;
             }
-            return View();
+            foreach (var product in products)
+            {
+                model.Products.Add(_context.Products.Where(c => c.Id == product.Key).SingleOrDefault());
+            }
+            _products = model.Products;
+            return View(model);
+        }
+
+
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Command(CommandVM model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                //LemadDb.Domain.Entities.Command command = new LemadDb.Domain.Entities.Command()
+                //{
+                //    FirstName = model.FirstName,
+                //    LastName = model.LastName,
+                //    Email = model.Email,
+                //    PhoneNumber = model.Phone,
+                //    CreatedAt = DateTime.Now,
+                //    ApplicationUser = await _userManager.GetUserAsync(HttpContext.User),
+                //    Address = model.Address,
+                //    City = model.City,
+                //    Province = model.Province,
+                //    Country = model.Country,
+                //    PostalCode = model.PostalCode,
+                //};
+
+                return RedirectToAction("CommandConfirmation", "Product", new { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Phone = model.Phone, Address = model.Address, City = model.City, Province = model.Province, Country = model.Country, PostalCode = model.PostalCode, Total = model.Total, TotalDiscount = model.TotalDiscount, TotalWithDiscount = model.TotalWithDiscount, TotalWithTaxes = model.TotalWithTaxes });
+                //command.ProductIDs = new List<CommandProduct>();
+                //foreach(var item in _products)
+                //{
+                //    CommandProduct commandProduct = new CommandProduct(item.Id);
+                //    command.ProductIDs.Add(commandProduct);
+                //}
+
+                //_context.Add(command);
+                //await _context.SaveChangesAsync();
+
+                //return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
+
+        [Authorize]
+        public IActionResult CommandConfirmation(string FirstName, string LastName, string Email, string Phone, string Address, string City, string Province, string Country, string PostalCode, string Total, string TotalDiscount, string TotalWithDiscount, string TotalWithTaxes)
+        {
+            CommandVM model = new CommandVM()
+            {
+                FirstName = FirstName, LastName = LastName, Email = Email, Phone = Phone, Address = Address, City = City, Province = Province, Country = Country, TotalWithTaxes=TotalWithTaxes, TotalWithDiscount=TotalWithDiscount, PostalCode=PostalCode, TotalDiscount=TotalDiscount, Total=Total
+            };
+            model.Products = _products;
+            //string FirstName, string LastName, string Email, string Phone, string Address, string City, string , string totalDiscount, string totalWithDiscount, string totalWithTaxes
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CommandConfirmation(CommandVM model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                LemadDb.Domain.Entities.Command command = new LemadDb.Domain.Entities.Command()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    PhoneNumber = model.Phone,
+                    CreatedAt = DateTime.Now,
+                    ApplicationUser = await _userManager.GetUserAsync(HttpContext.User),
+                    Address = model.Address,
+                    City = model.City,
+                    Province = model.Province,
+                    Country = model.Country,
+                    PostalCode = model.PostalCode,
+                    Total = Decimal.Parse(model.Total),
+                    TotalDiscount = Decimal.Parse(model.TotalDiscount),
+                    TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
+                    TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
+                };
+                command.ProductIDs = new List<CommandProduct>();
+                foreach (var item in _products)
+                {
+                    CommandProduct commandProduct = new CommandProduct(item.Id);
+                    command.ProductIDs.Add(commandProduct);
+                }
+
+                _context.Add(command);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View(model);
+            }
         }
 
         [Authorize(Roles = "admin")]

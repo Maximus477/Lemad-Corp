@@ -58,5 +58,9 @@
   {
     "outputFile": "wwwroot/sass/create.css",
     "inputFile": "wwwroot/sass/create.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/command.css",
+    "inputFile": "wwwroot/sass/command.scss"
   }
 ]
