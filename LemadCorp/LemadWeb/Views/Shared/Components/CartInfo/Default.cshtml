@@ -28,15 +28,25 @@
 </div>
 <div class="button-div text-white justify-content-center mb-4">
     @if (Model.CountProduct > 0) {
-                            <button class="checkout-button" onclick="callTheCart('@Model.Total', '@Model.TotalDiscount', '@Model.TotalWithDiscount', '@Model.TotalWithTaxes')">
-                                        Proceed to Checkout
-                            </button>
-                            <a id="command-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Command" asp-route-total="" asp-route-totalDiscount="" asp-route-totalWithDiscount="" asp-route-totalWithTaxes="" asp-route-ProductId=""></a>
+        if (User.Identity.IsAuthenticated)
+        {
+            <button class="checkout-button" onclick="callTheCart('@Model.Total', '@Model.TotalDiscount', '@Model.TotalWithDiscount', '@Model.TotalWithTaxes')">
+                Proceed to Checkout
+            </button>
+        }
+        else
+        {
+            <button class="checkout-button" onclick="askLogin('@Model.Total', '@Model.TotalDiscount', '@Model.TotalWithDiscount', '@Model.TotalWithTaxes')">
+                Proceed to Checkout
+            </button>
+        }
+        <a id="command-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Command" asp-route-total="" asp-route-totalDiscount="" asp-route-totalWithDiscount="" asp-route-totalWithTaxes="" asp-route-ProductId=""></a>
     }
     else {
         <button class="checkout-button" disabled>Proceed to Checkout</button>
     }
 </div>
+<a id="login-link" style="display:none; width:auto%; height: 0%"  asp-area="" asp-controller="Account" asp-action="Login"></a>
 <a asp-area="" asp-controller="Product" asp-action="CommandCancelation" asp-route-id="e624e8a5-2444-423f-51f5-08dabdfcb830">Testing purpose</a>
 <script type="text/javascript">
     function getMyCart() {

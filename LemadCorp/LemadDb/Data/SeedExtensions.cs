@@ -158,7 +158,7 @@ namespace LemadDb.Data
             };
             SeedAddress(builder, adressesCiviques);
 
-            var admins = new List<ApplicationUser>() { CreateUser("admin@lemadrid.com", "!Qwerty123") };
+            var admins = new List<ApplicationUser>() { CreateUser("admin@lemadrid.com", "!Qwerty123"), CreateUser("guest@user.com", "!Qwerty123") };
 
             var users = new List<ApplicationUser> {
                 CreateUser(builder, "hugo@lemadrid.com", "Hugo", "Lapointe", "(450)-773-6800", "!Qwerty123"),

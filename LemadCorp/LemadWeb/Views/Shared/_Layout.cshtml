@@ -224,6 +224,30 @@
             }
         }
 
+        function askLogin(total, totalDiscount, totalWithDiscount, totalWithTaxes) {
+                $.confirm({
+                    title: 'Login',
+                    content: 'Do you want to login to make your command?',
+                    buttons: {
+                        yes: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                document.getElementById('login-link').click();
+                            }
+                        },
+                        no: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                var products = window.localStorage.Products;
+                                var array = JSON.parse(products);
+                                $('#command-link').attr('href', '/Product/Command?ProductId=' + JSON.stringify(array) + '&total='  + total + '&totalDiscount='  + totalDiscount + '&totalWithDiscount='  + totalWithDiscount + '&totalWithTaxes='  + totalWithTaxes);
+                                document.getElementById('command-link').click();
+                            }
+                        }
+                    }
+                });
+        }
+
         function addCart(productId) {
             var products = getCart();
 

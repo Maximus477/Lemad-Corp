@@ -74,63 +74,78 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> Command(string ProductId, string total, string totalDiscount, string totalWithDiscount, string totalWithTaxes)
         {
-            var user2 = await _userManager.GetUserAsync(HttpContext.User);
-
-            // necessary pour le include
-            var user = await _userManager.Users
-            .Include(x => x.CivicAddresses)
-            .SingleAsync(x => x.Id == user2.Id);
-
-            var addresses = new List<AdresseCivique>();
-
-            foreach (var addresseUser in user2.CivicAddresses)
+            if (User.Identity.IsAuthenticated)
             {
-                addresses.Add(_context.CivicAddresses.Find(addresseUser.AdresseCiviqueId));
+                var user2 = await _userManager.GetUserAsync(HttpContext.User);
+
+                // necessary pour le include
+                var user = await _userManager.Users
+                .Include(x => x.CivicAddresses)
+                .SingleAsync(x => x.Id == user2.Id);
+
+                var addresses = new List<AdresseCivique>();
+
+                foreach (var addresseUser in user2.CivicAddresses)
+                {
+                    addresses.Add(_context.CivicAddresses.Find(addresseUser.AdresseCiviqueId));
+                }
+
+                //String Text = a.Address + ", " + a.City + ", " + a.Province + ", " + a.Country + ", " + a.PostalCode
+
+                ViewBag.Addresses = new SelectList(addresses, "Id", "Address");
+
+                CommandVM model = new CommandVM();
+                _command = JsonConverter.jsonToIntDictionary(ProductId);
+
+                model.FirstName = user.FirstName;
+                model.LastName = user.LastName;
+                model.Email = user.Email;
+                model.Phone = user.Cellphone;
+                model.UserID = user.Id;
+                model.Products = new List<Product>();
+                model.Total = total;
+                model.TotalDiscount = totalDiscount;
+                model.TotalWithDiscount = totalWithDiscount;
+                model.TotalWithTaxes = totalWithTaxes;
+                model.AddNewAddress = true;
+
+                if (user.CivicAddresses != null)
+                {
+                    model.Address = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Address;
+                    model.City = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().City;
+                    model.Province = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Province;
+                    model.Country = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Country;
+                    model.PostalCode = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().PostalCode;
+                }
+                foreach (var product in _command)
+                {
+                    model.Products.Add(_context.Products.Where(c => c.Id == product.Key).SingleOrDefault());
+                }
+
+                _products = model.Products;
+
+                return View(model);
             }
-
-            //String Text = a.Address + ", " + a.City + ", " + a.Province + ", " + a.Country + ", " + a.PostalCode
-
-            ViewBag.Addresses = new SelectList(addresses, "Id", "Address");
-
-            CommandVM model = new CommandVM();
-            _command = JsonConverter.jsonToIntDictionary(ProductId);
-
-            model.FirstName = user.FirstName;
-            model.LastName = user.LastName;
-            model.Email = user.Email;
-            model.Phone = user.Cellphone;
-            model.UserID = user.Id;
-            model.Products = new List<Product>();
-            model.Total = total;
-            model.TotalDiscount = totalDiscount;
-            model.TotalWithDiscount = totalWithDiscount;
-            model.TotalWithTaxes = totalWithTaxes;
-            model.AddNewAddress = true;
-
-            if (user.CivicAddresses != null)
+            else
             {
-                model.Address = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Address;
-                model.City = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().City;
-                model.Province = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Province;
-                model.Country = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().Country;
-                model.PostalCode = _context.CivicAddresses.Where(c => c.Id == user.CivicAddresses.FirstOrDefault().AdresseCiviqueId).FirstOrDefault().PostalCode;
-            }
-            foreach (var product in _command)
-            {
-                model.Products.Add(_context.Products.Where(c => c.Id == product.Key).SingleOrDefault());
-            }
+                CommandVM model = new CommandVM();
+                _command = JsonConverter.jsonToIntDictionary(ProductId);
+                foreach (var product in _command)
+                {
+                    model.Products.Add(_context.Products.Where(c => c.Id == product.Key).SingleOrDefault());
+                }
 
-            _products = model.Products;
-
-            return View(model);
+                _products = model.Products;
+                return View(model);
+            }
         }
 
 
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Command(CommandVM model, bool newAddress)
         {
@@ -174,7 +189,7 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public IActionResult CommandConfirmation(string FirstName, string LastName, string Email, string Phone, string Address, string City, string Province, string Country, string PostalCode, string Total, string TotalDiscount, string TotalWithDiscount, string TotalWithTaxes)
         {
             CommandVM model = new CommandVM()
@@ -186,7 +201,7 @@ namespace LemadWeb.Controllers
             return View(model);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CommandConfirmation(CommandVM model)
         {
@@ -196,26 +211,51 @@ namespace LemadWeb.Controllers
                 {
                     return View(model);
                 }
-
-                LemadDb.Domain.Entities.Command command = new LemadDb.Domain.Entities.Command()
+                LemadDb.Domain.Entities.Command command;
+                if (User.Identity.IsAuthenticated)
                 {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    PhoneNumber = model.Phone,
-                    CreatedAt = DateTime.Now,
-                    ApplicationUser = await _userManager.GetUserAsync(HttpContext.User),
-                    Address = model.Address,
-                    City = model.City,
-                    Province = model.Province,
-                    Country = model.Country,
-                    PostalCode = model.PostalCode,
-                    Total = Decimal.Parse(model.Total),
-                    TotalDiscount = Decimal.Parse(model.TotalDiscount),
-                    TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
-                    TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
-                    Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED
-                };
+                    command = new LemadDb.Domain.Entities.Command()
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = model.Email,
+                        PhoneNumber = model.Phone,
+                        CreatedAt = DateTime.Now,
+                        ApplicationUser = await _userManager.GetUserAsync(HttpContext.User),
+                        Address = model.Address,
+                        City = model.City,
+                        Province = model.Province,
+                        Country = model.Country,
+                        PostalCode = model.PostalCode,
+                        Total = Decimal.Parse(model.Total),
+                        TotalDiscount = Decimal.Parse(model.TotalDiscount),
+                        TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
+                        TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
+                        Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED
+                    };
+                }
+                else
+                {
+                    command = new LemadDb.Domain.Entities.Command()
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = model.Email,
+                        PhoneNumber = model.Phone,
+                        CreatedAt = DateTime.Now,
+                        ApplicationUser = _context.Users.Where(x => x.Email == "guest@user.com").FirstOrDefault(),
+                        Address = model.Address,
+                        City = model.City,
+                        Province = model.Province,
+                        Country = model.Country,
+                        PostalCode = model.PostalCode,
+                        Total = Decimal.Parse(model.Total),
+                        TotalDiscount = Decimal.Parse(model.TotalDiscount),
+                        TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
+                        TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
+                        Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED
+                    };
+                }
                 command.ProductIDs = new List<CommandProduct>();
                 foreach (var item in _command)
                 {
