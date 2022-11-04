@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LemadDb.Migrations
 {
-    public partial class fix : Migration
+    public partial class initialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -172,18 +172,31 @@ namespace LemadDb.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Commands",
+                name: "Command",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Province = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalDiscount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalWithDiscount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalWithTaxes = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Commands", x => x.Id);
+                    table.PrimaryKey("PK_Command", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Commands_AspNetUsers_ApplicationUserId",
+                        name: "FK_Command_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -215,6 +228,25 @@ namespace LemadDb.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CommandProduct",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    CommandId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommandProduct", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CommandProduct_Command_CommandId",
+                        column: x => x.CommandId,
+                        principalTable: "Command",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -237,9 +269,9 @@ namespace LemadDb.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Commands_CommandId",
+                        name: "FK_Products_Command_CommandId",
                         column: x => x.CommandId,
-                        principalTable: "Commands",
+                        principalTable: "Command",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -249,8 +281,8 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "b9034817-5634-430f-8cdf-523f59da72d4", "71d97ca8-d4d9-4fa7-b336-e3ddbdc891a6", "buyer", "BUYER" },
-                    { "13d72246-53f0-4664-97d6-304648d2bc51", "3195f3e1-d63f-41e4-a6cc-4d2c294bf749", "admin", "ADMIN" }
+                    { "dc561c7e-8b12-44c6-9381-6154adaaa224", "d75d7de5-8102-4662-a796-c132a789fb3d", "buyer", "BUYER" },
+                    { "0b8369a2-a1a4-4e1a-9773-9d4a867b68d0", "ac215a1e-c60c-4d04-be91-8f9800cd3bbd", "admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -258,12 +290,12 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Cellphone", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "40ba578c-5de9-4e18-8098-61b60b42a6d2", 0, "(450)-213-5697", "73049742-a4b2-45fa-aebb-04f8dc43b4cc", "louis.garceau@lemadrid.com", false, "Louis", "Garceau", false, null, "LOUIS.GARCEAU@LEMADRID.COM", "LOUIS.GARCEAU@LEMADRID.COM", "AQAAAAEAACcQAAAAEFXDZvFcwUvdTAjCY/hcgsP6a9VTyRQW7VLsq43T1b2M2hC9hSGfrrU0mVcQt57IhA==", null, false, "6226bfb6-bc15-49b1-955a-72c566c3dd37", false, "louis.garceau@lemadrid.com" },
-                    { "2fa59879-9597-46ca-8e9e-49c86cfe5a73", 0, "(450)-538-3982", "c1c14b62-c4bd-419e-b12f-9b2244c86d04", "maxime.lefebvre@lemadrid.com", false, "Maxime", "Lefebvre", false, null, "MAXIME.LEFEBVRE@LEMADRID.COM", "MAXIME.LEFEBVRE@LEMADRID.COM", "AQAAAAEAACcQAAAAEBkws2aq3UPRzGgutYd6VXvJLFzZE2A4mifp7PgG2EWjMfEUchxsV0uR01cAnZXHhw==", null, false, "a97ffc4d-de51-4918-a56e-9aaf4072241b", false, "maxime.lefebvre@lemadrid.com" },
-                    { "76292fb8-228e-4233-9eba-5f8654a72c25", 0, "(450)-649-8594", "03eb2af9-7c01-43e4-bcc5-c27ba56d811e", "karl.mainville@lemadrid.com", false, "Karl", "Mainville", false, null, "KARL.MAINVILLE@LEMADRID.COM", "KARL.MAINVILLE@LEMADRID.COM", "AQAAAAEAACcQAAAAEOst97eMeH2kQfKmkWdtTQv2DukG53qfiarerXR+78aPJJjU+KIeCo2Sx84d2LMFCQ==", null, false, "75538210-925d-4afd-82cf-d2d241052226", false, "karl.mainville@lemadrid.com" },
-                    { "89fdf27a-b63c-4e54-af69-bf438be8b0f3", 0, "(450)-773-6800", "2b142afa-1ed6-477b-8080-3825591a10e4", "hugo@lemadrid.com", false, "Hugo", "Lapointe", false, null, "HUGO@LEMADRID.COM", "HUGO@LEMADRID.COM", "AQAAAAEAACcQAAAAECp1hN8dBXI0g7YurDSYrkHI9zH2hXKyAJHUgtYMfSNM3MsLxHnAn+krnBzuI6jGrg==", null, false, "a2253ba2-27e6-45ec-b7c0-189845b670b9", false, "hugo@lemadrid.com" },
-                    { "085b0b78-c8bc-4f7e-9967-05d150dae848", 0, null, "76c3168c-782e-4026-aed0-741fff96ae39", "admin@lemadrid.com", false, null, null, false, null, "ADMIN@LEMADRID.COM", "ADMIN@LEMADRID.COM", "AQAAAAEAACcQAAAAEAo/SLrB2+v0eROrSY5/Iry/yhiYtfVrKa21qI4CV1CZ+eoBh7TfIzfpvpWDCS2V6Q==", null, false, "4d268745-1d89-4a81-b94d-ddc9db9715c0", false, "admin@lemadrid.com" },
-                    { "516ce8e6-9ea7-41a1-8445-2273749215e1", 0, "(450)-789-4673", "b3c08c9c-b268-4c31-a967-b4c49586e6c6", "laurent.brochu@lemadrid.com", false, "Laurent", "Brochu", false, null, "LAURENT.BROCHU@LEMADRID.COM", "LAURENT.BROCHU@LEMADRID.COM", "AQAAAAEAACcQAAAAEJPvRK4DTlO5B3hAN5iOUr7iyNq8JmjSSGKoxUOVNLSyimsoTjdzfsteftp717NbLA==", null, false, "e6cc60a6-22f9-4005-a26b-17ede9701c03", false, "laurent.brochu@lemadrid.com" }
+                    { "76fba3d4-7c99-4483-a0c1-07c2acfe1b29", 0, "(450)-213-5697", "88f5bba5-d710-4904-9197-61c74c1a4826", "louis.garceau@lemadrid.com", false, "Louis", "Garceau", false, null, "LOUIS.GARCEAU@LEMADRID.COM", "LOUIS.GARCEAU@LEMADRID.COM", "AQAAAAEAACcQAAAAEKAYp7hwpCFHeAmJL9408xGOIVUafGo5MjYWRAxlUyQ6G7ntm2bo2YPoClNgfDLt+A==", null, false, "e0c659d0-474b-4cde-b336-3cd19782c294", false, "louis.garceau@lemadrid.com" },
+                    { "fecad3a9-2f05-421b-8e4b-bad9ca133fb5", 0, "(450)-538-3982", "706c429a-49a6-49b8-bc0a-d0520c655ff7", "maxime.lefebvre@lemadrid.com", false, "Maxime", "Lefebvre", false, null, "MAXIME.LEFEBVRE@LEMADRID.COM", "MAXIME.LEFEBVRE@LEMADRID.COM", "AQAAAAEAACcQAAAAEIrelIQDDg3bwLm8YNEeZvrZw7PoKLSRtFCrq21yIVZULXuhwDfYhtxtoniSi7fSmQ==", null, false, "16b72076-4664-4031-b370-e370bce76589", false, "maxime.lefebvre@lemadrid.com" },
+                    { "33eb62da-daea-49b4-b2af-5d8b278da83c", 0, "(450)-649-8594", "cf603a8f-7bb3-40db-8f0d-003b137e5e19", "karl.mainville@lemadrid.com", false, "Karl", "Mainville", false, null, "KARL.MAINVILLE@LEMADRID.COM", "KARL.MAINVILLE@LEMADRID.COM", "AQAAAAEAACcQAAAAEHA80OA9MDGwYLcdHaEOjMz3WZvVnjW1Iiko3PtJ6RZ9EZedRqinYhwtHWj9mNm53A==", null, false, "a4369124-9cf4-4d7a-9a36-4f4e92dfe1e6", false, "karl.mainville@lemadrid.com" },
+                    { "c8ade0c7-6b23-4299-afd9-58cd889bcc82", 0, "(450)-773-6800", "f77296b7-9f2f-4b26-9aab-f3ac143039f4", "hugo@lemadrid.com", false, "Hugo", "Lapointe", false, null, "HUGO@LEMADRID.COM", "HUGO@LEMADRID.COM", "AQAAAAEAACcQAAAAEFxlc/Bxo5YOkqRPcsy3eUKzcM1MqtmzyeT1HpkSOhKZGUlMIbrGv+vmfeSjtp7Fdg==", null, false, "4d299801-cd65-4fe9-896e-9018c2ea571d", false, "hugo@lemadrid.com" },
+                    { "d2b927cb-7f6a-49c7-bd0a-9ac2fada12b9", 0, null, "f78155e2-1963-404c-b5e4-b33714e29cd2", "admin@lemadrid.com", false, null, null, false, null, "ADMIN@LEMADRID.COM", "ADMIN@LEMADRID.COM", "AQAAAAEAACcQAAAAEJhxAQKxtjilSZMi5iVJkPODNo02Vhz2SyICsw08DpXv/MBT37ZmUBFT++DZtNKIBg==", null, false, "c8ea9fa6-d575-4dcd-8755-67dc4cbddffd", false, "admin@lemadrid.com" },
+                    { "dc32f9f2-34d9-4ab9-9540-eb0bcf158b67", 0, "(450)-789-4673", "2ba24e50-c6be-4ab2-a0d5-243079c78a63", "laurent.brochu@lemadrid.com", false, "Laurent", "Brochu", false, null, "LAURENT.BROCHU@LEMADRID.COM", "LAURENT.BROCHU@LEMADRID.COM", "AQAAAAEAACcQAAAAEP4nxVeJDX0q4jGaRP1LZAM90Q9ZH1hFv5bQU/r+pFZ7jhwlXN4fes9xoDIGXjHqaA==", null, false, "ffb67737-68b6-4b3b-a2a0-aa0778864be1", false, "laurent.brochu@lemadrid.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -271,8 +303,8 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "Address", "City", "Country", "PostalCode", "Province" },
                 values: new object[,]
                 {
-                    { new Guid("1b74cbd5-636d-4232-b279-655f9dd20125"), "1899 Henri-Becquerel", "Sainte-Julie", "Canada", "J3E 1V6", "Québec" },
-                    { new Guid("8a4e067b-01fe-4688-b4a5-ee1330035ef9"), "3000 Av. Boullé", "Saint-Hyacinthe", "Canada", "J2S 1H9", "Québec" }
+                    { new Guid("f2dbadad-6d80-4162-ac4c-0c5056a2decc"), "1899 Henri-Becquerel", "Sainte-Julie", "Canada", "J3E 1V6", "Québec" },
+                    { new Guid("056256c2-eb5a-4914-a9bf-068c110afcf2"), "3000 Av. Boullé", "Saint-Hyacinthe", "Canada", "J2S 1H9", "Québec" }
                 });
 
             migrationBuilder.InsertData(
@@ -358,11 +390,11 @@ namespace LemadDb.Migrations
                 columns: new[] { "AdresseCiviqueId", "ApplicationUserId" },
                 values: new object[,]
                 {
-                    { new Guid("8a4e067b-01fe-4688-b4a5-ee1330035ef9"), "89fdf27a-b63c-4e54-af69-bf438be8b0f3" },
-                    { new Guid("1b74cbd5-636d-4232-b279-655f9dd20125"), "76292fb8-228e-4233-9eba-5f8654a72c25" },
-                    { new Guid("8a4e067b-01fe-4688-b4a5-ee1330035ef9"), "2fa59879-9597-46ca-8e9e-49c86cfe5a73" },
-                    { new Guid("8a4e067b-01fe-4688-b4a5-ee1330035ef9"), "40ba578c-5de9-4e18-8098-61b60b42a6d2" },
-                    { new Guid("8a4e067b-01fe-4688-b4a5-ee1330035ef9"), "516ce8e6-9ea7-41a1-8445-2273749215e1" }
+                    { new Guid("056256c2-eb5a-4914-a9bf-068c110afcf2"), "c8ade0c7-6b23-4299-afd9-58cd889bcc82" },
+                    { new Guid("f2dbadad-6d80-4162-ac4c-0c5056a2decc"), "33eb62da-daea-49b4-b2af-5d8b278da83c" },
+                    { new Guid("056256c2-eb5a-4914-a9bf-068c110afcf2"), "fecad3a9-2f05-421b-8e4b-bad9ca133fb5" },
+                    { new Guid("056256c2-eb5a-4914-a9bf-068c110afcf2"), "76fba3d4-7c99-4483-a0c1-07c2acfe1b29" },
+                    { new Guid("056256c2-eb5a-4914-a9bf-068c110afcf2"), "dc32f9f2-34d9-4ab9-9540-eb0bcf158b67" }
                 });
 
             migrationBuilder.InsertData(
@@ -370,12 +402,12 @@ namespace LemadDb.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "13d72246-53f0-4664-97d6-304648d2bc51", "085b0b78-c8bc-4f7e-9967-05d150dae848" },
-                    { "b9034817-5634-430f-8cdf-523f59da72d4", "89fdf27a-b63c-4e54-af69-bf438be8b0f3" },
-                    { "b9034817-5634-430f-8cdf-523f59da72d4", "76292fb8-228e-4233-9eba-5f8654a72c25" },
-                    { "b9034817-5634-430f-8cdf-523f59da72d4", "2fa59879-9597-46ca-8e9e-49c86cfe5a73" },
-                    { "b9034817-5634-430f-8cdf-523f59da72d4", "40ba578c-5de9-4e18-8098-61b60b42a6d2" },
-                    { "b9034817-5634-430f-8cdf-523f59da72d4", "516ce8e6-9ea7-41a1-8445-2273749215e1" }
+                    { "0b8369a2-a1a4-4e1a-9773-9d4a867b68d0", "d2b927cb-7f6a-49c7-bd0a-9ac2fada12b9" },
+                    { "dc561c7e-8b12-44c6-9381-6154adaaa224", "c8ade0c7-6b23-4299-afd9-58cd889bcc82" },
+                    { "dc561c7e-8b12-44c6-9381-6154adaaa224", "33eb62da-daea-49b4-b2af-5d8b278da83c" },
+                    { "dc561c7e-8b12-44c6-9381-6154adaaa224", "fecad3a9-2f05-421b-8e4b-bad9ca133fb5" },
+                    { "dc561c7e-8b12-44c6-9381-6154adaaa224", "76fba3d4-7c99-4483-a0c1-07c2acfe1b29" },
+                    { "dc561c7e-8b12-44c6-9381-6154adaaa224", "dc32f9f2-34d9-4ab9-9540-eb0bcf158b67" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -423,9 +455,14 @@ namespace LemadDb.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Commands_ApplicationUserId",
-                table: "Commands",
+                name: "IX_Command_ApplicationUserId",
+                table: "Command",
                 column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CommandProduct_CommandId",
+                table: "CommandProduct",
+                column: "CommandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CommandId",
@@ -454,6 +491,9 @@ namespace LemadDb.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CommandProduct");
+
+            migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
@@ -463,7 +503,7 @@ namespace LemadDb.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Commands");
+                name: "Command");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
