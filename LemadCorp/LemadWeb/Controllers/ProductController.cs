@@ -82,7 +82,7 @@ namespace LemadWeb.Controllers
             model.FirstName = user.FirstName;
             model.LastName = user.LastName;
             model.Email = user.Email;
-            model.Phone = user.PhoneNumber;
+            model.Phone = user.Cellphone;
             model.UserID = user.Id;
             model.Products = new List<Product>();
             model.Total = total;

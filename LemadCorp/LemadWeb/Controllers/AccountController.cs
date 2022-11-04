@@ -179,7 +179,7 @@ namespace LemadWeb.Controllers
                 FirstName = user2.FirstName,
                 Lastname = user2.LastName,
                 Email = user2.Email,
-                PhoneNumber = user2.PhoneNumber,
+                PhoneNumber = user2.Cellphone,
                 AdresseCiviques = addresses
             };
 
