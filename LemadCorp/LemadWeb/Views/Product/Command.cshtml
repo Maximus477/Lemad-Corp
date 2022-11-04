@@ -84,10 +84,17 @@
                 </div>
                 <br />
                 <br />
-                <div>
+                <div class="display-buttons">
                     <button class="checkout-button" type="submit" value="Command">
                         Confirm informations
                     </button>
+                    <div class="checkout-button center-button" onclick="callCart()">
+                        Cancel the command
+                    </div>
+                    @*<div class="checkout-button centered-element" onclick="callCart()">
+                    Cancel the command
+                </div>*@
+                <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                 </div>
                 <br />
                 <br />
