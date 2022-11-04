@@ -97,7 +97,7 @@ namespace LemadWeb.Controllers
 
             CommandVM model = new CommandVM();
             _command = JsonConverter.jsonToIntDictionary(ProductId);
-            var user = await _userManager.GetUserAsync(HttpContext.User);
+
             model.FirstName = user.FirstName;
             model.LastName = user.LastName;
             model.Email = user.Email;
