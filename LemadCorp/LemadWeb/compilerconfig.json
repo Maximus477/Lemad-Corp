@@ -48,6 +48,18 @@
     "inputFile": "wwwroot/sass/ProductList.scss"
   },
   {
+    "outputFile": "wwwroot/sass/accountDetails.css",
+    "inputFile": "wwwroot/sass/accountDetails.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/login.css",
+    "inputFile": "wwwroot/sass/login.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/create.css",
+    "inputFile": "wwwroot/sass/create.scss"
+  },
+  {
     "outputFile": "wwwroot/sass/command.css",
     "inputFile": "wwwroot/sass/command.scss"
   }
