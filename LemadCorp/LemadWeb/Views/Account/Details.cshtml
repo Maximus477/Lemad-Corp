@@ -4,7 +4,7 @@
 @{
 }
 
-@model LemadDb.Domain.User.ApplicationUser
+@model AccountDetails
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,7 @@
                                     <div class="m-b-25">
                                         <img src="https://img.icons8.com/fluency-systems-filled/100/000000/user-tag.png" class="img-radius" alt="User-Profile-Image">
                                     </div>
-                                    <h6 class="f-w-600">@Model.FirstName, @Model.LastName</h6>
+                                    <h6 class="f-w-600">@Model.FirstName, @Model.Lastname</h6>
                                     <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                 </div>
                             </div>
@@ -38,22 +38,22 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Phone</p>
-                                            <h6 class="text-muted f-w-400">@Model.Cellphone</h6>
+                                            <h6 class="text-muted f-w-400">@Model.PhoneNumber</h6>
                                         </div>
                                     </div>
-@*                                    @if (@Model.CivicAddresses != null)
+                                    @if (@Model.AdresseCiviques.Count > 0)
                                     {
                                         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Adresses</h6>
                                         <div class="row">
-                                            @foreach (var address in @Model.CivicAddresses.ToList())
+                                            @foreach (var address in @Model.AdresseCiviques)
                                             {
                                                 <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">@address.</p>
-                                                    <h6 class="text-muted f-w-400">@Model.CivicAddresses</h6>
+                                                    <p class="m-b-10 f-w-600">@address.Address, @address.City</p>
+                                                    <h6 class="text-muted f-w-400">@address.Province, @address.Country, @address.PostalCode</h6>
                                                 </div>
                                             }
                                         </div>
-                                    }*@
+                                    }
 
                                 </div>
                             </div>

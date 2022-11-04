@@ -119,6 +119,8 @@ namespace LemadWeb.Controllers
 
             //user.CivicAddresses.Add(AddressCivique);
 
+            // Add adresseUser to addresseCivique
+
             _context.CivicAddresses.Add(addressCivique);
             var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -160,7 +162,28 @@ namespace LemadWeb.Controllers
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            return View(user);
+            // necessary pour le include
+            var user2 = await _userManager.Users
+            .Include(x => x.CivicAddresses)
+            .SingleAsync(x => x.Id == user.Id);
+
+            var addresses = new List<AdresseCivique>(); 
+
+            foreach (var addresseUser in user2.CivicAddresses)
+            {
+                addresses.Add(_context.CivicAddresses.Find(addresseUser.AdresseCiviqueId));
+            }
+
+            var userAdresse = new AccountDetails()
+            {
+                FirstName = user2.FirstName,
+                Lastname = user2.LastName,
+                Email = user2.Email,
+                PhoneNumber = user2.PhoneNumber,
+                AdresseCiviques = addresses
+            };
+
+            return View(userAdresse);
         }
 
         // GET : Account/Commands
