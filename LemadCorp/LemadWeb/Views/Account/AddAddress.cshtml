@@ -1,0 +1,72 @@
+﻿@model LemadDb.Domain.User.AdresseCivique
+
+<link rel="stylesheet" href="~/sass/login.css" />
+
+<section class="h-100 gradient-form-register" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+                                <form asp-action="AddAddress">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <p>Please enter your address</p>
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Address" id="form2Example11" class="form-control"
+                                               placeholder="Enter your address name..." />
+                                        <label class="form-label" for="form2Example11">Address</label>
+                                        <span asp-validation-for="Address" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="City" id="form2Example11" class="form-control"
+                                               placeholder="Enter your city..." />
+                                        <label class="form-label" for="form2Example11">City</label>
+                                        <span asp-validation-for="City" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Province" id="form2Example11" class="form-control"
+                                               placeholder="Enter your province" ... />
+                                        <label class="form-label" for="form2Example11">Province</label>
+                                        <span asp-validation-for="Province" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Country" id="form2Example11" class="form-control"
+                                               placeholder="Enter your country..." />
+                                        <label class="form-label" for="form2Example11">Country</label>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="PostalCode" id="form2Example11" class="form-control"
+                                               placeholder="Enter your Postal code..." />
+                                        <label class="form-label" for="form2Example11">Postal code</label>
+                                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+                                        <button value="AddAddress" type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" style="min-height:50px">
+                                            Add address!
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                <h1 class="mb-4">Le Madrid Corp</h1>
+                                <p class="big mb-0">
+                                    Simply the fastests.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

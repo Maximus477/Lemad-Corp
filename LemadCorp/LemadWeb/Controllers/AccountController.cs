@@ -192,5 +192,53 @@ namespace LemadWeb.Controllers
         {
             return View();
         }
+
+        // GET : Account/AddAddress
+        [AllowAnonymous]
+        public IActionResult AddAddress()
+        {
+            return View();
+        }
+
+            //POST : Account/Register
+            [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> AddAddress(AdresseCivique model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user2 = await _userManager.GetUserAsync(HttpContext.User);
+
+            // necessary pour le include
+            var user = await _userManager.Users
+            .Include(x => x.CivicAddresses)
+            .SingleAsync(x => x.Id == user2.Id);
+
+            var addressCivique = new AdresseCivique
+            {
+                Id = Guid.NewGuid(),
+                Address = model.Address,
+                City = model.City,
+                Province = model.Province,
+                Country = model.Country,
+                PostalCode = model.PostalCode,
+            };
+
+            var addressUser = new AddressUser()
+            {
+                AdresseCiviqueId = addressCivique.Id,
+                ApplicationUserId = user.Id
+            };
+
+            user.CivicAddresses.Add(addressUser);
+
+            _context.CivicAddresses.Add(addressCivique);
+            var result = await _userManager.UpdateAsync(user);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details");
+        }
     }
 }

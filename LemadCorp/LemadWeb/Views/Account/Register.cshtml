@@ -28,28 +28,28 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input asp-for="Email" type="email" id="form2Example11" class="form-control"
+                                        <input asp-for="Email" id="form2Example11" class="form-control"
                                                placeholder="Enter your email address" ... />
                                         <label class="form-label" for="form2Example11">Email</label>
                                         <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input asp-for="PhoneNumber" type="tel" id="form2Example11" class="form-control"
+                                        <input asp-for="PhoneNumber" id="form2Example11" class="form-control"
                                                placeholder="Enter your phone number..." />
                                         <label class="form-label" for="form2Example11">Phone number</label>
                                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input asp-for="Password" type="password" id="form2Example11" class="form-control"
+                                        <input asp-for="Password" id="form2Example11" class="form-control"
                                                placeholder="Enter your password..." />
                                         <label class="form-label" for="form2Example11">Password</label>
                                         <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input asp-for="PasswordConfirmation" type="password" id="form2Example11" class="form-control"
+                                        <input asp-for="PasswordConfirmation" id="form2Example11" class="form-control"
                                                placeholder="Reenter your password..." />
                                         <label class="form-label" for="form2Example11">Password confirmation</label>
                                         <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
@@ -96,12 +96,6 @@
                                         </button>
                                     </div>
 
-                                    @*<input type="checkbox" id="ChkAddress" onclick="toggleAdress()" checked>*@
-
-                                    @*                                    <div id="address">
-                                        <vc:address-form id="address"></vc:address-form>
-                                        </div>*@
-
                                 </form>
                             </div>
                         </div>
@@ -120,48 +114,8 @@
     </div>
 </section>
 
-@*<h4>RegisterVM</h4>
-    <hr />
-    <div class="row">
-    <div class="col-md-4">
-    <form asp-action="Register">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-    <label asp-for="Email" class="control-label"></label>
-    <input asp-for="Email" class="form-control" />
-    <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-    <label asp-for="Password" class="control-label"></label>
-    <input asp-for="Password" class="form-control" />
-    <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-    <label asp-for="PasswordConfirmation" class="control-label"></label>
-    <input asp-for="PasswordConfirmation" class="form-control" />
-    <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-    <input type="submit" value="Register" class="btn btn-primary" />
-    </div>
-    </form>
-    </div>
-    </div>*@
-
 @section Scripts {
     @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
 }
-
-@*<script type="text/javascript">
-    function toggleAdress() {
-    var x = document.getElementById("address");
-    if (x.style.display === "none") {
-    x.style.display = "block";
-    } else {
-    x.style.display = "none";
-    }
-    }
-    </script>
-*@
