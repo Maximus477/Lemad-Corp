@@ -283,8 +283,8 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a842a83b-3003-4861-944a-c2da73dd3d21", "aac4da20-6b3c-4de5-9e2e-be959065a82b", "buyer", "BUYER" },
-                    { "7d72ac43-eac0-4ed8-a988-c8a3cb86963b", "d1fc1107-06ce-40bd-b059-461050854420", "admin", "ADMIN" }
+                    { "9c49003f-9aff-4f90-b779-662ffe77b9ac", "ba5ba9ea-f35d-46b8-8147-58675685b5c0", "buyer", "BUYER" },
+                    { "fb665bdf-efb5-4b7f-82e6-b871cb44d42e", "d0e27018-045c-48eb-9275-92f9fa0cda30", "admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -292,12 +292,12 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Cellphone", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "7bf51fe6-5169-466f-812a-0b56563c2c17", 0, "(450)-213-5697", "d1d5fd55-2f70-4fbd-80ed-2ad1f1fb1357", "louis.garceau@lemadrid.com", false, "Louis", "Garceau", false, null, "LOUIS.GARCEAU@LEMADRID.COM", "LOUIS.GARCEAU@LEMADRID.COM", "AQAAAAEAACcQAAAAEKiu7OUsbxAaxw3LFfgB1zdxiFzbmL/Zuq7tfOuRrj3zL1OVq+yj9cB3K57Elwm7pw==", null, false, "9c4088ac-f785-44df-bcc0-d6a2536c0902", false, "louis.garceau@lemadrid.com" },
-                    { "5d58450a-3183-4d73-b25e-0da8e761675d", 0, "(450)-538-3982", "1aa898bf-bd00-41ce-875f-5610e2efdbab", "maxime.lefebvre@lemadrid.com", false, "Maxime", "Lefebvre", false, null, "MAXIME.LEFEBVRE@LEMADRID.COM", "MAXIME.LEFEBVRE@LEMADRID.COM", "AQAAAAEAACcQAAAAEN+ZrolO5YtV/mDyr+e+qpS2xa9g1/V4IN2qGE66Vs3QR5BdwRQmnF4Kr+BWRREWOg==", null, false, "e97c10d3-872a-4061-a8f7-73539a52344a", false, "maxime.lefebvre@lemadrid.com" },
-                    { "83e88b05-1e79-4870-ab7d-c3ebed5cd606", 0, "(450)-649-8594", "8d2bf457-c459-4f3b-8219-3daa48b27e13", "karl.mainville@lemadrid.com", false, "Karl", "Mainville", false, null, "KARL.MAINVILLE@LEMADRID.COM", "KARL.MAINVILLE@LEMADRID.COM", "AQAAAAEAACcQAAAAECJH4k+dTx9ChjarH9mfxU2ZnlH9v9w/b5JVeEkFxBbswqw2QJi6ddmCL4ll+o7d6g==", null, false, "9ffba5cc-0fd0-46df-87c5-6ed81f006948", false, "karl.mainville@lemadrid.com" },
-                    { "36bca26b-9eb5-488e-8f94-85532e0f25f5", 0, "(450)-773-6800", "5f043313-0daf-4c4d-844f-8bae110a1fcc", "hugo@lemadrid.com", false, "Hugo", "Lapointe", false, null, "HUGO@LEMADRID.COM", "HUGO@LEMADRID.COM", "AQAAAAEAACcQAAAAEJjLGkBEp0PQ8pggvTP0gM7WZ0aYXReriVf+RJp5q0JlPertEAlKAAOONHwZpCNP7A==", null, false, "81fe9f31-0377-4653-a3dc-84bd9ec1e19a", false, "hugo@lemadrid.com" },
-                    { "e14ebe03-d7d9-48e8-9167-ef13c8a1b39c", 0, null, "3e65694d-d035-435a-a1fe-35b82454fafd", "admin@lemadrid.com", false, null, null, false, null, "ADMIN@LEMADRID.COM", "ADMIN@LEMADRID.COM", "AQAAAAEAACcQAAAAEMkZGCy5esk73kPuF+PW54wuGjPYx21yb/3nO1lJXomf2pSuZoP8kY+Jh9zqr1CGnA==", null, false, "77e7981b-789c-4fa0-96b1-2ffbe388d19d", false, "admin@lemadrid.com" },
-                    { "7ceb4ab9-f380-4456-ad6a-b3966be2faf2", 0, "(450)-789-4673", "f21e30a3-889e-4f69-a14b-f221d49cbaa6", "laurent.brochu@lemadrid.com", false, "Laurent", "Brochu", false, null, "LAURENT.BROCHU@LEMADRID.COM", "LAURENT.BROCHU@LEMADRID.COM", "AQAAAAEAACcQAAAAEHEfH/HwrElfbxLtuEPgDcK6sudaP5wCHYIhjGbZpuiPdJxRk9zwJ2nrjmEzoZJ9yQ==", null, false, "66b83653-56cf-4bbb-816a-7bb73bc1a59d", false, "laurent.brochu@lemadrid.com" }
+                    { "151db628-3e5e-4fa0-914e-502bc597cbde", 0, "(450)-213-5697", "5da3931f-9a75-4785-94d0-7c3ca5a139b5", "louis.garceau@lemadrid.com", false, "Louis", "Garceau", false, null, "LOUIS.GARCEAU@LEMADRID.COM", "LOUIS.GARCEAU@LEMADRID.COM", "AQAAAAEAACcQAAAAEA4WYon+O2HWg4lZAg9hZzBMeXjnFK4+Hb+iMWsVMTnviM7hIQQfUlQPgxIPSrvAEA==", null, false, "f149b434-0359-4dd8-aa0e-f13f57820209", false, "louis.garceau@lemadrid.com" },
+                    { "cc061d43-8da4-443d-8241-0aad7aa20e5e", 0, "(450)-538-3982", "8ed22ec1-c0ca-40f8-946b-ae63afbe068a", "maxime.lefebvre@lemadrid.com", false, "Maxime", "Lefebvre", false, null, "MAXIME.LEFEBVRE@LEMADRID.COM", "MAXIME.LEFEBVRE@LEMADRID.COM", "AQAAAAEAACcQAAAAELgKa6i8Wpmsc4xOvOoN2a8buyURc6lgtkOb4ILwgB4Z9/oXwYJn2GES9D1aeZ2/fw==", null, false, "8f8d60f6-5daa-4b48-aa45-b13aea839bb7", false, "maxime.lefebvre@lemadrid.com" },
+                    { "e7242444-622e-4690-b7ca-90646f561c5f", 0, "(450)-649-8594", "17281af6-3013-4541-a472-c0b32416cf14", "karl.mainville@lemadrid.com", false, "Karl", "Mainville", false, null, "KARL.MAINVILLE@LEMADRID.COM", "KARL.MAINVILLE@LEMADRID.COM", "AQAAAAEAACcQAAAAEB3NpqsfyDItne6Myz+uvO3H0qmM1/DcHd2So14mjfEsEUW4xPDkyZMwoWWC9rYwgw==", null, false, "f1bb6d25-5eb1-4a2a-8a9a-37a3eda91ba5", false, "karl.mainville@lemadrid.com" },
+                    { "3c774a3d-d71d-47b1-98eb-84e0ea1ab536", 0, "(450)-773-6800", "c01a6a1d-43af-4e9e-ba4c-51efb61c3c0c", "hugo@lemadrid.com", false, "Hugo", "Lapointe", false, null, "HUGO@LEMADRID.COM", "HUGO@LEMADRID.COM", "AQAAAAEAACcQAAAAEAxjQHjBNIAWJFo5plInHvgQ+VjnKX7XGEPPVuH/NqEd5nSHGp/kXEI6dcN9AfURKA==", null, false, "02b6367c-d868-46fa-8ff9-d9eda7e0ac4a", false, "hugo@lemadrid.com" },
+                    { "71a6ee33-7cae-4e8b-941e-077560dfb61a", 0, null, "83e2a8e4-1cdb-4a45-84c1-7cbe73c459a1", "admin@lemadrid.com", false, null, null, false, null, "ADMIN@LEMADRID.COM", "ADMIN@LEMADRID.COM", "AQAAAAEAACcQAAAAEG3c2qCS30CfVJuvYj1fOf9Pz7KYwGmGNPRPsBOXAHX75J0teAlUvnldS5bGcTcQBQ==", null, false, "7520c132-f2a1-47ac-93bb-944fad1cf0e3", false, "admin@lemadrid.com" },
+                    { "ed47034f-07e5-4ca5-9f38-233f2659c46a", 0, "(450)-789-4673", "b143d3fb-8708-484e-9659-42ab06a13c6d", "laurent.brochu@lemadrid.com", false, "Laurent", "Brochu", false, null, "LAURENT.BROCHU@LEMADRID.COM", "LAURENT.BROCHU@LEMADRID.COM", "AQAAAAEAACcQAAAAEFSf9uY9ZfVTjtj0UZ3Uc2FvsyeHAmv6uwMDMNiONKP3EUgJU7EK1P6Qfx1REg4+6g==", null, false, "5978e355-d844-4369-9148-94335a4817d3", false, "laurent.brochu@lemadrid.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -305,8 +305,8 @@ namespace LemadDb.Migrations
                 columns: new[] { "Id", "Address", "City", "Country", "PostalCode", "Province" },
                 values: new object[,]
                 {
-                    { new Guid("91f07511-657f-47c9-b34b-e488245f80dc"), "1899 Henri-Becquerel", "Sainte-Julie", "Canada", "J3E 1V6", "Québec" },
-                    { new Guid("a40329cc-6ac9-46f9-a944-01736999cd0e"), "3000 Av. Boullé", "Saint-Hyacinthe", "Canada", "J2S 1H9", "Québec" }
+                    { new Guid("3f8145b0-f1f8-4b1a-8f47-12af5a6bf03b"), "1899 Henri-Becquerel", "Sainte-Julie", "Canada", "J3E 1V6", "Québec" },
+                    { new Guid("fc34c960-1cf6-482c-8567-0486e0696416"), "3000 Av. Boullé", "Saint-Hyacinthe", "Canada", "J2S 1H9", "Québec" }
                 });
 
             migrationBuilder.InsertData(
@@ -392,11 +392,11 @@ namespace LemadDb.Migrations
                 columns: new[] { "AdresseCiviqueId", "ApplicationUserId" },
                 values: new object[,]
                 {
-                    { new Guid("a40329cc-6ac9-46f9-a944-01736999cd0e"), "36bca26b-9eb5-488e-8f94-85532e0f25f5" },
-                    { new Guid("91f07511-657f-47c9-b34b-e488245f80dc"), "83e88b05-1e79-4870-ab7d-c3ebed5cd606" },
-                    { new Guid("a40329cc-6ac9-46f9-a944-01736999cd0e"), "5d58450a-3183-4d73-b25e-0da8e761675d" },
-                    { new Guid("a40329cc-6ac9-46f9-a944-01736999cd0e"), "7bf51fe6-5169-466f-812a-0b56563c2c17" },
-                    { new Guid("a40329cc-6ac9-46f9-a944-01736999cd0e"), "7ceb4ab9-f380-4456-ad6a-b3966be2faf2" }
+                    { new Guid("fc34c960-1cf6-482c-8567-0486e0696416"), "3c774a3d-d71d-47b1-98eb-84e0ea1ab536" },
+                    { new Guid("3f8145b0-f1f8-4b1a-8f47-12af5a6bf03b"), "e7242444-622e-4690-b7ca-90646f561c5f" },
+                    { new Guid("fc34c960-1cf6-482c-8567-0486e0696416"), "cc061d43-8da4-443d-8241-0aad7aa20e5e" },
+                    { new Guid("fc34c960-1cf6-482c-8567-0486e0696416"), "151db628-3e5e-4fa0-914e-502bc597cbde" },
+                    { new Guid("fc34c960-1cf6-482c-8567-0486e0696416"), "ed47034f-07e5-4ca5-9f38-233f2659c46a" }
                 });
 
             migrationBuilder.InsertData(
@@ -404,12 +404,12 @@ namespace LemadDb.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "7d72ac43-eac0-4ed8-a988-c8a3cb86963b", "e14ebe03-d7d9-48e8-9167-ef13c8a1b39c" },
-                    { "a842a83b-3003-4861-944a-c2da73dd3d21", "36bca26b-9eb5-488e-8f94-85532e0f25f5" },
-                    { "a842a83b-3003-4861-944a-c2da73dd3d21", "83e88b05-1e79-4870-ab7d-c3ebed5cd606" },
-                    { "a842a83b-3003-4861-944a-c2da73dd3d21", "5d58450a-3183-4d73-b25e-0da8e761675d" },
-                    { "a842a83b-3003-4861-944a-c2da73dd3d21", "7bf51fe6-5169-466f-812a-0b56563c2c17" },
-                    { "a842a83b-3003-4861-944a-c2da73dd3d21", "7ceb4ab9-f380-4456-ad6a-b3966be2faf2" }
+                    { "fb665bdf-efb5-4b7f-82e6-b871cb44d42e", "71a6ee33-7cae-4e8b-941e-077560dfb61a" },
+                    { "9c49003f-9aff-4f90-b779-662ffe77b9ac", "3c774a3d-d71d-47b1-98eb-84e0ea1ab536" },
+                    { "9c49003f-9aff-4f90-b779-662ffe77b9ac", "e7242444-622e-4690-b7ca-90646f561c5f" },
+                    { "9c49003f-9aff-4f90-b779-662ffe77b9ac", "cc061d43-8da4-443d-8241-0aad7aa20e5e" },
+                    { "9c49003f-9aff-4f90-b779-662ffe77b9ac", "151db628-3e5e-4fa0-914e-502bc597cbde" },
+                    { "9c49003f-9aff-4f90-b779-662ffe77b9ac", "ed47034f-07e5-4ca5-9f38-233f2659c46a" }
                 });
 
             migrationBuilder.CreateIndex(
