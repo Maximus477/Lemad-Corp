@@ -5,9 +5,19 @@
 
 @if (@Model.Count() > 0 && Model != null)
 {
-    <p>
-        Commands for @Model.FirstOrDefault().FirstName @Model.FirstOrDefault().LastName
-    </p>
+    @if (!User.IsInRole("admin"))
+    {
+        <h1>
+            Commands for @Model.FirstOrDefault().FirstName @Model.FirstOrDefault().LastName
+        </h1>
+    }
+    else
+    {
+        <h1>
+            All commands
+        </h1>
+    }
+
     <table class="table">
         <thead>
             <tr>
@@ -34,25 +44,34 @@
                         @Html.DisplayFor(modelItem => item.CreatedAt)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Total)
+                        @item.GetTotal()
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Status)
                     </td>
                     <td>
-                        @foreach(var p in item.Products)
+                        @foreach (var p in item.Products)
                         {
-                            @p.Name<br />
-                            @p.Price<br />
-                            @p.Quantity<br />
-                            @p.getTotalPrice()<br />
+                            <l>
+                                @p.Name: @p.GetPrice() X @p.Quantity = @p.getTotalPrice()
+                            </l>
+                            <br />
                         }
                     </td>
-                    <td>
-                        <a asp-action="CommandCancelation" asp-route-id="@item.Id">Cancel</a>
-                    </td>
+                    @if (item.Status != CommandStatus.CANCELED)
+                    {
+                        <td>
+                            <a asp-action="CommandCancelation" asp-route-id="@item.Id">Cancel</a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
     </table>
+}
+else
+{
+    <h1>
+        You don't have any commands yet!
+    </h1>
 }

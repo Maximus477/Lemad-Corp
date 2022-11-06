@@ -77,7 +77,7 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Command(string ProductId, string total, string totalDiscount, string totalWithDiscount, string totalWithTaxes)
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated && !User.IsInRole("admin"))
             {
                 var user2 = await _userManager.GetUserAsync(HttpContext.User);
 

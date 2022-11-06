@@ -215,7 +215,7 @@ namespace LemadWeb.Controllers
                         var productVM = new ProductVM()
                         {
                             Name = prod.Name,
-                            Price = prod.Price,
+                            Price = prod.ActualPrice,
                             Quantity = com.ProductIDs.Where(pi => pi.ProductID == prod.Id).FirstOrDefault().Quantity
                         };
                         products.Add(productVM);
