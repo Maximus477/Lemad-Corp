@@ -14,6 +14,6 @@ namespace LemadWeb.ViewModels.Account
         public string FullAddress { get; set; }
         public decimal Total { get; set; }
         public CommandStatus Status { get; set; }
-        public List<LemadDb.Domain.Entities.Product> Products { get; set; }
+        public List<ProductVM> Products { get; set; }
     }
 }

@@ -234,52 +234,6 @@ namespace LemadWeb.Controllers
             }
         }
 
-        [Authorize]
-        public async Task<IActionResult> CommandCancelation(Guid? id)
-        {
-            try
-            {
-                if (id == null)
-                {
-                    return NotFound();
-                }
-
-                var model = await _context.Commands.FindAsync(id);
-                if (model == null)
-                {
-                    return NotFound();
-                }
-                var user = await _userManager.GetUserAsync(HttpContext.User);
-                if (model.ApplicationUser.Id != user.Id || !User.IsInRole("admin"))
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                return View(model);
-            }
-            catch
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> CommandCancelation(Guid id)
-        {
-            try
-            {
-                var model = await _context.Commands.FindAsync(id);
-                model.Status = LemadDb.Data.Enumerable.CommandStatus.CANCELED;
-                _context.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
         [Authorize(Roles = "admin")]
         public IActionResult Create()
         {

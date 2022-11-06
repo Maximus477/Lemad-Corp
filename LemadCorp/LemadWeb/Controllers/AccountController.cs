@@ -158,7 +158,7 @@ namespace LemadWeb.Controllers
         }
 
         // GET : Account/Details
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Details()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
@@ -168,7 +168,7 @@ namespace LemadWeb.Controllers
             .Include(x => x.CivicAddresses)
             .SingleAsync(x => x.Id == user.Id);
 
-            var addresses = new List<AdresseCivique>(); 
+            var addresses = new List<AdresseCivique>();
 
             foreach (var addresseUser in user2.CivicAddresses)
             {
@@ -188,48 +188,122 @@ namespace LemadWeb.Controllers
         }
 
         // GET : Account/Commands
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Commands()
         {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-
-            List<Command> commands = new List<Command>();
-            commands = _context.Commands.Include(c => c.ProductIDs).Where(c => c.ApplicationUserId == user.Id).ToList();
-
-            List<MyCommandsVM> mycommands = new List<MyCommandsVM>();
-            foreach (var com in commands)
+            try
             {
-                List<Product> products = new List<Product>();
-                foreach (var product in com.ProductIDs)
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+
+                List<Command> commands = new List<Command>();
+                if (User.IsInRole("admin"))
                 {
-                    products.Add(_context.Products.FirstOrDefault(p => p.Id == product.ProductID));
+                    commands = _context.Commands.Include(c => c.ProductIDs).ToList();
+                }
+                else
+                {
+                    commands = _context.Commands.Include(c => c.ProductIDs).Where(c => c.ApplicationUserId == user.Id).ToList();
+                }
+                
+                List<MyCommandsVM> mycommands = new List<MyCommandsVM>();
+                foreach (var com in commands)
+                {
+                    List<ProductVM> products = new List<ProductVM>();
+                    foreach (var product in com.ProductIDs)
+                    {
+                        var prod = _context.Products.FirstOrDefault(p => p.Id == product.ProductID);
+                        var productVM = new ProductVM()
+                        {
+                            Name = prod.Name,
+                            Price = prod.Price,
+                            Quantity = com.ProductIDs.Where(pi => pi.ProductID == prod.Id).FirstOrDefault().Quantity
+                        };
+                        products.Add(productVM);
+                    }
+
+                    mycommands.Add(new MyCommandsVM()
+                    {
+                        Id = com.Id,
+                        CreatedAt = com.CreatedAt,
+                        FirstName = com.FirstName,
+                        LastName = com.LastName,
+                        Status = com.Status,
+                        Total = com.TotalWithTaxes,
+                        FullAddress = $"{com.Address}, {com.City}, {com.Province}, {com.Country}, {com.PostalCode}",
+                        Products = products
+                    });
                 }
 
-                mycommands.Add(new MyCommandsVM()
-                {
-                    Id = com.Id,
-                    CreatedAt = com.CreatedAt,
-                    FirstName = com.FirstName,
-                    LastName = com.LastName,
-                    Status = com.Status,
-                    Total = com.TotalWithTaxes,
-                    FullAddress = $"{com.Address}, {com.City}, {com.Province}, {com.Country}, {com.PostalCode}",
-                    Products = products
-                });
+                return View(mycommands);
             }
+            catch
+            {
+                return RedirectToAction("Commands", "Account");
+                throw;
+            }
+        }
 
-            return View(mycommands);
+
+        [Authorize]
+        public async Task<IActionResult> CommandCancelation(Guid? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var model = await _context.Commands.FindAsync(id);
+                if (model == null)
+                {
+                    return NotFound();
+                }
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+
+                if (!User.IsInRole("admin"))
+                {
+                    if (model.ApplicationUser.Id != user.Id)
+                    {
+                        return RedirectToAction("Commands", "Account");
+                    }
+                }
+
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction("Commands", "Account");
+            }
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CommandCancelation(Guid id)
+        {
+            try
+            {
+                var model = await _context.Commands.FindAsync(id);
+                model.Status = LemadDb.Data.Enumerable.CommandStatus.CANCELED;
+                _context.SaveChanges();
+                return RedirectToAction("Commands", "Account");
+            }
+            catch
+            {
+                return RedirectToAction("Commands", "Account");
+            }
         }
 
         // GET : Account/AddAddress
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult AddAddress()
         {
             return View();
         }
 
-            //POST : Account/Register
-            [HttpPost]
+        //POST : Account/Register
+        [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> AddAddress(AdresseCivique model)
         {
