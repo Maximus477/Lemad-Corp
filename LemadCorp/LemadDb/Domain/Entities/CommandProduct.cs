@@ -11,10 +11,15 @@ namespace LemadDb.Domain.Entities
         public Guid Id { get; set; }
         public int ProductID { get; set; }
         public int Quantity { get; set; }
+        public Guid CommandId { get; set; }
         public CommandProduct(int productID, int quantity)
         {
             this.ProductID = productID;
             this.Quantity = quantity;
+        }
+
+        public CommandProduct()
+        {
         }
     }
 }

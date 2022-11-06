@@ -25,7 +25,7 @@
                             onclick="decrementItemCart(@item.Key.Id)">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <input id="form1" min="1" value="@item.Value" max="@item.Key.MaxContractTime" name="contract" type="number" class="form-control form-control-sm" />
+                            <input disabled id="form1" min="1" value="@item.Value" max="@item.Key.MaxContractTime" name="contract" type="number" class="form-control form-control-sm" />
                             <button id="btn-increment-@item.Key.Id" class="btn btn-link px-2"
                             onclick="incrementItemCart(@item.Key.Id, @item.Key.MaxContractTime)">
                                 <i class="fa fa-plus"></i>
