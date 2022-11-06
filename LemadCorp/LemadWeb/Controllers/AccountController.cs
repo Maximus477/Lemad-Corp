@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LemadWeb.ViewModels.Account;
 using LemadDb.Data;
+using LemadDb.Domain.Entities;
 
 namespace LemadWeb.Controllers
 {
@@ -188,9 +189,36 @@ namespace LemadWeb.Controllers
 
         // GET : Account/Commands
         [AllowAnonymous]
-        public IActionResult Commands()
+        public async Task<IActionResult> Commands()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            List<Command> commands = new List<Command>();
+            commands = _context.Commands.Include(c => c.ProductIDs).Where(c => c.ApplicationUserId == user.Id).ToList();
+
+            List<MyCommandsVM> mycommands = new List<MyCommandsVM>();
+            foreach (var com in commands)
+            {
+                List<Product> products = new List<Product>();
+                foreach (var product in com.ProductIDs)
+                {
+                    products.Add(_context.Products.FirstOrDefault(p => p.Id == product.ProductID));
+                }
+
+                mycommands.Add(new MyCommandsVM()
+                {
+                    Id = com.Id,
+                    CreatedAt = com.CreatedAt,
+                    FirstName = com.FirstName,
+                    LastName = com.LastName,
+                    Status = com.Status,
+                    Total = com.TotalWithTaxes,
+                    FullAddress = $"{com.Address}, {com.City}, {com.Province}, {com.Country}, {com.PostalCode}",
+                    Products = products
+                });
+            }
+
+            return View(mycommands);
         }
 
         // GET : Account/AddAddress

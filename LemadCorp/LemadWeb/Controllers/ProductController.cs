@@ -226,7 +226,7 @@ namespace LemadWeb.Controllers
                 _context.Add(command);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Commands", "Account");
             }
             catch
             {
