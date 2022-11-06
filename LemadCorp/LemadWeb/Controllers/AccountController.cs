@@ -204,7 +204,9 @@ namespace LemadWeb.Controllers
                 {
                     commands = _context.Commands.Include(c => c.ProductIDs).Where(c => c.ApplicationUserId == user.Id).ToList();
                 }
-                
+
+                commands = commands.OrderByDescending(c => c.CreatedAt).ToList();
+
                 List<MyCommandsVM> mycommands = new List<MyCommandsVM>();
                 foreach (var com in commands)
                 {

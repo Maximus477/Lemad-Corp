@@ -21,9 +21,12 @@ namespace LemadDb.Domain.Entities
 
         public string Name { get; set; }
 
+        [Range(0, 9999999999999999999)]
         public decimal Price { get; set; }
 
+        [Range(0, 100)]
         public int Discount { get; set; }
+        [Range(0, 25)]
         public int MaxContractTime { get; set; }
 
         public DateTime DateNaissance { get; set; }
@@ -51,7 +54,8 @@ namespace LemadDb.Domain.Entities
                 if (ProductCategory == ProductCategory.POWERUNIT)
                 {
                     return DateNaissance.ToString("yyyy");
-                } else
+                }
+                else
                 {
                     return age.ToString();
                 }
@@ -134,7 +138,7 @@ namespace LemadDb.Domain.Entities
 
         public string GetDisponibility()
         {
-            switch(Status)
+            switch (Status)
             {
                 case ProductStatus.AVAILABLE:
                     return "available";
@@ -185,28 +189,38 @@ namespace LemadDb.Domain.Entities
                 .WithMessage("The name cannot be empty!");
 
             RuleFor(e => e.Price)
-                .NotEmpty().WithMessage("The price cannot be empty!")
-                .GreaterThan(0).WithMessage("The price must be higher than $0.0");
+                .NotEmpty().WithMessage("The price cannot be empty!");
+
+            RuleFor(e => e.Price)
+                .GreaterThan(0).WithMessage("The price must be higher than $0");
 
             RuleFor(e => e.Discount)
-                .NotEmpty().WithMessage("The discount cannot be empty!")
-                .When(e => e.Discount >= 0 && e.Discount <= 100).WithMessage("The discount must be greater or equal and 0 and less or equal than 100");
+                .NotEmpty().WithMessage("The discount cannot be empty!");
+
+            RuleFor(e => e.Discount)
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("The discount must be between 0 and 100");
+
+            RuleFor(e => e.Discount)
+                .LessThanOrEqualTo(100)
+                .WithMessage("The discount must be between 0 and 100");
 
             RuleFor(e => e.MaxContractTime)
-                .NotEmpty().WithMessage("The id cannot be empty!")
-                .When(e => e.MaxContractTime >= 0 && e.MaxContractTime <= 25).WithMessage("The discount must be greater or equal and 0 and less or equal than 25");
+                .NotEmpty().WithMessage("The id cannot be empty!");
+
+            RuleFor(e => e.MaxContractTime)
+                .GreaterThanOrEqualTo(0).WithMessage("The contract time must be between 0 and 25");
+
+            RuleFor(e => e.MaxContractTime)
+                .LessThanOrEqualTo(25).WithMessage("The contract time must be between 0 and 25");
 
             RuleFor(e => e.DateNaissance)
-                .NotEmpty().WithMessage("The date cannot be empty!")
-                .When(e => e.DateNaissance <= DateTime.Now).WithMessage("The date must be before today!");
+                .NotEmpty().WithMessage("The date cannot be empty!");
 
-            RuleFor(e => e.Status)
-                .NotEmpty()
-                .WithMessage("The Status cannot be empty!");
+            RuleFor(e => e.DateNaissance)
+               .LessThan(DateTime.Now).WithMessage("The date must be before today!");
 
-            RuleFor(e => e.ProductCategory)
-                .NotEmpty()
-                .WithMessage("The type cannot be empty!");
         }
+
     }
 }

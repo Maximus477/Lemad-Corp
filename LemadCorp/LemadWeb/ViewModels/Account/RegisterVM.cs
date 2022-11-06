@@ -26,14 +26,19 @@ namespace LemadWeb.ViewModels.Account
         public string PasswordConfirmation { get; set; }
 
         #region Address
+        [Required]
         public string Address { get; set; }
 
+        [Required]
         public string City { get; set; }
 
+        [Required]
         public string Province { get; set; }
 
+        [Required]
         public string Country { get; set; }
 
+        [Required]
         public string PostalCode { get; set; }
         #endregion
     }
@@ -46,6 +51,38 @@ namespace LemadWeb.ViewModels.Account
             .Equal(customer => customer.PasswordConfirmation)
             .When(customer => !String.IsNullOrWhiteSpace(customer.Password))
             .WithMessage("The passwords did not match!");
+
+            RuleFor(c => c.FirstName)
+                .Length(1, 32)
+                .WithMessage("The first name must be between 1 and 32 characters");
+
+            RuleFor(c => c.LastName)
+                .Length(1, 32)
+                .WithMessage("The last name must be between 1 and 32 characters");
+
+            RuleFor(c => c.PhoneNumber)
+                .Matches(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}")
+                .WithMessage("Please enter a valid phone number");
+
+            RuleFor(c => c.Address)
+                .Length(1, 32)
+                .WithMessage("The address must be between 1 and 32 characters");
+            
+            RuleFor(c => c.City)
+                .Length(1, 32)
+                .WithMessage("The city must be between 1 and 32 characters");
+
+            RuleFor(c => c.Province)
+                .Length(1, 32)
+                .WithMessage("The province must be between 1 and 32 characters");
+
+            RuleFor(c => c.Country)
+                .Length(1, 32)
+                .WithMessage("The country must be between 1 and 32 characters");
+                
+            RuleFor(c => c.PostalCode)
+                .Matches(@"/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i")
+                .WithMessage("Please enter a valid zip code");
         }
     }
 }

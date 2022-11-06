@@ -194,9 +194,26 @@ namespace LemadWeb.Controllers
         {
             CommandVM model = new CommandVM()
             {
-                FirstName = FirstName, LastName = LastName, Email = Email, Phone = Phone, Address = Address, City = City, Province = Province, Country = Country, TotalWithTaxes=TotalWithTaxes, TotalWithDiscount=TotalWithDiscount, PostalCode=PostalCode, TotalDiscount=TotalDiscount, Total=Total, CommandDictionary=_command
+                FirstName = FirstName, LastName = LastName, Email = Email, Phone = Phone, Address = Address, City = City, Province = Province, Country = Country, TotalWithTaxes="", TotalWithDiscount="", PostalCode=PostalCode, TotalDiscount="", Total="", CommandDictionary=_command
             };
             model.Products = _products;
+
+            decimal total = 0, totalDiscount = 0, totalWithDiscount = 0, totalWithTaxes = 0;
+
+            foreach (var p in model.Products)
+            {
+                int quantity = _command[p.Id];
+                total += p.Price * quantity;
+                totalDiscount += (p.Price * (p.Discount / (((decimal)100) * p.Price)));
+                totalWithDiscount += total - totalDiscount;
+                totalWithTaxes += totalWithDiscount + (totalWithDiscount * (5 / 100)) + (totalWithDiscount * (decimal)(9.975 / 100));
+            }
+
+            model.Total = total.ToString();
+            model.TotalDiscount = totalDiscount.ToString();
+            model.TotalWithDiscount = totalWithDiscount.ToString();
+            model.TotalWithTaxes = totalWithTaxes.ToString();
+
             //string FirstName, string LastName, string Email, string Phone, string Address, string City, string , string totalDiscount, string totalWithDiscount, string totalWithTaxes
             return View(model);
         }
@@ -212,6 +229,23 @@ namespace LemadWeb.Controllers
                     return View(model);
                 }
                 LemadDb.Domain.Entities.Command command;
+
+                decimal total = 0, totalDiscount = 0, totalWithDiscount = 0, totalWithTaxes = 0;
+
+                foreach (var p in model.Products)
+                {
+                    int quantity = _command[p.Id];
+                    total += p.Price * quantity;
+                    totalDiscount += (p.Price * (p.Discount / (((decimal)100) * p.Price)));
+                    totalWithDiscount += total - totalDiscount;
+                    totalWithTaxes += totalWithDiscount + (totalWithDiscount * (5 / 100)) + (totalWithDiscount * (decimal)(9.975 / 100));
+                }
+
+                model.Total = total.ToString();
+                model.TotalDiscount = totalDiscount.ToString();
+                model.TotalWithDiscount = totalWithDiscount.ToString();
+                model.TotalWithTaxes = totalWithTaxes.ToString();
+
                 if (User.Identity.IsAuthenticated)
                 {
                     command = new LemadDb.Domain.Entities.Command()
