@@ -48,7 +48,7 @@
                 </select>
                 <br />
 
-                <input id="addaddress" type="checkbox" onchange="ShowAddress()" asp-for=AddNewAddress />
+                <input id="addaddress" checked type="checkbox" onchange="ShowAddress()" asp-for=AddNewAddress />
                 <label for="addaddress">Use another address</label>
 
                 <div id="address">
@@ -99,10 +99,17 @@
                 </div>
                 <br />
                 <br />
-                <div>
+                <div class="display-buttons">
                     <button class="checkout-button" type="submit" value="Command">
                         Confirm informations
                     </button>
+                    <div class="checkout-button center-button" onclick="callCart()">
+                        Cancel the command
+                    </div>
+                    @*<div class="checkout-button centered-element" onclick="callCart()">
+                    Cancel the command
+                </div>*@
+                <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                 </div>
                 <br />
                 <br />

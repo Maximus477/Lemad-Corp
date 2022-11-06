@@ -224,6 +224,30 @@
             }
         }
 
+        function askLogin(total, totalDiscount, totalWithDiscount, totalWithTaxes) {
+                $.confirm({
+                    title: 'Login',
+                    content: 'Do you want to login to make your command?',
+                    buttons: {
+                        yes: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                document.getElementById('login-link').click();
+                            }
+                        },
+                        no: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                var products = window.localStorage.Products;
+                                var array = JSON.parse(products);
+                                $('#command-link').attr('href', '/Product/Command?ProductId=' + JSON.stringify(array) + '&total='  + total + '&totalDiscount='  + totalDiscount + '&totalWithDiscount='  + totalWithDiscount + '&totalWithTaxes='  + totalWithTaxes);
+                                document.getElementById('command-link').click();
+                            }
+                        }
+                    }
+                });
+        }
+
         function addCart(productId) {
             var products = getCart();
 
@@ -235,6 +259,57 @@
                 if (products.find(obj => obj.id == productId)) { }
                 else {
                     products.push({ id: productId, contract: 1 });
+                }
+            }
+
+            localStorage.setItem('Products', JSON.stringify(products));
+        }
+
+        function preAddingCartWithDuration(id, name, max) {
+            if (document.getElementById("cart-" + id).innerHTML.includes(" Add to Cart ")) {
+                $.confirm({
+                    title: 'Confirmation',
+                    content: 'Do you really want to add ' + name + ' to the cart?',
+                    buttons: {
+                        yes: {
+                            btnClass: 'btn-confirmation',
+                            action: function () {
+                                $.alert(name + ' added to the cart!');
+                                var x = document.getElementById('quantity').value;
+                                console.log(typeof(x))
+                                if (x === "")
+                                {
+                                    x = 1;
+                                }
+                                if (x > max)
+                                {
+                                    x = max;
+                                }
+                                addCartWithDuration(id, x);
+                            }
+                        },
+                        no: {
+                            btnClass: 'btn-confirmation'
+                        }
+                    }
+                });
+            }
+        }
+
+        function addCartWithDuration(productId, duration) {
+            var products = getCart();
+            console.log(duration)
+            console.log(duration)
+            console.log(duration)
+            console.log(duration)
+            if (products == null) {
+                products = [];
+                products.push({ id: productId, contract: duration });
+            }
+            else {
+                if (products.find(obj => obj.id == productId)) { }
+                else {
+                    products.push({ id: productId, contract: duration });
                 }
             }
 

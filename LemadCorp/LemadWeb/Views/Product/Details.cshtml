@@ -55,7 +55,9 @@
                 <label for="quantity">Duration of contract:</label>
                 <input type="number" id="quantity" name="quantity" min="1" max="@Model.MaxContractTime">
                 <br />
-                <button class="button-24" role="button">Add to team!</button>
+                <a id="cart-@Model.Id" class="button-24" onclick="preAddingCartWithDuration(@Model.Id, '@Model.Name', @Model.MaxContractTime)">
+                            Add to Cart <i class="fa fa-add"></i>
+                        </a>
                 <br />
                 <br />
             }
