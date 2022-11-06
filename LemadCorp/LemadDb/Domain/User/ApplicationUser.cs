@@ -18,8 +18,8 @@ namespace LemadDb.Domain.User
 
         public string Cellphone { get; set; }
 
+        public List<Command> Commands { get; set; }
         // nav
         public List<AddressUser> CivicAddresses { get; set; }
-        public IEnumerable<Command> Commands { get; set; }
     }
 }

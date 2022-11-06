@@ -16,6 +16,7 @@ namespace LemadDb.Data
     public static class SeedExtensions
     {
         private static readonly PasswordHasher<ApplicationUser> PASSWORD_HASHER = new();
+        private static string _applicationUserID;
 
         private static ApplicationUser CreateUser(this ModelBuilder builder, string email, string firstName, string lastName, string cellPhone, string password)
         {
@@ -93,13 +94,35 @@ namespace LemadDb.Data
         { builder.Entity<Product>().HasData(products); }
 
         private static void SeedUsers(this ModelBuilder builder, IEnumerable<ApplicationUser> users)
-        { builder.Entity<ApplicationUser>().HasData(users); }
+        {
+            foreach (var user in users)
+            {
+                if (user.FirstName == "Louis")
+                {
+                    Guid guid = Guid.NewGuid();
+                    string stringGuid = guid.ToString();
+                    user.Id = stringGuid;
+                    _applicationUserID = stringGuid;
+                }
+            }
+            builder.Entity<ApplicationUser>().HasData(users);
+        }
 
         private static void SeedRoles(this ModelBuilder builder, IEnumerable<IdentityRole> roles)
         { builder.Entity<IdentityRole>().HasData(roles); }
 
+        private static void SeedCommands(this ModelBuilder builder, List<Command> commands)
+        { builder.Entity<Command>().HasData(commands); }
+        private static void SeedCommandProducts(this ModelBuilder builder, List<CommandProduct> commandProducts)
+        { builder.Entity<CommandProduct>().HasData(commandProducts); }
+
         private static void SeedAddress(this ModelBuilder builder, IEnumerable<AdresseCivique> address)
         { builder.Entity<AdresseCivique>().HasData(address); }
+
+        //private static void SeedCommandToUser(this ModelBuilder builder, List<Command> commands, ApplicationUser user)
+        //{
+        //    user.Commands = commands;
+        //}
 
         private static void SeedUsersToRole(this ModelBuilder builder, IEnumerable<ApplicationUser> users, IdentityRole role)
         {
@@ -168,6 +191,7 @@ namespace LemadDb.Data
                 CreateUser(builder, "laurent.brochu@lemadrid.com", "Laurent", "Brochu", "(450)-789-4673", "!Qwerty123"),
             };
 
+
             builder.SeedUsers(admins);
             builder.SeedUsers(users);
 
@@ -176,6 +200,149 @@ namespace LemadDb.Data
 
             builder.SeedUsersToAddress(new List<ApplicationUser> { users[0], users[2], users[3], users[4] }, adressesCiviques[0]);
             builder.SeedUsersToAddress(new List<ApplicationUser> { users[1] }, adressesCiviques[1]);
+
+
+            List<Command> commands = new List<Command>()
+            {
+                new Command(){
+                Id = Guid.NewGuid(),
+                FirstName = "Louis",
+                LastName = "Garceau",
+                Email = "louis.garceau@lemadrid.com",
+                PhoneNumber = "(450)-213-5697",
+                CreatedAt = DateTime.Now,
+                Address = "400 Rue des maisons",
+                City = "Saint-Hyacinthe",
+                Province = "Quebec",
+                Country = "Canada",
+                PostalCode = "J28 B25",
+                Total = 10000000,
+                TotalDiscount = 0,
+                TotalWithDiscount = 10000000,
+                TotalWithTaxes = 12500000,
+                Status = CommandStatus.CONFIRMED,
+                ApplicationUserId = _applicationUserID
+                },
+                new Command(){
+                Id = Guid.NewGuid(),
+                FirstName = "Louis",
+                LastName = "Garceau",
+                Email = "louis.garceau@lemadrid.com",
+                PhoneNumber = "(450)-213-5697",
+                CreatedAt = DateTime.Now,
+                Address = "400 Rue des maisons",
+                City = "Saint-Hyacinthe",
+                Province = "Quebec",
+                Country = "Canada",
+                PostalCode = "J28 B25",
+                Total = 20000000,
+                TotalDiscount = 0,
+                TotalWithDiscount = 20000000,
+                TotalWithTaxes = 22500000,
+                Status = CommandStatus.CANCELED,
+                ApplicationUserId = _applicationUserID
+                },
+                new Command(){
+                Id = Guid.NewGuid(),
+                FirstName = "Louis",
+                LastName = "Garceau",
+                Email = "louis.garceau@lemadrid.com",
+                PhoneNumber = "(450)-213-5697",
+                CreatedAt = DateTime.Now,
+                Address = "400 Rue test",
+                City = "Saint-Hyacinthe",
+                Province = "Quebec",
+                Country = "Canada",
+                PostalCode = "J2F 2F5",
+                Total = 50000000,
+                TotalDiscount = 0,
+                TotalWithDiscount = 50000000,
+                TotalWithTaxes = 52500000,
+                Status = CommandStatus.CONFIRMED,
+                ApplicationUserId = _applicationUserID
+                },
+                new Command(){
+                Id = Guid.NewGuid(),
+                FirstName = "Louis",
+                LastName = "Garceau",
+                Email = "louis.garceau@lemadrid.com",
+                PhoneNumber = "(450)-213-5697",
+                CreatedAt = DateTime.Now,
+                Address = "400 Rue test",
+                City = "Saint-Hyacinthe",
+                Province = "Quebec",
+                Country = "Canada",
+                PostalCode = "J2F 2F5",
+                Total = 30000000,
+                TotalDiscount = 0,
+                TotalWithDiscount = 30000000,
+                TotalWithTaxes = 32500000,
+                Status = CommandStatus.CONFIRMED,
+                ApplicationUserId = _applicationUserID
+                },
+                new Command(){
+                Id = Guid.NewGuid(),
+                FirstName = "Louis",
+                LastName = "Garceau",
+                Email = "louis.garceau@lemadrid.com",
+                PhoneNumber = "(450)-213-5697",
+                CreatedAt = DateTime.Now,
+                Address = "400 Rue test",
+                City = "Saint-Hyacinthe",
+                Province = "Quebec",
+                Country = "Canada",
+                PostalCode = "J2F 2F5",
+                Total = 80000000,
+                TotalDiscount = 0,
+                TotalWithDiscount = 80000000,
+                TotalWithTaxes = 82500000,
+                Status = CommandStatus.CANCELED,
+                ApplicationUserId = _applicationUserID
+                },
+            };
+
+            List<CommandProduct> commandProducts = new List<CommandProduct>()
+            { new CommandProduct()
+            {
+                Id = Guid.NewGuid(),
+                ProductID = 1,
+                Quantity = 4,
+            },
+            new CommandProduct()
+            {
+                Id = Guid.NewGuid(),
+                ProductID = 10,
+                Quantity = 2,
+            },
+            new CommandProduct()
+            {
+                Id = Guid.NewGuid(),
+                ProductID = 30,
+                Quantity = 1,
+            },
+            new CommandProduct()
+            {
+                Id = Guid.NewGuid(),
+                ProductID = 5,
+                Quantity = 2,
+            },
+            new CommandProduct()
+            {
+                Id = Guid.NewGuid(),
+                ProductID = 40,
+                Quantity = 1,
+            },
+            };
+
+            for (int i = 0; i < commandProducts.Count; i++)
+            {
+                commandProducts[i].CommandId = commands[i].Id;
+            }
+
+            builder.SeedCommands(commands);
+            builder.SeedCommandProducts(commandProducts);
+
+
             #endregion
 
             #region Products
