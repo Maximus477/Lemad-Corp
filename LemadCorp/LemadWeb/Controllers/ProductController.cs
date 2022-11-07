@@ -232,7 +232,7 @@ namespace LemadWeb.Controllers
 
                 decimal total = 0, totalDiscount = 0, totalWithDiscount = 0, totalWithTaxes = 0;
 
-                foreach (var p in model.Products)
+                foreach (var p in _products)
                 {
                     int quantity = _command[p.Id];
                     total += p.Price * quantity;
