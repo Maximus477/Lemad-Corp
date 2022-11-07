@@ -17,6 +17,8 @@
             <br />
             <h2>Are you certain you want to purchase these items?</h2>
             <hr />
+            <h4>Your command ID : @Model.CommandGuid</h4>
+            <hr />
             <h4>First name : @Model.FirstName</h4>
             <h4>Last name : @Model.LastName</h4>
             <h4>Email : @Model.Email</h4>
@@ -51,6 +53,9 @@
             <h4>Total: @Model.TotalWithTaxes</h4>
             <form asp-action="CommandConfirmation">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="CommandGuid" type="hidden" class="form-control" />
+                </div>
                 <div class="form-group">
                     <input asp-for="FirstName" type="hidden" class="form-control" />
                 </div>

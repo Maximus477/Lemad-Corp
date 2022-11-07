@@ -194,7 +194,7 @@ namespace LemadWeb.Controllers
         {
             CommandVM model = new CommandVM()
             {
-                FirstName = FirstName, LastName = LastName, Email = Email, Phone = Phone, Address = Address, City = City, Province = Province, Country = Country, TotalWithTaxes="", TotalWithDiscount="", PostalCode=PostalCode, TotalDiscount="", Total="", CommandDictionary=_command
+                FirstName = FirstName, LastName = LastName, Email = Email, Phone = Phone, Address = Address, City = City, Province = Province, Country = Country, TotalWithTaxes="", TotalWithDiscount="", PostalCode=PostalCode, TotalDiscount="", Total="", CommandDictionary=_command, CommandGuid = Guid.NewGuid()
             };
             model.Products = _products;
 
@@ -265,7 +265,8 @@ namespace LemadWeb.Controllers
                         TotalDiscount = Decimal.Parse(model.TotalDiscount),
                         TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
                         TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
-                        Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED
+                        Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED,
+                        Id = model.CommandGuid
                     };
                 }
                 else
@@ -287,7 +288,8 @@ namespace LemadWeb.Controllers
                         TotalDiscount = Decimal.Parse(model.TotalDiscount),
                         TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
                         TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
-                        Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED
+                        Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED,
+                        Id = model.CommandGuid
                     };
                 }
                 command.ProductIDs = new List<CommandProduct>();
