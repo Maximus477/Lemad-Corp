@@ -76,8 +76,12 @@ namespace LemadWeb.ViewModels.Product
                     .NotEmpty()
                     .WithMessage("The postal code cannot be empty!");
 
+                RuleFor(e => e.PostalCode)
+                    .Matches(@"[A-Za-z][\d][A-Za-z][ -]?[\d][A-Za-z][\d]")
+                    .WithMessage("The postal code is not valid");
+
                 RuleFor(e => e.Phone)
-                    .Matches(@"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$")
+                    .Matches(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}")
                     .WithMessage("The phone number is not valid!");
             }
         }

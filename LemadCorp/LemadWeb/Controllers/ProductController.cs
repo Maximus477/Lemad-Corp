@@ -46,12 +46,12 @@ namespace LemadWeb.Controllers
             if (Statefilter == null) { Statefilter = ""; }
 
             ListProductVM model = new ListProductVM(
-                createListSearch(searchString), 
-                Pricefilter, 
-                Statefilter, 
-                CategoryFilter, 
-                DiscountFilter, 
-                sortOrder, 
+                createListSearch(searchString),
+                Pricefilter,
+                Statefilter,
+                CategoryFilter,
+                DiscountFilter,
+                sortOrder,
                 String.IsNullOrEmpty(sortOrder) ? "name_desc" : "",
                 sortOrder == "Price" ? "price_desc" : "Price",
                 sortOrder == "Date" ? "date_desc" : "Date",
@@ -64,10 +64,10 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult Cart(string ProductId)
         {
-            
+
             CartVM model;
             if (ProductId != "\"\"" && ProductId != null)
-                    model = new CartVM(JsonConverter.jsonToIntDictionary(ProductId));
+                model = new CartVM(JsonConverter.jsonToIntDictionary(ProductId));
             else
                 model = new CartVM(new Dictionary<int, int>());
 
@@ -167,20 +167,21 @@ namespace LemadWeb.Controllers
                     model.Country = ad.Country;
                 }
 
-                return RedirectToAction("CommandConfirmation", "Product", new { 
-                    FirstName = model.FirstName, 
-                    LastName = model.LastName, 
-                    Email = model.Email, 
-                    Phone = model.Phone, 
-                    Address = model.Address, 
-                    City = model.City, 
-                    Province = model.Province, 
-                    Country = model.Country, 
-                    PostalCode = model.PostalCode, 
-                    Total = model.Total, 
-                    TotalDiscount = model.TotalDiscount, 
-                    TotalWithDiscount = model.TotalWithDiscount, 
-                    TotalWithTaxes = model.TotalWithTaxes 
+                return RedirectToAction("CommandConfirmation", "Product", new
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Phone = model.Phone,
+                    Address = model.Address,
+                    City = model.City,
+                    Province = model.Province,
+                    Country = model.Country,
+                    PostalCode = model.PostalCode,
+                    Total = model.Total,
+                    TotalDiscount = model.TotalDiscount,
+                    TotalWithDiscount = model.TotalWithDiscount,
+                    TotalWithTaxes = model.TotalWithTaxes
                 });
             }
             catch
@@ -204,15 +205,16 @@ namespace LemadWeb.Controllers
             {
                 int quantity = _command[p.Id];
                 total += p.Price * quantity;
-                totalDiscount += (p.Price * (p.Discount / (((decimal)100) * p.Price)));
-                totalWithDiscount += total - totalDiscount;
-                totalWithTaxes += totalWithDiscount + (totalWithDiscount * (5 / 100)) + (totalWithDiscount * (decimal)(9.975 / 100));
+                var discount = ((decimal)p.Discount) / 100;
+                totalDiscount += discount * p.Price * quantity;
             }
+            totalWithDiscount = total - totalDiscount;
+            totalWithTaxes = totalWithDiscount + (totalWithDiscount * (5 / 100)) + (totalWithDiscount * (decimal)(9.975 / 100));
 
-            model.Total = total.ToString();
-            model.TotalDiscount = totalDiscount.ToString();
-            model.TotalWithDiscount = totalWithDiscount.ToString();
-            model.TotalWithTaxes = totalWithTaxes.ToString();
+            model.Total = FormatNumber(total);
+            model.TotalDiscount = FormatNumber(totalDiscount);
+            model.TotalWithDiscount = FormatNumber(totalWithDiscount);
+            model.TotalWithTaxes = FormatNumber(totalWithTaxes);
 
             //string FirstName, string LastName, string Email, string Phone, string Address, string City, string , string totalDiscount, string totalWithDiscount, string totalWithTaxes
             return View(model);
@@ -236,10 +238,11 @@ namespace LemadWeb.Controllers
                 {
                     int quantity = _command[p.Id];
                     total += p.Price * quantity;
-                    totalDiscount += (p.Price * (p.Discount / (((decimal)100) * p.Price)));
-                    totalWithDiscount += total - totalDiscount;
-                    totalWithTaxes += totalWithDiscount + (totalWithDiscount * (5 / 100)) + (totalWithDiscount * (decimal)(9.975 / 100));
+                    var discount = ((decimal)p.Discount) / 100;
+                    totalDiscount += discount * p.Price * quantity;
                 }
+                totalWithDiscount = total - totalDiscount;
+                totalWithTaxes = totalWithDiscount + (totalWithDiscount * (5 / 100)) + (totalWithDiscount * (decimal)(9.975 / 100));
 
                 model.Total = total.ToString();
                 model.TotalDiscount = totalDiscount.ToString();
@@ -417,7 +420,7 @@ namespace LemadWeb.Controllers
                         product.Quote = model.Quote;
                         product.ProductCategory = model.ProductCategory;
                         product.Status = model.Status;
-                        
+
                         await _context.SaveChangesAsync();
                     }
                     catch (DbUpdateConcurrencyException)
@@ -512,7 +515,7 @@ namespace LemadWeb.Controllers
         [AllowAnonymous]
         public IActionResult reload(int pageNumber, string sortOrder, string PriceFilter, string Statefilter, string CategoryFilter, string DiscountFilter, string search = "")
         {
-            return ViewComponent("ProductList", new { search = createListSearch(search), pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter  = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter  = DiscountFilter });
+            return ViewComponent("ProductList", new { search = createListSearch(search), pageNumber = pageNumber, sortOrder = sortOrder, PriceFilter = PriceFilter, Statefilter = Statefilter, CategoryFilter = CategoryFilter, DiscountFilter = DiscountFilter });
         }
 
         [AllowAnonymous]
@@ -556,6 +559,31 @@ namespace LemadWeb.Controllers
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.Id == id);
+        }
+
+        internal static long MaxThreeSignificantDigits(long x)
+        {
+            int i = (int)Math.Log10(x);
+            i = Math.Max(0, i - 2);
+            i = (int)Math.Pow(10, i);
+            return x / i * i;
+        }
+        private string FormatNumber(decimal num)
+        {
+            num = MaxThreeSignificantDigits((long)num);
+            Double dnum = Decimal.ToDouble(num);
+
+            if (num >= 100000000)
+                return (dnum / 1000000D).ToString("0.#M") + "$";
+            if (num >= 1000000)
+                return (dnum / 1000000D).ToString("0.##M") + "$";
+            if (num >= 100000)
+                return (dnum / 1000D).ToString("0k") + "$";
+            if (num >= 100000)
+                return (dnum / 1000D).ToString("0.#k") + "$";
+            if (num >= 1000)
+                return (dnum / 1000D).ToString("0.##k") + "$";
+            return dnum.ToString("#,0") + "$";
         }
     }
 }
