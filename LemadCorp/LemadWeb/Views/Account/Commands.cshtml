@@ -25,6 +25,9 @@
                     Date of command
                 </th>
                 <th>
+                    Command id
+                </th>
+                <th>
                     Total
                 </th>
                 <th>
@@ -42,6 +45,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.CreatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
                     </td>
                     <td>
                         @item.GetTotal()

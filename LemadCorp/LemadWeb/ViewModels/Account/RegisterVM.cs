@@ -81,7 +81,7 @@ namespace LemadWeb.ViewModels.Account
                 .WithMessage("The country must be between 1 and 32 characters");
                 
             RuleFor(c => c.PostalCode)
-                .Matches(@"/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i")
+                .Matches(@"[A-Za-z][\d][A-Za-z][ -]?[\d][A-Za-z][\d]")
                 .WithMessage("Please enter a valid zip code");
         }
     }
