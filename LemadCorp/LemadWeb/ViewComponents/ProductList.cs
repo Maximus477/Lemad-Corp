@@ -47,10 +47,10 @@ namespace LemadWeb.ViewComponents
                     item = item.OrderByDescending(p => p.Name).ToList();
                     break;
                 case "price":
-                    item = item.OrderBy(p => p.Price).ToList();
+                    item = item.OrderBy(p => p.ActualPrice).ToList();
                     break;
                 case "price_desc":
-                    item = item.OrderByDescending(p => p.Price).ToList();
+                    item = item.OrderByDescending(p => p.ActualPrice).ToList();
                     break;
                 default:
                     item = item.OrderBy(p => p.Name).ToList();
@@ -77,25 +77,32 @@ namespace LemadWeb.ViewComponents
                 switch (Pricefilter)
                 {
                     case "tier1":
-                        item = item.Where(c => c.Price <= 650000).ToList();
+                        item = item.Where(c => c.ActualPrice <= 650000 && 
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier2":
-                        item = item.Where(c => c.Price > 650000 && c.Price <= 850000).ToList();
+                        item = item.Where(c => c.ActualPrice > 650000 && c.ActualPrice <= 850000 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier3":
-                        item = item.Where(c => c.Price > 850000 && c.Price <= 1000000).ToList();
+                        item = item.Where(c => c.ActualPrice > 850000 && c.ActualPrice <= 1000000 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier4":
-                        item = item.Where(c => c.Price > 1000000 && c.Price <= 2000000).ToList();
+                        item = item.Where(c => c.ActualPrice > 1000000 && c.ActualPrice <= 2000000 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier5":
-                        item = item.Where(c => c.Price > 2000000 && c.Price <= 10000000).ToList();
+                        item = item.Where(c => c.ActualPrice > 2000000 && c.ActualPrice <= 10000000 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier6":
-                        item = item.Where(c => c.Price > 10000000 && c.Price <= 25000000).ToList();
+                        item = item.Where(c => c.ActualPrice > 10000000 && c.ActualPrice <= 25000000 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier7":
-                        item = item.Where(c => c.Price > 25000000).ToList();
+                        item = item.Where(c => c.ActualPrice > 25000000 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                 }
             }
@@ -146,22 +153,28 @@ namespace LemadWeb.ViewComponents
                 switch (Discountfilter)
                 {
                     case "tier0":
-                        item = item.Where(c => c.Discount > 0).ToList();
+                        item = item.Where(c => c.Discount > 0 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier1":
-                        item = item.Where(c => c.Discount > 0 && c.Discount <= 5).ToList();
+                        item = item.Where(c => c.Discount > 0 && c.Discount <= 5 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier2":
-                        item = item.Where(c => c.Discount > 5 && c.Discount <= 10).ToList();
+                        item = item.Where(c => c.Discount > 5 && c.Discount <= 10 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier3":
-                        item = item.Where(c => c.Discount > 10 && c.Discount <= 20).ToList();
+                        item = item.Where(c => c.Discount > 10 && c.Discount <= 20 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier4":
-                        item = item.Where(c => c.Discount > 20 && c.Discount <= 35).ToList();
+                        item = item.Where(c => c.Discount > 20 && c.Discount <= 35 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                     case "tier5":
-                        item = item.Where(c => c.Discount > 35).ToList();
+                        item = item.Where(c => c.Discount > 35 &&
+                                         (c.Status == ProductStatus.AVAILABLE || c.Status == ProductStatus.PROMOTION || c.Status == ProductStatus.LIQUIDATION)).ToList();
                         break;
                 }
             }
