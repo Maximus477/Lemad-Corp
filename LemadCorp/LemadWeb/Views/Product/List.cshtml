@@ -8,10 +8,10 @@
 
 
 @section Styles {
-<link rel="stylesheet" href="~/sass/catalogue.css" />
+    <link rel="stylesheet" href="~/sass/catalogue.css" />
 }
 
-<div class="container-padding">
+    <div class="container-padding">
     @if (User.IsInRole("admin"))
     {
         <a asp-area="" asp-controller="Product" asp-action="Create">Create a product</a>
@@ -19,79 +19,85 @@
     <div class="row">
         <div class="change-list col-12 col-sm-12 col-md-2 col-lg-2 col-lg-2 col-xl-2">
             <br /><br />
-
             <h6>Trier les produits</h6>
             <div class="dropdown">
-                <button class="dropbtn">Trier</button>
+                <button class="dropbtn">Filter</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Par Nom", "List", new { sortOrder = Model.NameSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Par Prix", "List", new { sortOrder = Model.PriceSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
-                    @Html.ActionLink("Par Date", "List", new { sortOrder = Model.DateSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
-                    @Html.ActionLink("Par Rabais", "List", new { sortOrder = Model.DiscountSortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
+                    <a class="btn-dropdown" onclick="changeSort('name')">By name</a>
+                    <a class="btn-dropdown" onclick="changeSort('price')">By price</a>
+                    <a class="btn-dropdown" onclick="changeSort('date')">By date</a>
+                    <a class="btn-dropdown" onclick="changeSort('discount')">By discount</a>
                 </div>
             </div>
 
             <br /><br />
             <h6>Filtrer les produits</h6>
             <div class="dropdown">
-                <button class="dropbtn">Par prix</button>
+                <button class="dropbtn">By Price</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Tous les prix", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
-                    @Html.ActionLink("Moins de $650k", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier1", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter})
-                    @Html.ActionLink("+$650k-$850k", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier2", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("+$850k-$1M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier3", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("+$1M-$2M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier4", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("+$2M-$10M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier5", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("+$10M-$25M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier6", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("+$25M", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = "tier7", Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    <a class="btn-dropdown" onclick="changePrice('')">All Prices</a>
+                    <a class="btn-dropdown" onclick="changePrice('tier1')">Less than 650k$</a>
+                    <a class="btn-dropdown" onclick="changePrice('tier2')">+605k$ - 850k$</a>
+                    <a class="btn-dropdown" onclick="changePrice('tier3')">+850k$ - 1M$</a>
+                    <a class="btn-dropdown" onclick="changePrice('tier4')">1M$ - 2M$</a>
+                    <a class="btn-dropdown" onclick="changePrice('tier5')">2M$ - 10M$</a>
+                    <a class="btn-dropdown" onclick="changePrice('tier6')">10M$ - 25M$</a>
+                    <a class="btn-dropdown" onclick="changePrice('tier7')">+25M$</a>
                 </div>
             </div>
 
             <br />
             <div class="dropdown">
-                <button class="dropbtn">Par statut</button>
+                <button class="dropbtn">By status</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Tous les statuts", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Available", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "AVAILABLE", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("In command", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "INCOMMANDE", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Unavailable", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "UNAVAILABLE", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Liquidation", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "LIQUIDATION", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Promotion", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = "PROMOTION", CategoryFilter = Model.CategoryFilter, DiscountFilter = Model.DiscountFilter} )
+                    <a class="btn-dropdown" onclick="changeState('')">All status</a>
+                    <a class="btn-dropdown" onclick="changeState('AVAILABLE')">Available</a>
+                    <a class="btn-dropdown" onclick="changeState('INCOMMANDE')">In command</a>
+                    <a class="btn-dropdown" onclick="changeState('UNAVAILABLE')">Unavailable</a>
+                    <a class="btn-dropdown" onclick="changeState('LIQUIDATION')">Liquidation</a>
+                    <a class="btn-dropdown" onclick="changeState('PROMOTION')">Promotion</a>
                 </div>
             </div>
 
             <br />
             <div class="dropdown">
-                <button class="dropbtn">Par catégorie</button>
+                <button class="dropbtn">By category</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Toutes les catégories", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "", DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Driver", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "DRIVER", DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Principals", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "PRINCIPAL", DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Race engineer", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "RACEENGINEER", DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Techincal chief", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = "TECHNICALCHIEF", DiscountFilter = Model.DiscountFilter} )
-                    @Html.ActionLink("Power unit", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter ="POWERUNIT", DiscountFilter = Model.DiscountFilter} )
+                    <a class="btn-dropdown" onclick="changeCategory('')">All the category</a>
+                    <a class="btn-dropdown" onclick="changeCategory('DRIVER')">Driver</a>
+                    <a class="btn-dropdown" onclick="changeCategory('PRINCIPAL')">Principal</a>
+                    <a class="btn-dropdown" onclick="changeCategory('RACEENGINEER')">Race engineer</a>
+                    <a class="btn-dropdown" onclick="changeCategory('TECHNICALCHIEF')">Technical chief</a>
+                    <a class="btn-dropdown" onclick="changeCategory('POWERUNIT')">Power unit</a>
                 </div>
             </div>
 
             <br />
             <div class="dropdown">
-                <button class="dropbtn">Par rabais</button>
+                <button class="dropbtn">By discount</button>
                 <div class="dropdown-content">
-                    @Html.ActionLink("Retirer le filtre", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "" })
-                    @Html.ActionLink("N'importe quel rabais", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier0" })
-                    @Html.ActionLink("+0%-5%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier1" })
-                    @Html.ActionLink("+5%-10%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier2" })
-                    @Html.ActionLink("+10%-20%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier3" })
-                    @Html.ActionLink("+20%-35%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier4" })
-                    @Html.ActionLink("+35%", "List", new { sortOrder = Model.SortOrder, searchString = Model.SearchFilter, Pricefilter = Model.PriceFilter, Statefilter = Model.StateFilter, CategoryFilter = Model.CategoryFilter, DiscountFilter = "tier5" })
+                    <a class="btn-dropdown" onclick="changeDiscount('')">Delete all Filter</a>
+                    <a class="btn-dropdown" onclick="changeDiscount('tier0')">Get all discount</a>
+                    <a class="btn-dropdown" onclick="changeDiscount('tier1')">+0%-5%</a>
+                    <a class="btn-dropdown" onclick="changeDiscount('tier2')">+5%-10%</a>
+                    <a class="btn-dropdown" onclick="changeDiscount('tier3')">+10%-20%</a>
+                    <a class="btn-dropdown" onclick="changeDiscount('tier4')">+20%-35%</a>
+                    <a class="btn-dropdown" onclick="changeDiscount('tier5')">+35%</a>
                 </div>
             </div>
             <br /><br />
+            @Html.Hidden("Search", Model.GetSearch())
+            @Html.Hidden("Sort", Model.SortOrder)
+            @Html.Hidden("Price", Model.PriceFilter)
+            @Html.Hidden("State", Model.StateFilter)
+            @Html.Hidden("Category", Model.CategoryFilter)
+            @Html.Hidden("Discount", Model.DiscountFilter)
         </div>
         <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="title">
                 <br />
                 <h2>Catalogue</h2>
+                <hr />
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="title">
             </div>
@@ -106,24 +112,64 @@
     </div>
 </div>
 <script type="text/javascript">
-    function reload(sortOrder, search, priceFilter, stateFilter, categoryFilter, discountFilter) {
-        if (verification == 'True') {
-            $('#lst').html("");
-            $.ajax({
-                url: '@Url.Action("reload", "Product")',
-                data: {
-                    pageNumber: 1,
-                    search: search,
-                    sortOrder: sortOrder,
-                    PriceFilter: priceFilter,
-                    StateFilter: stateFilter,
-                    CategoryFilter: categoryFilter,
-                    DiscountFilter: discountFilter
-                },
-                success: function (data) {
-                    $('#lst').html(data);
-                }
-            })
-        }
+    function changeSort(val) {
+        var result = document.getElementById('Sort');
+        if (result.value == '' && val == 'name')
+            result.value = 'name_desc';
+        else if (val == 'name')
+            result.value = '';
+        else if (result.value == 'date' && val == 'date')
+            result.value = 'date_desc';
+        else if (val == 'date')
+            result.value = 'date';
+        else if (result.value == 'price' && val == 'price')
+            result.value = 'price_desc';
+        else if (val == 'price')
+            result.value = 'price';
+        else if (result.value == 'discount' && val == 'discount')
+            result.value = 'discount_desc';
+        else if (val == 'discount')
+            result.value = 'discount';
+
+        reload();
+    }
+
+    function changePrice(val) {
+        document.getElementById('Price').value = val;
+        reload();
+    }
+
+    function changeState(val) {
+        document.getElementById('State').value = val;
+        reload();
+    }
+
+    function changeCategory(val) {
+        document.getElementById('Category').value = val;
+        reload();
+    }
+
+    function changeDiscount(val) {
+        document.getElementById('Discount').value = val;
+        reload();
+    }
+
+    function reload() {
+        $('#lst').html("");
+        $.ajax({
+            url: '@Url.Action("reload", "Product")',
+            data: {
+                pageNumber: 1,
+                search: document.getElementById('Search').value,
+                sortOrder: document.getElementById('Sort').value,
+                PriceFilter: document.getElementById('Price').value,
+                StateFilter: document.getElementById('State').value,
+                CategoryFilter: document.getElementById('Category').value,
+                DiscountFilter: document.getElementById('Discount').value
+            },
+            success: function (data) {
+                $('#lst').html(data);
+            }
+        })
     }
 </script>
