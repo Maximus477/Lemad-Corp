@@ -2,7 +2,7 @@ Dettes techniques
 
 1- Header en mobile
 2- L'utilisation de variables statiques dans le controller pour les produits
-3- Le certificat SSL
-4- Fonctionnalité "already in cart" à implémenter
+3- Le certificat SSL DONE
+4- Fonctionnalité "already in cart" à implémenter DONE
 5- Améliorations des filtres
-6- Améliorations des styles - Mes commandes et formulaires de commandes
+6- Améliorations des styles - Mes commandes et formulaires de commandes DONE

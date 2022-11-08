@@ -212,8 +212,10 @@
                         yes: {
                             btnClass: 'btn-confirmation',
                             action: function () {
-                                $.alert(name + ' added to the cart!');
-                                addCart(id);
+                                if(addCart(id) == true)
+                                {
+                                    $.alert(name + ' added to the cart!');
+                                }
                             }
                         },
                         no: {
@@ -250,19 +252,24 @@
 
         function addCart(productId) {
             var products = getCart();
-
+            var result;
             if (products == null) {
                 products = [];
                 products.push({ id: productId, contract: 1 });
             }
             else {
-                if (products.find(obj => obj.id == productId)) { }
+                if (products.find(obj => obj.id == productId)) {
+                    $.alert('This item is already in your cart!');
+                    result = false;
+                }
                 else {
                     products.push({ id: productId, contract: 1 });
+                    result = true;
                 }
             }
 
             localStorage.setItem('Products', JSON.stringify(products));
+            return result;
         }
 
         function preAddingCartWithDuration(id, name, max) {
@@ -274,7 +281,6 @@
                         yes: {
                             btnClass: 'btn-confirmation',
                             action: function () {
-                                $.alert(name + ' added to the cart!');
                                 var x = document.getElementById('quantity').value;
                                 console.log(typeof(x))
                                 if (x === "")
@@ -285,7 +291,10 @@
                                 {
                                     x = max;
                                 }
-                                addCartWithDuration(id, x);
+                                if(addCartWithDuration(id, x) == true)
+                                {
+                                    $.alert(name + ' added to the cart!');
+                                }
                             }
                         },
                         no: {
@@ -298,6 +307,7 @@
 
         function addCartWithDuration(productId, duration) {
             var products = getCart();
+            var result;
             console.log(duration)
             console.log(duration)
             console.log(duration)
@@ -307,13 +317,18 @@
                 products.push({ id: productId, contract: duration });
             }
             else {
-                if (products.find(obj => obj.id == productId)) { }
+                if (products.find(obj => obj.id == productId)) {
+                    $.alert('This item is already in your cart!');
+                    result = false;
+                }
                 else {
                     products.push({ id: productId, contract: duration });
+                    result = true;
                 }
             }
 
             localStorage.setItem('Products', JSON.stringify(products));
+            return result;
         }
 
         function removeCart(productId) {

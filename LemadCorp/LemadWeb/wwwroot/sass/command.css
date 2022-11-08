@@ -1,4 +1,5 @@
-﻿.cart-content {
+﻿@import "color.css";
+.cart-content {
   margin: 2%;
   background-color: white;
 }
@@ -68,7 +69,7 @@
   padding: 1% 4%;
   color: white;
   border: 0px solid white;
-  background-color: #ff554f;
+  background-color: var(--color-button-sec);
   border-radius: 20px;
 }
 
@@ -80,8 +81,10 @@
 .form-background {
   padding-left: 1vw;
   padding-right: 1vw;
-  background: linear-gradient(135deg, gainsboro 0%, ghostwhite 100%);
+  background-color: white;
   border-radius: 20px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 
 .image {
@@ -95,4 +98,8 @@
 
 .center-button {
   text-align: center;
+}
+
+.background-grey {
+  background-color: var(--color-background-pri-3);
 }
