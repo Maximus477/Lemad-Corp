@@ -34,19 +34,19 @@ namespace LemadWeb.ViewComponents
                 case "date_desc":
                     item = item.OrderByDescending(p => p.DateNaissance).ToList();
                     break;
-                case "Date":
+                case "date":
                     item = item.OrderBy(p => p.DateNaissance).ToList();
                     break;
                 case "discount_desc":
                     item = item.OrderByDescending(p => p.Discount).ToList();
                     break;
-                case "Discount":
+                case "discount":
                     item = item.OrderBy(p => p.Discount).ToList();
                     break;
                 case "name_desc":
                     item = item.OrderByDescending(p => p.Name).ToList();
                     break;
-                case "Price":
+                case "price":
                     item = item.OrderBy(p => p.Price).ToList();
                     break;
                 case "price_desc":

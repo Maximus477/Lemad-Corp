@@ -147,25 +147,6 @@ namespace LemadDb.Data
             }
         }
 
-        private static void SeedImage(IEnumerable<Product> products)
-        {
-            using (SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=LemadDb;Trusted_Connection=True;MultipleActiveResultSets=true"))
-            {
-                foreach (Product item in products)
-                {
-                    string sqlQuery = @$"UPDATE Products SET Products.Photo = (SELECT BulkColumn FROM OPENROWSET(BULK N'{new FileInfo(item.Path).FullName}', SINGLE_BLOB) AS x) WHERE Products.Id = {item.Id}";
-                    using (SqlCommand command = connection.CreateCommand())
-                    {
-                        command.CommandText = sqlQuery;
-
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-            }
-        }
-
         public static void Seed(this ModelBuilder builder)
         {
             #region Users/Roles

@@ -37,5 +37,16 @@ namespace LemadWeb.ViewModels.Product
             DateSortOrder = dateSortOrder;
             DiscountSortOrder = discountSortOrder;
         }
+
+        public string GetSearch() {
+            string list = "";
+
+            foreach (string item in SearchFilter)
+                list += item + ",";
+
+            list = list.Substring(0, list.Length-1);
+
+            return list;
+        }
     }
 }

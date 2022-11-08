@@ -141,3 +141,13 @@ body {
 .dropdown:hover .dropbtn {
   background-color: var(--color-button-sec);
 }
+
+.btn-dropdown,
+.btn-dropdown:visited {
+  text-decoration: none;
+}
+
+.btn-dropdown:hover,
+.btn-dropdown:hover:visited {
+  text-decoration: none;
+}
