@@ -1,23 +1,23 @@
 ﻿@import "color.css";
 @import "ProductList.css";
 
-h2{
+h2 {
     text-align: center;
 }
 
-.catalog-title{
-    padding-top:1%;
-    padding-bottom:1%;
-    margin-bottom:0;
+.catalog-title {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 0;
 }
 
-.catalog-icon{
-    margin-left:92%;
+.catalog-icon {
+    margin-left: 92%;
 }
 
-@media(max-width: 750px){
-    .catalog-icon{
-        margin-left:75%;
+@media(max-width: 750px) {
+    .catalog-icon {
+        margin-left: 75%;
     }
 }
 
@@ -35,38 +35,38 @@ h2{
     position: absolute;
 }
 
-.loader>div{
-    width:25%;
-    aspect-ratio:1/1;
+.loader > div {
+    width: 25%;
+    aspect-ratio: 1/1;
     border: 15px solid var(--color-background-pri-3);
     border-top-color: var(--color-button-pri);
-    position:absolute;
-    margin:auto;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    border-radius:50%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
     animation: spin 1.5s infinite linear;
 }
 
-@keyframes spin{
-    100%{
-        transform:rotate(360deg);
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
     }
 }
 
 .product-image {
-    margin-top:5%;
-    margin-bottom:5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 100%;
     aspect-ratio: 1/1;
     margin-left: auto;
-    margin-right:auto;
-    padding:0;
+    margin-right: auto;
+    padding: 0;
 }
 
 #img-product {
@@ -77,20 +77,20 @@ h2{
     margin-right: auto;
 }
 
-.text-product{
-    text-align:center;
-}
-
-.change-list{
-    background-color: var(--color-background-pri-2);
-}
-
-#title{
+.text-product {
     text-align: center;
 }
 
-#lst{
-    padding-bottom:2%;
+.change-list {
+    background-color: var(--color-background-pri-2);
+}
+
+#title {
+    text-align: center;
+}
+
+#lst {
+    padding-bottom: 2%;
 }
 
 .dropdown {
@@ -144,4 +144,14 @@ body {
 
 .dropdown:hover .dropbtn {
     background-color: var(--color-button-sec);
+}
+
+.btn-dropdown,
+.btn-dropdown:visited {
+    text-decoration: none;
+}
+
+.btn-dropdown:hover,
+.btn-dropdown:hover:visited {
+    text-decoration: none;
 }

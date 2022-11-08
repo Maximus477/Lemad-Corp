@@ -27,7 +27,7 @@
                 </button>
                 <div class="navbar-collapse collapse show">
                     <ul class="navbar-nav ml-auto row">
-                        <li class="nav-item active dropdown col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                        <li class="nav-item active dropdown col-9 col-sm-9 col-md-9 col-lg-2 col-xl-2">
                             <div class="btn-group">
                                 <a id="call-list" class="total-white-link" asp-area="" asp-controller="Product" asp-action="List" asp-route-searchString="">
                                     <div class="text-container">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6">
+                        <li class="nav-item col-9 col-sm-9 col-md-9 col-lg-5 col-xl-6">
                             <div class="s005">
                                 <fieldset style="width:100%; max-height:30px;">
                                     <form class="form-searchbar" asp-controller="Product" asp-action="List" method="get">
@@ -67,7 +67,7 @@
                                 </fieldset>
                             </div>
                         </li>
-                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                        <li class="nav-item col-9 col-sm-9 col-md-9 col-lg-2 col-xl-2">
                             <div class="btn-login button-header total-white-link" onclick="callCart()">
                                 <div class="text-container">
                                     <div class="centered-element">
@@ -77,7 +77,7 @@
                             </div>
                             <a id="cart-link" style="display:none; width:auto%; height: 0%" asp-area="" asp-controller="Product" asp-action="Cart" asp-route-ProductId=""></a>
                         </li>
-                        <li class="nav-item col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                        <li class="nav-item col-9 col-sm-9 col-md-9 col-lg-2 col-xl-2">
                             @if (!User.Identity.IsAuthenticated)
                             {
                                 <a class="btn-login button-header total-white-link" asp-area="" asp-controller="Account" asp-action="Login">
