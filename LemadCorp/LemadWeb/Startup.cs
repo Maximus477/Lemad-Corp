@@ -63,7 +63,10 @@ namespace LemadWeb
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
+                app.UseHsts();
+            }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
