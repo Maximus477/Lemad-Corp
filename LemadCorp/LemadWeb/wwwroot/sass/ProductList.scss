@@ -50,14 +50,27 @@ $color5: rgb(191, 97, 4);
     width: 75%;
 }
 
-#driver {
+.driver {
     color: $color1;
+    background-color: white;
     border: 1px solid $color1;
 }
 
-#driver:hover {
+.driver:hover {
     background-color: $color1;
     color: white;
+}
+
+.driver-sec {
+    background-color: $color1;
+    color: white;
+    border: 1px solid $color1;
+}
+
+.driver-sec:hover {
+    color: $color1;
+    background-color: white;
+    border: 1px solid $color1;
 }
 
 #driver-cat {
@@ -65,14 +78,28 @@ $color5: rgb(191, 97, 4);
     border: 1px solid $color1;
 }
 
-#engineer {
+
+.engineer {
     color: $color2;
+    background-color: white;
     border: 1px solid $color2;
 }
 
-#engineer:hover {
+.engineer:hover {
     background-color: $color2;
     color: white;
+}
+
+.engineer-sec {
+    background-color: $color2;
+    color: white;
+    border: 1px solid $color2;
+}
+
+.engineer-sec:hover {
+    color: $color2;
+    background-color: white;
+    border: 1px solid $color2;
 }
 
 #engineer-cat {
@@ -80,14 +107,28 @@ $color5: rgb(191, 97, 4);
     border: 1px solid $color2;
 }
 
-#technical {
+
+.technical {
     color: $color3;
+    background-color: white;
     border: 1px solid $color3;
 }
 
-#technical:hover {
+.technical:hover {
     background-color: $color3;
     color: white;
+}
+
+.technical-sec {
+    background-color: $color3;
+    color: white;
+    border: 1px solid $color3;
+}
+
+.technical-sec:hover {
+    color: $color3;
+    background-color: white;
+    border: 1px solid $color3;
 }
 
 #technical-cat {
@@ -95,14 +136,28 @@ $color5: rgb(191, 97, 4);
     border: 1px solid $color3;
 }
 
-#principal {
+
+.principal {
     color: $color4;
+    background-color: white;
     border: 1px solid $color4;
 }
 
-#principal:hover {
+.principal:hover {
     background-color: $color4;
     color: white;
+}
+
+.principal-sec {
+    background-color: $color4;
+    color: white;
+    border: 1px solid $color4;
+}
+
+.principal-sec:hover {
+    color: $color4;
+    background-color: white;
+    border: 1px solid $color4;
 }
 
 #principal-cat {
@@ -110,20 +165,35 @@ $color5: rgb(191, 97, 4);
     border: 1px solid $color4;
 }
 
-#powerunit {
+
+.powerunit {
     color: $color5;
+    background-color: white;
     border: 1px solid $color5;
 }
 
-#powerunit:hover {
+.powerunit:hover {
     background-color: $color5;
     color: white;
+}
+
+.powerunit-sec {
+    background-color: $color5;
+    color: white;
+    border: 1px solid $color5;
+}
+
+.powerunit-sec:hover {
+    color: $color5;
+    background-color: white;
+    border: 1px solid $color5;
 }
 
 #powerunit-cat {
     color: $color5;
     border: 1px solid $color5;
 }
+
 
 .div-feature {
     width: 75%;

@@ -60,18 +60,6 @@
             </div>
 
             <br />
-            <div class="dropdown">
-                <button class="dropbtn">By category</button>
-                <div class="dropdown-content">
-                    <a class="btn-dropdown" onclick="changeCategory('')">All the category</a>
-                    <a class="btn-dropdown" onclick="changeCategory('DRIVER')">Driver</a>
-                    <a class="btn-dropdown" onclick="changeCategory('PRINCIPAL')">Principal</a>
-                    <a class="btn-dropdown" onclick="changeCategory('RACEENGINEER')">Race engineer</a>
-                    <a class="btn-dropdown" onclick="changeCategory('TECHNICALCHIEF')">Technical chief</a>
-                    <a class="btn-dropdown" onclick="changeCategory('POWERUNIT')">Power unit</a>
-                </div>
-            </div>
-
             <br />
             <div class="dropdown">
                 <button class="dropbtn">By discount</button>
@@ -97,7 +85,16 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="title">
                 <br />
                 <h2>Catalogue</h2>
-                <hr />
+                <div id="category" class="row mb-4">
+                    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+                    <button id="dr" class="driver category-button col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" onclick="changeCategory('DRIVER')">Driver</button>
+                    <button id="pr" class="principal category-button col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" onclick="changeCategory('PRINCIPAL')">Principal</button>
+                    <button id="en" class="engineer category-button col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" onclick="changeCategory('RACEENGINEER')">Race engineer</button>
+                    <button id="te" class="technical category-button col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" onclick="changeCategory('TECHNICALCHIEF')">Technical chief</button>
+                    <button id="po" class="powerunit category-button col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2" onclick="changeCategory('POWERUNIT')">Power unit</button>
+                    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-1"></div>
+                </div>
+                <hr class="mr-3" />
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="title">
             </div>
@@ -145,8 +142,95 @@
     }
 
     function changeCategory(val) {
-        document.getElementById('Category').value = val;
+        var result = document.getElementById('Category');
+        removeCategoryColor(val);
+
+        if (result.value == 'DRIVER' && val == 'DRIVER') {
+            result.value = '';
+            document.getElementById('dr').classList.remove('driver-sec');
+            document.getElementById('dr').classList.add('driver');
+        }
+        else if (val == 'DRIVER') {
+            result.value = val;
+            document.getElementById('dr').classList.add('driver-sec');
+            document.getElementById('dr').classList.remove('driver');
+        }
+        else if (result.value == 'RACEENGINEER' && val == 'RACEENGINEER') {
+            result.value = '';
+            document.getElementById('en').classList.remove('engineer-sec');
+            document.getElementById('en').classList.add('engineer');
+
+        }
+        else if (val == 'RACEENGINEER') {
+            result.value = val;
+            document.getElementById('en').classList.add('engineer-sec');
+            document.getElementById('en').classList.remove('engineer');
+        }
+        else if (result.value == 'TECHNICALCHIEF' && val == 'TECHNICALCHIEF') {
+            result.value = '';
+            document.getElementById('te').classList.remove('technical-sec');
+            document.getElementById('te').classList.add('technical');
+
+        }
+        else if (val == 'TECHNICALCHIEF') {
+            result.value = val;
+            document.getElementById('te').classList.add('technical-sec');
+            document.getElementById('te').classList.remove('technical');
+        }
+        else if (result.value == 'PRINCIPAL' && val == 'PRINCIPAL') {
+            result.value = '';
+            document.getElementById('pr').classList.remove('principal-sec');
+            document.getElementById('pr').classList.add('principal');
+
+        }
+        else if (val == 'PRINCIPAL') {
+            result.value = val;
+            document.getElementById('pr').classList.add('principal-sec');
+            document.getElementById('pr').classList.remove('principal');
+        }
+        else if (result.value == 'POWERUNIT' && val == 'POWERUNIT') {
+            result.value = '';
+            document.getElementById('po').classList.remove('powerunit-sec');
+            document.getElementById('po').classList.add('powerunit');
+        }
+        else if (val == 'POWERUNIT') {
+            result.value = val;
+            document.getElementById('po').classList.add('powerunit-sec');
+            document.getElementById('po').classList.remove('powerunit');
+        }
         reload();
+    }
+
+    function removeCategoryColor(val) {
+        var result = document.getElementById('Category').value;
+        if (val != result) {
+            switch (result) {
+                case 'DRIVER':
+                    document.getElementById('dr').classList.remove('driver-sec');
+                    document.getElementById('dr').classList.add('driver');
+                    break;
+
+                case 'RACEENGINEER':
+                    document.getElementById('en').classList.remove('engineer-sec');
+                    document.getElementById('en').classList.add('engineer');
+                    break;
+
+                case 'TECHNICALCHIEF':
+                    document.getElementById('te').classList.remove('technical-sec');
+                    document.getElementById('te').classList.add('technical');
+                    break;
+
+                case 'PRINCIPAL':
+                    document.getElementById('pr').classList.remove('principal-sec');
+                    document.getElementById('pr').classList.add('principal');
+                    break;
+
+                case 'POWERUNIT':
+                    document.getElementById('po').classList.remove('powerunit-sec');
+                    document.getElementById('po').classList.add('powerunit');
+                    break;
+            }
+        }
     }
 
     function changeDiscount(val) {

@@ -81,7 +81,7 @@ h2 {
   background-color: var(--color-background-pri-2);
 }
 
-#title {
+#title h2 {
   text-align: center;
 }
 
@@ -150,4 +150,15 @@ body {
 .btn-dropdown:hover,
 .btn-dropdown:hover:visited {
   text-decoration: none;
+}
+
+.category-button,
+.category-button:visited {
+  padding: 0.5% 2%;
+  border-radius: 20px;
+  margin: 1% 0.5%;
+}
+
+#category {
+  text-align: center;
 }

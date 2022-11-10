@@ -43,14 +43,27 @@
   width: 75%;
 }
 
-#driver {
+.driver {
   color: var(--color-button-sec);
+  background-color: white;
   border: 1px solid var(--color-button-sec);
 }
 
-#driver:hover {
+.driver:hover {
   background-color: var(--color-button-sec);
   color: white;
+}
+
+.driver-sec {
+  background-color: var(--color-button-sec);
+  color: white;
+  border: 1px solid var(--color-button-sec);
+}
+
+.driver-sec:hover {
+  color: var(--color-button-sec);
+  background-color: white;
+  border: 1px solid var(--color-button-sec);
 }
 
 #driver-cat {
@@ -58,14 +71,27 @@
   border: 1px solid var(--color-button-sec);
 }
 
-#engineer {
+.engineer {
   color: #167504;
+  background-color: white;
   border: 1px solid #167504;
 }
 
-#engineer:hover {
+.engineer:hover {
   background-color: #167504;
   color: white;
+}
+
+.engineer-sec {
+  background-color: #167504;
+  color: white;
+  border: 1px solid #167504;
+}
+
+.engineer-sec:hover {
+  color: #167504;
+  background-color: white;
+  border: 1px solid #167504;
 }
 
 #engineer-cat {
@@ -73,14 +99,27 @@
   border: 1px solid #167504;
 }
 
-#technical {
+.technical {
   color: #024b78;
+  background-color: white;
   border: 1px solid #024b78;
 }
 
-#technical:hover {
+.technical:hover {
   background-color: #024b78;
   color: white;
+}
+
+.technical-sec {
+  background-color: #024b78;
+  color: white;
+  border: 1px solid #024b78;
+}
+
+.technical-sec:hover {
+  color: #024b78;
+  background-color: white;
+  border: 1px solid #024b78;
 }
 
 #technical-cat {
@@ -88,14 +127,27 @@
   border: 1px solid #024b78;
 }
 
-#principal {
+.principal {
   color: #3b0587;
+  background-color: white;
   border: 1px solid #3b0587;
 }
 
-#principal:hover {
+.principal:hover {
   background-color: #3b0587;
   color: white;
+}
+
+.principal-sec {
+  background-color: #3b0587;
+  color: white;
+  border: 1px solid #3b0587;
+}
+
+.principal-sec:hover {
+  color: #3b0587;
+  background-color: white;
+  border: 1px solid #3b0587;
 }
 
 #principal-cat {
@@ -103,14 +155,27 @@
   border: 1px solid #3b0587;
 }
 
-#powerunit {
+.powerunit {
   color: #bf6104;
+  background-color: white;
   border: 1px solid #bf6104;
 }
 
-#powerunit:hover {
+.powerunit:hover {
   background-color: #bf6104;
   color: white;
+}
+
+.powerunit-sec {
+  background-color: #bf6104;
+  color: white;
+  border: 1px solid #bf6104;
+}
+
+.powerunit-sec:hover {
+  color: #bf6104;
+  background-color: white;
+  border: 1px solid #bf6104;
 }
 
 #powerunit-cat {

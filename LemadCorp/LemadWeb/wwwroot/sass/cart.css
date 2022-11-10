@@ -3,6 +3,22 @@
   background-color: white;
 }
 
+#list {
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+@media (max-width: 990px) {
+  .cart-list {
+    border-right: 1px;
+  }
+
+  .cart-info {
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+}
 .cart-list {
   background-color: white;
   border-top-left-radius: 15px;
@@ -10,6 +26,7 @@
   border: 1px solid #ebebeb;
   border-right: 0;
   padding: 2% 2%;
+  height: 500px;
 }
 
 .title {
