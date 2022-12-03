@@ -24,6 +24,8 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using JsonConverter = LemadDb.Data.JsonConverter;
 using Microsoft.CodeAnalysis;
+using Microsoft.Extensions.Options;
+using LemadWeb.Models;
 
 namespace LemadWeb.Controllers
 {
@@ -36,7 +38,8 @@ namespace LemadWeb.Controllers
         static private List<Product> _products;
         static private Dictionary<int, int> _command;
 
-        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IConfiguration configuration) { _context = context; _userManager = userManager; _configuration = configuration; }
+        private readonly IOptions<StripeOptions> stripeOptions;
+        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IConfiguration configuration, IOptions<StripeOptions> stripeOptions) { _context = context; _userManager = userManager; _configuration = configuration; this.stripeOptions = stripeOptions; }
 
         [AllowAnonymous]
         public IActionResult List(string sortOrder, string searchString, string Pricefilter, string Statefilter, string CategoryFilter, string DiscountFilter)
