@@ -100,7 +100,7 @@
                 <br />
                 <br />
                 <div class="display-buttons">
-                    <button onclick="clearCart();" type="submit" value="CommandConfirmation" class="checkout-button">
+                    <button id="payment-request-button" class="checkout-button" type="button" href="#payment-form">
                         Confirm purchase
                     </button>
                     <div class="checkout-button center-button" onclick="callCart()">
@@ -251,31 +251,74 @@
                         if (result.error) {
                             $("#card-errors").textContent = result.error.message;
                         } else {
-                            // Send the token to your server.
-                            stripeTokenHandler(result.token);
+                            let cost;
+                            let costInFloat;
+                    
+                            $.getJSON("/product/GetCost",
+                                function(data) {
+                                    cost = data.amount;
+                                    costInFloat = parseFloat(cost);
+
+                                    // Send the token to your server.
+                                    stripeTokenHandler(result.token, costInFloat);
+                                }
+                            )
                         }
                     });
                 });
 
-                function stripeTokenHandler(token) {
+                function stripeTokenHandler(token, costInFloat) {
                     fetch('/product/charges', {
                         method: 'post',
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify({
                             token: token.id,
                             description: "@Model.FirstName",
-                            amountInCents: 50, // ToDO : use model price (Model.TotalWithTaxes)
+                            amountInCents: costInFloat,
                             currencyCode: "cad"
                         })
                     // Report to the browser that the payment was successful or failed.
                     }).then(function (response) {
                         if (response.ok) {
+                            ConfirmCommand();
                             window.location.replace("@Url.Action("Confirmation")")
                         } else {
                             console.log("fail");
-                            e.complete('fail');
+                            //e.complete('fail');
                         }
                     });
+                }
+
+                function ConfirmCommand()
+                {
+                   // Faire la commande dans la BD
+                   fetch('/product/CommandConfirmation', {
+                        method: 'post',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify({ 
+                            FirstName: "@Model.FirstName",
+                            LastName: "@Model.LastName",
+                            Email: "@Model.Email",
+                            PhoneNumber:"@Model.Phone",
+                            Address: "@Model.Address",
+                            City: "@Model.City",
+                            Province : "@Model.Province",
+                            Country : "@Model.Country",
+                            PostalCode : "@Model.PostalCode",
+                            Total : "@Model.Total",
+                            TotalDiscount : "@Model.TotalDiscount",
+                            TotalWithDiscount : "@Model.TotalWithDiscount",
+                            TotalWithTaxes : "@Model.TotalWithTaxes",
+                            Id : "@Model.CommandGuid"
+                        })
+                   }).then(function (response) {
+                        if (response.ok) {
+                            alert('Success');
+                        } else {
+                            console.log("fail");
+                            //e.complete('fail');
+                        }
+                   });
                 }
             });
         })();

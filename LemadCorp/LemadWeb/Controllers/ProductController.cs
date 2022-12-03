@@ -224,14 +224,14 @@ namespace LemadWeb.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> CommandConfirmation(CommandVM model)
+        public async Task<IActionResult> CommandConfirmation([FromBody] CommandVM model)
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return View(model);
-                }
+                //if (!ModelState.IsValid)
+                //{
+                //    return View(model);
+                //}
                 LemadDb.Domain.Entities.Command command;
 
                 decimal total = 0, totalDiscount = 0, totalWithDiscount = 0, totalWithTaxes = 0;
@@ -313,6 +313,24 @@ namespace LemadWeb.Controllers
             {
                 return View(model);
             }
+        }
+
+        public JsonResult GetCost()
+        {
+            decimal total = 0, totalDiscount = 0, totalWithDiscount = 0, amount = 0;
+
+            foreach (var p in _products)
+            {
+                int quantity = _command[p.Id];
+                total += p.Price * quantity;
+                var discount = ((decimal)p.Discount) / 100;
+                totalDiscount += discount * p.Price * quantity;
+            }
+            totalWithDiscount = total - totalDiscount;
+            amount = totalWithDiscount + (totalWithDiscount * (5 / 100)) + (totalWithDiscount * (decimal)(9.975 / 100));
+
+
+            return Json(new { amount = amount });
         }
 
         [HttpPost]
