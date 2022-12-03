@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Stripe;
+using LemadWeb.Models;
 
 namespace LemadWeb
 {
@@ -30,6 +32,10 @@ namespace LemadWeb
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<StripeOptions>(options =>
+                Configuration.GetSection("StripeTest").Bind(options)
+            );
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -64,6 +70,8 @@ namespace LemadWeb
         {
             if (env.IsDevelopment())
             {
+                StripeConfiguration.SetApiKey(Configuration.GetConnectionString("Stripe:TestSecretKey"));
+
                 app.UseDeveloperExceptionPage();
                 app.UseHsts();
             }
