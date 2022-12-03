@@ -101,7 +101,7 @@
                 <br />
                 <div class="display-buttons">
                     <button id="payment-request-button" class="checkout-button" type="button" href="#payment-form">
-                        Confirm purchase
+                        Proceed to payment
                     </button>
                     <div class="checkout-button center-button" onclick="callCart()">
                         Cancel the command
@@ -281,7 +281,8 @@
                     }).then(function (response) {
                         if (response.ok) {
                             ConfirmCommand();
-                            window.location.replace("@Url.Action("Confirmation")")
+                            clearCart();
+                            window.location.replace("@Url.Action("Confirmation")");
                         } else {
                             console.log("fail");
                             //e.complete('fail');
