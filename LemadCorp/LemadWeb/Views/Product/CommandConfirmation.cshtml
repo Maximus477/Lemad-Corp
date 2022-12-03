@@ -274,7 +274,7 @@
                         body: JSON.stringify({
                             token: token.id,
                             description: "@Model.FirstName",
-                            amountInCents: costInFloat,
+                            amountInCents: costInFloat * 100,
                             currencyCode: "cad"
                         })
                     // Report to the browser that the payment was successful or failed.
