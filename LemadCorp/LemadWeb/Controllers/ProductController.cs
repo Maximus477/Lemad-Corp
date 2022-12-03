@@ -26,6 +26,7 @@ using JsonConverter = LemadDb.Data.JsonConverter;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Options;
 using LemadWeb.Models;
+using Stripe;
 
 namespace LemadWeb.Controllers
 {
@@ -35,7 +36,7 @@ namespace LemadWeb.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
-        static private List<Product> _products;
+        static private List<LemadDb.Domain.Entities.Product> _products;
         static private Dictionary<int, int> _command;
 
         private readonly IOptions<StripeOptions> stripeOptions;
@@ -108,7 +109,7 @@ namespace LemadWeb.Controllers
                 model.Email = user.Email;
                 model.Phone = user.Cellphone;
                 model.UserID = user.Id;
-                model.Products = new List<Product>();
+                model.Products = new List<LemadDb.Domain.Entities.Product>();
                 model.Total = total;
                 model.TotalDiscount = totalDiscount;
                 model.TotalWithDiscount = totalWithDiscount;
@@ -145,8 +146,6 @@ namespace LemadWeb.Controllers
                 return View(model);
             }
         }
-
-
 
         [AllowAnonymous]
         [HttpPost]
@@ -316,6 +315,40 @@ namespace LemadWeb.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult Charges([FromBody] ChargesModel model)
+        {
+            StripeConfiguration.SetApiKey(stripeOptions.Value.SecretKey);
+
+            var options = new ChargeCreateOptions
+            {
+                Amount = model.AmountInCents,
+                Description = model.Description,
+                Source = model.Token,
+                Currency = model.CurrencyCode
+            };
+            var service = new ChargeService();
+
+            Charge charge;
+            try
+            {
+                charge = service.Create(options);
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                throw;
+            }
+            
+
+            return Json(charge.ToJson());
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+
         [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
@@ -333,7 +366,7 @@ namespace LemadWeb.Controllers
                     return View(model);
                 }
 
-                Product product = new Product()
+                LemadDb.Domain.Entities.Product product = new LemadDb.Domain.Entities.Product()
                 {
                     Name = model.Name,
                     Price = model.Price,
@@ -400,7 +433,7 @@ namespace LemadWeb.Controllers
 
         [Authorize(Roles = "admin")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,MaxContractTime,DateNaissance,Description,Quote,ProductCategory,Status,Photo")] Product model)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Discount,MaxContractTime,DateNaissance,Description,Quote,ProductCategory,Status,Photo")] LemadDb.Domain.Entities.Product model)
         {
             try
             {
@@ -413,7 +446,7 @@ namespace LemadWeb.Controllers
                 {
                     try
                     {
-                        Product product = await _context.Products.FindAsync(id);
+                        LemadDb.Domain.Entities.Product product = await _context.Products.FindAsync(id);
                         product.Name = model.Name;
                         product.Price = model.Price;
                         product.Discount = model.Discount;
