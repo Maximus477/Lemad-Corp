@@ -27,6 +27,16 @@ namespace LemadDb.Domain.Entities
         public decimal TotalWithDiscount { get; set; }
         public decimal TotalWithTaxes { get; set; }
         public CommandStatus Status { get; set; }
+        public string ReceiptName { get; set; }
+        public string ReceiptAddress { get; set; }
+        public string ReceiptCity { get; set; }
+        public string ReceiptProvince { get; set; }
+        public string ReceiptCountry { get; set; }
+        public string ReceiptPostalCode { get; set; }
+        public string ReceiptLast4 { get; set; }
+        public DateTime PurchaseTime { get; set; }
+        public string ReceiptEmail { get; set; }
+        public string ReceiptPhone { get; set; }
         //e(p.ex.confirmée, annulée, en préparation, en livraison, livrée, retournée)
         //public AdresseCivique AdresseCivique { get; set; }
         public List<CommandProduct> ProductIDs { get; set; }

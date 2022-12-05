@@ -38,6 +38,7 @@ namespace LemadWeb.Controllers
         private readonly IConfiguration _configuration;
         static private List<LemadDb.Domain.Entities.Product> _products;
         static private Dictionary<int, int> _command;
+        static private PaymentInfoVM _paymentInfo;
 
         private readonly IOptions<StripeOptions> stripeOptions;
         public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IConfiguration configuration, IOptions<StripeOptions> stripeOptions) { _context = context; _userManager = userManager; _configuration = configuration; this.stripeOptions = stripeOptions; }
@@ -271,7 +272,17 @@ namespace LemadWeb.Controllers
                         TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
                         TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
                         Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED,
-                        Id = model.CommandGuid
+                        Id = model.CommandGuid,
+                        ReceiptLast4 = _paymentInfo.ReceiptLast4,
+                        ReceiptCity = _paymentInfo.ReceiptCity,
+                        ReceiptAddress = _paymentInfo.ReceiptAddress,
+                        ReceiptCountry = _paymentInfo.ReceiptCountry,
+                        ReceiptProvince = _paymentInfo.ReceiptProvince,
+                        ReceiptPostalCode = _paymentInfo.ReceiptPostalCode,
+                        ReceiptName = _paymentInfo.ReceiptName,
+                        ReceiptPhone = _paymentInfo.ReceiptPhone,
+                        ReceiptEmail = _paymentInfo.ReceiptEmail,
+                        PurchaseTime = _paymentInfo.PurchaseTime,
                     };
                 }
                 else
@@ -294,7 +305,17 @@ namespace LemadWeb.Controllers
                         TotalWithDiscount = Decimal.Parse(model.TotalWithDiscount),
                         TotalWithTaxes = Decimal.Parse(model.TotalWithTaxes),
                         Status = LemadDb.Data.Enumerable.CommandStatus.CONFIRMED,
-                        Id = model.CommandGuid
+                        Id = model.CommandGuid,
+                        ReceiptLast4 = _paymentInfo.ReceiptLast4,
+                        ReceiptCity = _paymentInfo.ReceiptCity,
+                        ReceiptAddress = _paymentInfo.ReceiptAddress,
+                        ReceiptCountry = _paymentInfo.ReceiptCountry,
+                        ReceiptProvince = _paymentInfo.ReceiptProvince,
+                        ReceiptPostalCode = _paymentInfo.ReceiptPostalCode,
+                        ReceiptName = _paymentInfo.ReceiptName,
+                        ReceiptPhone = _paymentInfo.ReceiptPhone,
+                        PurchaseTime = _paymentInfo.PurchaseTime,
+                        ReceiptEmail = _paymentInfo.ReceiptEmail,
                     };
                 }
                 command.ProductIDs = new List<CommandProduct>();
@@ -352,12 +373,26 @@ namespace LemadWeb.Controllers
             {
                 charge = service.Create(options);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                string s = e.Message;
-                throw;
+                JsonResult message = Json(new { error = "ERROR" });
+                message.StatusCode = 500;
+                return message;
             }
-            
+
+            _paymentInfo = new PaymentInfoVM()
+            {
+                ReceiptEmail = model.Email,
+                ReceiptPhone = model.Phone,
+                ReceiptName = model.Name,
+                PurchaseTime = DateTime.Now,
+                ReceiptProvince = model.Province,
+                ReceiptAddress = model.Address,
+                ReceiptCity = model.City,
+                ReceiptPostalCode = model.PostalCode,
+                ReceiptCountry = model.Country,
+                ReceiptLast4 = charge.PaymentMethodDetails.Card.Last4,
+            };
 
             return Json(charge.ToJson());
         }

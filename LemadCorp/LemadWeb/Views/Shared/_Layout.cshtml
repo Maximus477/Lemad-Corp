@@ -305,6 +305,18 @@
             }
         }
 
+        function DisableButton() {
+                    console.log('Disabling...')
+                    document.getElementById('submit-btn').disabled = true;
+                    document.getElementById('submit-btn').innerHTML = 'Please wait for the confirmation';
+                }
+
+        function EnableButton() {
+                    console.log('Enabling...')
+                    document.getElementById('submit-btn').disabled = false;
+                    document.getElementById('submit-btn').innerHTML = 'Confirm';
+                }
+
         function addCartWithDuration(productId, duration) {
             var products = getCart();
             var result;
