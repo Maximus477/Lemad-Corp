@@ -1,0 +1,107 @@
+﻿$color-red: linear-gradient(135deg, #c20c02 0%, #f2b602 100%);
+$color-green: linear-gradient(135deg, #4ebd04 0%, #b5e605 100%);
+
+.commands_row{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.commands_row h1{
+    text-align: center;
+}
+
+.commands_table{
+    width: 100%;
+    border-collapse: revert;
+    border-spacing: 0 10px;
+}
+
+.commands_table_head{
+    text-align: center;
+}
+
+.commands_table_head tr th{
+    border-bottom: .5px solid rgba(200, 200, 200, .5);
+}
+
+.commands_table_body_item{
+}
+
+.commands_table_body_item td{
+    padding: 1% 1%;
+
+    border: 25px;
+    box-shadow: 0px 2px rgba(200, 200, 200, .25);
+}
+
+.item-CONFIRMED {
+    width:.5%;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+    background: $color-green;
+}
+
+.item-CANCELED {
+    width:.5%;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+    background: $color-red;
+}
+
+.item-status-CONFIRMED {
+    border-radius: 15px;
+    padding: 2%;
+    text-align: center;
+    color: #02ba02;
+    background: white;
+}
+.item-status-wraper-CONFIRMED {
+    border-radius: 15px;
+    max-width: 100%;
+    position: relative;
+    background: $color-green;
+    padding: 2.5px;
+}
+
+.item-status-CANCELED {
+    text-align: center;
+    padding: 2%;
+    border-radius: 15px;
+    color: #b30802;
+    background: white;
+}
+.item-status-wraper-CANCELED{
+    border-radius: 15px;
+    max-width: 100%;
+    position: relative;
+    background: $color-red;
+    padding: 2.5px;
+}
+
+.item-btn {
+    padding: 2%;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.btn-cancel,
+.btn-cancel:visited,
+.btn-cancel:link{
+    color: white;
+    background: linear-gradient(135deg, #ff554f 0%, #af0600 100%);
+    border-radius: 25px;
+    border: 1px solid #af0600;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.btn-cancel:hover,
+.btn-cancel:visited:hover,
+.btn-cancel:link:hover {
+    background: white;
+    color: #af0600;
+}

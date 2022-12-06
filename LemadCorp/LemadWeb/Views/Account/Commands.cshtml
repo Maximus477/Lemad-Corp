@@ -1,83 +1,53 @@
 ﻿@model IEnumerable<LemadWeb.ViewModels.Account.MyCommandsVM>
 
+@section Styles{
+    <link rel="stylesheet" href="~/sass/commandList.css" />
+}
+
 <br />
 <br />
 
-@if (@Model.Count() > 0 && Model != null)
-{
-    @if (!User.IsInRole("admin"))
-    {
-        <h1>
-            Commands for @Model.FirstOrDefault().FirstName @Model.FirstOrDefault().LastName
-        </h1>
+<div class="commands_row">
+    @if (Model.Count() > 0 && Model != null) {
+        @if (!User.IsInRole("admin")) { <h1 class="mb-4">Commands for @Model.FirstOrDefault().FirstName @Model.FirstOrDefault().LastName</h1> }
+        else { <h1 class="mb-4">All commands</h1> }
     }
-    else
-    {
-        <h1>
-            All commands
-        </h1>
-    }
+    else { <h1>You don't have any commands yet!</h1> }
 
-    <table class="table">
-        <thead>
+    <table class="commands_table">
+        <thead class="commands_table_head">
             <tr>
-                <th>
-                    Date of command
-                </th>
-                <th>
-                    Command id
-                </th>
-                <th>
-                    Total
-                </th>
-                <th>
-                    Status
-                </th>
-                <th>
-                    Products
-                </th>
+                <th></th>
+                <th>Command Id</th>
+                <th>Date of command</th>
+                <th>Total</th>
+                <th>Products</th>
+                <th>Status</th>
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
+        <tbody class="commands_table_body">
+            @foreach (var item in Model) {
+                <tr class="commands_table_body_item">
+                    <td class="item-@item.Status"></td>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Total)</td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CreatedAt)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @item.GetTotal()
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @foreach (var p in item.Products)
-                        {
-                            <l>
-                                @p.Name: @p.GetPrice() X @p.Quantity = @p.getTotalPrice()
-                            </l>
+                        @foreach (var p in item.Products) {
+                            <l>@p.Name: @p.GetPrice() X @p.Quantity = @p.getTotalPrice()</l>
                             <br />
                         }
                     </td>
-                    @if (item.Status != CommandStatus.CANCELED)
-                    {
-                        <td>
-                            <a asp-action="CommandCancelation" asp-route-id="@item.Id">Cancel</a>
-                        </td>
+                    <td><div class="item-status-wraper-@item.Status"><div class="item-status-@item.Status">@Html.DisplayFor(modelItem => item.Status)</div></div></td>
+                    @if (item.Status != CommandStatus.CANCELED) {
+                        <td class="item-btn"><a class="btn-cancel" asp-action="CommandCancelation" asp-route-id="@item.Id">Cancel</a></td>
+                    }
+                    else{
+                        <td class="item-btn"></td>
                     }
                 </tr>
             }
         </tbody>
     </table>
-}
-else
-{
-    <h1>
-        You don't have any commands yet!
-    </h1>
-}
+</div>
