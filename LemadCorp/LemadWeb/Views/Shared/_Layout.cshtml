@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-ca">
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebPages</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
@@ -12,7 +12,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Astloch' rel='stylesheet'>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" charset="utf-8"></script>
 
     @RenderSection("Styles", false)
 </head>
@@ -148,7 +148,7 @@
     @await RenderSectionAsync("Scripts", required: false)
     <script src="~/js/choices.js"></script>
 
-    <script type="text/javascript">
+    <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
             var prod = getCart();
             console.log(prod);

@@ -7,6 +7,16 @@
 <link rel="stylesheet" href="~/sass/command.css" />
 }
 
+@Html.Hidden("OrFName", Model.FirstName)
+@Html.Hidden("OrLName", Model.LastName)
+@Html.Hidden("OrEmail", Model.Email)
+@Html.Hidden("OrPhone", Model.Phone)
+@Html.Hidden("OrAddress", Model.Address)
+@Html.Hidden("OrCity", Model.City)
+@Html.Hidden("OrProvince", Model.Province)
+@Html.Hidden("OrCountry", Model.Country)
+@Html.Hidden("OrPostal", Model.PostalCode)
+
 <div class="container background-grey">
     <div class="row">
         <div class="col-md-2">
@@ -114,15 +124,6 @@
                 <br />
                 <br />
             </form>
-            <form method="post">
-                    <div class="row">
-                        <div class="col">
-                            <div class="float-right">
-                                <button id="payment-request-button" class="btn btn-primary" type="button" href="#payment-form">Buy</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
         </div>
     </div>
 </div>
@@ -202,7 +203,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white"><i class="fas fa-earth-americas"></i></span>
                         </div>
-                        <input id="province" class="form-control border-left-0" type="text" placeholder="Province" required>
+                        <input id="province" 
+                            class="form-control border-left-0" 
+                            type="text" 
+                            placeholder="Province"
+                            required>
                     </div>
                 </div>
             </div>
@@ -226,7 +231,15 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white"><i class="fas fa-mail-bulk"></i></span>
                         </div>
-                        <input id="postalCode" class="form-control border-left-0" type="text" placeholder="Postal Code" required>
+                        <input id="postalCode"
+                            name="postalCode"
+                            class="form-control border-left-0" 
+                            type="text" 
+                            placeholder="Postal Code" 
+                            pattern="^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$"
+                            oninvalid="this.setCustomValidity('The postal code must respect the Canadien postal code system e.g. A1S2S3')"
+                            oninput="this.setCustomValidity('')"
+                            required>
                     </div>
                 </div>
             </div>
@@ -263,20 +276,21 @@
 </script>
 
 @section Scripts {
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
+    <script src="https://js.stripe.com/v3/" charset="utf-8"></script>
+    <script charset="utf-8">
+
         (function () {
             "use strict";
 
             $(document).ready(function () {
-                document.getElementById('phone').value = '@Model.Phone'
-                document.getElementById('address').value = '@Model.Address'
-                document.getElementById('city').value = '@Model.City'
-                document.getElementById('email').value = '@Model.Email'
-                document.getElementById('province').value = '@Model.Province'
-                document.getElementById('country').value = '@Model.Country'
-                document.getElementById('postalCode').value = '@Model.PostalCode'
-                document.getElementById('name').value = '@Model.FirstName' + ' ' + '@Model.LastName'
+                document.getElementById('phone').value = document.getElementById('OrPhone').value
+                document.getElementById('address').value = document.getElementById('OrAddress').value
+                document.getElementById('city').value = document.getElementById('OrCity').value
+                document.getElementById('email').value = document.getElementById('OrEmail').value
+                document.getElementById('province').value = document.getElementById('OrProvince').value
+                document.getElementById('country').value = document.getElementById('OrCountry').value
+                document.getElementById('postalCode').value = document.getElementById('OrPostal').value
+                document.getElementById('name').value = document.getElementById('OrFName').value + ' ' + document.getElementById('OrLName').value
                 $("#payment-request-button").on("click", function () {
                     $("#payment-section").modal({
                         backdrop: 'static'
