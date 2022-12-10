@@ -328,8 +328,21 @@
                     
                             $.getJSON("/product/GetCost",
                                 function(data) {
-                                    cost = data.amount;
-                                    costInFloat = parseFloat(cost);
+                                    if (data.amount >= 1000000) {
+                                        var verifyCost = data.amount;
+                                        var sciCost = verifyCost.toExponential(2);
+                                        var exponential = parseInt(sciCost[sciCost.length-1])-5;
+                                        for (let i = 0; i < exponential; i++) {
+                                            verifyCost /= 10;
+                                        }
+
+                                        cost = verifyCost;
+                                        costInFloat = parseFloat(cost);
+                                    }
+                                    else {
+                                        cost = data.amount;
+                                        costInFloat = parseFloat(cost);
+                                    }
 
                                     // Send the token to your server.
                                     stripeTokenHandler(result.token, costInFloat);
