@@ -1,6 +1,7 @@
 ﻿using LemadDb.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using static LemadDb.Data.Enumerable;
 
 namespace LemadWeb.ViewModels.Account
@@ -15,6 +16,12 @@ namespace LemadWeb.ViewModels.Account
         public decimal Total { get; set; }
         public CommandStatus Status { get; set; }
         public List<ProductVM> Products { get; set; }
+
+        public string CardName { get; set; }
+        public DateTime PurchaseTime { get; set; }
+        public string BillAddress { get; set; }
+        public string BillPhone { get; set; }
+        public string CardNumber { get; set; }
 
         public string GetTotal()
         {

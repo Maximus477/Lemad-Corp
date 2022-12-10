@@ -6,48 +6,61 @@
 
 <br />
 <br />
+@if (Model.Count() > 0 && Model != null) {
+    @if (!User.IsInRole("admin")) { <h1 class="mb-4">Commands for @Model.FirstOrDefault().FirstName @Model.FirstOrDefault().LastName</h1> }
+    else { <h1 class="mb-4">All commands</h1> }
 
-<div class="commands_row">
-    @if (Model.Count() > 0 && Model != null) {
-        @if (!User.IsInRole("admin")) { <h1 class="mb-4">Commands for @Model.FirstOrDefault().FirstName @Model.FirstOrDefault().LastName</h1> }
-        else { <h1 class="mb-4">All commands</h1> }
+    <div class="row">
+        @foreach (var item in Model) {
+            <div class="col-md-1 col-lg-1 col-xl-1"></div>
+            <div class="command col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 mb-4 row">
+                <div id="command-@item.Status" class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+                    <h5 class="command-title mb-2" onclick="toggleCommand('@item.Id')">@item.Id (@item.CreatedAt)</h5>
+
+                    <div id="command-@item.Id" class="command-info mt-4 hidden row">
+                        <div class="col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="command-info-wrapper col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                            <div class="mb-4"><span>Total:</span> @item.Total</div>
+                            <div class="mb-4">
+                                <span>Products:</span>
+                                <br />
+                                <ul>
+                                    @foreach (var p in item.Products) {
+                                        <li>@p.Name: @p.GetPrice() X @p.Quantity = @p.getTotalPrice()</li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="mb-4"><span>Status:</span> @item.Status</div>
+                            <hr />
+                            <h6 class="mb-2">Receipt Information:</h6>
+                            <div class="mb-4"><span>Purchase time:</span> @(item.PurchaseTime.Equals(null) ? item.PurchaseTime : "None")</div>
+                            <div class="mb-4"><span>Card's owner:</span> @(item.CardName!=null ? item.CardName : "None")</div>
+                            <div class="mb-4"><span>Card's number:</span> @(item.CardNumber!=null ? "****"+item.CardNumber : "None")</div>
+                            <div class="mb-4"><span>Receipt's address:</span> @(item.BillAddress!=null ? item.BillAddress : "None")</div>
+                            <div class="mb-4"><span>Receipt's Phone:</span> @(item.BillPhone!=null ? item.BillPhone : "None")</div>
+                            @if (item.Status != CommandStatus.CANCELED)
+                            {
+                                <div class="button-div mb-4"><a asp-action="CommandCancelation" asp-route-id="@item.Id">Cancel <i class="fa fa-xmark"></i></a></div>
+                            }
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 col-lg-1 col-xl-1"></div>
+        }
+    </div>
+}
+else { <h1>You don't have any commands yet!</h1> }
+
+<script>
+    function toggleCommand(id) {
+        var commandId = 'command-' + id;
+        if (document.getElementById(commandId).classList.contains('hidden')) {
+            document.getElementById(commandId).classList.remove('hidden');
+        } else { 
+            document.getElementById(commandId).classList.add('hidden');
+        }
     }
-    else { <h1>You don't have any commands yet!</h1> }
-
-    <table class="commands_table">
-        <thead class="commands_table_head">
-            <tr>
-                <th></th>
-                <th>Command Id</th>
-                <th>Date of command</th>
-                <th>Total</th>
-                <th>Products</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody class="commands_table_body">
-            @foreach (var item in Model) {
-                <tr class="commands_table_body_item">
-                    <td class="item-@item.Status"></td>
-                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                    <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Total)</td>
-                    <td>
-                        @foreach (var p in item.Products) {
-                            <l>@p.Name: @p.GetPrice() X @p.Quantity = @p.getTotalPrice()</l>
-                            <br />
-                        }
-                    </td>
-                    <td><div class="item-status-wraper-@item.Status"><div class="item-status-@item.Status">@Html.DisplayFor(modelItem => item.Status)</div></div></td>
-                    @if (item.Status != CommandStatus.CANCELED) {
-                        <td class="item-btn"><a class="btn-cancel" asp-action="CommandCancelation" asp-route-id="@item.Id">Cancel</a></td>
-                    }
-                    else{
-                        <td class="item-btn"></td>
-                    }
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+</script>

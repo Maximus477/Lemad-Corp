@@ -223,6 +223,7 @@ namespace LemadWeb.Controllers
                         products.Add(productVM);
                     }
 
+
                     mycommands.Add(new MyCommandsVM()
                     {
                         Id = com.Id,
@@ -232,7 +233,13 @@ namespace LemadWeb.Controllers
                         Status = com.Status,
                         Total = com.TotalWithTaxes,
                         FullAddress = $"{com.Address}, {com.City}, {com.Province}, {com.Country}, {com.PostalCode}",
-                        Products = products
+                        Products = products,
+
+                        BillAddress = com.ReceiptAddress,
+                        BillPhone = com.ReceiptPhone,
+                        CardNumber = com.ReceiptLast4,
+                        CardName = com.ReceiptName,
+                        PurchaseTime = com.PurchaseTime
                     });
                 }
 
