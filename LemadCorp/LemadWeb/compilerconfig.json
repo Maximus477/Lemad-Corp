@@ -66,5 +66,9 @@
   {
     "outputFile": "wwwroot/sass/commandList.css",
     "inputFile": "wwwroot/sass/commandList.scss"
+  },
+  {
+    "outputFile": "wwwroot/sass/confirmation.css",
+    "inputFile": "wwwroot/sass/confirmation.scss"
   }
 ]

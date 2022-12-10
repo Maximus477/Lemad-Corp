@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LemadDb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221106183230_initialDb")]
-    partial class initialDb
+    [Migration("20221210013050_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,36 @@ namespace LemadDb.Migrations
                     b.Property<string>("Province")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PurchaseTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReceiptAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptCity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptLast4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptPostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiptProvince")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -84,18 +114,19 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("58096430-eafe-4daa-8a14-b403923a486c"),
+                            Id = new Guid("1652bab4-4bf3-4534-ad13-48a7c8d91c9e"),
                             Address = "400 Rue des maisons",
-                            ApplicationUserId = "780b1d3a-2393-420d-a8da-47b7e79874f6",
+                            ApplicationUserId = "1662b01f-0c88-4b37-9f4f-989a458042e8",
                             City = "Saint-Hyacinthe",
                             Country = "Canada",
-                            CreatedAt = new DateTime(2022, 11, 6, 13, 32, 29, 683, DateTimeKind.Local).AddTicks(339),
+                            CreatedAt = new DateTime(2022, 12, 9, 20, 30, 50, 341, DateTimeKind.Local).AddTicks(3434),
                             Email = "louis.garceau@lemadrid.com",
                             FirstName = "Louis",
                             LastName = "Garceau",
                             PhoneNumber = "(450)-213-5697",
                             PostalCode = "J28 B25",
                             Province = "Quebec",
+                            PurchaseTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 0,
                             Total = 10000000m,
                             TotalDiscount = 0m,
@@ -104,18 +135,19 @@ namespace LemadDb.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3a4ccbb4-a27f-4002-b332-2faf0326bc2f"),
+                            Id = new Guid("d76bf4da-a436-4911-a2ac-82700a975105"),
                             Address = "400 Rue des maisons",
-                            ApplicationUserId = "780b1d3a-2393-420d-a8da-47b7e79874f6",
+                            ApplicationUserId = "1662b01f-0c88-4b37-9f4f-989a458042e8",
                             City = "Saint-Hyacinthe",
                             Country = "Canada",
-                            CreatedAt = new DateTime(2022, 11, 6, 13, 32, 29, 685, DateTimeKind.Local).AddTicks(3543),
+                            CreatedAt = new DateTime(2022, 12, 9, 20, 30, 50, 343, DateTimeKind.Local).AddTicks(5141),
                             Email = "louis.garceau@lemadrid.com",
                             FirstName = "Louis",
                             LastName = "Garceau",
                             PhoneNumber = "(450)-213-5697",
                             PostalCode = "J28 B25",
                             Province = "Quebec",
+                            PurchaseTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 1,
                             Total = 20000000m,
                             TotalDiscount = 0m,
@@ -124,18 +156,19 @@ namespace LemadDb.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2727744d-d1e7-4096-b5ea-115f5ecd1964"),
+                            Id = new Guid("354c5370-4428-49cb-82b1-baa85e86da30"),
                             Address = "400 Rue test",
-                            ApplicationUserId = "780b1d3a-2393-420d-a8da-47b7e79874f6",
+                            ApplicationUserId = "1662b01f-0c88-4b37-9f4f-989a458042e8",
                             City = "Saint-Hyacinthe",
                             Country = "Canada",
-                            CreatedAt = new DateTime(2022, 11, 6, 13, 32, 29, 685, DateTimeKind.Local).AddTicks(3582),
+                            CreatedAt = new DateTime(2022, 12, 9, 20, 30, 50, 343, DateTimeKind.Local).AddTicks(5170),
                             Email = "louis.garceau@lemadrid.com",
                             FirstName = "Louis",
                             LastName = "Garceau",
                             PhoneNumber = "(450)-213-5697",
                             PostalCode = "J2F 2F5",
                             Province = "Quebec",
+                            PurchaseTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 0,
                             Total = 50000000m,
                             TotalDiscount = 0m,
@@ -144,18 +177,19 @@ namespace LemadDb.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4140254f-e712-4d62-9255-86f5579f7c38"),
+                            Id = new Guid("b8d5887f-f01b-4449-9c9b-7f324fcbd60d"),
                             Address = "400 Rue test",
-                            ApplicationUserId = "780b1d3a-2393-420d-a8da-47b7e79874f6",
+                            ApplicationUserId = "1662b01f-0c88-4b37-9f4f-989a458042e8",
                             City = "Saint-Hyacinthe",
                             Country = "Canada",
-                            CreatedAt = new DateTime(2022, 11, 6, 13, 32, 29, 685, DateTimeKind.Local).AddTicks(3590),
+                            CreatedAt = new DateTime(2022, 12, 9, 20, 30, 50, 343, DateTimeKind.Local).AddTicks(5176),
                             Email = "louis.garceau@lemadrid.com",
                             FirstName = "Louis",
                             LastName = "Garceau",
                             PhoneNumber = "(450)-213-5697",
                             PostalCode = "J2F 2F5",
                             Province = "Quebec",
+                            PurchaseTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 0,
                             Total = 30000000m,
                             TotalDiscount = 0m,
@@ -164,18 +198,19 @@ namespace LemadDb.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e67059cc-89b7-4188-9745-5f523cf0e7e2"),
+                            Id = new Guid("d4b83a05-a4e5-4b73-bdd3-ba0b21caf979"),
                             Address = "400 Rue test",
-                            ApplicationUserId = "780b1d3a-2393-420d-a8da-47b7e79874f6",
+                            ApplicationUserId = "1662b01f-0c88-4b37-9f4f-989a458042e8",
                             City = "Saint-Hyacinthe",
                             Country = "Canada",
-                            CreatedAt = new DateTime(2022, 11, 6, 13, 32, 29, 685, DateTimeKind.Local).AddTicks(3595),
+                            CreatedAt = new DateTime(2022, 12, 9, 20, 30, 50, 343, DateTimeKind.Local).AddTicks(5180),
                             Email = "louis.garceau@lemadrid.com",
                             FirstName = "Louis",
                             LastName = "Garceau",
                             PhoneNumber = "(450)-213-5697",
                             PostalCode = "J2F 2F5",
                             Province = "Quebec",
+                            PurchaseTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 1,
                             Total = 80000000m,
                             TotalDiscount = 0m,
@@ -208,36 +243,36 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("969ec8a2-ce09-44d5-b09c-c835d24446be"),
-                            CommandId = new Guid("58096430-eafe-4daa-8a14-b403923a486c"),
+                            Id = new Guid("f3a2558f-c057-4aa3-9956-c891736082cf"),
+                            CommandId = new Guid("1652bab4-4bf3-4534-ad13-48a7c8d91c9e"),
                             ProductID = 1,
                             Quantity = 4
                         },
                         new
                         {
-                            Id = new Guid("e1dd7ebf-6cc6-45e9-831d-b6be88d4eeaf"),
-                            CommandId = new Guid("3a4ccbb4-a27f-4002-b332-2faf0326bc2f"),
+                            Id = new Guid("ce27de28-9d8c-4b2c-9e9a-c42fcc30cd3d"),
+                            CommandId = new Guid("d76bf4da-a436-4911-a2ac-82700a975105"),
                             ProductID = 10,
                             Quantity = 2
                         },
                         new
                         {
-                            Id = new Guid("9691693e-818c-43ca-a344-942b90e3f56f"),
-                            CommandId = new Guid("2727744d-d1e7-4096-b5ea-115f5ecd1964"),
+                            Id = new Guid("e4dd0da6-52f7-4da1-a43b-403c64f217ff"),
+                            CommandId = new Guid("354c5370-4428-49cb-82b1-baa85e86da30"),
                             ProductID = 30,
                             Quantity = 1
                         },
                         new
                         {
-                            Id = new Guid("51320e52-e219-4480-9aa4-75c163f54a8d"),
-                            CommandId = new Guid("4140254f-e712-4d62-9255-86f5579f7c38"),
+                            Id = new Guid("832bb4a6-447b-4187-9e73-4bb8f7e97524"),
+                            CommandId = new Guid("b8d5887f-f01b-4449-9c9b-7f324fcbd60d"),
                             ProductID = 5,
                             Quantity = 2
                         },
                         new
                         {
-                            Id = new Guid("295482cf-f7fa-45bb-aa3b-bb0f8bdad1e2"),
-                            CommandId = new Guid("e67059cc-89b7-4188-9745-5f523cf0e7e2"),
+                            Id = new Guid("61450fe5-c84a-464c-9e92-38f5464b359e"),
+                            CommandId = new Guid("d4b83a05-a4e5-4b73-bdd3-ba0b21caf979"),
                             ProductID = 40,
                             Quantity = 1
                         });
@@ -1208,28 +1243,28 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            AdresseCiviqueId = new Guid("8126c70f-74c8-4987-b93f-8af77f6fab01"),
-                            ApplicationUserId = "500d63ef-34ca-44e8-907a-563e150df9cd"
+                            AdresseCiviqueId = new Guid("4816e81a-377b-4385-b74d-dcb4bc6ec0a4"),
+                            ApplicationUserId = "fbff57f9-3c76-4c6c-b648-5f886fcfb108"
                         },
                         new
                         {
-                            AdresseCiviqueId = new Guid("8126c70f-74c8-4987-b93f-8af77f6fab01"),
-                            ApplicationUserId = "a51f88a8-8ea5-41ad-b690-a88775d78d94"
+                            AdresseCiviqueId = new Guid("4816e81a-377b-4385-b74d-dcb4bc6ec0a4"),
+                            ApplicationUserId = "17aa1494-c94e-4220-afc9-8c0aa55ea31b"
                         },
                         new
                         {
-                            AdresseCiviqueId = new Guid("8126c70f-74c8-4987-b93f-8af77f6fab01"),
-                            ApplicationUserId = "780b1d3a-2393-420d-a8da-47b7e79874f6"
+                            AdresseCiviqueId = new Guid("4816e81a-377b-4385-b74d-dcb4bc6ec0a4"),
+                            ApplicationUserId = "1662b01f-0c88-4b37-9f4f-989a458042e8"
                         },
                         new
                         {
-                            AdresseCiviqueId = new Guid("8126c70f-74c8-4987-b93f-8af77f6fab01"),
-                            ApplicationUserId = "c7d5a1c3-7717-40db-9682-07bcd2e862de"
+                            AdresseCiviqueId = new Guid("4816e81a-377b-4385-b74d-dcb4bc6ec0a4"),
+                            ApplicationUserId = "60efdd52-8b8e-4731-8731-7cd49b84067d"
                         },
                         new
                         {
-                            AdresseCiviqueId = new Guid("eae3ea43-fc52-498b-946e-5f2de169fbc3"),
-                            ApplicationUserId = "0b2c15de-d6cf-4653-88d0-7fe1fef6075e"
+                            AdresseCiviqueId = new Guid("3e676a20-3bef-44f0-a16c-7d5e182b5248"),
+                            ApplicationUserId = "c18a89d2-8835-40ce-9681-eba7e278d571"
                         });
                 });
 
@@ -1266,7 +1301,7 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8126c70f-74c8-4987-b93f-8af77f6fab01"),
+                            Id = new Guid("4816e81a-377b-4385-b74d-dcb4bc6ec0a4"),
                             Address = "3000 Av. Boullé",
                             City = "Saint-Hyacinthe",
                             Country = "Canada",
@@ -1275,7 +1310,7 @@ namespace LemadDb.Migrations
                         },
                         new
                         {
-                            Id = new Guid("eae3ea43-fc52-498b-946e-5f2de169fbc3"),
+                            Id = new Guid("3e676a20-3bef-44f0-a16c-7d5e182b5248"),
                             Address = "1899 Henri-Becquerel",
                             City = "Sainte-Julie",
                             Country = "Canada",
@@ -1360,42 +1395,42 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e1fb517d-f356-4671-ac1b-5bb41999300d",
+                            Id = "8c9e5231-1d41-42f4-9937-00666c1271c0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dcf24c2f-c892-4ca3-af33-1f040ae80d1f",
+                            ConcurrencyStamp = "d0cf213d-93e7-45a2-b10b-c9c502cee4ea",
                             Email = "admin@lemadrid.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LEMADRID.COM",
                             NormalizedUserName = "ADMIN@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELJi0d0slCAd/4cWJrZiOXZHiE2Xq4jWwmDG1jnkFyT34GCMwO4sYMKbO+CnT/eq4Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPsGOjmuYcPQE0iw7/QSDKek4VzQW/jhHatrZY6JWF+sETDlX4Qu3ayeXVrXEMOusQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a75e987a-45a8-4a3c-8907-53e7893b7ed0",
+                            SecurityStamp = "ce4ebe0e-551a-4236-b01b-7fcc0192087d",
                             TwoFactorEnabled = false,
                             UserName = "admin@lemadrid.com"
                         },
                         new
                         {
-                            Id = "e44c0e2d-cd74-47a6-a746-696f46518572",
+                            Id = "ae543c91-4755-4de1-9191-fb88e1c89d9a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "00cfeb39-ff9f-448f-bbc1-9dedae88ef8f",
+                            ConcurrencyStamp = "4f14a69d-a7a8-4a94-af9f-5dd83dec3c5c",
                             Email = "guest@user.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "GUEST@USER.COM",
                             NormalizedUserName = "GUEST@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENuWGE7WA5pSqTLerEDQvMFJ/X9iag9a5z4nx3LSmO7iQtfKlaBfGe21ZZhQNGh1Ew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIplDOIfFDpNvcYGQMv+/myCHviw5OK/rZ27JMqT6c5dS8LcM9XV79eVHiR32W3u+w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aaa8ac17-963a-40a4-b016-ffa99d5e7a00",
+                            SecurityStamp = "0d2e55ad-e109-4069-8160-826d2be2816d",
                             TwoFactorEnabled = false,
                             UserName = "guest@user.com"
                         },
                         new
                         {
-                            Id = "500d63ef-34ca-44e8-907a-563e150df9cd",
+                            Id = "fbff57f9-3c76-4c6c-b648-5f886fcfb108",
                             AccessFailedCount = 0,
                             Cellphone = "(450)-773-6800",
-                            ConcurrencyStamp = "a766b828-3fab-4604-945a-4a849f84fd03",
+                            ConcurrencyStamp = "d83a91c6-e344-43cd-b5ed-67021300ff65",
                             Email = "hugo@lemadrid.com",
                             EmailConfirmed = false,
                             FirstName = "Hugo",
@@ -1403,18 +1438,18 @@ namespace LemadDb.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HUGO@LEMADRID.COM",
                             NormalizedUserName = "HUGO@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFfjBhB/YseLaiQou/WB+DksuBvjZ9dwgc22CQjLKSN/Sho38Rgris3NxRPi+DWuoA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB0SBumnkyoijT5PiFxprVPRQmE/LuTW+CeGCTM/hz3pRPQzF8e46d0DBkUiY0WdAw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dda17b27-5142-4895-9afe-c4230b2a9566",
+                            SecurityStamp = "1b9c29a3-00b1-45c0-84f8-16ff8369d9a0",
                             TwoFactorEnabled = false,
                             UserName = "hugo@lemadrid.com"
                         },
                         new
                         {
-                            Id = "0b2c15de-d6cf-4653-88d0-7fe1fef6075e",
+                            Id = "c18a89d2-8835-40ce-9681-eba7e278d571",
                             AccessFailedCount = 0,
                             Cellphone = "(450)-649-8594",
-                            ConcurrencyStamp = "25186218-13f0-4658-9667-a0e672aee14d",
+                            ConcurrencyStamp = "03feb102-6ceb-4ca5-800a-b4800cf78ecb",
                             Email = "karl.mainville@lemadrid.com",
                             EmailConfirmed = false,
                             FirstName = "Karl",
@@ -1422,18 +1457,18 @@ namespace LemadDb.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KARL.MAINVILLE@LEMADRID.COM",
                             NormalizedUserName = "KARL.MAINVILLE@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGVelJEBIfVoGzRaudyeazPZOXgphwuAawo4yizbN7KumqkZCHj3YoEUiEhMhHA1Qg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPeBVne/UqrDU/TJrmU9QllDNT/qT1lu8BkARpbmcuaMdL+iVDtVQckfHZXleqxGtw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d277efc3-ead8-4f5e-a2bb-0b85b0a72c72",
+                            SecurityStamp = "3e815c9e-a6e4-40dd-9e6f-5fe311f5d225",
                             TwoFactorEnabled = false,
                             UserName = "karl.mainville@lemadrid.com"
                         },
                         new
                         {
-                            Id = "a51f88a8-8ea5-41ad-b690-a88775d78d94",
+                            Id = "17aa1494-c94e-4220-afc9-8c0aa55ea31b",
                             AccessFailedCount = 0,
                             Cellphone = "(450)-538-3982",
-                            ConcurrencyStamp = "825cad3a-0324-4e47-956f-cd07c2dd942d",
+                            ConcurrencyStamp = "21941f25-9375-4f46-91b5-4bda385158ce",
                             Email = "maxime.lefebvre@lemadrid.com",
                             EmailConfirmed = false,
                             FirstName = "Maxime",
@@ -1441,18 +1476,18 @@ namespace LemadDb.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAXIME.LEFEBVRE@LEMADRID.COM",
                             NormalizedUserName = "MAXIME.LEFEBVRE@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFALP5R/Lul2euUDPRGyblvAOQwmJO3mn3MZwG088err2L/dCPHvir2oPC/y5lUhRg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELTl9hjixhldrfmikm4FTwYe+HCM1Lz6gIuY5EFPgjwrrloYqTBb9n7AwT5ahD9Kfg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0e3b88a2-96e1-4c97-8eee-ae4979c76791",
+                            SecurityStamp = "0d3f9f0a-d35d-41cb-8947-9e840d335550",
                             TwoFactorEnabled = false,
                             UserName = "maxime.lefebvre@lemadrid.com"
                         },
                         new
                         {
-                            Id = "780b1d3a-2393-420d-a8da-47b7e79874f6",
+                            Id = "1662b01f-0c88-4b37-9f4f-989a458042e8",
                             AccessFailedCount = 0,
                             Cellphone = "(450)-213-5697",
-                            ConcurrencyStamp = "d20aed48-488f-4bca-bfda-810dc345a2a9",
+                            ConcurrencyStamp = "aa1b8b6b-27a4-41ab-ba3e-b382c26fd422",
                             Email = "louis.garceau@lemadrid.com",
                             EmailConfirmed = false,
                             FirstName = "Louis",
@@ -1460,18 +1495,18 @@ namespace LemadDb.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LOUIS.GARCEAU@LEMADRID.COM",
                             NormalizedUserName = "LOUIS.GARCEAU@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPTH8zNMf05gx/y2btqNVRsTdoiw8QwObKpfA0NfKDB+KP8ki5+w6Z50HCJdcOQYnQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOZK0+2mlSN9Cg1VOTGabRGHLhCJnJfKE5rv/nxMw6dWZwn+lj751H4ju86TTT/YXw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3b7ad808-e626-4114-ad4b-d2aaa263a388",
+                            SecurityStamp = "b1ee9a61-4d2a-4263-b02b-2ac5e55f53fc",
                             TwoFactorEnabled = false,
                             UserName = "louis.garceau@lemadrid.com"
                         },
                         new
                         {
-                            Id = "c7d5a1c3-7717-40db-9682-07bcd2e862de",
+                            Id = "60efdd52-8b8e-4731-8731-7cd49b84067d",
                             AccessFailedCount = 0,
                             Cellphone = "(450)-789-4673",
-                            ConcurrencyStamp = "a2263ca5-8568-4775-a86b-38ff1d1bba01",
+                            ConcurrencyStamp = "ca33bc91-09d9-4ad7-81a1-ec231af58a89",
                             Email = "laurent.brochu@lemadrid.com",
                             EmailConfirmed = false,
                             FirstName = "Laurent",
@@ -1479,9 +1514,9 @@ namespace LemadDb.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LAURENT.BROCHU@LEMADRID.COM",
                             NormalizedUserName = "LAURENT.BROCHU@LEMADRID.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKy93q62zOhg//7vhAOblz6UK/WP0py2KeA5Z1PHbBbzsOeCvPTIorH4qgiWYx842g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPnYvtJARPDfryHZSdnS+BlW1X3V7t6COWXiLX1E6xZbiPBHMvJF8A4v9/k+9dZWqA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d999caae-fb16-4afd-9f1b-0b040df21a2a",
+                            SecurityStamp = "33177ce6-7cdb-4df1-928e-8929740b7896",
                             TwoFactorEnabled = false,
                             UserName = "laurent.brochu@lemadrid.com"
                         });
@@ -1516,15 +1551,15 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b19c9f56-ae3c-4f3c-baff-ac16e3f51947",
-                            ConcurrencyStamp = "8edfe310-c20d-4abc-bb67-a74194141884",
+                            Id = "4fbe213d-7200-4340-afbd-df7832bbecf8",
+                            ConcurrencyStamp = "148d1a9d-48f8-4015-8985-27ef40d2a621",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "dc16dd8e-d3a1-46dd-8759-fb39244b1eb5",
-                            ConcurrencyStamp = "abda965f-216a-41a8-a3ac-c86f62c62b87",
+                            Id = "9cffe5f7-f298-4315-8e4d-5fc689664592",
+                            ConcurrencyStamp = "41588d13-0e8a-4566-9f77-4ff11447b34a",
                             Name = "buyer",
                             NormalizedName = "BUYER"
                         });
@@ -1617,38 +1652,38 @@ namespace LemadDb.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "e1fb517d-f356-4671-ac1b-5bb41999300d",
-                            RoleId = "b19c9f56-ae3c-4f3c-baff-ac16e3f51947"
+                            UserId = "8c9e5231-1d41-42f4-9937-00666c1271c0",
+                            RoleId = "4fbe213d-7200-4340-afbd-df7832bbecf8"
                         },
                         new
                         {
-                            UserId = "e44c0e2d-cd74-47a6-a746-696f46518572",
-                            RoleId = "b19c9f56-ae3c-4f3c-baff-ac16e3f51947"
+                            UserId = "ae543c91-4755-4de1-9191-fb88e1c89d9a",
+                            RoleId = "4fbe213d-7200-4340-afbd-df7832bbecf8"
                         },
                         new
                         {
-                            UserId = "500d63ef-34ca-44e8-907a-563e150df9cd",
-                            RoleId = "dc16dd8e-d3a1-46dd-8759-fb39244b1eb5"
+                            UserId = "fbff57f9-3c76-4c6c-b648-5f886fcfb108",
+                            RoleId = "9cffe5f7-f298-4315-8e4d-5fc689664592"
                         },
                         new
                         {
-                            UserId = "0b2c15de-d6cf-4653-88d0-7fe1fef6075e",
-                            RoleId = "dc16dd8e-d3a1-46dd-8759-fb39244b1eb5"
+                            UserId = "c18a89d2-8835-40ce-9681-eba7e278d571",
+                            RoleId = "9cffe5f7-f298-4315-8e4d-5fc689664592"
                         },
                         new
                         {
-                            UserId = "a51f88a8-8ea5-41ad-b690-a88775d78d94",
-                            RoleId = "dc16dd8e-d3a1-46dd-8759-fb39244b1eb5"
+                            UserId = "17aa1494-c94e-4220-afc9-8c0aa55ea31b",
+                            RoleId = "9cffe5f7-f298-4315-8e4d-5fc689664592"
                         },
                         new
                         {
-                            UserId = "780b1d3a-2393-420d-a8da-47b7e79874f6",
-                            RoleId = "dc16dd8e-d3a1-46dd-8759-fb39244b1eb5"
+                            UserId = "1662b01f-0c88-4b37-9f4f-989a458042e8",
+                            RoleId = "9cffe5f7-f298-4315-8e4d-5fc689664592"
                         },
                         new
                         {
-                            UserId = "c7d5a1c3-7717-40db-9682-07bcd2e862de",
-                            RoleId = "dc16dd8e-d3a1-46dd-8759-fb39244b1eb5"
+                            UserId = "60efdd52-8b8e-4731-8731-7cd49b84067d",
+                            RoleId = "9cffe5f7-f298-4315-8e4d-5fc689664592"
                         });
                 });
 

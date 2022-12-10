@@ -229,10 +229,10 @@ namespace LemadWeb.Controllers
         {
             try
             {
-                //if (!ModelState.IsValid)
-                //{
+                //if (!ModelState.IsValid) {
                 //    return View(model);
                 //}
+
                 LemadDb.Domain.Entities.Command command;
 
                 decimal total = 0, totalDiscount = 0, totalWithDiscount = 0, totalWithTaxes = 0;

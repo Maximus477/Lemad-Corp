@@ -1,14 +1,19 @@
 ﻿
 @{ ViewData["Title"] = "Confirmation"; }
 
-<section class="row bg-light rounded">
-    <div class="col p-2">
+@section Styles {
+    <link rel="stylesheet" href="~/sass/confirmation.css" />
+}
+
+<br />
+<br />
+<section>
+    <div class="confirmation-wrapper">
         <h2>Confirmation</h2>
         <p>Your purchase was confirmed!</p>
-
-        <div class="float-right">
+        <div class="float">
             <span class="text-muted">You will be redirect in <span id="countdown"></span> secondes...</span>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-success">Return</a>
+            <a asp-controller="Home" asp-action="Index" class="btn-return">Return</a>
         </div>
     </div>
 </section>

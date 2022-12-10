@@ -1,0 +1,59 @@
+﻿.confirmation-wrapper{
+    border-radius:25px;
+}
+
+section {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+}
+
+h2 {
+    text-align: center;
+    border-top-left-radius: 25px;
+    border-top-right-radius:25px;
+    width: 100%;
+    padding: 1% 2%;
+    background: linear-gradient(135deg, #ff554f 0%, #af0600 100%);
+    color: white;
+}
+
+p{
+    padding-left:5%;
+    padding-bottom:5%;
+}
+
+.float{
+    position:relative;
+    margin-left:auto;
+    text-align:right;
+    padding: 1% 2%;
+}
+
+.float a,
+.float span{
+    position:relative;
+    left:0;
+}
+
+.btn-return,
+.btn-return:link,
+.btn-return:visited {
+    color: white;
+    border-radius: 5px;
+    background-color: #af0600;
+    border: 1px solid #af0600;
+    padding: 1% 1%;
+    text-decoration:none;
+}
+
+.btn-return:hover,
+.btn-return:hover:link,
+.btn-return:hover:visited {
+    color: #af0600;
+    background-color: white;
+    text-decoration:none;
+}
