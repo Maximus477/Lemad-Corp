@@ -34,7 +34,7 @@
                             <div class="mb-4"><span>Status:</span> @item.Status</div>
                             <hr />
                             <h6 class="mb-2">Receipt Information:</h6>
-                            <div class="mb-4"><span>Purchase time:</span> @(item.PurchaseTime.Equals(null) ? item.PurchaseTime : "None")</div>
+                            <div class="mb-4"><span>Purchase time:</span> @(item.PurchaseTime!=null ? item.PurchaseTime : "None")</div>
                             <div class="mb-4"><span>Card's owner:</span> @(item.CardName!=null ? item.CardName : "None")</div>
                             <div class="mb-4"><span>Card's number:</span> @(item.CardNumber!=null ? "****"+item.CardNumber : "None")</div>
                             <div class="mb-4"><span>Receipt's address:</span> @(item.BillAddress!=null ? item.BillAddress : "None")</div>
